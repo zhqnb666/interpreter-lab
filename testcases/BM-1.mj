@@ -1,0 +1,21 @@
+
+
+
+// Built-in method length()
+int main() {
+    // length of array
+    int[] arr = {1, 2, 3, 4, 5};
+    int len = length(arr);
+
+    println("length of array: " + len);
+    println(arr);
+
+    // length of string
+    string str = "hello world";
+    int len2 = length(str);
+    println("length of string: " + len2);
+    println(str);
+
+
+    return len + len2;
+}

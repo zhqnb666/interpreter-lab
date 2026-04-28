@@ -1,0 +1,12 @@
+target
+.idea
+.vscode
+
+*.interp
+*.tokens
+MiniJavaLexer.java
+MiniJavaParser.java
+MiniJavaParserBaseListener.java
+MiniJavaParserBaseVisitor.java
+MiniJavaParserListener.java
+MiniJavaParserVisitor.java

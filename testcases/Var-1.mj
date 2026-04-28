@@ -1,0 +1,16 @@
+
+// simple type inference for primitive types
+
+int main() {
+    var str = "hello";
+    var x = 10;
+    var c = 'c';
+    var b = true;
+
+    println(str);
+    println(x);
+    println(c);
+    println(b);
+
+    return 0;
+}

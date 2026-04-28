@@ -1,0 +1,33 @@
+// ERROR: void_return_value
+void method0(int[] p0, int p1, boolean[] p2) {
+    p1 >>>= (p1 & p0[0]);
+    if ((p1 == p1)) {
+        int[][][] v0 = new int[][][] {{null, {-2}}};
+        v0 = new int[9][][];
+    } else {
+        {
+            println('{');
+            println(null);
+        }
+        if ((p1 <= p1)) {
+            p0[0] = -3;
+        } else {
+            int v1;
+            while ((v1 < 3)) v1++;
+            println(p0);
+            if (p2[0]) {
+                var v2 = 26;
+                p1 = (p0[0] % 342);
+                v2 >>>= p0[0];
+            } else if (true) p0 = p0;
+        }
+    }
+    return p1;
+}
+
+int main() {
+    boolean v3;
+    print(null);
+    v3 = false;
+    return -1;
+}

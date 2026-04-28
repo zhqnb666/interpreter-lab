@@ -1,0 +1,9 @@
+
+int main() {
+    boolean b = true;
+    if (20 < 40) {
+        b = false;
+    } 
+
+    return b ? 100 : 200;
+}

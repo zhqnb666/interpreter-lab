@@ -1,0 +1,13 @@
+
+// simple while loop with a boolean condition
+
+int main() {
+    boolean cond = true;
+    int i = 0;
+    while (cond) {
+        i++;
+        cond = not (i == 5);
+    }
+
+    return i;
+}

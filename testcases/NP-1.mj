@@ -1,0 +1,8 @@
+
+// simple null pointer error in return statement
+
+int main() {
+    int[] arr = null;
+
+    return arr[0];
+}

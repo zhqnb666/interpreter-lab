@@ -1,0 +1,14 @@
+
+// return type (int) can not implicitly convert to char within array initialization
+
+int main() {
+    int x = 10;
+    
+    char[][] arr = { {1, 2}, {3, foo(x)}, null}; 
+
+    return 0;
+}
+
+int foo(int i) {
+    return i + 10;
+}

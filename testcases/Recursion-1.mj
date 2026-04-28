@@ -1,0 +1,25 @@
+
+// simple recursive method
+
+int main() {
+    int x;
+    x = foo1(10);
+    return x;
+}
+
+
+int foo1(int n) {
+    if (n == 0) {
+        return 0;
+    } else {
+        return n + foo2(n-1);
+    }
+}
+
+int foo2(int n) {
+    if (n == 0) {
+        return 0;
+    } else {
+        return n + foo1(n-1);
+    }
+}

@@ -1,0 +1,31 @@
+
+// null pointer error
+
+
+void loop(int[] arr, int len) {
+    println("start looping");
+    for (int i = 0; i < len; i++) {
+        arr[i] = i;
+    }
+
+    println("end looping");
+}
+
+int main() {
+    int[] arr = new int[3];
+    // correct
+    for (int i = 0; i < 3; i++) {
+        arr[i] = i;
+    }
+    println(arr);
+
+    // wrong 
+    loop(arr, 0);
+    loop(arr, 1);
+    loop(arr, 2);
+    loop(arr, 3);
+    loop(null, 0);
+    loop(null, 1); // null pointer error
+
+    return 0;
+}

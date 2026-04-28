@@ -1,0 +1,39 @@
+
+// dynamic programming solution for edit distance
+
+int editDistanceDPComp(char[] s, char[] t, int n, int m) {
+    int[] dp = new int[m + 1];
+    for (int j = 1; j <= m; j++) {
+        dp[j] = j;
+    }
+
+    for (int i = 1; i <= n; i++) {
+        int leftup = dp[0]; // 暂存 dp[i-1, j-1]
+        dp[0] = i;
+        for (int j = 1; j <= m; j++) {
+            int temp = dp[j];
+            if (s[i - 1] == t[j - 1]) {
+                dp[j] = leftup;
+            } else {
+                dp[j] = min(min(dp[j - 1], dp[j]), leftup) + 1;
+            }
+            leftup = temp;
+        }
+    }
+
+    int res = dp[m];
+
+    return res;
+}
+
+int min(int a, int b) {
+    return a < b? a : b;
+}
+
+int main()
+{   
+    int len = editDistanceDPComp(to_char_array("abcdefg"), to_char_array("abcfedg"), 7, 7);
+    println("edit distance: " + len); // output: edit distance: 3 (abcdefg -> abcfedg)
+
+    return 0;
+}

@@ -1,0 +1,24 @@
+
+
+// simple method overload
+// method foo with two different types of parameters
+
+int main() {
+    int x1 = 10;
+    var x2 = foo(x1);
+    println(x2);
+
+    string s1 = "hello";
+    var s2 = foo(s1);
+    println(s2);
+
+    return 0;
+}
+
+string foo(string s) {
+    return s + " world";
+}
+
+int foo(int i) {
+    return i + 1;
+}

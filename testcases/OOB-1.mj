@@ -1,0 +1,12 @@
+
+// simple array out-of-bounds error
+
+int main() {
+    int[][] arr = {null, null, {1,2,3} };
+    println(arr[2][0]);
+    println(arr[2][1]);
+    println(arr[2][2]);
+    println(arr[2][3]);
+
+    return arr[0][1];
+}
