@@ -1,20 +1,24 @@
 package cn.edu.nju.cs;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 
 public final class MethodRegistry {
     private final Map<String, List<MethodDecl>> methodsByName = new HashMap<>();
-    private final Map<MethodSignature, MethodDecl> methodsBySignature = new HashMap<>();
 
     public void register(MethodDecl method) {
-        if (methodsBySignature.containsKey(method.signature())) {
-            throw new RuntimeEvalException("Method redefinition: " + method.signature());
+        List<MethodDecl> overloads = methodsByName.computeIfAbsent(method.name(), k -> new ArrayList<>());
+        for (MethodDecl existing : overloads) {
+            if (!sameParamTypes(existing, method)) {
+                continue;
+            }
+            if (existing.returnType().equals(method.returnType())) {
+                throw new RuntimeEvalException("Method redefinition: " + method.signature());
+            }
         }
-        methodsBySignature.put(method.signature(), method);
-        methodsByName.computeIfAbsent(method.name(), k -> new ArrayList<>()).add(method);
+        overloads.add(method);
     }
 
     public MethodDecl resolveEntryMain() {
@@ -80,5 +84,17 @@ public final class MethodRegistry {
             throw new RuntimeEvalException("Ambiguous call: " + name);
         }
         return best;
+    }
+
+    private boolean sameParamTypes(MethodDecl a, MethodDecl b) {
+        if (a.parameters().size() != b.parameters().size()) {
+            return false;
+        }
+        for (int i = 0; i < a.parameters().size(); i++) {
+            if (!a.parameters().get(i).type().equals(b.parameters().get(i).type())) {
+                return false;
+            }
+        }
+        return true;
     }
 }
