@@ -7,15 +7,23 @@ import java.util.List;
 public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
     private final EvalContext context;
     private final MethodRegistry methodRegistry = new MethodRegistry();
+    private final CallDispatcher callDispatcher;
+    private final StatementExecutor statementExecutor;
+    private final ExpressionEvaluator expressionEvaluator;
 
     public InterpreterVisitor(PrintStream out) {
         this.context = new EvalContext(out);
+        BuiltinLibrary builtinLibrary = new BuiltinLibrary(this, context);
+        LValueResolver lvalueResolver = new LValueResolver(this, context);
+        this.callDispatcher = new CallDispatcher(this, context, methodRegistry, builtinLibrary);
+        this.statementExecutor = new StatementExecutor(this, context);
+        this.expressionEvaluator = new ExpressionEvaluator(this, lvalueResolver, callDispatcher);
     }
 
     public int execute(MiniJavaParser.CompilationUnitContext ctx) {
         visitCompilationUnit(ctx);
         MethodDecl entry = methodRegistry.resolveEntryMain();
-        Value result = invokeUserMethod(entry, List.of());
+        Value result = callDispatcher.invokeEntry(entry);
         if (!result.isInt()) {
             throw new RuntimeEvalException("Entry main() must return int");
         }
@@ -94,38 +102,7 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
 
     @Override
     public Value visitStatement(MiniJavaParser.StatementContext ctx) {
-        if (ctx.block() != null) {
-            return visit(ctx.block());
-        }
-        if (ctx.IF() != null) {
-            return execIf(ctx);
-        }
-        if (ctx.WHILE() != null) {
-            return execWhile(ctx);
-        }
-        if (ctx.FOR() != null) {
-            return execFor(ctx);
-        }
-        if (ctx.RETURN() != null) {
-            return execReturn(ctx);
-        }
-        if (ctx.BREAK() != null) {
-            if (!context.inLoop()) {
-                throw new RuntimeEvalException("break outside loop");
-            }
-            throw new BreakSignal();
-        }
-        if (ctx.CONTINUE() != null) {
-            if (!context.inLoop()) {
-                throw new RuntimeEvalException("continue outside loop");
-            }
-            throw new ContinueSignal();
-        }
-        if (ctx.expression() != null) {
-            visit(ctx.expression());
-            return null;
-        }
-        return null;
+        return statementExecutor.executeStatement(ctx);
     }
 
     @Override
@@ -150,49 +127,7 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
 
     @Override
     public Value visitExpression(MiniJavaParser.ExpressionContext ctx) {
-        if (ctx.primary() != null) {
-            return visit(ctx.primary());
-        }
-        if (ctx.methodCall() != null) {
-            return evalMethodCall(ctx.methodCall());
-        }
-        if (isArrayAccessExpr(ctx)) {
-            return readArrayElement(ctx);
-        }
-        if (ctx.postfix != null) {
-            return evalPostfixExpression(ctx);
-        }
-        if (ctx.prefix != null) {
-            return evalPrefixExpression(ctx);
-        }
-        if (ctx.NEW() != null) {
-            return evalCreator(ctx.creator());
-        }
-        if (isCastExpr(ctx)) {
-            Type target = parseType(ctx.typeType());
-            if (!target.equals(Type.INT) && !target.equals(Type.CHAR)) {
-                throw new RuntimeEvalException("Unsupported cast target: " + target.keyword());
-            }
-            return requireNonVoid(visit(ctx.expression(0))).castTo(target);
-        }
-
-        String op = ctx.bop == null ? null : ctx.bop.getText();
-        if (op == null) {
-            throw new RuntimeEvalException("Invalid expression");
-        }
-        if ("?".equals(op)) {
-            return evalTernaryExpression(ctx);
-        }
-        if ("and".equals(op)) {
-            return evalLogicalAnd(ctx);
-        }
-        if ("or".equals(op)) {
-            return evalLogicalOr(ctx);
-        }
-        if (isAssignmentOperator(op)) {
-            return evalAssignmentExpression(ctx, op);
-        }
-        return evalBinaryExpression(ctx, op);
+        return expressionEvaluator.evalExpression(ctx);
     }
 
     @Override
@@ -209,385 +144,7 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
         throw new RuntimeEvalException("Invalid primary expression");
     }
 
-    private Value execIf(MiniJavaParser.StatementContext ctx) {
-        boolean cond = requireBoolean(requireNonVoid(visit(ctx.parExpression().expression())));
-        if (cond) {
-            visit(ctx.statement(0));
-        } else if (ctx.ELSE() != null) {
-            visit(ctx.statement(1));
-        }
-        return null;
-    }
-
-    private Value execWhile(MiniJavaParser.StatementContext ctx) {
-        context.pushLoop();
-        try {
-            while (requireBoolean(requireNonVoid(visit(ctx.parExpression().expression())))) {
-                try {
-                    visit(ctx.statement(0));
-                } catch (ContinueSignal ignored) {
-                } catch (BreakSignal ignored) {
-                    break;
-                }
-            }
-            return null;
-        } finally {
-            context.popLoop();
-        }
-    }
-
-    private Value execFor(MiniJavaParser.StatementContext ctx) {
-        MiniJavaParser.ForControlContext fc = ctx.forControl();
-        boolean hasForScope = fc.forInit() != null && fc.forInit().localVariableDeclaration() != null;
-        if (hasForScope) {
-            context.enterScope();
-        }
-        context.pushLoop();
-        try {
-            if (fc.forInit() != null) {
-                visit(fc.forInit());
-            }
-            while (true) {
-                if (fc.expression() != null) {
-                    boolean cond = requireBoolean(requireNonVoid(visit(fc.expression())));
-                    if (!cond) {
-                        break;
-                    }
-                }
-                try {
-                    visit(ctx.statement(0));
-                } catch (ContinueSignal ignored) {
-                    if (fc.forUpdate != null) {
-                        visit(fc.forUpdate);
-                    }
-                    continue;
-                } catch (BreakSignal ignored) {
-                    break;
-                }
-                if (fc.forUpdate != null) {
-                    visit(fc.forUpdate);
-                }
-            }
-            return null;
-        } finally {
-            context.popLoop();
-            if (hasForScope) {
-                context.exitScope();
-            }
-        }
-    }
-
-    private Value execReturn(MiniJavaParser.StatementContext ctx) {
-        MethodDecl method = context.currentMethod();
-        Type returnType = method.returnType();
-        if (ctx.expression() == null) {
-            if (returnType.equals(Type.VOID)) {
-                throw new ReturnSignal();
-            }
-            throw new RuntimeEvalException("non-void method must return a value");
-        }
-
-        Value value = requireNonVoid(visit(ctx.expression()));
-        if (returnType.equals(Type.VOID)) {
-            throw new RuntimeEvalException("void method cannot return a value");
-        }
-        Value coerced = TypeSystem.coerceForAssignment(returnType, value);
-        throw new ReturnSignal(coerced);
-    }
-
-    private Value evalPrefixExpression(MiniJavaParser.ExpressionContext ctx) {
-        String op = ctx.prefix.getText();
-        return switch (op) {
-            case "+" -> Value.ofInt(requireIntegral(requireNonVoid(visit(ctx.expression(0)))));
-            case "-" -> Value.ofInt(-requireIntegral(requireNonVoid(visit(ctx.expression(0)))));
-            case "~" -> Value.ofInt(~requireIntegral(requireNonVoid(visit(ctx.expression(0)))));
-            case "not" -> Value.ofBoolean(!requireBoolean(requireNonVoid(visit(ctx.expression(0)))));
-            case "++", "--" -> {
-                LValue target = resolveLValue(ctx.expression(0));
-                int old = requireIntegral(target.get());
-                int next = op.equals("++") ? old + 1 : old - 1;
-                Value assigned = assignIntegralBack(target.type(), next);
-                target.set(assigned);
-                yield assigned;
-            }
-            default -> throw new RuntimeEvalException("Unsupported prefix operator: " + op);
-        };
-    }
-
-    private Value evalPostfixExpression(MiniJavaParser.ExpressionContext ctx) {
-        String op = ctx.postfix.getText();
-        if (!op.equals("++") && !op.equals("--")) {
-            throw new RuntimeEvalException("Unsupported postfix operator: " + op);
-        }
-        LValue target = resolveLValue(ctx.expression(0));
-        Value oldValue = target.get();
-        int old = requireIntegral(oldValue);
-        int next = op.equals("++") ? old + 1 : old - 1;
-        Value assigned = assignIntegralBack(target.type(), next);
-        target.set(assigned);
-        return oldValue;
-    }
-
-    private Value evalTernaryExpression(MiniJavaParser.ExpressionContext ctx) {
-        boolean cond = requireBoolean(requireNonVoid(visit(ctx.expression(0))));
-        return cond ? requireNonVoid(visit(ctx.expression(1))) : requireNonVoid(visit(ctx.expression(2)));
-    }
-
-    private Value evalLogicalAnd(MiniJavaParser.ExpressionContext ctx) {
-        Value left = requireNonVoid(visit(ctx.expression(0)));
-        boolean lb = requireBoolean(left);
-        if (!lb) {
-            return Value.ofBoolean(false);
-        }
-        boolean rb = requireBoolean(requireNonVoid(visit(ctx.expression(1))));
-        return Value.ofBoolean(rb);
-    }
-
-    private Value evalLogicalOr(MiniJavaParser.ExpressionContext ctx) {
-        Value left = requireNonVoid(visit(ctx.expression(0)));
-        boolean lb = requireBoolean(left);
-        if (lb) {
-            return Value.ofBoolean(true);
-        }
-        boolean rb = requireBoolean(requireNonVoid(visit(ctx.expression(1))));
-        return Value.ofBoolean(rb);
-    }
-
-    private Value evalAssignmentExpression(MiniJavaParser.ExpressionContext ctx, String op) {
-        LValue target = resolveLValue(ctx.expression(0));
-        Type targetType = target.type();
-
-        Value assigned;
-        if ("=".equals(op)) {
-            Value right = requireNonVoid(visit(ctx.expression(1)));
-            assigned = TypeSystem.coerceForAssignment(targetType, right);
-            target.set(assigned);
-            return assigned;
-        }
-
-        // Compound assignment follows Java-like evaluation order:
-        // capture current LHS value before evaluating RHS side effects.
-        Value left = target.get();
-        Value right = requireNonVoid(visit(ctx.expression(1)));
-        if ("+=".equals(op) && targetType.equals(Type.STRING)) {
-            if (!isStringConcatOperand(right)) {
-                throw new RuntimeEvalException("Invalid string concatenation operand");
-            }
-            assigned = Value.ofString(left.asString() + right.toOutputString());
-            target.set(assigned);
-            return assigned;
-        }
-
-        if (!targetType.isIntegralScalar()) {
-            throw new RuntimeEvalException("Unsupported assignment target for operator " + op);
-        }
-
-        int lv = requireIntegral(left);
-        int rv = requireIntegral(right);
-        int result = switch (op) {
-            case "+=" -> lv + rv;
-            case "-=" -> lv - rv;
-            case "*=" -> lv * rv;
-            case "/=" -> {
-                if (rv == 0) {
-                    throw new RuntimeEvalException("Division by zero");
-                }
-                yield lv / rv;
-            }
-            case "%=" -> {
-                if (rv == 0) {
-                    throw new RuntimeEvalException("Division by zero");
-                }
-                yield lv % rv;
-            }
-            case "&=" -> lv & rv;
-            case "|=" -> lv | rv;
-            case "^=" -> lv ^ rv;
-            case "<<=" -> lv << rv;
-            case ">>=" -> lv >> rv;
-            case ">>>=" -> lv >>> rv;
-            default -> throw new RuntimeEvalException("Unsupported assignment operator: " + op);
-        };
-
-        assigned = assignIntegralBack(targetType, result);
-        target.set(assigned);
-        return assigned;
-    }
-
-    private Value evalBinaryExpression(MiniJavaParser.ExpressionContext ctx, String op) {
-        Value left = requireNonVoid(visit(ctx.expression(0)));
-        Value right = requireNonVoid(visit(ctx.expression(1)));
-
-        return switch (op) {
-            case "*" -> Value.ofInt(requireIntegral(left) * requireIntegral(right));
-            case "/" -> {
-                int rv = requireIntegral(right);
-                if (rv == 0) {
-                    throw new RuntimeEvalException("Division by zero");
-                }
-                yield Value.ofInt(requireIntegral(left) / rv);
-            }
-            case "%" -> {
-                int rv = requireIntegral(right);
-                if (rv == 0) {
-                    throw new RuntimeEvalException("Division by zero");
-                }
-                yield Value.ofInt(requireIntegral(left) % rv);
-            }
-            case "+" -> {
-                if (left.isString() || right.isString()) {
-                    if (!isStringConcatOperand(left) || !isStringConcatOperand(right)) {
-                        throw new RuntimeEvalException("Invalid string concatenation operands");
-                    }
-                    yield Value.ofString(left.toOutputString() + right.toOutputString());
-                }
-                yield Value.ofInt(requireIntegral(left) + requireIntegral(right));
-            }
-            case "-" -> Value.ofInt(requireIntegral(left) - requireIntegral(right));
-            case "<<" -> Value.ofInt(requireIntegral(left) << requireIntegral(right));
-            case ">>" -> Value.ofInt(requireIntegral(left) >> requireIntegral(right));
-            case ">>>" -> Value.ofInt(requireIntegral(left) >>> requireIntegral(right));
-            case "<" -> Value.ofBoolean(requireIntegral(left) < requireIntegral(right));
-            case "<=" -> Value.ofBoolean(requireIntegral(left) <= requireIntegral(right));
-            case ">" -> Value.ofBoolean(requireIntegral(left) > requireIntegral(right));
-            case ">=" -> Value.ofBoolean(requireIntegral(left) >= requireIntegral(right));
-            case "==" -> Value.ofBoolean(equalsValue(left, right));
-            case "!=" -> Value.ofBoolean(!equalsValue(left, right));
-            case "&" -> Value.ofInt(requireIntegral(left) & requireIntegral(right));
-            case "^" -> Value.ofInt(requireIntegral(left) ^ requireIntegral(right));
-            case "|" -> Value.ofInt(requireIntegral(left) | requireIntegral(right));
-            default -> throw new RuntimeEvalException("Unsupported operator: " + op);
-        };
-    }
-
-    private boolean equalsValue(Value left, Value right) {
-        if (left.isNull() && right.isNull()) {
-            if (left.hasNullTypeHint() && right.hasNullTypeHint()
-                    && !left.nullTypeHint().equals(right.nullTypeHint())) {
-                throw new RuntimeEvalException("Incompatible array types for equality");
-            }
-            return true;
-        }
-        if (left.isNull() || right.isNull()) {
-            Value nullValue = left.isNull() ? left : right;
-            Value nonNull = left.isNull() ? right : left;
-            if (nonNull.isArray()) {
-                if (nullValue.hasNullTypeHint() && !nullValue.nullTypeHint().equals(nonNull.type())) {
-                    throw new RuntimeEvalException("Incompatible array types for equality");
-                }
-                return false;
-            }
-            throw new RuntimeEvalException("Incompatible types for equality");
-        }
-        if (left.isIntegral() && right.isIntegral()) {
-            return left.toIntWithPromotion() == right.toIntWithPromotion();
-        }
-        if (left.isBoolean() && right.isBoolean()) {
-            return left.asBoolean() == right.asBoolean();
-        }
-        if (left.isString() && right.isString()) {
-            return left.asString().equals(right.asString());
-        }
-        if (left.isArray() && right.isArray()) {
-            if (!left.type().equals(right.type())) {
-                throw new RuntimeEvalException("Incompatible array types for equality");
-            }
-            return left.asArray() == right.asArray();
-        }
-        throw new RuntimeEvalException("Incompatible types for equality");
-    }
-
-    private Value readArrayElement(MiniJavaParser.ExpressionContext ctx) {
-        ArrayLValue lv = resolveArrayLValue(ctx);
-        return lv.get();
-    }
-
-    private LValue resolveLValue(MiniJavaParser.ExpressionContext expr) {
-        if (expr.primary() != null && expr.primary().identifier() != null) {
-            String name = expr.primary().identifier().getText();
-            MiniJavaObject obj = context.resolve(name);
-            return new VariableLValue(obj);
-        }
-        if (isArrayAccessExpr(expr)) {
-            return resolveArrayLValue(expr);
-        }
-        throw new RuntimeEvalException("Left-hand side must be a variable or array element");
-    }
-
-    private ArrayLValue resolveArrayLValue(MiniJavaParser.ExpressionContext expr) {
-        Value arrayValue = requireNonVoid(visit(expr.expression(0)));
-        if (arrayValue.isNull()) {
-            throw new RuntimeEvalException("Null pointer");
-        }
-        if (!arrayValue.isArray()) {
-            throw new RuntimeEvalException("Not an array");
-        }
-        int index = requireIndex(requireNonVoid(visit(expr.expression(1))));
-        MiniJavaArray arr = arrayValue.asArray();
-        Type elemType = arr.type().componentType();
-        return new ArrayLValue(arr, index, elemType);
-    }
-
-    private Value evalMethodCall(MiniJavaParser.MethodCallContext ctx) {
-        String name = ctx.identifier().getText();
-        List<Value> args = new ArrayList<>();
-        if (ctx.arguments().expressionList() != null) {
-            for (MiniJavaParser.ExpressionContext expr : ctx.arguments().expressionList().expression()) {
-                args.add(requireNonVoid(visit(expr)));
-            }
-        }
-
-        BuiltinResult builtin = invokeBuiltinIfMatched(name, args);
-        if (builtin.matched()) {
-            return builtin.value();
-        }
-
-        MethodDecl method = methodRegistry.resolveCall(name, args);
-        return invokeUserMethod(method, args);
-    }
-
-    private Value invokeUserMethod(MethodDecl method, List<Value> args) {
-        context.pushMethod(method);
-        context.enterScope();
-        try {
-            for (int i = 0; i < method.parameters().size(); i++) {
-                MethodDecl.Parameter param = method.parameters().get(i);
-                Value arg = TypeSystem.coerceForMethodParam(param.type(), args.get(i));
-                context.declare(param.name(), param.type(), arg);
-            }
-
-            try {
-                for (MiniJavaParser.BlockStatementContext stmt : method.body().blockStatement()) {
-                    visit(stmt);
-                }
-            } catch (ReturnSignal r) {
-                return handleReturnSignal(method, r);
-            }
-
-            if (method.returnType().equals(Type.VOID)) {
-                return Value.voidValue();
-            }
-            throw new RuntimeEvalException("Missing return statement in method: " + method.name());
-        } finally {
-            context.exitScope();
-            context.popMethod();
-        }
-    }
-
-    private Value handleReturnSignal(MethodDecl method, ReturnSignal signal) {
-        if (method.returnType().equals(Type.VOID)) {
-            if (signal.hasValue()) {
-                throw new RuntimeEvalException("void method cannot return a value");
-            }
-            return Value.voidValue();
-        }
-        if (!signal.hasValue()) {
-            throw new RuntimeEvalException("non-void method must return a value");
-        }
-        return TypeSystem.coerceForAssignment(method.returnType(), signal.value());
-    }
-
-    private Value evalCreator(MiniJavaParser.CreatorContext ctx) {
+    Value evalCreator(MiniJavaParser.CreatorContext ctx) {
         Type base = Type.fromKeyword(ctx.createdName().primitiveType().getText());
         MiniJavaParser.ArrayCreatorRestContext rest = ctx.arrayCreatorRest();
 
@@ -695,7 +252,7 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
         return text.substring(1, text.length() - 1);
     }
 
-    private Type parseType(MiniJavaParser.TypeTypeContext ctx) {
+    Type parseType(MiniJavaParser.TypeTypeContext ctx) {
         Type type = Type.fromKeyword(ctx.primitiveType().getText());
         int dims = ctx.LBRACK().size();
         for (int i = 0; i < dims; i++) {
@@ -704,15 +261,11 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
         return type;
     }
 
-    private boolean isArrayAccessExpr(MiniJavaParser.ExpressionContext ctx) {
-        return ctx.LBRACK() != null && ctx.expression().size() == 2 && ctx.bop == null;
-    }
-
-    private boolean isCastExpr(MiniJavaParser.ExpressionContext ctx) {
+    boolean isCastExpr(MiniJavaParser.ExpressionContext ctx) {
         return ctx.typeType() != null && ctx.expression().size() == 1 && ctx.bop == null;
     }
 
-    private boolean isAssignmentOperator(String op) {
+    boolean isAssignmentOperator(String op) {
         return "=".equals(op)
                 || "+=".equals(op)
                 || "-=".equals(op)
@@ -727,7 +280,7 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
                 || ">>>=".equals(op);
     }
 
-    private Value requireNonVoid(Value value) {
+    Value requireNonVoid(Value value) {
         if (value == null) {
             throw new RuntimeEvalException("Invalid void context");
         }
@@ -737,21 +290,21 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
         return value;
     }
 
-    private boolean requireBoolean(Value value) {
+    boolean requireBoolean(Value value) {
         if (!value.isBoolean()) {
             throw new RuntimeEvalException("Expected boolean");
         }
         return value.asBoolean();
     }
 
-    private int requireIntegral(Value value) {
+    int requireIntegral(Value value) {
         if (!value.isIntegral()) {
             throw new RuntimeEvalException("Expected integral type");
         }
         return value.toIntWithPromotion();
     }
 
-    private int requireIndex(Value value) {
+    int requireIndex(Value value) {
         if (value.isInt()) {
             return value.asInt();
         }
@@ -761,11 +314,11 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
         throw new RuntimeEvalException("Array index must be int");
     }
 
-    private boolean isStringConcatOperand(Value value) {
+    boolean isStringConcatOperand(Value value) {
         return value.isString() || value.isInt() || value.isChar() || value.isBoolean();
     }
 
-    private Value assignIntegralBack(Type targetType, int value) {
+    Value assignIntegralBack(Type targetType, int value) {
         if (targetType.equals(Type.INT)) {
             return Value.ofInt(value);
         }
@@ -775,201 +328,40 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
         throw new RuntimeEvalException("Integral assignment target must be int or char");
     }
 
-    private BuiltinResult invokeBuiltinIfMatched(String name, List<Value> args) {
-        return switch (name) {
-            case "print" -> builtinPrint(args);
-            case "println" -> builtinPrintln(args);
-            case "assert" -> builtinAssert(args);
-            case "length" -> builtinLength(args);
-            case "to_char_array" -> builtinToCharArray(args);
-            case "to_string" -> builtinToString(args);
-            case "atoi" -> builtinAtoi(args);
-            case "itoa" -> builtinItoa(args);
-            default -> BuiltinResult.notMatched();
-        };
-    }
-
-    private BuiltinResult builtinPrint(List<Value> args) {
-        if (args.size() != 1) {
-            return BuiltinResult.notMatched();
-        }
-        context.out().print(requireNonVoid(args.get(0)).toOutputString());
-        return BuiltinResult.matched(Value.voidValue());
-    }
-
-    private BuiltinResult builtinPrintln(List<Value> args) {
-        if (args.isEmpty()) {
-            context.out().println();
-            return BuiltinResult.matched(Value.voidValue());
-        }
-        if (args.size() == 1) {
-            context.out().println(requireNonVoid(args.get(0)).toOutputString());
-            return BuiltinResult.matched(Value.voidValue());
-        }
-        return BuiltinResult.notMatched();
-    }
-
-    private BuiltinResult builtinAssert(List<Value> args) {
-        if (args.size() != 1) {
-            return BuiltinResult.notMatched();
-        }
-        boolean cond = requireBoolean(requireNonVoid(args.get(0)));
-        if (!cond) {
-            throw new ExitSignal(33);
-        }
-        return BuiltinResult.matched(Value.voidValue());
-    }
-
-    private BuiltinResult builtinLength(List<Value> args) {
-        if (args.size() != 1) {
-            return BuiltinResult.notMatched();
-        }
-        Value arg = requireNonVoid(args.get(0));
-        if (arg.isString()) {
-            return BuiltinResult.matched(Value.ofInt(arg.asString().length()));
-        }
-        if (arg.isNull()) {
-            throw new RuntimeEvalException("Null pointer");
-        }
-        if (arg.isArray()) {
-            return BuiltinResult.matched(Value.ofInt(arg.asArray().length()));
-        }
-        return BuiltinResult.notMatched();
-    }
-
-    private BuiltinResult builtinToCharArray(List<Value> args) {
-        if (args.size() != 1) {
-            return BuiltinResult.notMatched();
-        }
-        Value arg = requireNonVoid(args.get(0));
-        if (!arg.isString()) {
-            return BuiltinResult.notMatched();
-        }
-        String s = arg.asString();
-        List<Value> elems = new ArrayList<>(s.length());
-        for (int i = 0; i < s.length(); i++) {
-            elems.add(Value.ofChar(s.charAt(i)));
-        }
-        return BuiltinResult.matched(Value.ofArray(new MiniJavaArray(Type.CHAR.arrayOf(), elems)));
-    }
-
-    private BuiltinResult builtinToString(List<Value> args) {
-        if (args.size() != 1) {
-            return BuiltinResult.notMatched();
-        }
-        Value arg = requireNonVoid(args.get(0));
-        if (arg.isNull()) {
-            throw new RuntimeEvalException("Null pointer");
-        }
-        if (!arg.isArray() || !arg.type().equals(Type.CHAR.arrayOf())) {
-            return BuiltinResult.notMatched();
-        }
-        MiniJavaArray arr = arg.asArray();
-        StringBuilder sb = new StringBuilder(arr.length());
-        for (int i = 0; i < arr.length(); i++) {
-            Value elem = arr.get(i);
-            if (!elem.isChar()) {
-                throw new RuntimeEvalException("to_string expects char[]");
+    boolean equalsValue(Value left, Value right) {
+        if (left.isNull() && right.isNull()) {
+            if (left.hasNullTypeHint() && right.hasNullTypeHint()
+                    && !left.nullTypeHint().equals(right.nullTypeHint())) {
+                throw new RuntimeEvalException("Incompatible array types for equality");
             }
-            sb.append((char) (elem.asSignedCharInt() & 0xFF));
+            return true;
         }
-        return BuiltinResult.matched(Value.ofString(sb.toString()));
-    }
-
-    private BuiltinResult builtinAtoi(List<Value> args) {
-        if (args.size() != 1) {
-            return BuiltinResult.notMatched();
+        if (left.isNull() || right.isNull()) {
+            Value nullValue = left.isNull() ? left : right;
+            Value nonNull = left.isNull() ? right : left;
+            if (nonNull.isArray()) {
+                if (nullValue.hasNullTypeHint() && !nullValue.nullTypeHint().equals(nonNull.type())) {
+                    throw new RuntimeEvalException("Incompatible array types for equality");
+                }
+                return false;
+            }
+            throw new RuntimeEvalException("Incompatible types for equality");
         }
-        Value arg = requireNonVoid(args.get(0));
-        if (!arg.isString()) {
-            return BuiltinResult.notMatched();
+        if (left.isIntegral() && right.isIntegral()) {
+            return left.toIntWithPromotion() == right.toIntWithPromotion();
         }
-        try {
-            return BuiltinResult.matched(Value.ofInt(Integer.parseInt(arg.asString())));
-        } catch (NumberFormatException e) {
-            throw new RuntimeEvalException("Invalid integer format", e);
+        if (left.isBoolean() && right.isBoolean()) {
+            return left.asBoolean() == right.asBoolean();
         }
-    }
-
-    private BuiltinResult builtinItoa(List<Value> args) {
-        if (args.size() != 1) {
-            return BuiltinResult.notMatched();
+        if (left.isString() && right.isString()) {
+            return left.asString().equals(right.asString());
         }
-        Value arg = requireNonVoid(args.get(0));
-        if (arg.isInt()) {
-            return BuiltinResult.matched(Value.ofString(String.valueOf(arg.asInt())));
+        if (left.isArray() && right.isArray()) {
+            if (!left.type().equals(right.type())) {
+                throw new RuntimeEvalException("Incompatible array types for equality");
+            }
+            return left.asArray() == right.asArray();
         }
-        if (arg.isChar()) {
-            return BuiltinResult.matched(Value.ofString(String.valueOf(arg.asSignedCharInt())));
-        }
-        return BuiltinResult.notMatched();
-    }
-
-    private interface LValue {
-        Type type();
-
-        Value get();
-
-        void set(Value value);
-    }
-
-    private static final class VariableLValue implements LValue {
-        private final MiniJavaObject object;
-
-        private VariableLValue(MiniJavaObject object) {
-            this.object = object;
-        }
-
-        @Override
-        public Type type() {
-            return object.declaredType();
-        }
-
-        @Override
-        public Value get() {
-            return object.value();
-        }
-
-        @Override
-        public void set(Value value) {
-            object.setValue(value);
-        }
-    }
-
-    private static final class ArrayLValue implements LValue {
-        private final MiniJavaArray array;
-        private final int index;
-        private final Type elementType;
-
-        private ArrayLValue(MiniJavaArray array, int index, Type elementType) {
-            this.array = array;
-            this.index = index;
-            this.elementType = elementType;
-        }
-
-        @Override
-        public Type type() {
-            return elementType;
-        }
-
-        @Override
-        public Value get() {
-            return array.get(index);
-        }
-
-        @Override
-        public void set(Value value) {
-            array.set(index, value);
-        }
-    }
-
-    private record BuiltinResult(boolean matched, Value value) {
-        static BuiltinResult matched(Value value) {
-            return new BuiltinResult(true, value);
-        }
-
-        static BuiltinResult notMatched() {
-            return new BuiltinResult(false, null);
-        }
+        throw new RuntimeEvalException("Incompatible types for equality");
     }
 }

@@ -15,7 +15,7 @@ public final class MethodRegistry {
                 continue;
             }
             if (existing.returnType().equals(method.returnType())) {
-                throw new RuntimeEvalException("Method redefinition: " + method.signature());
+                throw new RuntimeEvalException("Method redefinition: " + method.formatSignature());
             }
         }
         overloads.add(method);
