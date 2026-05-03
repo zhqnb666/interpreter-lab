@@ -1,0 +1,9 @@
+void foo() {
+    println(x);
+}
+
+int main() {
+    int x = 7;
+    foo();
+    return 0;
+}

@@ -1,0 +1,13 @@
+int foo() {
+    return 1;
+}
+
+void foo() {
+    return;
+}
+
+int main() {
+    print(111);
+    foo();
+    return 0;
+}

@@ -1,0 +1,5 @@
+int main() {
+    int[] arr = null;
+    println(length(arr));
+    return 0;
+}

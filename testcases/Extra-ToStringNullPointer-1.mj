@@ -1,0 +1,5 @@
+int main() {
+    char[] c = null;
+    println(to_string(c));
+    return 0;
+}

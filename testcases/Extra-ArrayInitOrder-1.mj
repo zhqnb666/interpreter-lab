@@ -1,0 +1,11 @@
+int tick(int x) {
+    print(x);
+    return x;
+}
+
+int main() {
+    int[][] arr = {{tick(1), tick(2)}, {tick(3), tick(4)}};
+    println();
+    println(arr);
+    return 0;
+}

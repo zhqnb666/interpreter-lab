@@ -1,0 +1,14 @@
+string foo(int x) {
+    return "I";
+}
+
+string foo(char x) {
+    return "C";
+}
+
+int main() {
+    print(foo('a'));
+    print(foo(97));
+    println();
+    return 0;
+}

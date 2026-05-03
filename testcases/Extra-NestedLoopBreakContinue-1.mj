@@ -1,0 +1,21 @@
+int main() {
+    int i = 0;
+    int j = 0;
+    int acc = 0;
+
+    while (i < 3) {
+        i++;
+        for (j = 0; j < 4; j = j + 1) {
+            if (j == 1) {
+                continue;
+            }
+            if (i == 2 and j == 3) {
+                break;
+            }
+            acc += i * 10 + j;
+        }
+    }
+
+    println(acc);
+    return i;
+}

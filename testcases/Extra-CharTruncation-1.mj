@@ -1,0 +1,13 @@
+int main() {
+    char a = (char) 300;
+    char b = (char) 128;
+    char c = (char) (-129);
+    char d = (char) 127;
+    d += 1;
+
+    println(itoa(a));
+    println(itoa(b));
+    println(itoa(c));
+    println(itoa(d));
+    return 0;
+}

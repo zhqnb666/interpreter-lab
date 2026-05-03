@@ -1,0 +1,13 @@
+void foo(int[] x) {
+    println("I");
+}
+
+void foo(char[] x) {
+    println("C");
+}
+
+int main() {
+    int[] a = null;
+    foo(a);
+    return 0;
+}

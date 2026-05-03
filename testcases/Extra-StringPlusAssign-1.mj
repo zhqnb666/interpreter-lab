@@ -1,0 +1,8 @@
+int main() {
+    string s = "x";
+    s += 1;
+    s += true;
+    s += 'A';
+    println(s);
+    return 0;
+}

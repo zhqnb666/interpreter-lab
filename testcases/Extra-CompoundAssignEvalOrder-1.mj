@@ -1,0 +1,6 @@
+int main() {
+    int a = 9;
+    println(a += (a = 3));
+    println(a);
+    return 0;
+}

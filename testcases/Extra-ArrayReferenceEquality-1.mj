@@ -1,0 +1,10 @@
+int main() {
+    int[] a = {1, 2};
+    int[] b = {1, 2};
+    int[] c = a;
+
+    println(a == b);
+    println(a == c);
+    println(a != null);
+    return 0;
+}

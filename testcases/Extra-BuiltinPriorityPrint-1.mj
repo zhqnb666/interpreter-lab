@@ -1,0 +1,8 @@
+int print(int x) {
+    return x + 1;
+}
+
+int main() {
+    print(1);
+    return 0;
+}

@@ -1,0 +1,5 @@
+int main() {
+    char c = 65;
+    println(c);
+    return 0;
+}

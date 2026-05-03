@@ -1,0 +1,6 @@
+int main() {
+    int[] arr = {10, 20, 30};
+    char idx = (char) 1;
+    println(arr[idx]);
+    return 0;
+}

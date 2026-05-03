@@ -1,0 +1,8 @@
+void bad() {
+    return assert(false);
+}
+
+int main() {
+    bad();
+    return 0;
+}

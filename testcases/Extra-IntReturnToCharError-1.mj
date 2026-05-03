@@ -1,0 +1,9 @@
+int foo() {
+    return 65;
+}
+
+int main() {
+    char c = foo();
+    println(c);
+    return 0;
+}

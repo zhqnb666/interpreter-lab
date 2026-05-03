@@ -1,0 +1,10 @@
+void foo(int[] x) {
+}
+
+void foo(char[] x) {
+}
+
+int main() {
+    foo(null);
+    return 0;
+}

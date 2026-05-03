@@ -1,0 +1,4 @@
+int main() {
+    var x = null;
+    return 0;
+}
