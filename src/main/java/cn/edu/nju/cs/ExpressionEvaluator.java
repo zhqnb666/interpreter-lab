@@ -2,8 +2,13 @@ package cn.edu.nju.cs;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 final class ExpressionEvaluator {
+    private static final Set<String> ASSIGNMENT_OPERATORS = Set.of(
+            "=", "+=", "-=", "*=", "/=", "%=",
+            "&=", "|=", "^=", "<<=", ">>=", ">>>=");
+
     private final InterpreterVisitor visitor;
     private final LValueResolver lvalueResolver;
     private final CallDispatcher callDispatcher;
@@ -33,12 +38,12 @@ final class ExpressionEvaluator {
         if (ctx.NEW() != null) {
             return visitor.evalCreator(ctx.creator());
         }
-        if (visitor.isCastExpr(ctx)) {
+        if (isCastExpr(ctx)) {
             Type target = visitor.parseType(ctx.typeType());
             if (!target.equals(Type.INT) && !target.equals(Type.CHAR)) {
                 throw new RuntimeEvalException("Unsupported cast target: " + target.keyword());
             }
-            return visitor.requireNonVoid(visitor.visit(ctx.expression(0))).castTo(target);
+            return visitor.visit(ctx.expression(0)).requireNonVoid().castTo(target);
         }
 
         String op = ctx.bop == null ? null : ctx.bop.getText();
@@ -54,10 +59,14 @@ final class ExpressionEvaluator {
         if ("or".equals(op)) {
             return evalLogicalOr(ctx);
         }
-        if (visitor.isAssignmentOperator(op)) {
+        if (ASSIGNMENT_OPERATORS.contains(op)) {
             return evalAssignmentExpression(ctx, op);
         }
         return evalBinaryExpression(ctx, op);
+    }
+
+    private static boolean isCastExpr(MiniJavaParser.ExpressionContext ctx) {
+        return ctx.typeType() != null && ctx.expression().size() == 1 && ctx.bop == null;
     }
 
     private Value evalMethodCall(MiniJavaParser.MethodCallContext ctx) {
@@ -65,7 +74,7 @@ final class ExpressionEvaluator {
         List<Value> args = new ArrayList<>();
         if (ctx.arguments().expressionList() != null) {
             for (MiniJavaParser.ExpressionContext expr : ctx.arguments().expressionList().expression()) {
-                args.add(visitor.requireNonVoid(visitor.visit(expr)));
+                args.add(visitor.visit(expr).requireNonVoid());
             }
         }
         return callDispatcher.invokeByName(name, args);
@@ -74,15 +83,15 @@ final class ExpressionEvaluator {
     private Value evalPrefixExpression(MiniJavaParser.ExpressionContext ctx) {
         String op = ctx.prefix.getText();
         return switch (op) {
-            case "+" -> Value.ofInt(visitor.requireIntegral(visitor.requireNonVoid(visitor.visit(ctx.expression(0)))));
-            case "-" -> Value.ofInt(-visitor.requireIntegral(visitor.requireNonVoid(visitor.visit(ctx.expression(0)))));
-            case "~" -> Value.ofInt(~visitor.requireIntegral(visitor.requireNonVoid(visitor.visit(ctx.expression(0)))));
-            case "not" -> Value.ofBoolean(!visitor.requireBoolean(visitor.requireNonVoid(visitor.visit(ctx.expression(0)))));
+            case "+" -> Value.ofInt(visitor.evalInt(ctx.expression(0)));
+            case "-" -> Value.ofInt(-visitor.evalInt(ctx.expression(0)));
+            case "~" -> Value.ofInt(~visitor.evalInt(ctx.expression(0)));
+            case "not" -> Value.ofBoolean(!visitor.evalBool(ctx.expression(0)));
             case "++", "--" -> {
                 LValueResolver.LValue target = lvalueResolver.resolveLValue(ctx.expression(0));
-                int old = visitor.requireIntegral(target.get());
+                int old = target.get().requireIntegral();
                 int next = op.equals("++") ? old + 1 : old - 1;
-                Value assigned = visitor.assignIntegralBack(target.type(), next);
+                Value assigned = TypeSystem.integralResult(target.type(), next);
                 target.set(assigned);
                 yield assigned;
             }
@@ -97,36 +106,32 @@ final class ExpressionEvaluator {
         }
         LValueResolver.LValue target = lvalueResolver.resolveLValue(ctx.expression(0));
         Value oldValue = target.get();
-        int old = visitor.requireIntegral(oldValue);
+        int old = oldValue.requireIntegral();
         int next = op.equals("++") ? old + 1 : old - 1;
-        Value assigned = visitor.assignIntegralBack(target.type(), next);
+        Value assigned = TypeSystem.integralResult(target.type(), next);
         target.set(assigned);
         return oldValue;
     }
 
     private Value evalTernaryExpression(MiniJavaParser.ExpressionContext ctx) {
-        boolean cond = visitor.requireBoolean(visitor.requireNonVoid(visitor.visit(ctx.expression(0))));
-        return cond ? visitor.requireNonVoid(visitor.visit(ctx.expression(1))) : visitor.requireNonVoid(visitor.visit(ctx.expression(2)));
+        boolean cond = visitor.evalBool(ctx.expression(0));
+        return cond
+                ? visitor.visit(ctx.expression(1)).requireNonVoid()
+                : visitor.visit(ctx.expression(2)).requireNonVoid();
     }
 
     private Value evalLogicalAnd(MiniJavaParser.ExpressionContext ctx) {
-        Value left = visitor.requireNonVoid(visitor.visit(ctx.expression(0)));
-        boolean lb = visitor.requireBoolean(left);
-        if (!lb) {
+        if (!visitor.evalBool(ctx.expression(0))) {
             return Value.ofBoolean(false);
         }
-        boolean rb = visitor.requireBoolean(visitor.requireNonVoid(visitor.visit(ctx.expression(1))));
-        return Value.ofBoolean(rb);
+        return Value.ofBoolean(visitor.evalBool(ctx.expression(1)));
     }
 
     private Value evalLogicalOr(MiniJavaParser.ExpressionContext ctx) {
-        Value left = visitor.requireNonVoid(visitor.visit(ctx.expression(0)));
-        boolean lb = visitor.requireBoolean(left);
-        if (lb) {
+        if (visitor.evalBool(ctx.expression(0))) {
             return Value.ofBoolean(true);
         }
-        boolean rb = visitor.requireBoolean(visitor.requireNonVoid(visitor.visit(ctx.expression(1))));
-        return Value.ofBoolean(rb);
+        return Value.ofBoolean(visitor.evalBool(ctx.expression(1)));
     }
 
     private Value evalAssignmentExpression(MiniJavaParser.ExpressionContext ctx, String op) {
@@ -135,16 +140,16 @@ final class ExpressionEvaluator {
 
         Value assigned;
         if ("=".equals(op)) {
-            Value right = visitor.requireNonVoid(visitor.visit(ctx.expression(1)));
+            Value right = visitor.visit(ctx.expression(1)).requireNonVoid();
             assigned = TypeSystem.coerceForAssignment(targetType, right);
             target.set(assigned);
             return assigned;
         }
 
         Value left = target.get();
-        Value right = visitor.requireNonVoid(visitor.visit(ctx.expression(1)));
+        Value right = visitor.visit(ctx.expression(1)).requireNonVoid();
         if ("+=".equals(op) && targetType.equals(Type.STRING)) {
-            if (!visitor.isStringConcatOperand(right)) {
+            if (!right.isStringConcatOperand()) {
                 throw new RuntimeEvalException("Invalid string concatenation operand");
             }
             assigned = Value.ofString(left.asString() + right.toOutputString());
@@ -152,12 +157,12 @@ final class ExpressionEvaluator {
             return assigned;
         }
 
-        if (!targetType.isIntegralScalar()) {
+        if (!targetType.isIntegral()) {
             throw new RuntimeEvalException("Unsupported assignment target for operator " + op);
         }
 
-        int lv = visitor.requireIntegral(left);
-        int rv = visitor.requireIntegral(right);
+        int lv = left.requireIntegral();
+        int rv = right.requireIntegral();
         int result = switch (op) {
             case "+=" -> lv + rv;
             case "-=" -> lv - rv;
@@ -183,53 +188,53 @@ final class ExpressionEvaluator {
             default -> throw new RuntimeEvalException("Unsupported assignment operator: " + op);
         };
 
-        assigned = visitor.assignIntegralBack(targetType, result);
+        assigned = TypeSystem.integralResult(targetType, result);
         target.set(assigned);
         return assigned;
     }
 
     private Value evalBinaryExpression(MiniJavaParser.ExpressionContext ctx, String op) {
-        Value left = visitor.requireNonVoid(visitor.visit(ctx.expression(0)));
-        Value right = visitor.requireNonVoid(visitor.visit(ctx.expression(1)));
+        Value left = visitor.visit(ctx.expression(0)).requireNonVoid();
+        Value right = visitor.visit(ctx.expression(1)).requireNonVoid();
 
         return switch (op) {
-            case "*" -> Value.ofInt(visitor.requireIntegral(left) * visitor.requireIntegral(right));
+            case "*" -> Value.ofInt(left.requireIntegral() * right.requireIntegral());
             case "/" -> {
-                int rv = visitor.requireIntegral(right);
+                int rv = right.requireIntegral();
                 if (rv == 0) {
                     throw new RuntimeEvalException("Division by zero");
                 }
-                yield Value.ofInt(visitor.requireIntegral(left) / rv);
+                yield Value.ofInt(left.requireIntegral() / rv);
             }
             case "%" -> {
-                int rv = visitor.requireIntegral(right);
+                int rv = right.requireIntegral();
                 if (rv == 0) {
                     throw new RuntimeEvalException("Division by zero");
                 }
-                yield Value.ofInt(visitor.requireIntegral(left) % rv);
+                yield Value.ofInt(left.requireIntegral() % rv);
             }
             case "+" -> {
                 if (left.isString() || right.isString()) {
-                    if (!visitor.isStringConcatOperand(left) || !visitor.isStringConcatOperand(right)) {
+                    if (!left.isStringConcatOperand() || !right.isStringConcatOperand()) {
                         throw new RuntimeEvalException("Invalid string concatenation operands");
                     }
                     yield Value.ofString(left.toOutputString() + right.toOutputString());
                 }
-                yield Value.ofInt(visitor.requireIntegral(left) + visitor.requireIntegral(right));
+                yield Value.ofInt(left.requireIntegral() + right.requireIntegral());
             }
-            case "-" -> Value.ofInt(visitor.requireIntegral(left) - visitor.requireIntegral(right));
-            case "<<" -> Value.ofInt(visitor.requireIntegral(left) << visitor.requireIntegral(right));
-            case ">>" -> Value.ofInt(visitor.requireIntegral(left) >> visitor.requireIntegral(right));
-            case ">>>" -> Value.ofInt(visitor.requireIntegral(left) >>> visitor.requireIntegral(right));
-            case "<" -> Value.ofBoolean(visitor.requireIntegral(left) < visitor.requireIntegral(right));
-            case "<=" -> Value.ofBoolean(visitor.requireIntegral(left) <= visitor.requireIntegral(right));
-            case ">" -> Value.ofBoolean(visitor.requireIntegral(left) > visitor.requireIntegral(right));
-            case ">=" -> Value.ofBoolean(visitor.requireIntegral(left) >= visitor.requireIntegral(right));
-            case "==" -> Value.ofBoolean(visitor.equalsValue(left, right));
-            case "!=" -> Value.ofBoolean(!visitor.equalsValue(left, right));
-            case "&" -> Value.ofInt(visitor.requireIntegral(left) & visitor.requireIntegral(right));
-            case "^" -> Value.ofInt(visitor.requireIntegral(left) ^ visitor.requireIntegral(right));
-            case "|" -> Value.ofInt(visitor.requireIntegral(left) | visitor.requireIntegral(right));
+            case "-" -> Value.ofInt(left.requireIntegral() - right.requireIntegral());
+            case "<<" -> Value.ofInt(left.requireIntegral() << right.requireIntegral());
+            case ">>" -> Value.ofInt(left.requireIntegral() >> right.requireIntegral());
+            case ">>>" -> Value.ofInt(left.requireIntegral() >>> right.requireIntegral());
+            case "<" -> Value.ofBoolean(left.requireIntegral() < right.requireIntegral());
+            case "<=" -> Value.ofBoolean(left.requireIntegral() <= right.requireIntegral());
+            case ">" -> Value.ofBoolean(left.requireIntegral() > right.requireIntegral());
+            case ">=" -> Value.ofBoolean(left.requireIntegral() >= right.requireIntegral());
+            case "==" -> Value.ofBoolean(Value.equalsValue(left, right));
+            case "!=" -> Value.ofBoolean(!Value.equalsValue(left, right));
+            case "&" -> Value.ofInt(left.requireIntegral() & right.requireIntegral());
+            case "^" -> Value.ofInt(left.requireIntegral() ^ right.requireIntegral());
+            case "|" -> Value.ofInt(left.requireIntegral() | right.requireIntegral());
             default -> throw new RuntimeEvalException("Unsupported operator: " + op);
         };
     }

@@ -1,10 +1,10 @@
 package cn.edu.nju.cs;
 
-public class MiniJavaObject {
+public final class Variable {
     private final Type declaredType;
     private Value value;
 
-    public MiniJavaObject(Type declaredType, Value value) {
+    public Variable(Type declaredType, Value value) {
         this.declaredType = declaredType;
         this.value = value;
     }

@@ -14,11 +14,9 @@ final class BuiltinLibrary {
         }
     }
 
-    private final InterpreterVisitor visitor;
     private final EvalContext context;
 
-    BuiltinLibrary(InterpreterVisitor visitor, EvalContext context) {
-        this.visitor = visitor;
+    BuiltinLibrary(EvalContext context) {
         this.context = context;
     }
 
@@ -40,7 +38,7 @@ final class BuiltinLibrary {
         if (args.size() != 1) {
             return BuiltinResult.notMatched();
         }
-        context.out().print(visitor.requireNonVoid(args.get(0)).toOutputString());
+        context.out().print(args.get(0).requireNonVoid().toOutputString());
         return BuiltinResult.matched(Value.voidValue());
     }
 
@@ -50,7 +48,7 @@ final class BuiltinLibrary {
             return BuiltinResult.matched(Value.voidValue());
         }
         if (args.size() == 1) {
-            context.out().println(visitor.requireNonVoid(args.get(0)).toOutputString());
+            context.out().println(args.get(0).requireNonVoid().toOutputString());
             return BuiltinResult.matched(Value.voidValue());
         }
         return BuiltinResult.notMatched();
@@ -60,7 +58,7 @@ final class BuiltinLibrary {
         if (args.size() != 1) {
             return BuiltinResult.notMatched();
         }
-        boolean cond = visitor.requireBoolean(visitor.requireNonVoid(args.get(0)));
+        boolean cond = args.get(0).requireNonVoid().requireBoolean();
         if (!cond) {
             throw new ExitSignal(33);
         }
@@ -71,7 +69,7 @@ final class BuiltinLibrary {
         if (args.size() != 1) {
             return BuiltinResult.notMatched();
         }
-        Value arg = visitor.requireNonVoid(args.get(0));
+        Value arg = args.get(0).requireNonVoid();
         if (arg.isString()) {
             return BuiltinResult.matched(Value.ofInt(arg.asString().length()));
         }
@@ -88,7 +86,7 @@ final class BuiltinLibrary {
         if (args.size() != 1) {
             return BuiltinResult.notMatched();
         }
-        Value arg = visitor.requireNonVoid(args.get(0));
+        Value arg = args.get(0).requireNonVoid();
         if (!arg.isString()) {
             return BuiltinResult.notMatched();
         }
@@ -104,7 +102,7 @@ final class BuiltinLibrary {
         if (args.size() != 1) {
             return BuiltinResult.notMatched();
         }
-        Value arg = visitor.requireNonVoid(args.get(0));
+        Value arg = args.get(0).requireNonVoid();
         if (arg.isNull()) {
             throw new RuntimeEvalException("Null pointer");
         }
@@ -127,7 +125,7 @@ final class BuiltinLibrary {
         if (args.size() != 1) {
             return BuiltinResult.notMatched();
         }
-        Value arg = visitor.requireNonVoid(args.get(0));
+        Value arg = args.get(0).requireNonVoid();
         if (!arg.isString()) {
             return BuiltinResult.notMatched();
         }
@@ -142,7 +140,7 @@ final class BuiltinLibrary {
         if (args.size() != 1) {
             return BuiltinResult.notMatched();
         }
-        Value arg = visitor.requireNonVoid(args.get(0));
+        Value arg = args.get(0).requireNonVoid();
         if (arg.isInt()) {
             return BuiltinResult.matched(Value.ofString(String.valueOf(arg.asInt())));
         }

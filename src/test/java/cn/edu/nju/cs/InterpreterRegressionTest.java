@@ -1,17 +1,19 @@
 package cn.edu.nju.cs;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -20,13 +22,13 @@ import org.junit.jupiter.params.provider.MethodSource;
 class InterpreterRegressionTest {
     private static final Path PROJECT_ROOT = Path.of("").toAbsolutePath();
     private static final Path TESTCASE_DIR = PROJECT_ROOT.resolve("testcases");
-    private static final String MAIN_CLASS = "cn.edu.nju.cs.Main";
+    private static final Duration CASE_TIMEOUT = Duration.ofSeconds(30);
 
     @ParameterizedTest(name = "{0}")
     @MethodSource("testcaseProvider")
-    void runOfficialTestcases(String caseName, Path mjFile, String expectedStdout, int expectedExitCode) throws Exception {
+    void runOfficialTestcases(String caseName, Path mjFile, String expectedStdout, int expectedExitCode) {
         RunResult result = runProgram(mjFile);
-        assertEquals(expectedExitCode, normalizedExitCode(result.exitCode), "exit code mismatch: " + caseName);
+        assertEquals(expectedExitCode, result.exitCode, "exit code mismatch: " + caseName);
         assertEquals(normalize(expectedStdout), normalize(result.stdout), "stdout mismatch: " + caseName);
     }
 
@@ -97,23 +99,17 @@ class InterpreterRegressionTest {
         assertEquals("Process exits with 34.", normalize(result.stdout));
     }
 
-    private static RunResult runProgram(Path mjFile) throws Exception {
-        List<String> cmd = new ArrayList<>();
-        cmd.add(javaCommand());
-        cmd.add("-cp");
-        cmd.add(System.getProperty("java.class.path"));
-        cmd.add(MAIN_CLASS);
-        cmd.add(mjFile.toAbsolutePath().toString());
-
-        ProcessBuilder pb = new ProcessBuilder(cmd);
-        pb.directory(PROJECT_ROOT.toFile());
-        pb.redirectError(ProcessBuilder.Redirect.DISCARD);
-
-        Process proc = pb.start();
-        boolean done = proc.waitFor(30, TimeUnit.SECONDS);
-        assertTrue(done, "Process timed out for: " + mjFile);
-        String stdout = new String(proc.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
-        return new RunResult(stdout, proc.exitValue());
+    private static RunResult runProgram(Path mjFile) {
+        return assertTimeoutPreemptively(CASE_TIMEOUT, () -> {
+            ByteArrayOutputStream buf = new ByteArrayOutputStream();
+            try (PrintStream out = new PrintStream(buf, true, StandardCharsets.UTF_8)) {
+                int code = Main.execute(mjFile, out);
+                // Match the testcase .output convention, which records the POSIX
+                // unsigned-8-bit exit code (e.g. `return -1;` -> 255). The previous
+                // ProcessBuilder runner got this truncation from the OS for free.
+                return new RunResult(buf.toString(StandardCharsets.UTF_8), code & 0xFF);
+            }
+        }, () -> "Process timed out for: " + mjFile);
     }
 
     private static OutputExpectation parseExpectation(Path outputFile) throws IOException {
@@ -155,16 +151,6 @@ class InterpreterRegressionTest {
         Path file = dir.resolve(fileName);
         Files.writeString(file, code, StandardCharsets.UTF_8);
         return file;
-    }
-
-    private static String javaCommand() {
-        Path bin = Path.of(System.getProperty("java.home"), "bin");
-        boolean isWindows = System.getProperty("os.name").toLowerCase().contains("win");
-        return bin.resolve(isWindows ? "java.exe" : "java").toString();
-    }
-
-    private static int normalizedExitCode(int code) {
-        return code & 0xFF;
     }
 
     private record OutputExpectation(String stdout, int exitCode) {

@@ -43,7 +43,7 @@ final class CallDispatcher {
                     visitor.visit(stmt);
                 }
             } catch (ReturnSignal r) {
-                return handleReturnSignal(method, r);
+                return r.hasValue() ? r.value() : Value.voidValue();
             }
 
             if (method.returnType().equals(Type.VOID)) {
@@ -54,18 +54,5 @@ final class CallDispatcher {
             context.exitScope();
             context.popMethod();
         }
-    }
-
-    private Value handleReturnSignal(MethodDecl method, ReturnSignal signal) {
-        if (method.returnType().equals(Type.VOID)) {
-            if (signal.hasValue()) {
-                throw new RuntimeEvalException("void method cannot return a value");
-            }
-            return Value.voidValue();
-        }
-        if (!signal.hasValue()) {
-            throw new RuntimeEvalException("non-void method must return a value");
-        }
-        return TypeSystem.coerceForAssignment(method.returnType(), signal.value());
     }
 }

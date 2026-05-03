@@ -13,7 +13,7 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
 
     public InterpreterVisitor(PrintStream out) {
         this.context = new EvalContext(out);
-        BuiltinLibrary builtinLibrary = new BuiltinLibrary(this, context);
+        BuiltinLibrary builtinLibrary = new BuiltinLibrary(context);
         LValueResolver lvalueResolver = new LValueResolver(this, context);
         this.callDispatcher = new CallDispatcher(this, context, methodRegistry, builtinLibrary);
         this.statementExecutor = new StatementExecutor(this, context);
@@ -77,7 +77,7 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
     public Value visitLocalVariableDeclaration(MiniJavaParser.LocalVariableDeclarationContext ctx) {
         if (ctx.VAR() != null) {
             String name = ctx.identifier().getText();
-            Value init = requireNonVoid(visit(ctx.expression()));
+            Value init = visit(ctx.expression()).requireNonVoid();
             if (init.isNull()) {
                 throw new RuntimeEvalException("Cannot infer type from null");
             }
@@ -160,7 +160,7 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
 
         List<Integer> sizes = new ArrayList<>();
         for (MiniJavaParser.ExpressionContext sizeExpr : rest.expression()) {
-            int size = requireIntegral(requireNonVoid(visit(sizeExpr)));
+            int size = evalInt(sizeExpr);
             if (size < 0) {
                 throw new RuntimeEvalException("Negative array size");
             }
@@ -191,7 +191,7 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
         if (ctx.arrayInitializer() != null) {
             return evalArrayInitializer(ctx.arrayInitializer(), targetType);
         }
-        return TypeSystem.coerceForAssignment(targetType, requireNonVoid(visit(ctx.expression())));
+        return TypeSystem.coerceForAssignment(targetType, visit(ctx.expression()).requireNonVoid());
     }
 
     private Value evalArrayInitializer(MiniJavaParser.ArrayInitializerContext ctx, Type targetType) {
@@ -229,7 +229,7 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
             return Value.ofBoolean(Boolean.parseBoolean(literal.BOOL_LITERAL().getText()));
         }
         if (literal.NULL_LITERAL() != null) {
-            return Value.nullValue();
+            return Value.untypedNull();
         }
         throw new RuntimeEvalException("Unsupported literal");
     }
@@ -261,107 +261,11 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
         return type;
     }
 
-    boolean isCastExpr(MiniJavaParser.ExpressionContext ctx) {
-        return ctx.typeType() != null && ctx.expression().size() == 1 && ctx.bop == null;
+    int evalInt(MiniJavaParser.ExpressionContext ctx) {
+        return visit(ctx).requireNonVoid().requireIntegral();
     }
 
-    boolean isAssignmentOperator(String op) {
-        return "=".equals(op)
-                || "+=".equals(op)
-                || "-=".equals(op)
-                || "*=".equals(op)
-                || "/=".equals(op)
-                || "%=".equals(op)
-                || "&=".equals(op)
-                || "|=".equals(op)
-                || "^=".equals(op)
-                || "<<=".equals(op)
-                || ">>=".equals(op)
-                || ">>>=".equals(op);
-    }
-
-    Value requireNonVoid(Value value) {
-        if (value == null) {
-            throw new RuntimeEvalException("Invalid void context");
-        }
-        if (value.isVoid()) {
-            throw new RuntimeEvalException("void value is not allowed here");
-        }
-        return value;
-    }
-
-    boolean requireBoolean(Value value) {
-        if (!value.isBoolean()) {
-            throw new RuntimeEvalException("Expected boolean");
-        }
-        return value.asBoolean();
-    }
-
-    int requireIntegral(Value value) {
-        if (!value.isIntegral()) {
-            throw new RuntimeEvalException("Expected integral type");
-        }
-        return value.toIntWithPromotion();
-    }
-
-    int requireIndex(Value value) {
-        if (value.isInt()) {
-            return value.asInt();
-        }
-        if (value.isChar()) {
-            return value.asSignedCharInt();
-        }
-        throw new RuntimeEvalException("Array index must be int");
-    }
-
-    boolean isStringConcatOperand(Value value) {
-        return value.isString() || value.isInt() || value.isChar() || value.isBoolean();
-    }
-
-    Value assignIntegralBack(Type targetType, int value) {
-        if (targetType.equals(Type.INT)) {
-            return Value.ofInt(value);
-        }
-        if (targetType.equals(Type.CHAR)) {
-            return Value.ofChar(value);
-        }
-        throw new RuntimeEvalException("Integral assignment target must be int or char");
-    }
-
-    boolean equalsValue(Value left, Value right) {
-        if (left.isNull() && right.isNull()) {
-            if (left.hasNullTypeHint() && right.hasNullTypeHint()
-                    && !left.nullTypeHint().equals(right.nullTypeHint())) {
-                throw new RuntimeEvalException("Incompatible array types for equality");
-            }
-            return true;
-        }
-        if (left.isNull() || right.isNull()) {
-            Value nullValue = left.isNull() ? left : right;
-            Value nonNull = left.isNull() ? right : left;
-            if (nonNull.isArray()) {
-                if (nullValue.hasNullTypeHint() && !nullValue.nullTypeHint().equals(nonNull.type())) {
-                    throw new RuntimeEvalException("Incompatible array types for equality");
-                }
-                return false;
-            }
-            throw new RuntimeEvalException("Incompatible types for equality");
-        }
-        if (left.isIntegral() && right.isIntegral()) {
-            return left.toIntWithPromotion() == right.toIntWithPromotion();
-        }
-        if (left.isBoolean() && right.isBoolean()) {
-            return left.asBoolean() == right.asBoolean();
-        }
-        if (left.isString() && right.isString()) {
-            return left.asString().equals(right.asString());
-        }
-        if (left.isArray() && right.isArray()) {
-            if (!left.type().equals(right.type())) {
-                throw new RuntimeEvalException("Incompatible array types for equality");
-            }
-            return left.asArray() == right.asArray();
-        }
-        throw new RuntimeEvalException("Incompatible types for equality");
+    boolean evalBool(MiniJavaParser.ExpressionContext ctx) {
+        return visit(ctx).requireNonVoid().requireBoolean();
     }
 }

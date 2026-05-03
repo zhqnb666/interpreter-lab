@@ -24,7 +24,7 @@ final class LValueResolver {
     LValue resolveLValue(MiniJavaParser.ExpressionContext expr) {
         if (expr.primary() != null && expr.primary().identifier() != null) {
             String name = expr.primary().identifier().getText();
-            MiniJavaObject obj = context.resolve(name);
+            Variable obj = context.resolve(name);
             return new VariableLValue(obj);
         }
         if (isArrayAccessExpr(expr)) {
@@ -38,39 +38,39 @@ final class LValueResolver {
     }
 
     private ArrayLValue resolveArrayLValue(MiniJavaParser.ExpressionContext expr) {
-        Value arrayValue = visitor.requireNonVoid(visitor.visit(expr.expression(0)));
+        Value arrayValue = visitor.visit(expr.expression(0)).requireNonVoid();
         if (arrayValue.isNull()) {
             throw new RuntimeEvalException("Null pointer");
         }
         if (!arrayValue.isArray()) {
             throw new RuntimeEvalException("Not an array");
         }
-        int index = visitor.requireIndex(visitor.requireNonVoid(visitor.visit(expr.expression(1))));
+        int index = visitor.visit(expr.expression(1)).requireNonVoid().requireIndex();
         MiniJavaArray arr = arrayValue.asArray();
         Type elemType = arr.type().componentType();
         return new ArrayLValue(arr, index, elemType);
     }
 
     private static final class VariableLValue implements LValue {
-        private final MiniJavaObject object;
+        private final Variable variable;
 
-        private VariableLValue(MiniJavaObject object) {
-            this.object = object;
+        private VariableLValue(Variable variable) {
+            this.variable = variable;
         }
 
         @Override
         public Type type() {
-            return object.declaredType();
+            return variable.declaredType();
         }
 
         @Override
         public Value get() {
-            return object.value();
+            return variable.value();
         }
 
         @Override
         public void set(Value value) {
-            object.setValue(value);
+            variable.setValue(value);
         }
     }
 

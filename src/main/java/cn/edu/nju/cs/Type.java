@@ -52,8 +52,8 @@ public final class Type {
         this.arrayDepth = arrayDepth;
     }
 
-    public static Type primitive(Primitive primitive) {
-        return switch (primitive) {
+    public static Type fromKeyword(String keyword) {
+        return switch (Primitive.fromKeyword(keyword)) {
             case INT -> INT;
             case CHAR -> CHAR;
             case BOOLEAN -> BOOLEAN;
@@ -62,22 +62,11 @@ public final class Type {
         };
     }
 
-    public static Type fromKeyword(String keyword) {
-        return primitive(Primitive.fromKeyword(keyword));
-    }
-
     public Type arrayOf() {
         if (isVoid()) {
             throw new RuntimeEvalException("void array is not allowed");
         }
         return new Type(primitive, arrayDepth + 1);
-    }
-
-    public Type withArrayDepth(int depth) {
-        if (depth < 0) {
-            throw new IllegalArgumentException("depth must be non-negative");
-        }
-        return new Type(primitive, depth);
     }
 
     public Type componentType() {
@@ -103,20 +92,8 @@ public final class Type {
         return primitive == Primitive.VOID && arrayDepth == 0;
     }
 
-    public boolean isPrimitiveScalar() {
-        return arrayDepth == 0 && primitive != Primitive.VOID;
-    }
-
-    public boolean isIntegralScalar() {
+    public boolean isIntegral() {
         return arrayDepth == 0 && (primitive == Primitive.INT || primitive == Primitive.CHAR);
-    }
-
-    public boolean isBooleanScalar() {
-        return arrayDepth == 0 && primitive == Primitive.BOOLEAN;
-    }
-
-    public boolean isStringScalar() {
-        return arrayDepth == 0 && primitive == Primitive.STRING;
     }
 
     public String keyword() {

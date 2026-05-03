@@ -49,6 +49,14 @@ public final class MiniJavaArray {
         elements.set(index, value);
     }
 
+    public String toOutputString() {
+        List<String> parts = new ArrayList<>(elements.size());
+        for (Value elem : elements) {
+            parts.add(elem.toOutputString());
+        }
+        return "[" + String.join(", ", parts) + "]";
+    }
+
     private void rangeCheck(int index) {
         if (index < 0 || index >= elements.size()) {
             throw new RuntimeEvalException("Array out-of-bounds");

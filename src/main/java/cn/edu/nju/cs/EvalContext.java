@@ -35,13 +35,13 @@ public final class EvalContext {
         currentScope().declare(name, type, value);
     }
 
-    public MiniJavaObject resolve(String name) {
+    public Variable resolve(String name) {
         int visibleDepth = scopes.size() - currentMethodScopeBase();
         for (ScopeFrame scope : scopes) {
             if (visibleDepth <= 0) {
                 break;
             }
-            MiniJavaObject obj = scope.get(name);
+            Variable obj = scope.get(name);
             if (obj != null) {
                 return obj;
             }

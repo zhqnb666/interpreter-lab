@@ -6,7 +6,7 @@ public final class TypeSystem {
 
     public static Value defaultValue(Type type) {
         if (type.isArray()) {
-            return Value.nullValue(type);
+            return Value.typedNull(type);
         }
         if (type.equals(Type.INT)) {
             return Value.ofInt(0);
@@ -26,15 +26,15 @@ public final class TypeSystem {
     public static Value coerceForAssignment(Type target, Value source) {
         if (target.isArray()) {
             if (source.isNull()) {
-                if (source.hasNullTypeHint() && !source.nullTypeHint().equals(target)) {
-                    throw new RuntimeEvalException("Cannot assign " + printableType(source) + " to " + target.keyword());
+                if (source.type() != null && !source.type().equals(target)) {
+                    throw new RuntimeEvalException("Cannot assign " + source.typeName() + " to " + target.keyword());
                 }
-                return Value.nullValue(target);
+                return Value.typedNull(target);
             }
             if (source.isArray() && source.type().equals(target)) {
                 return source.clearDecimalLiteral();
             }
-            throw new RuntimeEvalException("Cannot assign " + printableType(source) + " to " + target.keyword());
+            throw new RuntimeEvalException("Cannot assign " + source.typeName() + " to " + target.keyword());
         }
 
         if (target.equals(Type.INT)) {
@@ -44,7 +44,7 @@ public final class TypeSystem {
             if (source.isChar()) {
                 return Value.ofInt(source.asSignedCharInt());
             }
-            throw new RuntimeEvalException("Cannot assign " + printableType(source) + " to int");
+            throw new RuntimeEvalException("Cannot assign " + source.typeName() + " to int");
         }
 
         if (target.equals(Type.CHAR)) {
@@ -54,21 +54,21 @@ public final class TypeSystem {
             if (source.isInt() && source.isDecimalLiteral() && inCharRange(source.asInt())) {
                 return Value.ofChar(source.asInt());
             }
-            throw new RuntimeEvalException("Cannot assign " + printableType(source) + " to char");
+            throw new RuntimeEvalException("Cannot assign " + source.typeName() + " to char");
         }
 
         if (target.equals(Type.BOOLEAN)) {
             if (source.isBoolean()) {
                 return Value.ofBoolean(source.asBoolean());
             }
-            throw new RuntimeEvalException("Cannot assign " + printableType(source) + " to boolean");
+            throw new RuntimeEvalException("Cannot assign " + source.typeName() + " to boolean");
         }
 
         if (target.equals(Type.STRING)) {
             if (source.isString()) {
                 return Value.ofString(source.asString());
             }
-            throw new RuntimeEvalException("Cannot assign " + printableType(source) + " to string");
+            throw new RuntimeEvalException("Cannot assign " + source.typeName() + " to string");
         }
 
         throw new RuntimeEvalException("Unsupported assignment target type: " + target.keyword());
@@ -79,8 +79,8 @@ public final class TypeSystem {
             if (!target.isArray()) {
                 return -1;
             }
-            if (arg.hasNullTypeHint()) {
-                return arg.nullTypeHint().equals(target) ? 0 : -1;
+            if (arg.type() != null) {
+                return arg.type().equals(target) ? 0 : -1;
             }
             return 1;
         }
@@ -114,10 +114,10 @@ public final class TypeSystem {
     public static Value coerceForMethodParam(Type target, Value arg) {
         int cost = methodConversionCost(target, arg);
         if (cost < 0) {
-            throw new RuntimeEvalException("Incompatible argument type: " + printableType(arg) + " -> " + target.keyword());
+            throw new RuntimeEvalException("Incompatible argument type: " + arg.typeName() + " -> " + target.keyword());
         }
         if (arg.isNull()) {
-            return Value.nullValue(target);
+            return Value.typedNull(target);
         }
         if (target.equals(Type.INT) && arg.isChar()) {
             return Value.ofInt(arg.asSignedCharInt());
@@ -129,7 +129,13 @@ public final class TypeSystem {
         return value >= -128 && value <= 127;
     }
 
-    private static String printableType(Value value) {
-        return value.isNull() ? "null" : value.type().keyword();
+    public static Value integralResult(Type targetType, int value) {
+        if (targetType.equals(Type.INT)) {
+            return Value.ofInt(value);
+        }
+        if (targetType.equals(Type.CHAR)) {
+            return Value.ofChar(value);
+        }
+        throw new RuntimeEvalException("Integral assignment target must be int or char");
     }
 }

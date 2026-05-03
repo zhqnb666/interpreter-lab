@@ -45,7 +45,7 @@ final class StatementExecutor {
     }
 
     private Value execIf(MiniJavaParser.StatementContext ctx) {
-        boolean cond = visitor.requireBoolean(visitor.requireNonVoid(visitor.visit(ctx.parExpression().expression())));
+        boolean cond = visitor.evalBool(ctx.parExpression().expression());
         if (cond) {
             visitor.visit(ctx.statement(0));
         } else if (ctx.ELSE() != null) {
@@ -57,7 +57,7 @@ final class StatementExecutor {
     private Value execWhile(MiniJavaParser.StatementContext ctx) {
         context.pushLoop();
         try {
-            while (visitor.requireBoolean(visitor.requireNonVoid(visitor.visit(ctx.parExpression().expression())))) {
+            while (visitor.evalBool(ctx.parExpression().expression())) {
                 try {
                     visitor.visit(ctx.statement(0));
                 } catch (ContinueSignal ignored) {
@@ -83,11 +83,8 @@ final class StatementExecutor {
                 visitor.visit(fc.forInit());
             }
             while (true) {
-                if (fc.expression() != null) {
-                    boolean cond = visitor.requireBoolean(visitor.requireNonVoid(visitor.visit(fc.expression())));
-                    if (!cond) {
-                        break;
-                    }
+                if (fc.expression() != null && !visitor.evalBool(fc.expression())) {
+                    break;
                 }
                 try {
                     visitor.visit(ctx.statement(0));
@@ -122,7 +119,7 @@ final class StatementExecutor {
             throw new RuntimeEvalException("non-void method must return a value");
         }
 
-        Value value = visitor.requireNonVoid(visitor.visit(ctx.expression()));
+        Value value = visitor.visit(ctx.expression()).requireNonVoid();
         if (returnType.equals(Type.VOID)) {
             throw new RuntimeEvalException("void method cannot return a value");
         }

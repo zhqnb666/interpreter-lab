@@ -1,9 +1,9 @@
 package cn.edu.nju.cs;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 
 public final class MethodRegistry {
     private final Map<String, List<MethodDecl>> methodsByName = new HashMap<>();
@@ -22,24 +22,25 @@ public final class MethodRegistry {
     }
 
     public MethodDecl resolveEntryMain() {
-        List<MethodDecl> mains = methodsByName.getOrDefault("main", List.of());
         MethodDecl intMain = null;
-        MethodDecl voidMain = null;
-        for (MethodDecl m : mains) {
+        boolean hasVoidMain = false;
+
+        for (MethodDecl m : methodsByName.getOrDefault("main", List.of())) {
             if (!m.parameters().isEmpty()) {
                 continue;
             }
             if (m.returnType().equals(Type.INT)) {
                 intMain = m;
             } else if (m.returnType().equals(Type.VOID)) {
-                voidMain = m;
+                hasVoidMain = true;
             }
         }
-        if (intMain != null && voidMain != null) {
-            throw new RuntimeEvalException("Ambiguous entry method main()");
-        }
+
         if (intMain == null) {
             throw new RuntimeEvalException("Missing int main()");
+        }
+        if (hasVoidMain) {
+            throw new RuntimeEvalException("Ambiguous entry method main()");
         }
         return intMain;
     }

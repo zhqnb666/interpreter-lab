@@ -19,11 +19,14 @@ public class Main {
             out.println("Process exits with " + code + ".");
             return code;
         } catch (ExitSignal e) {
-            System.err.println("Interpreter failed: " + e.getMessage());
             out.println("Process exits with " + e.exitCode() + ".");
             return e.exitCode();
+        } catch (RuntimeEvalException | IOException e) {
+            System.err.println("Interpreter error: " + e.getMessage());
+            out.println("Process exits with 34.");
+            return 34;
         } catch (Exception e) {
-            System.err.println("Interpreter failed: " + e.getMessage());
+            e.printStackTrace(System.err);
             out.println("Process exits with 34.");
             return 34;
         }
