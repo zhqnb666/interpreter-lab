@@ -26,19 +26,49 @@ final class CallDispatcher {
         if (builtin.matched()) {
             return ExprResult.of(builtin.value());
         }
-        // Unqualified `foo(args)` inside a class method resolves as `this.foo(args)` first;
-        // fall back to top-level when no candidate exists on the current class chain.
+        // Unqualified `foo(args)` inside a class method resolves as `this.foo(args)` only
+        // when there is a *suitable* overload on the current class chain (an overload
+        // whose parameters can accept the arguments). If no class candidate fits the
+        // arguments — wrong arity, incompatible types, etc. — fall through to top-level,
+        // per PDF §2.3 Note 1: "if no suitable class method is found, it is resolved as
+        // a top-level method."
         EvalContext.ClassFrame frame = context.currentClassFrame();
         if (frame != null && classRegistry != null) {
             List<MethodDecl> classCandidates =
                     classRegistry.collectMethods(frame.declaringClass(), name);
-            if (!classCandidates.isEmpty()) {
+            if (hasSuitableOverload(classCandidates, args)) {
                 return invokeClassMethodOn(
                         frame.instance(), frame.declaringClass(), false, name, args);
             }
         }
         MethodDecl method = methodRegistry.resolveCall(name, args);
         return runUserMethod(method, args, null, null);
+    }
+
+    /**
+     * Trial overload check: at least one candidate accepts the arguments with a
+     * non-negative {@link TypeSystem#methodConversionCost}. Shares cost semantics with
+     * {@link MethodRegistry#selectBestOverload} so a trial-true call won't surprise the
+     * final selection (ties still surface as ambiguity errors there, by design).
+     */
+    private static boolean hasSuitableOverload(List<MethodDecl> candidates, List<ExprResult> args) {
+        for (MethodDecl candidate : candidates) {
+            if (candidate.parameters().size() != args.size()) {
+                continue;
+            }
+            boolean ok = true;
+            for (int i = 0; i < args.size(); i++) {
+                if (TypeSystem.methodConversionCost(
+                        candidate.parameters().get(i).type(), args.get(i)) < 0) {
+                    ok = false;
+                    break;
+                }
+            }
+            if (ok) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

@@ -1,0 +1,8 @@
+a == b
+a != c
+a not null
+null != a (literal)
+n == null
+Process exits with 0.
+
+0

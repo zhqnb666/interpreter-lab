@@ -1,0 +1,18 @@
+// PDF §6.4 — equality on class types.
+// Both class types in same inheritance tree: reference identity.
+// `a == null` / `null == a` always legal for any class type.
+class Animal { }
+class Dog extends Animal { }
+int main() {
+    Animal a = new Dog();
+    Animal b = a;            // same object
+    Animal c = new Dog();    // different object
+    if (a == b) println("a == b");      // true
+    if (a == c) println("a == c");      // false (skipped)
+    if (a != c) println("a != c");      // true
+    if (a == null) println("a == null"); else println("a not null");
+    if (null == a) println("null == a"); else println("null != a (literal)");
+    Animal n = null;
+    if (n == null) println("n == null");      // typed null vs literal: legal
+    return 0;
+}

@@ -1,0 +1,13 @@
+// Bug B reverse-regression — comparison with the null literal is ALWAYS legal
+// for any class type. The Bug B fix must not break this.
+class A { }
+class B { }
+int main() {
+    A a = null;
+    if (a == null)  println("a == null");
+    if (null == a)  println("null == a");
+    B b = new B();
+    if (b == null)  println("never"); else println("b != null");
+    if (null != b)  println("null != b literal");
+    return 0;
+}

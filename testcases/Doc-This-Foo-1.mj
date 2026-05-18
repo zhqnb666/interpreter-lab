@@ -1,0 +1,17 @@
+// PDF §5.2 — this.foo() and unqualified foo() are equivalent (both go through
+// virtual dispatch on real(this)).
+class Animal {
+    void describe() {
+        this.speak();   // dispatches via real(this)
+        speak();        // same as this.speak()
+    }
+    void speak() { println("..."); }
+}
+class Dog extends Animal {
+    void speak() { println("Woof"); }
+}
+int main() {
+    Dog d = new Dog();
+    d.describe();    // expected: Woof / Woof
+    return 0;
+}

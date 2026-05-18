@@ -1,0 +1,15 @@
+// Bug A trigger #2 — fallback when class method exists but with wrong arity.
+// Class has helper(int); top-level has helper(int, int).
+// helper(1, 2) inside class method must fall through to the top-level definition.
+class C {
+    int helper(int x) { return x; }
+    int run() {
+        return helper(1, 2);   // no suitable class overload -> top-level helper(int, int)
+    }
+}
+int helper(int x, int y) { return x + y; }
+int main() {
+    C c = new C();
+    println(c.run());   // expect 3
+    return 0;
+}

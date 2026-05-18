@@ -1,0 +1,26 @@
+// PDF §6.3 — valid cast cases.
+// (Super) subExpr always legal; (Sub) superExpr legal iff real(expr) is Sub or below;
+// (C) null always returns null.
+class Animal {
+    string name = "animal";
+}
+class Dog extends Animal {
+    string breed = "husky";
+}
+int main() {
+    // Upcast (Sub -> Super): always legal
+    Dog d = new Dog();
+    Animal a1 = (Animal) d;
+    println(a1.name);            // animal  (decl Animal -> Animal.name)
+
+    // Downcast (Super -> Sub): legal iff real(expr) is Sub
+    Animal a2 = new Dog();       // real Dog
+    Dog d2 = (Dog) a2;
+    println(d2.breed);           // husky   (now decl Dog -> Dog.breed)
+
+    // (C) null -> typed null
+    Animal a3 = (Animal) null;
+    if (a3 == null) println("null cast ok");
+
+    return 0;
+}

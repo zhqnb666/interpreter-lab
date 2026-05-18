@@ -1,0 +1,24 @@
+// PDF §3 Example 1 — explicit super(name) + field initializers in declaration order
+class Animal {
+    string name;
+    int legs = 4;
+    Animal(string name) {
+        this.name = name;
+    }
+}
+class Dog extends Animal {
+    string breed = "unknown";
+    int age;
+    Dog(string name, int age) {
+        super(name);
+        this.age = age;
+    }
+}
+int main() {
+    Dog d = new Dog("Rex", 3);
+    println(d.name);   // Rex
+    println(d.legs);   // 4
+    println(d.breed);  // unknown
+    println(d.age);    // 3
+    return 0;
+}

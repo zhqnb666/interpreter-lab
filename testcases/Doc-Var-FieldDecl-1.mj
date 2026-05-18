@@ -1,0 +1,15 @@
+// PDF §4.4 — v.x resolves via decl(v), NOT real(v).
+// Animal v = new Dog(); println(v.name) -> "animal" (not "dog")
+class Animal {
+    string name = "animal";
+}
+class Dog extends Animal {
+    string name = "dog";
+}
+int main() {
+    Animal v = new Dog();
+    println(v.name);   // animal  (declared type is Animal)
+    Dog d = new Dog();
+    println(d.name);   // dog     (declared type is Dog)
+    return 0;
+}

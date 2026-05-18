@@ -1,0 +1,8 @@
+// PDF §2.1 — class used before its declaration
+int main() {
+    Dog d = new Dog();
+    println("ok");
+    return 0;
+}
+class Dog extends Animal { }
+class Animal { }

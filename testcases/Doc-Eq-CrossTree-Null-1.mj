@@ -1,0 +1,11 @@
+// Bug B trigger — PDF §6.4: typed-null on both sides where decl types are
+// NOT in the same inheritance tree must be a type error (exit 34), even though
+// both values are null.
+class A { }
+class B { }
+int main() {
+    A a = null;
+    B b = null;
+    if (a == b) println("eq"); else println("neq");   // expected: type error -> exit 34
+    return 0;
+}

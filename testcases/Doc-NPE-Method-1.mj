@@ -1,0 +1,9 @@
+// PDF §5 Note — method invocation on a null class object triggers null pointer (exit 34)
+class Animal {
+    void speak() { println("hi"); }
+}
+int main() {
+    Animal v = null;
+    v.speak();
+    return 0;
+}

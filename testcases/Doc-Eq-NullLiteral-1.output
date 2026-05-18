@@ -1,0 +1,7 @@
+a == null
+null == a
+b != null
+null != b literal
+Process exits with 0.
+
+0

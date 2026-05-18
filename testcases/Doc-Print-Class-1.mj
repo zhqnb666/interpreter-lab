@@ -1,0 +1,28 @@
+// PDF §8.1 — println for class objects:
+// - null -> "null"
+// - decl class has no suitable to_string -> realClassName
+// - decl class has suitable to_string -> result dispatched via real(x)
+class Animal {
+    string to_string() { return "Animal"; }
+}
+class Dog extends Animal {
+    string to_string() { return "Dog"; }
+}
+class Cat extends Animal { }                 // inherits Animal.to_string()
+class Vehicle { }                            // no to_string -> realClassName
+
+int main() {
+    Animal a = new Dog();        // decl Animal has to_string; dispatched via Dog -> "Dog"
+    println(a);
+
+    Animal b = null;             // null class -> "null"
+    println(b);
+
+    Animal c = new Cat();        // Cat inherits Animal.to_string -> "Animal"
+    println(c);
+
+    Vehicle v = new Vehicle();   // no to_string -> "Vehicle"
+    println(v);
+
+    return 0;
+}

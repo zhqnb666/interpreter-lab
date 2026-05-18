@@ -1,0 +1,22 @@
+// PDF §4.2 — this.x in subclass takes the subclass field, not the inherited one
+class Animal {
+    string name = "animal";
+    void printName() {
+        println(this.name);
+        println(name);
+    }
+}
+class Dog extends Animal {
+    string name = "dog";
+    void printName() {
+        println(this.name);
+        println(name);
+    }
+}
+int main() {
+    Animal a = new Animal();
+    a.printName();         // animal / animal
+    Dog d = new Dog();
+    d.printName();         // dog / dog
+    return 0;
+}

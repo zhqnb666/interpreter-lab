@@ -1,0 +1,8 @@
+// PDF §6.4 — class == primitive triggers a type error.
+class Animal { }
+int main() {
+    Animal a = new Animal();
+    boolean r = (a == 42);     // type error -> exit 34
+    println("unreachable");
+    return 0;
+}

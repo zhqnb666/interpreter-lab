@@ -1,0 +1,22 @@
+// PDF §5.1 Note 2 — class-to-class conversion-count is binary (0 / 1 / -1),
+// computed on decl(obj). Verifying via overload selection:
+//   t.describe(a)  // decl Animal -> f(Animal) cost 0 wins
+//   t.describe(d)  // decl Dog    -> f(Animal) cost 1 (only viable; Puppy invalid)
+//   t.describe(p)  // decl Puppy  -> f(Puppy) cost 0 beats f(Animal) cost 1
+class Animal { }
+class Dog extends Animal { }
+class Puppy extends Dog { }
+class Tester {
+    void describe(Animal a) { println("Animal"); }
+    void describe(Puppy p)  { println("Puppy"); }
+}
+int main() {
+    Tester t = new Tester();
+    Animal a = new Animal();
+    Dog d = new Dog();
+    Puppy p = new Puppy();
+    t.describe(a);   // Animal
+    t.describe(d);   // Animal
+    t.describe(p);   // Puppy
+    return 0;
+}

@@ -1,0 +1,18 @@
+// PDF §7 — instanceof:
+// returns true if real(obj) is target or a descendant; null -> false.
+// Must be class-typed on both sides AND in same inheritance tree, else type error.
+class Animal { }
+class Dog extends Animal { }
+int main() {
+    Animal x1 = new Dog();    // real Dog
+    Animal x2 = new Animal(); // real Animal
+    Animal x3 = null;
+
+    if (x1 instanceof Animal) println("x1 is Animal"); else println("no");
+    if (x1 instanceof Dog)    println("x1 is Dog");    else println("no");
+    if (x2 instanceof Animal) println("x2 is Animal"); else println("no");
+    if (x2 instanceof Dog)    println("x2 is Dog");    else println("x2 not Dog");
+    if (x3 instanceof Animal) println("x3 is Animal"); else println("x3 null not Animal");
+
+    return 0;
+}

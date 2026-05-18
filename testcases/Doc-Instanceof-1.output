@@ -1,0 +1,8 @@
+x1 is Animal
+x1 is Dog
+x2 is Animal
+x2 not Dog
+x3 null not Animal
+Process exits with 0.
+
+0

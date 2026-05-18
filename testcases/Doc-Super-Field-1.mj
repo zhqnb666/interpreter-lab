@@ -1,0 +1,16 @@
+// PDF §4.3 — super.x bypasses the current class and reads the parent's field
+class Animal {
+    string name = "animal";
+}
+class Dog extends Animal {
+    string name = "dog";
+    void printBoth() {
+        println(this.name);   // dog
+        println(super.name);  // animal
+    }
+}
+int main() {
+    Dog d = new Dog();
+    d.printBoth();
+    return 0;
+}

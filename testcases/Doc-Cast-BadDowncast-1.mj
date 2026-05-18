@@ -1,0 +1,9 @@
+// PDF §6.3 — bad downcast: real(expr) is not the target nor a subclass of it.
+class Animal { }
+class Dog extends Animal { }
+int main() {
+    Animal a = new Animal();
+    Dog d = (Dog) a;         // runtime type error -> exit 34
+    println("unreachable");
+    return 0;
+}

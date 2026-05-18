@@ -1,0 +1,15 @@
+// PDF §5.3 — super.foo() skips the subclass override and starts from the parent
+class Animal {
+    void speak() { println("Animal"); }
+}
+class Dog extends Animal {
+    void speak() {
+        super.speak();   // skips Dog.speak, calls Animal.speak
+        println("Dog");
+    }
+}
+int main() {
+    Dog d = new Dog();
+    d.speak();           // expected: Animal / Dog
+    return 0;
+}

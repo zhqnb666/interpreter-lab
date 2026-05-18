@@ -1,0 +1,9 @@
+// PDF §6.3 — unrelated cast: src and target not in same inheritance tree -> type error.
+class Animal { }
+class Vehicle { }
+int main() {
+    Animal a = new Animal();
+    Vehicle v = (Vehicle) a;   // type error -> exit 34
+    println("unreachable");
+    return 0;
+}

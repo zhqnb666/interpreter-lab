@@ -1,0 +1,12 @@
+// PDF §5.4 — v.foo() dispatched via real(v), regardless of decl(v).
+class Animal {
+    void speak() { println("Animal"); }
+}
+class Dog extends Animal {
+    void speak() { println("Dog"); }
+}
+int main() {
+    Animal v = new Dog();
+    v.speak();   // expected: Dog (real type)
+    return 0;
+}

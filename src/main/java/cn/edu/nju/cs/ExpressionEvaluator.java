@@ -378,9 +378,18 @@ final class ExpressionEvaluator {
         if (!lIsClassSlot && !rIsClassSlot) {
             return Value.equalsValue(lv, rv);
         }
-        // At least one operand is in a class slot. Comparison with the null literal is
-        // always legal; otherwise both sides must be class instances within the same
-        // inheritance tree.
+        // At least one operand is in a class slot.
+        // Per PDF §6.4: when both operands are typed class slots, decl(obj1) and
+        // decl(obj2) must lie in the same inheritance tree (even when both are null).
+        // Comparison with the null literal — staticType == null — is unconditionally
+        // legal for any class type.
+        String lc = (lt != null && lt.isClass()) ? lt.className() : null;
+        String rc = (rt != null && rt.isClass()) ? rt.className() : null;
+        if (lc != null && rc != null
+                && !visitor.classRegistry().inSameHierarchy(lc, rc)) {
+            throw new RuntimeEvalException(
+                    "Type error: " + lc + " and " + rc + " are not in the same inheritance tree");
+        }
         if (lv.isNull() && rv.isNull()) {
             return true;
         }
@@ -389,12 +398,6 @@ final class ExpressionEvaluator {
         }
         if (!lv.isClassInstance() || !rv.isClassInstance()) {
             throw new RuntimeEvalException("Type error: cannot compare class type with non-class");
-        }
-        String lc = lt != null && lt.isClass() ? lt.className() : lv.asClassInstance().realClassName();
-        String rc = rt != null && rt.isClass() ? rt.className() : rv.asClassInstance().realClassName();
-        if (!visitor.classRegistry().inSameHierarchy(lc, rc)) {
-            throw new RuntimeEvalException(
-                    "Type error: " + lc + " and " + rc + " are not in the same inheritance tree");
         }
         return lv.asClassInstance() == rv.asClassInstance();
     }

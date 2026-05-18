@@ -1,0 +1,17 @@
+// Bug A trigger — PDF §2.3 Note 1.2:
+// "An unqualified call foo(args...) is first resolved as this.foo(args...);
+//  if no suitable class method is found, it is resolved as a top-level method."
+// Here the class has foo(int) but caller passes a string; expected: fall back
+// to top-level foo(string) which prints "top-level".
+class C {
+    void foo(int x) { println("class-int"); }
+    void test() {
+        foo("hi");        // no suitable class overload -> top-level foo(string)
+    }
+}
+void foo(string s) { println("top-level"); }
+int main() {
+    C c = new C();
+    c.test();
+    return 0;
+}

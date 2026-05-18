@@ -1,0 +1,10 @@
+// PDF §4.5 — field access on a null class object triggers a null pointer error (exit 34)
+class Animal {
+    string name = "animal";
+}
+int main() {
+    Animal v = null;
+    string x = v.name;
+    println(x);
+    return 0;
+}

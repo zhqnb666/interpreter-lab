@@ -1,0 +1,17 @@
+// PDF §5.1 example — two-phase dispatch.
+// Phase 1: overload by declared type of receiver; Phase 2: override by real type.
+class Animal {
+    void f(Animal a) { println("Animal-1"); }
+    void f(Dog d)    { println("Animal-2"); }
+}
+class Dog extends Animal {
+    void f(Animal a) { println("Dog-1"); }
+    void f(Dog d)    { println("Dog-2"); }
+}
+int main() {
+    Animal a = new Dog();
+    Dog d = new Dog();
+    a.f(d);   // Phase 1 picks f(Dog) on Animal (cost 0).
+              // Phase 2 from real(a)=Dog -> Dog.f(Dog) -> "Dog-2".
+    return 0;
+}

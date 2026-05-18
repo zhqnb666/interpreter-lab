@@ -1,0 +1,27 @@
+// PDF §3 Example 2 — this(...) constructor delegation
+class Animal {
+    string name;
+    int legs = 4;
+    Animal(string name) {
+        this.name = name;
+    }
+}
+class Dog extends Animal {
+    string breed = "unknown";
+    int age;
+    Dog(string name, int age) {
+        super(name);
+        this.age = age;
+    }
+    Dog(string name) {
+        this(name, 0);
+    }
+}
+int main() {
+    Dog d = new Dog("Buddy");
+    println(d.name);   // Buddy
+    println(d.legs);   // 4
+    println(d.breed);  // unknown
+    println(d.age);    // 0
+    return 0;
+}
