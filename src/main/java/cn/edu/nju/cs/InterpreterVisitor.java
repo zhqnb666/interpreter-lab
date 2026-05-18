@@ -149,22 +149,20 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
             String name = ctx.identifier().getText();
             ExprResult initR = evalExpr(ctx.expression());
             Value init = initR.valueNonVoid();
-            if (init.isNull()) {
-                throw new RuntimeEvalException("Cannot infer type from null");
-            }
-            // Use the expression's declared (static) type so that `var` matches Java's
-            // semantics — `var w = animalVar` infers Animal even when the value held is
-            // a Dog. Falls back to the runtime type only when no static type is carried
-            // (primitive literals / arithmetic results, where they coincide anyway).
+            // Inference order: decimal literal -> int; otherwise the expression's static
+            // type (which is always set except for the bare null literal); only when the
+            // null literal supplies no type info do we reject.
             Type inferred;
             if (init.isDecimalLiteral()) {
                 inferred = Type.INT;
             } else if (initR.staticType() != null) {
                 inferred = initR.staticType();
+            } else if (init.isNull()) {
+                throw new RuntimeEvalException("Cannot infer type from null");
             } else {
                 inferred = init.type();
             }
-            Value coerced = TypeSystem.coerceForAssignment(inferred, init);
+            Value coerced = TypeSystem.coerceForAssignment(inferred, initR);
             context.declare(name, inferred, coerced);
             return null;
         }
@@ -339,7 +337,9 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
         if (ctx.arrayInitializer() != null) {
             return evalArrayInitializer(ctx.arrayInitializer(), targetType);
         }
-        return TypeSystem.coerceForAssignment(targetType, visit(ctx.expression()).requireNonVoid());
+        ExprResult r = evalExpr(ctx.expression());
+        r.valueNonVoid();
+        return TypeSystem.coerceForAssignment(targetType, r);
     }
 
     private Value evalArrayInitializer(MiniJavaParser.ArrayInitializerContext ctx, Type targetType) {

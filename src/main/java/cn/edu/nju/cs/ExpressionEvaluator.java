@@ -48,6 +48,25 @@ final class ExpressionEvaluator {
             if (target.isClass()) {
                 return castToClass(target, source, sourceResult.staticType());
             }
+            // Array cast: spec §6.2 doesn't require general inter-array casts. Allow
+            // identity (source array type matches target) and (T[]) null literal /
+            // (T[]) typedNull(T[]). Reject (T[]) typedNull(U[]) when U[] != T[] —
+            // cross-array-type casts are not supported even when the runtime value
+            // is null, matching Java's static rejection.
+            if (target.isArray()) {
+                if (source.isNull()) {
+                    if (source.type() == null || source.type().equals(target)) {
+                        return ExprResult.of(Value.typedNull(target), target);
+                    }
+                    throw new RuntimeEvalException(
+                            "Cannot cast " + source.typeName() + " to " + target.keyword());
+                }
+                if (source.isArray() && source.type().equals(target)) {
+                    return ExprResult.of(source, target);
+                }
+                throw new RuntimeEvalException(
+                        "Cannot cast " + source.typeName() + " to " + target.keyword());
+            }
             if (!target.equals(Type.INT) && !target.equals(Type.CHAR)) {
                 throw new RuntimeEvalException("Unsupported cast target: " + target.keyword());
             }
@@ -288,15 +307,22 @@ final class ExpressionEvaluator {
 
         Value assigned;
         if ("=".equals(op)) {
-            Value right = visitor.evalExpr(ctx.expression(1)).valueNonVoid();
-            assigned = TypeSystem.coerceForAssignment(targetType, right);
+            ExprResult rightR = visitor.evalExpr(ctx.expression(1));
+            rightR.valueNonVoid();
+            assigned = TypeSystem.coerceForAssignment(targetType, rightR);
             target.set(assigned);
             return ExprResult.of(assigned, targetType);
         }
 
         Value left = target.get();
-        Value right = visitor.evalExpr(ctx.expression(1)).valueNonVoid();
+        ExprResult rightR = visitor.evalExpr(ctx.expression(1));
+        Value right = rightR.valueNonVoid();
         if ("+=".equals(op) && targetType.equals(Type.STRING)) {
+            if (isClassSlot(rightR)) {
+                assigned = Value.ofString(left.asString() + callDispatcher.stringifyForOutput(rightR));
+                target.set(assigned);
+                return ExprResult.of(assigned, targetType);
+            }
             if (!right.isStringConcatOperand()) {
                 throw new RuntimeEvalException("Invalid string concatenation operand");
             }
@@ -349,7 +375,14 @@ final class ExpressionEvaluator {
             throw new RuntimeEvalException(
                     "instanceof target must be a class type, got " + target.keyword());
         }
+        Value v = lhs.valueNonVoid();
         Type lhsType = lhs.staticType();
+        // Java permits `null instanceof X`: the null literal has no declared type but
+        // never satisfies any class test, so it just yields false. Spec §7.3 says the
+        // result is false when real(obj) is not a (sub)class of TargetType.
+        if (v.isNull() && lhsType == null) {
+            return ExprResult.of(Value.ofBoolean(false));
+        }
         if (lhsType == null || !lhsType.isClass()) {
             throw new RuntimeEvalException(
                     "instanceof requires a class-typed left operand");
@@ -360,7 +393,6 @@ final class ExpressionEvaluator {
                     "instanceof: " + lhsType.className() + " and " + target.className()
                             + " are not in the same inheritance tree");
         }
-        Value v = lhs.valueNonVoid();
         if (v.isNull()) {
             return ExprResult.of(Value.ofBoolean(false));
         }

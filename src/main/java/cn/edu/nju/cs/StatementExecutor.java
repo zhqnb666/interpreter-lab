@@ -119,11 +119,12 @@ final class StatementExecutor {
             throw new RuntimeEvalException("non-void method must return a value");
         }
 
-        Value value = visitor.visit(ctx.expression()).requireNonVoid();
+        ExprResult result = visitor.evalExpr(ctx.expression());
+        result.valueNonVoid();
         if (returnType.equals(Type.VOID)) {
             throw new RuntimeEvalException("void method cannot return a value");
         }
-        Value coerced = TypeSystem.coerceForAssignment(returnType, value);
+        Value coerced = TypeSystem.coerceForAssignment(returnType, result);
         throw new ReturnSignal(coerced);
     }
 }

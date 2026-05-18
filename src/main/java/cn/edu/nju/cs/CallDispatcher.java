@@ -67,10 +67,6 @@ final class CallDispatcher {
     }
 
     ExprResult invokeByName(String name, List<ExprResult> args) {
-        BuiltinLibrary.BuiltinResult builtin = builtins.invokeIfMatched(name, args);
-        if (builtin.matched()) {
-            return ExprResult.of(builtin.value());
-        }
         // Unqualified `foo(args)` inside a class method resolves as `this.foo(args)` only
         // when there is a *suitable* overload on the current class chain (an overload
         // whose parameters can accept the arguments). If no class candidate fits the
@@ -85,6 +81,10 @@ final class CallDispatcher {
                 return invokeClassMethodOn(
                         frame.instance(), frame.declaringClass(), false, name, args);
             }
+        }
+        BuiltinLibrary.BuiltinResult builtin = builtins.invokeIfMatched(name, args);
+        if (builtin.matched()) {
+            return ExprResult.of(builtin.value());
         }
         MethodDecl method = methodRegistry.resolveCall(name, args);
         return runUserMethod(method, args, null, null);

@@ -33,13 +33,33 @@ public final class TypeSystem {
         throw new RuntimeEvalException("Unsupported default value type: " + type.keyword());
     }
 
+    public static Value coerceForAssignment(Type target, ExprResult source) {
+        return coerceForAssignment(target, source.value(), source.staticType());
+    }
+
     public static Value coerceForAssignment(Type target, Value source) {
+        return coerceForAssignment(target, source, source.type());
+    }
+
+    private static Value coerceForAssignment(Type target, Value source, Type sourceStaticType) {
         if (target.isClass()) {
             if (source.isNull()) {
+                // Typed null carries its declared type; it may only flow into a slot of
+                // its own class or a supertype (else `B b = (A)null` would silently
+                // succeed, contradicting Java's static-type rules).
+                Type sourceType = sourceStaticType != null ? sourceStaticType : source.type();
+                if (sourceType != null && sourceType.isClass()) {
+                    if (!classRegistry.isSubclassOf(sourceType.className(), target.className())) {
+                        throw new RuntimeEvalException(
+                                "Cannot assign " + sourceType.keyword() + " to " + target.keyword());
+                    }
+                }
                 return Value.typedNull(target);
             }
             if (source.isClassInstance()) {
-                String srcCls = source.asClassInstance().realClassName();
+                String srcCls = sourceStaticType != null && sourceStaticType.isClass()
+                        ? sourceStaticType.className()
+                        : source.asClassInstance().realClassName();
                 if (!classRegistry.isSubclassOf(srcCls, target.className())) {
                     throw new RuntimeEvalException(
                             "Cannot assign " + srcCls + " to " + target.keyword());
@@ -52,12 +72,14 @@ public final class TypeSystem {
 
         if (target.isArray()) {
             if (source.isNull()) {
-                if (source.type() != null && !source.type().equals(target)) {
-                    throw new RuntimeEvalException("Cannot assign " + source.typeName() + " to " + target.keyword());
+                Type sourceType = sourceStaticType != null ? sourceStaticType : source.type();
+                if (sourceType != null && !sourceType.equals(target)) {
+                    throw new RuntimeEvalException("Cannot assign " + sourceType.keyword() + " to " + target.keyword());
                 }
                 return Value.typedNull(target);
             }
-            if (source.isArray() && source.type().equals(target)) {
+            Type sourceType = sourceStaticType != null ? sourceStaticType : source.type();
+            if (source.isArray() && target.equals(sourceType)) {
                 return source.clearDecimalLiteral();
             }
             throw new RuntimeEvalException("Cannot assign " + source.typeName() + " to " + target.keyword());
