@@ -27,7 +27,7 @@ final class ExpressionEvaluator {
             return evalMethodCall(ctx.methodCall());
         }
         if (lvalueResolver.isArrayAccessExpr(ctx)) {
-            return ExprResult.of(lvalueResolver.readArrayElement(ctx));
+            return lvalueResolver.readArrayElement(ctx);
         }
         if (ctx.postfix != null) {
             return evalPostfixExpression(ctx);

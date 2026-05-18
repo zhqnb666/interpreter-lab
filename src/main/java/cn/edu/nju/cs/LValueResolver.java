@@ -17,8 +17,15 @@ final class LValueResolver {
         this.context = context;
     }
 
-    Value readArrayElement(MiniJavaParser.ExpressionContext ctx) {
-        return resolveArrayLValue(ctx).get();
+    /**
+     * Read an array element with its declared element-type as the static type.
+     * Without this carry, downstream member access on the result would (wrongly)
+     * use the value's runtime type as decl(arr[idx]) and resolve fields on the
+     * wrong layer when the array holds a subclass instance.
+     */
+    ExprResult readArrayElement(MiniJavaParser.ExpressionContext ctx) {
+        ArrayLValue lv = resolveArrayLValue(ctx);
+        return ExprResult.of(lv.get(), lv.type());
     }
 
     LValue resolveLValue(MiniJavaParser.ExpressionContext expr) {

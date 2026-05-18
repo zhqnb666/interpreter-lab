@@ -1,0 +1,22 @@
+// arr[idx].field / arr[idx].method() — 元素声明类型是父类、实际存子类实例。
+// 按 PDF：字段查找走声明（父类）链，方法走两阶段派发（Phase 1 父类、Phase 2 实际）。
+class Animal {
+    string name = "animal";
+    void speak() { println("A.speak"); }
+}
+class Dog extends Animal {
+    string name = "dog";      // shadow
+    void speak() { println("D.speak"); }
+}
+int main() {
+    Animal[] arr = new Animal[2];
+    arr[0] = new Dog();
+    arr[1] = new Animal();
+    // 字段按声明类型 (Animal) 找 -> "animal" 两次
+    println(arr[0].name);     // animal
+    println(arr[1].name);     // animal
+    // 方法 Phase2 走 real -> Dog 输出 D.speak，Animal 输出 A.speak
+    arr[0].speak();           // D.speak
+    arr[1].speak();           // A.speak
+    return 0;
+}
