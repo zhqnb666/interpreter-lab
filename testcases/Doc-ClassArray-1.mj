@@ -1,0 +1,16 @@
+// Bug C trigger — `new ClassName[size]` array of class type creation.
+// HashMap/HashSet/Queue/Stack 这类数据结构内部常用 Node[] 作 bucket 数组；
+// 当前实现直接 throw，凡是涉及类数组的测试都挂。
+class Node {
+    int value;
+    Node next;
+}
+int main() {
+    Node[] buckets = new Node[3];     // 应：长度为 3 的 Node[]，每格初始化为 typed-null(Node)
+    println(length(buckets));         // 3
+    if (buckets[0] == null) println("0 null"); else println("0 not null");
+    buckets[0] = new Node();
+    buckets[0].value = 42;
+    println(buckets[0].value);        // 42
+    return 0;
+}

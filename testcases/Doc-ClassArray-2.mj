@@ -1,0 +1,40 @@
+// 类类型数组 — 多种创建方式 + 元素访问 + 通过方法传递
+class Node {
+    int value;
+    Node next;
+    Node(int v) { value = v; }
+}
+class Box {
+    Node[] items;
+    void fill(int n) {
+        items = new Node[n];
+        for (int i = 0; i < n; i++) {
+            items[i] = new Node(i * 10);
+        }
+    }
+    int sum() {
+        int s = 0;
+        for (int i = 0; i < length(items); i++) {
+            s += items[i].value;
+        }
+        return s;
+    }
+}
+int main() {
+    // new ClassName[size] 形式
+    Box b = new Box();
+    b.fill(4);
+    println(length(b.items));    // 4
+    println(b.items[2].value);   // 20
+    println(b.sum());            // 0 + 10 + 20 + 30 = 60
+
+    // new ClassName[]{...} 形式
+    Node[] arr = new Node[]{new Node(1), new Node(2), new Node(3)};
+    println(arr[0].value);       // 1
+    println(arr[2].value);       // 3
+
+    // 默认元素是 null
+    Node[] empties = new Node[2];
+    if (empties[0] == null) println("empty[0] is null");
+    return 0;
+}

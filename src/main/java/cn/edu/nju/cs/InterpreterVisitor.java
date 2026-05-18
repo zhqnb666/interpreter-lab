@@ -267,12 +267,17 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
             return callDispatcher.invokeNewClass(name, args);
         }
 
-        // Array creation: `new T[N]` / `new T[]{...}`
-        if (ctx.createdName().primitiveType() == null) {
-            // (class arrays aren't required to be constructible in this lab)
-            throw new RuntimeEvalException("Array of class type is not supported in `new`");
+        // Array creation: `new T[N]` / `new T[]{...}` for primitive *or* class element type.
+        Type base;
+        if (ctx.createdName().primitiveType() != null) {
+            base = Type.fromKeyword(ctx.createdName().primitiveType().getText());
+        } else {
+            String name = ctx.createdName().identifier().getText();
+            if (!classRegistry.exists(name)) {
+                throw new RuntimeEvalException("Unknown class: " + name);
+            }
+            base = Type.ofClass(name);
         }
-        Type base = Type.fromKeyword(ctx.createdName().primitiveType().getText());
         MiniJavaParser.ArrayCreatorRestContext rest = ctx.arrayCreatorRest();
 
         int totalDims = rest.LBRACK().size();
