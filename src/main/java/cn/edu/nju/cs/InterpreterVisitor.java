@@ -147,11 +147,23 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
     public Value visitLocalVariableDeclaration(MiniJavaParser.LocalVariableDeclarationContext ctx) {
         if (ctx.VAR() != null) {
             String name = ctx.identifier().getText();
-            Value init = evalExpr(ctx.expression()).valueNonVoid();
+            ExprResult initR = evalExpr(ctx.expression());
+            Value init = initR.valueNonVoid();
             if (init.isNull()) {
                 throw new RuntimeEvalException("Cannot infer type from null");
             }
-            Type inferred = init.isDecimalLiteral() ? Type.INT : init.type();
+            // Use the expression's declared (static) type so that `var` matches Java's
+            // semantics — `var w = animalVar` infers Animal even when the value held is
+            // a Dog. Falls back to the runtime type only when no static type is carried
+            // (primitive literals / arithmetic results, where they coincide anyway).
+            Type inferred;
+            if (init.isDecimalLiteral()) {
+                inferred = Type.INT;
+            } else if (initR.staticType() != null) {
+                inferred = initR.staticType();
+            } else {
+                inferred = init.type();
+            }
             Value coerced = TypeSystem.coerceForAssignment(inferred, init);
             context.declare(name, inferred, coerced);
             return null;

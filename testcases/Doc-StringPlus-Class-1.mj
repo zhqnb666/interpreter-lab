@@ -1,0 +1,13 @@
+// 怀疑：string + class object 是否在 + 拼接里也走 to_string()
+// （println 的 to_string 派发已实现；+ 操作符目前只接受 string/int/char/boolean）
+class Point {
+    int x;
+    int y;
+    Point(int x, int y) { this.x = x; this.y = y; }
+    string to_string() { return "(" + x + "," + y + ")"; }
+}
+int main() {
+    Point p = new Point(3, 4);
+    println("p = " + p);    // 期望：p = (3,4)
+    return 0;
+}

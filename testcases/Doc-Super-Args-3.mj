@@ -1,0 +1,18 @@
+// super 边界 3：祖父类的方法通过 super.foo 调用（祖父类有 foo 但父类没有）
+class Grand {
+    void hello() { println("Grand"); }
+}
+class Mid extends Grand {
+    // 没 override hello
+}
+class Leaf extends Mid {
+    void hello() {
+        super.hello();    // super = Mid，Mid 没 hello -> 继续向上找 Grand.hello
+        println("Leaf");
+    }
+}
+int main() {
+    Leaf l = new Leaf();
+    l.hello();   // Grand / Leaf
+    return 0;
+}

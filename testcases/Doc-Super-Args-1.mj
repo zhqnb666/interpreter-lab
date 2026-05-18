@@ -1,0 +1,15 @@
+// super 边界 1：super 调用带参数的父类方法（不是默认/0 参）
+class Animal {
+    string greet(string name) { return "Hello " + name; }
+}
+class Dog extends Animal {
+    string greet(string name) {
+        string parent = super.greet(name);
+        return parent + " (wagging)";
+    }
+}
+int main() {
+    Dog d = new Dog();
+    println(d.greet("Rex"));   // Hello Rex (wagging)
+    return 0;
+}

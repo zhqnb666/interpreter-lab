@@ -21,6 +21,51 @@ final class CallDispatcher {
         this.classRegistry = classRegistry;
     }
 
+    /**
+     * Convert an argument into its printable / concatenation form. For class-typed
+     * slots dispatch to a suitable `string to_string()` reachable from the declared
+     * type's chain (Phase-2 virtual dispatch on real(x)); fall back to the real class
+     * name when no such method exists. Used by both BuiltinLibrary's print/println
+     * and ExpressionEvaluator's `+` operator so the two routes stay consistent.
+     */
+    String stringifyForOutput(ExprResult arg) {
+        Value v = arg.valueNonVoid();
+        Type st = arg.staticType();
+        boolean isClassSlot = (st != null && st.isClass()) || v.isClassInstance();
+        if (!isClassSlot) {
+            return v.toOutputString();
+        }
+        if (v.isNull()) {
+            return "null";
+        }
+        String startClass = st != null && st.isClass()
+                ? st.className()
+                : v.asClassInstance().realClassName();
+        if (!hasSuitableToString(startClass)) {
+            return v.asClassInstance().realClassName();
+        }
+        ExprResult r = invokeClassMethodOn(
+                v.asClassInstance(), startClass, false, "to_string", List.of());
+        Value out = r.value();
+        if (!out.isString()) {
+            throw new RuntimeEvalException("to_string() must return string");
+        }
+        return out.asString();
+    }
+
+    private boolean hasSuitableToString(String startClass) {
+        for (String cls : classRegistry.chain(startClass)) {
+            for (MethodDecl m : classRegistry.get(cls).methods()) {
+                if (m.name().equals("to_string")
+                        && m.parameters().isEmpty()
+                        && m.returnType().equals(Type.STRING)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     ExprResult invokeByName(String name, List<ExprResult> args) {
         BuiltinLibrary.BuiltinResult builtin = builtins.invokeIfMatched(name, args);
         if (builtin.matched()) {

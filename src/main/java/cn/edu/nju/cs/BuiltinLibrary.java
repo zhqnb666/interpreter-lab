@@ -45,7 +45,7 @@ final class BuiltinLibrary {
         if (args.size() != 1) {
             return BuiltinResult.notMatched();
         }
-        context.out().print(stringifyArg(args.get(0)));
+        context.out().print(callDispatcher.stringifyForOutput(args.get(0)));
         return BuiltinResult.matched(Value.voidValue());
     }
 
@@ -55,53 +55,10 @@ final class BuiltinLibrary {
             return BuiltinResult.matched(Value.voidValue());
         }
         if (args.size() == 1) {
-            context.out().println(stringifyArg(args.get(0)));
+            context.out().println(callDispatcher.stringifyForOutput(args.get(0)));
             return BuiltinResult.matched(Value.voidValue());
         }
         return BuiltinResult.notMatched();
-    }
-
-    /**
-     * Convert an argument to its print()/println() string form. For class-typed slots
-     * we dispatch to a suitable {@code string to_string()} method when one is visible
-     * via the declared type's chain; otherwise we fall back to the real class name.
-     */
-    private String stringifyArg(ExprResult arg) {
-        Value v = arg.valueNonVoid();
-        Type st = arg.staticType();
-        boolean isClassSlot = (st != null && st.isClass()) || v.isClassInstance();
-        if (!isClassSlot) {
-            return v.toOutputString();
-        }
-        if (v.isNull()) {
-            return "null";
-        }
-        String startClass = st != null && st.isClass()
-                ? st.className()
-                : v.asClassInstance().realClassName();
-        if (!hasSuitableToString(startClass)) {
-            return v.asClassInstance().realClassName();
-        }
-        ExprResult r = callDispatcher.invokeClassMethodOn(
-                v.asClassInstance(), startClass, false, "to_string", List.of());
-        Value out = r.value();
-        if (!out.isString()) {
-            throw new RuntimeEvalException("to_string() must return string");
-        }
-        return out.asString();
-    }
-
-    private boolean hasSuitableToString(String startClass) {
-        for (String cls : classRegistry.chain(startClass)) {
-            for (MethodDecl m : classRegistry.get(cls).methods()) {
-                if (m.name().equals("to_string")
-                        && m.parameters().isEmpty()
-                        && m.returnType().equals(Type.STRING)) {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 
     private BuiltinResult builtinAssert(List<ExprResult> args) {

@@ -402,6 +402,11 @@ final class ExpressionEvaluator {
         return lv.asClassInstance() == rv.asClassInstance();
     }
 
+    private static boolean isClassSlot(ExprResult r) {
+        Type t = r.staticType();
+        return (t != null && t.isClass()) || r.value().isClassInstance();
+    }
+
     private ExprResult evalBinaryExpression(MiniJavaParser.ExpressionContext ctx, String op) {
         ExprResult leftR = visitor.evalExpr(ctx.expression(0));
         ExprResult rightR = visitor.evalExpr(ctx.expression(1));
@@ -411,6 +416,24 @@ final class ExpressionEvaluator {
         if ("==".equals(op) || "!=".equals(op)) {
             boolean eq = classAwareEquals(leftR, rightR);
             return ExprResult.of(Value.ofBoolean(op.equals("==") == eq));
+        }
+
+        // String concatenation: extend Lab 3's `+` to accept class objects on either side
+        // by going through the shared stringifyForOutput (which dispatches a suitable
+        // to_string when reachable; otherwise yields the real class name). Triggered only
+        // when at least one operand is a string AND any side is a class slot — primitive
+        // string concat keeps its existing semantics.
+        if ("+".equals(op) && (isClassSlot(leftR) || isClassSlot(rightR))
+                && (left.isString() || right.isString())) {
+            if (!isClassSlot(leftR) && !left.isStringConcatOperand()) {
+                throw new RuntimeEvalException("Invalid string concatenation operand");
+            }
+            if (!isClassSlot(rightR) && !right.isStringConcatOperand()) {
+                throw new RuntimeEvalException("Invalid string concatenation operand");
+            }
+            String ls = isClassSlot(leftR) ? callDispatcher.stringifyForOutput(leftR) : left.toOutputString();
+            String rs = isClassSlot(rightR) ? callDispatcher.stringifyForOutput(rightR) : right.toOutputString();
+            return ExprResult.of(Value.ofString(ls + rs));
         }
 
         return switch (op) {

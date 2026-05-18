@@ -1,0 +1,15 @@
+// 怀疑 Bug E：var 类型推断使用 runtime 类型而非声明类型
+// `Animal v = new Dog(); var w = v;` — Java 中 w 推断 Animal（声明）；
+// 我的实现可能推断 Dog（运行时），从而 w.name 走 Dog 链 -> "dog"。
+class Animal {
+    string name = "animal";
+}
+class Dog extends Animal {
+    string name = "dog";
+}
+int main() {
+    Animal v = new Dog();
+    var w = v;             // 期望 w 推断 Animal，w.name -> "animal"
+    println(w.name);
+    return 0;
+}

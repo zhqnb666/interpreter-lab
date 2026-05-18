@@ -1,0 +1,68 @@
+// HashMap-style testcase — chained nodes in bucket array
+// 重现 HashMap 内部典型操作：哈希桶数组 + 链式 Node + put/get
+class Entry {
+    int key;
+    string value;
+    Entry next;
+    Entry(int k, string v) {
+        key = k;
+        value = v;
+        next = null;
+    }
+}
+class HashMap {
+    Entry[] buckets;
+    int cap;
+    HashMap(int n) {
+        cap = n;
+        buckets = new Entry[n];
+    }
+    int hash(int k) {
+        int h = k % cap;
+        if (h < 0) h += cap;
+        return h;
+    }
+    void put(int k, string v) {
+        int i = hash(k);
+        Entry cur = buckets[i];
+        while (cur != null) {
+            if (cur.key == k) { cur.value = v; return; }
+            cur = cur.next;
+        }
+        Entry e = new Entry(k, v);
+        e.next = buckets[i];
+        buckets[i] = e;
+    }
+    string get(int k) {
+        int i = hash(k);
+        Entry cur = buckets[i];
+        while (cur != null) {
+            if (cur.key == k) return cur.value;
+            cur = cur.next;
+        }
+        return "<none>";
+    }
+    boolean contains(int k) {
+        int i = hash(k);
+        Entry cur = buckets[i];
+        while (cur != null) {
+            if (cur.key == k) return true;
+            cur = cur.next;
+        }
+        return false;
+    }
+}
+int main() {
+    HashMap m = new HashMap(4);
+    m.put(1, "one");
+    m.put(2, "two");
+    m.put(5, "five");      // collide with 1 (5 % 4 = 1)
+    m.put(1, "ONE");       // replace
+    println(m.get(1));     // ONE
+    println(m.get(2));     // two
+    println(m.get(5));     // five
+    println(m.get(99));    // <none>
+    if (m.contains(2)) println("has 2"); else println("no 2");
+    if (m.contains(7)) println("has 7"); else println("no 7");
+    return 0;
+}

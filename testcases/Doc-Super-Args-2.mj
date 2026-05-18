@@ -1,0 +1,15 @@
+// super 边界 2：构造器中 super(args) 与父类多个 overload 构造器
+class Base {
+    int v;
+    Base() { v = 0; }
+    Base(int x) { v = x; }
+    Base(int x, int y) { v = x + y; }
+}
+class Mid extends Base {
+    Mid(int a) { super(a, a * 2); }   // 期望选 Base(int,int)，v = a + 2a = 3a
+}
+int main() {
+    Mid m = new Mid(4);
+    println(m.v);    // 12
+    return 0;
+}
