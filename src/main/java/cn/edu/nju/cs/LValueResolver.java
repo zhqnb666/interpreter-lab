@@ -24,17 +24,39 @@ final class LValueResolver {
     LValue resolveLValue(MiniJavaParser.ExpressionContext expr) {
         if (expr.primary() != null && expr.primary().identifier() != null) {
             String name = expr.primary().identifier().getText();
-            Variable obj = context.resolve(name);
-            return new VariableLValue(obj);
+            Variable obj = context.tryResolve(name);
+            if (obj != null) {
+                return new VariableLValue(obj);
+            }
+            // Fall back to `this.<name>` field assignment when inside a class method.
+            EvalContext.ClassFrame frame = context.currentClassFrame();
+            if (frame != null) {
+                ClassRegistry.FieldOwner owner =
+                        visitor.classRegistry().findField(frame.declaringClass(), name);
+                if (owner != null) {
+                    return new FieldLValue(frame.instance(), owner.className(),
+                            name, owner.field().type());
+                }
+            }
+            throw new RuntimeEvalException("Undeclared identifier: " + name);
         }
         if (isArrayAccessExpr(expr)) {
             return resolveArrayLValue(expr);
         }
-        throw new RuntimeEvalException("Left-hand side must be a variable or array element");
+        if (isFieldAccessExpr(expr)) {
+            return resolveFieldLValue(expr);
+        }
+        throw new RuntimeEvalException("Left-hand side must be a variable, array element, or field");
     }
 
     boolean isArrayAccessExpr(MiniJavaParser.ExpressionContext ctx) {
         return ctx.LBRACK() != null && ctx.expression().size() == 2 && ctx.bop == null;
+    }
+
+    private static boolean isFieldAccessExpr(MiniJavaParser.ExpressionContext ctx) {
+        return ctx.bop != null
+                && ".".equals(ctx.bop.getText())
+                && ctx.identifier() != null;
     }
 
     private ArrayLValue resolveArrayLValue(MiniJavaParser.ExpressionContext expr) {
@@ -49,6 +71,55 @@ final class LValueResolver {
         MiniJavaArray arr = arrayValue.asArray();
         Type elemType = arr.type().componentType();
         return new ArrayLValue(arr, index, elemType);
+    }
+
+    private FieldLValue resolveFieldLValue(MiniJavaParser.ExpressionContext expr) {
+        String fieldName = expr.identifier().getText();
+        MiniJavaParser.ExpressionContext recvExpr = expr.expression(0);
+
+        ClassInstance instance;
+        String startClass;
+        if (ExpressionEvaluator.isThisPrimary(recvExpr)) {
+            EvalContext.ClassFrame frame = context.currentClassFrame();
+            if (frame == null) {
+                throw new RuntimeEvalException("'this' used outside class context");
+            }
+            instance = frame.instance();
+            startClass = frame.declaringClass();
+        } else if (ExpressionEvaluator.isSuperPrimary(recvExpr)) {
+            EvalContext.ClassFrame frame = context.currentClassFrame();
+            if (frame == null) {
+                throw new RuntimeEvalException("'super' used outside class context");
+            }
+            ClassDecl decl = visitor.classRegistry().get(frame.declaringClass());
+            if (decl.parentName() == null) {
+                throw new RuntimeEvalException(frame.declaringClass() + " has no superclass");
+            }
+            instance = frame.instance();
+            startClass = decl.parentName();
+        } else {
+            ExprResult r = visitor.evalExpr(recvExpr);
+            Value v = r.valueNonVoid();
+            if (v.isNull()) {
+                throw new RuntimeEvalException("Null pointer");
+            }
+            if (!v.isClassInstance()) {
+                throw new RuntimeEvalException("Field access on non-class type");
+            }
+            instance = v.asClassInstance();
+            if (r.staticType() == null || !r.staticType().isClass()) {
+                throw new RuntimeEvalException("Field access on non-class type");
+            }
+            startClass = r.staticType().className();
+        }
+
+        ClassRegistry.FieldOwner owner =
+                visitor.classRegistry().findField(startClass, fieldName);
+        if (owner == null) {
+            throw new RuntimeEvalException(
+                    "No field '" + fieldName + "' in class " + startClass);
+        }
+        return new FieldLValue(instance, owner.className(), fieldName, owner.field().type());
     }
 
     private static final class VariableLValue implements LValue {
@@ -98,6 +169,35 @@ final class LValueResolver {
         @Override
         public void set(Value value) {
             array.set(index, value);
+        }
+    }
+
+    private static final class FieldLValue implements LValue {
+        private final ClassInstance instance;
+        private final String ownerClass;
+        private final String fieldName;
+        private final Type fieldType;
+
+        private FieldLValue(ClassInstance instance, String ownerClass, String fieldName, Type fieldType) {
+            this.instance = instance;
+            this.ownerClass = ownerClass;
+            this.fieldName = fieldName;
+            this.fieldType = fieldType;
+        }
+
+        @Override
+        public Type type() {
+            return fieldType;
+        }
+
+        @Override
+        public Value get() {
+            return instance.getField(ownerClass, fieldName);
+        }
+
+        @Override
+        public void set(Value value) {
+            instance.setField(ownerClass, fieldName, value);
         }
     }
 }

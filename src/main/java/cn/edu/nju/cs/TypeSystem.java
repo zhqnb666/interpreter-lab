@@ -1,11 +1,21 @@
 package cn.edu.nju.cs;
 
 public final class TypeSystem {
+    private static ClassRegistry classRegistry;
+
     private TypeSystem() {
     }
 
+    public static void setClassRegistry(ClassRegistry registry) {
+        classRegistry = registry;
+    }
+
+    public static ClassRegistry classRegistry() {
+        return classRegistry;
+    }
+
     public static Value defaultValue(Type type) {
-        if (type.isArray()) {
+        if (type.isArray() || type.isClass()) {
             return Value.typedNull(type);
         }
         if (type.equals(Type.INT)) {
@@ -24,6 +34,22 @@ public final class TypeSystem {
     }
 
     public static Value coerceForAssignment(Type target, Value source) {
+        if (target.isClass()) {
+            if (source.isNull()) {
+                return Value.typedNull(target);
+            }
+            if (source.isClassInstance()) {
+                String srcCls = source.asClassInstance().realClassName();
+                if (!classRegistry.isSubclassOf(srcCls, target.className())) {
+                    throw new RuntimeEvalException(
+                            "Cannot assign " + srcCls + " to " + target.keyword());
+                }
+                return source;
+            }
+            throw new RuntimeEvalException(
+                    "Cannot assign " + source.typeName() + " to " + target.keyword());
+        }
+
         if (target.isArray()) {
             if (source.isNull()) {
                 if (source.type() != null && !source.type().equals(target)) {
@@ -74,6 +100,37 @@ public final class TypeSystem {
         throw new RuntimeEvalException("Unsupported assignment target type: " + target.keyword());
     }
 
+    public static int methodConversionCost(Type target, ExprResult arg) {
+        if (target.isClass()) {
+            Value v = arg.value();
+            if (v.isNull()) {
+                if (v.type() == null) {
+                    return 0; // untyped null fits any class slot
+                }
+                if (v.type().isClass()) {
+                    if (v.type().className().equals(target.className())) {
+                        return 0;
+                    }
+                    return classRegistry.isSubclassOf(v.type().className(), target.className())
+                            ? 1
+                            : -1;
+                }
+                return -1;
+            }
+            if (v.isClassInstance()) {
+                String srcCls = arg.staticType() != null && arg.staticType().isClass()
+                        ? arg.staticType().className()
+                        : v.asClassInstance().realClassName();
+                if (srcCls.equals(target.className())) {
+                    return 0;
+                }
+                return classRegistry.isSubclassOf(srcCls, target.className()) ? 1 : -1;
+            }
+            return -1;
+        }
+        return methodConversionCost(target, arg.value());
+    }
+
     public static int methodConversionCost(Type target, Value arg) {
         if (arg.isNull()) {
             if (!target.isArray()) {
@@ -109,6 +166,25 @@ public final class TypeSystem {
             return arg.isString() ? 0 : -1;
         }
         return -1;
+    }
+
+    public static Value coerceForMethodParam(Type target, ExprResult arg) {
+        int cost = methodConversionCost(target, arg);
+        if (cost < 0) {
+            throw new RuntimeEvalException(
+                    "Incompatible argument type: " + arg.value().typeName() + " -> " + target.keyword());
+        }
+        Value v = arg.value();
+        if (v.isNull()) {
+            if (target.isArray() || target.isClass()) {
+                return Value.typedNull(target);
+            }
+            return v;
+        }
+        if (target.equals(Type.INT) && v.isChar()) {
+            return Value.ofInt(v.asSignedCharInt());
+        }
+        return v.clearDecimalLiteral();
     }
 
     public static Value coerceForMethodParam(Type target, Value arg) {

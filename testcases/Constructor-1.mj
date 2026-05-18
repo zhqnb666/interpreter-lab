@@ -1,0 +1,17 @@
+
+// default class constructor
+
+class A {
+    int a;
+    string b;
+}
+
+int main() {
+    println("Default constructor of class A");
+    A a = new A();
+
+    println(a.a);
+    println(a.b + "GOOD");
+    
+    return 0;
+}

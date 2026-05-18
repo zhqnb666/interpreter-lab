@@ -32,23 +32,28 @@ public final class Type {
         }
     }
 
-    public static final Type INT = new Type(Primitive.INT, 0);
-    public static final Type CHAR = new Type(Primitive.CHAR, 0);
-    public static final Type BOOLEAN = new Type(Primitive.BOOLEAN, 0);
-    public static final Type STRING = new Type(Primitive.STRING, 0);
-    public static final Type VOID = new Type(Primitive.VOID, 0);
+    public static final Type INT = new Type(Primitive.INT, null, 0);
+    public static final Type CHAR = new Type(Primitive.CHAR, null, 0);
+    public static final Type BOOLEAN = new Type(Primitive.BOOLEAN, null, 0);
+    public static final Type STRING = new Type(Primitive.STRING, null, 0);
+    public static final Type VOID = new Type(Primitive.VOID, null, 0);
 
     private final Primitive primitive;
+    private final String className;
     private final int arrayDepth;
 
-    private Type(Primitive primitive, int arrayDepth) {
+    private Type(Primitive primitive, String className, int arrayDepth) {
         if (arrayDepth < 0) {
             throw new IllegalArgumentException("arrayDepth must be non-negative");
         }
         if (primitive == Primitive.VOID && arrayDepth > 0) {
             throw new IllegalArgumentException("void[] is not allowed");
         }
+        if ((primitive == null) == (className == null)) {
+            throw new IllegalArgumentException("Type must be exactly one of primitive or class");
+        }
         this.primitive = primitive;
+        this.className = className;
         this.arrayDepth = arrayDepth;
     }
 
@@ -62,22 +67,33 @@ public final class Type {
         };
     }
 
+    public static Type ofClass(String name) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Class name must be non-empty");
+        }
+        return new Type(null, name, 0);
+    }
+
     public Type arrayOf() {
         if (isVoid()) {
             throw new RuntimeEvalException("void array is not allowed");
         }
-        return new Type(primitive, arrayDepth + 1);
+        return new Type(primitive, className, arrayDepth + 1);
     }
 
     public Type componentType() {
         if (!isArray()) {
             throw new RuntimeEvalException("Not an array type: " + keyword());
         }
-        return new Type(primitive, arrayDepth - 1);
+        return new Type(primitive, className, arrayDepth - 1);
     }
 
     public Primitive primitive() {
         return primitive;
+    }
+
+    public String className() {
+        return className;
     }
 
     public int arrayDepth() {
@@ -86,6 +102,10 @@ public final class Type {
 
     public boolean isArray() {
         return arrayDepth > 0;
+    }
+
+    public boolean isClass() {
+        return className != null && arrayDepth == 0;
     }
 
     public boolean isVoid() {
@@ -97,7 +117,7 @@ public final class Type {
     }
 
     public String keyword() {
-        StringBuilder sb = new StringBuilder(primitive.keyword());
+        StringBuilder sb = new StringBuilder(primitive != null ? primitive.keyword() : className);
         for (int i = 0; i < arrayDepth; i++) {
             sb.append("[]");
         }
@@ -117,11 +137,13 @@ public final class Type {
         if (!(o instanceof Type type)) {
             return false;
         }
-        return arrayDepth == type.arrayDepth && primitive == type.primitive;
+        return arrayDepth == type.arrayDepth
+                && primitive == type.primitive
+                && Objects.equals(className, type.className);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(primitive, arrayDepth);
+        return Objects.hash(primitive, className, arrayDepth);
     }
 }

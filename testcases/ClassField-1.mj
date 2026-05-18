@@ -1,0 +1,27 @@
+
+// simple field access
+
+class FieldTest {
+    int age;
+    string name;
+    int[] scores;
+
+    FieldTest() {
+        age = 20;
+        name = "John";
+        scores = new int[3];
+        scores[0] = 70;
+        scores[1] = 80;
+        scores[2] = 90;
+    }
+}
+
+int main() {
+    FieldTest p = new FieldTest();
+
+    println(p.age);
+    println(p.name);
+    println(p.scores);
+
+    return 0;
+}

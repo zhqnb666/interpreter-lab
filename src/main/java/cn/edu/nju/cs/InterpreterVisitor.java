@@ -7,49 +7,119 @@ import java.util.List;
 public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
     private final EvalContext context;
     private final MethodRegistry methodRegistry = new MethodRegistry();
+    private final ClassRegistry classRegistry = new ClassRegistry();
     private final CallDispatcher callDispatcher;
     private final StatementExecutor statementExecutor;
     private final ExpressionEvaluator expressionEvaluator;
 
     public InterpreterVisitor(PrintStream out) {
         this.context = new EvalContext(out);
+        TypeSystem.setClassRegistry(classRegistry);
         BuiltinLibrary builtinLibrary = new BuiltinLibrary(context);
         LValueResolver lvalueResolver = new LValueResolver(this, context);
         this.callDispatcher = new CallDispatcher(this, context, methodRegistry, builtinLibrary);
+        this.callDispatcher.setClassRegistry(classRegistry);
+        builtinLibrary.setDispatch(classRegistry, callDispatcher);
         this.statementExecutor = new StatementExecutor(this, context);
         this.expressionEvaluator = new ExpressionEvaluator(this, lvalueResolver, callDispatcher);
+    }
+
+    EvalContext context() {
+        return context;
+    }
+
+    ClassRegistry classRegistry() {
+        return classRegistry;
+    }
+
+    CallDispatcher callDispatcher() {
+        return callDispatcher;
     }
 
     public int execute(MiniJavaParser.CompilationUnitContext ctx) {
         visitCompilationUnit(ctx);
         MethodDecl entry = methodRegistry.resolveEntryMain();
-        Value result = callDispatcher.invokeEntry(entry);
-        if (!result.isInt()) {
+        ExprResult result = callDispatcher.invokeEntry(entry);
+        Value value = result.value();
+        if (!value.isInt()) {
             throw new RuntimeEvalException("Entry main() must return int");
         }
-        return result.asInt();
+        return value.asInt();
     }
 
     @Override
     public Value visitCompilationUnit(MiniJavaParser.CompilationUnitContext ctx) {
+        // Pass 1: register class names + parent links so types can resolve forward refs.
+        for (MiniJavaParser.ClassDeclarationContext classCtx : ctx.classDeclaration()) {
+            String name = classCtx.identifier().getText();
+            String parent = classCtx.parentClassDeclaration() != null
+                    ? classCtx.parentClassDeclaration().identifier().getText()
+                    : null;
+            classRegistry.register(new ClassDecl(name, parent));
+        }
+        classRegistry.validateInheritance();
+
+        // Pass 2: parse class bodies (fields, methods, constructors).
+        for (MiniJavaParser.ClassDeclarationContext classCtx : ctx.classDeclaration()) {
+            populateClassBody(classCtx);
+        }
+        // Top-level methods.
         for (MiniJavaParser.MethodDeclarationContext methodCtx : ctx.methodDeclaration()) {
-            registerMethod(methodCtx);
+            methodRegistry.register(buildMethodDecl(methodCtx));
         }
         return null;
     }
 
-    private void registerMethod(MiniJavaParser.MethodDeclarationContext ctx) {
+    private void populateClassBody(MiniJavaParser.ClassDeclarationContext classCtx) {
+        String className = classCtx.identifier().getText();
+        ClassDecl decl = classRegistry.get(className);
+        for (MiniJavaParser.ClassBodyDeclarationContext member : classCtx.classBody().classBodyDeclaration()) {
+            if (member.fieldDeclaration() != null) {
+                MiniJavaParser.FieldDeclarationContext fd = member.fieldDeclaration();
+                Type fieldType = parseType(fd.typeType());
+                if (fieldType.isVoid()) {
+                    throw new RuntimeEvalException("Field cannot be void");
+                }
+                String fieldName = fd.variableDeclarator().identifier().getText();
+                decl.addField(new ClassDecl.FieldDecl(fieldType, fieldName, fd.variableDeclarator()));
+            } else if (member.methodDeclaration() != null) {
+                decl.addMethod(buildMethodDecl(member.methodDeclaration()));
+            } else if (member.constructorDeclaration() != null) {
+                MiniJavaParser.ConstructorDeclarationContext cc = member.constructorDeclaration();
+                String ctorName = cc.identifier().getText();
+                if (!ctorName.equals(className)) {
+                    throw new RuntimeEvalException(
+                            "Constructor name " + ctorName + " does not match class " + className);
+                }
+                List<MethodDecl.Parameter> params = parseFormalParameters(cc.formalParameters());
+                decl.addConstructor(new ConstructorDecl(className, params, cc.constructorBody));
+            }
+        }
+        if (decl.constructors().isEmpty()) {
+            decl.addConstructor(new ConstructorDecl(className, List.of(), null));
+        }
+    }
+
+    private MethodDecl buildMethodDecl(MiniJavaParser.MethodDeclarationContext ctx) {
         Type returnType = ctx.VOID() != null ? Type.VOID : parseType(ctx.typeType());
         String name = ctx.identifier().getText();
+        List<MethodDecl.Parameter> params = parseFormalParameters(ctx.formalParameters());
+        return new MethodDecl(name, returnType, params, ctx.block());
+    }
+
+    private List<MethodDecl.Parameter> parseFormalParameters(MiniJavaParser.FormalParametersContext ctx) {
         List<MethodDecl.Parameter> params = new ArrayList<>();
-        MiniJavaParser.FormalParameterListContext plist = ctx.formalParameters().formalParameterList();
+        MiniJavaParser.FormalParameterListContext plist = ctx.formalParameterList();
         if (plist != null) {
             for (MiniJavaParser.FormalParameterContext pctx : plist.formalParameter()) {
                 Type paramType = parseType(pctx.typeType());
+                if (paramType.isVoid()) {
+                    throw new RuntimeEvalException("Parameter cannot be void");
+                }
                 params.add(new MethodDecl.Parameter(paramType, pctx.identifier().getText()));
             }
         }
-        methodRegistry.register(new MethodDecl(name, returnType, params, ctx.block()));
+        return params;
     }
 
     @Override
@@ -77,7 +147,7 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
     public Value visitLocalVariableDeclaration(MiniJavaParser.LocalVariableDeclarationContext ctx) {
         if (ctx.VAR() != null) {
             String name = ctx.identifier().getText();
-            Value init = visit(ctx.expression()).requireNonVoid();
+            Value init = evalExpr(ctx.expression()).valueNonVoid();
             if (init.isNull()) {
                 throw new RuntimeEvalException("Cannot infer type from null");
             }
@@ -127,24 +197,81 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
 
     @Override
     public Value visitExpression(MiniJavaParser.ExpressionContext ctx) {
+        return evalExpr(ctx).value();
+    }
+
+    ExprResult evalExpr(MiniJavaParser.ExpressionContext ctx) {
         return expressionEvaluator.evalExpression(ctx);
     }
 
     @Override
     public Value visitPrimary(MiniJavaParser.PrimaryContext ctx) {
+        return evalPrimary(ctx).value();
+    }
+
+    ExprResult evalPrimary(MiniJavaParser.PrimaryContext ctx) {
         if (ctx.expression() != null) {
-            return visit(ctx.expression());
+            return evalExpr(ctx.expression());
         }
         if (ctx.literal() != null) {
             return parseLiteral(ctx.literal());
         }
+        if (ctx.THIS() != null) {
+            throw new RuntimeEvalException(
+                    "'this' may only appear in field access, method call, or constructor invocation");
+        }
+        if (ctx.SUPER() != null) {
+            throw new RuntimeEvalException(
+                    "'super' may only appear in field access, method call, or constructor invocation");
+        }
         if (ctx.identifier() != null) {
-            return context.resolve(ctx.identifier().getText()).value();
+            String name = ctx.identifier().getText();
+            Variable variable = context.tryResolve(name);
+            if (variable != null) {
+                return ExprResult.of(variable.value(), variable.declaredType());
+            }
+            // Fall back to `this.<name>` field access when inside a class method.
+            EvalContext.ClassFrame frame = context.currentClassFrame();
+            if (frame != null) {
+                ClassRegistry.FieldOwner owner = classRegistry.findField(frame.declaringClass(), name);
+                if (owner != null) {
+                    Value v = frame.instance().getField(owner.className(), name);
+                    return ExprResult.of(v, owner.field().type());
+                }
+            }
+            throw new RuntimeEvalException("Undeclared identifier: " + name);
         }
         throw new RuntimeEvalException("Invalid primary expression");
     }
 
-    Value evalCreator(MiniJavaParser.CreatorContext ctx) {
+    ExprResult evalCreator(MiniJavaParser.CreatorContext ctx) {
+        // Class instance creation: `new C(args)`
+        if (ctx.classCreatorRest() != null) {
+            String name;
+            if (ctx.createdName().identifier() != null) {
+                name = ctx.createdName().identifier().getText();
+            } else {
+                throw new RuntimeEvalException("Cannot construct primitive via new");
+            }
+            if (!classRegistry.exists(name)) {
+                throw new RuntimeEvalException("Unknown class: " + name);
+            }
+            List<ExprResult> args = new ArrayList<>();
+            if (ctx.classCreatorRest().expressionList() != null) {
+                for (MiniJavaParser.ExpressionContext e : ctx.classCreatorRest().expressionList().expression()) {
+                    ExprResult r = evalExpr(e);
+                    r.valueNonVoid();
+                    args.add(r);
+                }
+            }
+            return callDispatcher.invokeNewClass(name, args);
+        }
+
+        // Array creation: `new T[N]` / `new T[]{...}`
+        if (ctx.createdName().primitiveType() == null) {
+            // (class arrays aren't required to be constructible in this lab)
+            throw new RuntimeEvalException("Array of class type is not supported in `new`");
+        }
         Type base = Type.fromKeyword(ctx.createdName().primitiveType().getText());
         MiniJavaParser.ArrayCreatorRestContext rest = ctx.arrayCreatorRest();
 
@@ -155,7 +282,7 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
         }
 
         if (rest.arrayInitializer() != null) {
-            return evalArrayInitializer(rest.arrayInitializer(), arrayType);
+            return ExprResult.of(evalArrayInitializer(rest.arrayInitializer(), arrayType), arrayType);
         }
 
         List<Integer> sizes = new ArrayList<>();
@@ -170,7 +297,11 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
             throw new RuntimeEvalException("Invalid array creation");
         }
         MiniJavaArray arr = createArrayByDimensions(arrayType, sizes, 0);
-        return Value.ofArray(arr);
+        return ExprResult.of(Value.ofArray(arr), arrayType);
+    }
+
+    Value evalFieldInitializer(MiniJavaParser.VariableInitializerContext ctx, Type targetType) {
+        return evalVariableInitializer(ctx, targetType);
     }
 
     private MiniJavaArray createArrayByDimensions(Type arrayType, List<Integer> sizes, int depth) {
@@ -206,7 +337,7 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
         return Value.ofArray(new MiniJavaArray(targetType, values));
     }
 
-    private Value parseLiteral(MiniJavaParser.LiteralContext literal) {
+    private ExprResult parseLiteral(MiniJavaParser.LiteralContext literal) {
         if (literal.DECIMAL_LITERAL() != null) {
             String text = literal.DECIMAL_LITERAL().getText();
             text = text.replace("_", "");
@@ -214,22 +345,22 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
                 text = text.substring(0, text.length() - 1);
             }
             try {
-                return Value.ofDecimalLiteral(Integer.parseInt(text));
+                return ExprResult.of(Value.ofDecimalLiteral(Integer.parseInt(text)));
             } catch (NumberFormatException e) {
                 throw new RuntimeEvalException("Invalid integer literal: " + text, e);
             }
         }
         if (literal.CHAR_LITERAL() != null) {
-            return Value.ofChar(parseCharLiteral(literal.CHAR_LITERAL().getText()));
+            return ExprResult.of(Value.ofChar(parseCharLiteral(literal.CHAR_LITERAL().getText())));
         }
         if (literal.STRING_LITERAL() != null) {
-            return Value.ofString(parseStringLiteral(literal.STRING_LITERAL().getText()));
+            return ExprResult.of(Value.ofString(parseStringLiteral(literal.STRING_LITERAL().getText())));
         }
         if (literal.BOOL_LITERAL() != null) {
-            return Value.ofBoolean(Boolean.parseBoolean(literal.BOOL_LITERAL().getText()));
+            return ExprResult.of(Value.ofBoolean(Boolean.parseBoolean(literal.BOOL_LITERAL().getText())));
         }
         if (literal.NULL_LITERAL() != null) {
-            return Value.untypedNull();
+            return ExprResult.of(Value.untypedNull(), null);
         }
         throw new RuntimeEvalException("Unsupported literal");
     }
@@ -253,7 +384,18 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
     }
 
     Type parseType(MiniJavaParser.TypeTypeContext ctx) {
-        Type type = Type.fromKeyword(ctx.primitiveType().getText());
+        Type type;
+        if (ctx.primitiveType() != null) {
+            type = Type.fromKeyword(ctx.primitiveType().getText());
+        } else if (ctx.identifier() != null) {
+            String name = ctx.identifier().getText();
+            if (!classRegistry.exists(name)) {
+                throw new RuntimeEvalException("Unknown type: " + name);
+            }
+            type = Type.ofClass(name);
+        } else {
+            throw new RuntimeEvalException("Invalid type");
+        }
         int dims = ctx.LBRACK().size();
         for (int i = 0; i < dims; i++) {
             type = type.arrayOf();

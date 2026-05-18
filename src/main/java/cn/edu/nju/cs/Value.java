@@ -21,8 +21,8 @@ public final class Value {
     }
 
     public static Value typedNull(Type slotType) {
-        if (slotType == null || !slotType.isArray()) {
-            throw new RuntimeEvalException("typed null must carry an array (or class) type");
+        if (slotType == null || !(slotType.isArray() || slotType.isClass())) {
+            throw new RuntimeEvalException("typed null must carry an array or class type");
         }
         return new Value(Kind.NULL, slotType, null, false);
     }
@@ -57,6 +57,13 @@ public final class Value {
         return new Value(Kind.CONCRETE, array.type(), array, false);
     }
 
+    public static Value ofClassInstance(ClassInstance instance) {
+        if (instance == null) {
+            throw new RuntimeEvalException("Class instance cannot be null");
+        }
+        return new Value(Kind.CONCRETE, Type.ofClass(instance.realClassName()), instance, false);
+    }
+
     public static Value voidValue() {
         return new Value(Kind.CONCRETE, Type.VOID, null, false);
     }
@@ -86,6 +93,10 @@ public final class Value {
 
     public boolean isArray() {
         return kind == Kind.CONCRETE && type.isArray();
+    }
+
+    public boolean isClassInstance() {
+        return kind == Kind.CONCRETE && type != null && type.isClass();
     }
 
     public boolean isInt() {
@@ -141,6 +152,13 @@ public final class Value {
             throw new RuntimeEvalException("Expected array, but got " + typeName());
         }
         return (MiniJavaArray) payload;
+    }
+
+    public ClassInstance asClassInstance() {
+        if (!isClassInstance()) {
+            throw new RuntimeEvalException("Expected class instance, but got " + typeName());
+        }
+        return (ClassInstance) payload;
     }
 
     public int toIntWithPromotion() {
@@ -256,6 +274,9 @@ public final class Value {
         }
         if (isArray()) {
             return asArray().toOutputString();
+        }
+        if (isClassInstance()) {
+            return asClassInstance().realClassName();
         }
         throw new RuntimeEvalException("Unsupported value type: " + typeName());
     }

@@ -1,0 +1,48 @@
+
+// == operator
+
+class Base {
+    int x;
+}
+class A extends Base {
+    int val;
+
+    void setVal(int x) {
+        val = x;
+        super.x = 100;
+    }
+}
+
+class B extends Base {
+    int val;
+
+    void setVal(int x) {
+        val = x;
+        super.x = 200;
+    }
+}
+
+int main() {
+    A a = new A();
+    B b = new B();
+    Base base = new Base();
+    Base x = a;
+    
+    if(a == base) {
+      println("a == base");
+    }
+
+    if(b == base) {
+      println("b == base");
+    }
+
+    if(a == x) {
+        println("a == x");
+    }
+
+    if(b == x) {
+        println("b == x");
+    }
+
+    return 0;
+}

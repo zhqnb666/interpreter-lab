@@ -1,0 +1,18 @@
+
+// simple class method
+
+class Counter {
+    int count = 0;
+    
+    void reset() { count = 0; }
+    void increment() { count++; }
+}
+
+int main() {
+    Counter c = new Counter();
+    c.increment();
+    println(c.count); // 1
+    c.reset();
+    println(c.count); // 0
+    return 0;
+}

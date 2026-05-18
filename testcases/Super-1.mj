@@ -1,0 +1,21 @@
+
+// simple explicit super() initialization
+
+class Engine {
+    int power;
+    Engine() { power = 100; println("Base engine"); }
+}
+
+class CarEngine extends Engine {
+    CarEngine() { super(); power += 50; println("Car engine"); }
+}
+
+class SportsEngine extends CarEngine {
+    SportsEngine() { super(); power *= 2; println("Sports engine"); }
+}
+
+int main() {
+    SportsEngine e = new SportsEngine();
+    println(e.power); // 300
+    return 0;
+}

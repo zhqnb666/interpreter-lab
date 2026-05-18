@@ -1,0 +1,37 @@
+
+// simple type casting
+// field access without duplicated field name
+
+class Pet {
+    int petAge;
+
+    Pet() {
+        petAge = 6;
+    }
+}
+class SmallPet extends Pet {
+    int smallPetAge;
+
+    SmallPet() {
+        smallPetAge = 8;
+    }
+}
+class Cat extends SmallPet {
+    int catAge;
+
+    Cat() {
+        catAge = 10;
+    }
+}
+
+int main() {
+    Cat cat = new Cat();
+
+    println(cat.catAge);
+
+    println(((SmallPet)cat).smallPetAge);
+
+    println(((Pet)cat).petAge);
+
+    return 0;
+}

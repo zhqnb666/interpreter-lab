@@ -1,0 +1,22 @@
+
+// simple to_stirng() method
+// with println
+
+class Base {
+    string to_string() {
+        return "Base::to_string()";
+    }
+}
+
+class Derived extends Base {
+    string to_string() {
+        return "Derived::to_string()";
+    }
+}
+
+int main() {
+    Derived b = new Derived();
+    println(b.to_string()); // Derived::to_string()
+    println(b);             // Derived::to_string()
+    return 0;
+}

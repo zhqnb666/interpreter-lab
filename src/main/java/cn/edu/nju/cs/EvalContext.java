@@ -5,10 +5,14 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public final class EvalContext {
+    public record ClassFrame(ClassInstance instance, String declaringClass) {
+    }
+
     private final Deque<ScopeFrame> scopes = new ArrayDeque<>();
     private final Deque<MethodDecl> callStack = new ArrayDeque<>();
     private final Deque<Integer> loopDepthStack = new ArrayDeque<>();
     private final Deque<Integer> scopeBaseStack = new ArrayDeque<>();
+    private final Deque<ClassFrame> classFrames = new ArrayDeque<>();
     private final PrintStream out;
     private int loopDepth = 0;
 
@@ -36,6 +40,14 @@ public final class EvalContext {
     }
 
     public Variable resolve(String name) {
+        Variable v = tryResolve(name);
+        if (v == null) {
+            throw new RuntimeEvalException("Undeclared identifier: " + name);
+        }
+        return v;
+    }
+
+    public Variable tryResolve(String name) {
         int visibleDepth = scopes.size() - currentMethodScopeBase();
         for (ScopeFrame scope : scopes) {
             if (visibleDepth <= 0) {
@@ -47,7 +59,7 @@ public final class EvalContext {
             }
             visibleDepth--;
         }
-        throw new RuntimeEvalException("Undeclared identifier: " + name);
+        return null;
     }
 
     public void pushLoop() {
@@ -92,6 +104,25 @@ public final class EvalContext {
             throw new RuntimeEvalException("No current method");
         }
         return callStack.peek();
+    }
+
+    public void pushClassFrame(ClassFrame frame) {
+        classFrames.push(frame);
+    }
+
+    public void popClassFrame() {
+        if (classFrames.isEmpty()) {
+            throw new RuntimeEvalException("No class frame to pop");
+        }
+        classFrames.pop();
+    }
+
+    public ClassFrame currentClassFrame() {
+        return classFrames.peek();
+    }
+
+    public boolean inClassContext() {
+        return !classFrames.isEmpty();
     }
 
     private ScopeFrame currentScope() {

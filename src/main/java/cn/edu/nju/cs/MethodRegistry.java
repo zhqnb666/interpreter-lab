@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 public final class MethodRegistry {
     private final Map<String, List<MethodDecl>> methodsByName = new HashMap<>();
@@ -45,21 +46,41 @@ public final class MethodRegistry {
         return intMain;
     }
 
-    public MethodDecl resolveCall(String name, List<Value> args) {
-        List<MethodDecl> candidates = methodsByName.getOrDefault(name, List.of());
-        MethodDecl best = null;
+    public boolean hasOverloadsOf(String name) {
+        return methodsByName.containsKey(name);
+    }
+
+    public List<MethodDecl> overloadsOf(String name) {
+        return methodsByName.getOrDefault(name, List.of());
+    }
+
+    public MethodDecl resolveCall(String name, List<ExprResult> args) {
+        List<MethodDecl> candidates = overloadsOf(name);
+        return selectBestOverload(candidates, MethodDecl::parameters, args, name);
+    }
+
+    /**
+     * Generic best-match overload resolution by per-argument
+     * {@link TypeSystem#methodConversionCost} (lower total cost wins; ties report ambiguity;
+     * no match throws). Used for top-level methods, class methods, and class constructors.
+     */
+    public static <T> T selectBestOverload(
+            List<T> candidates,
+            Function<T, List<MethodDecl.Parameter>> paramsOf,
+            List<ExprResult> args,
+            String contextName) {
+        T best = null;
         int bestCost = Integer.MAX_VALUE;
         boolean tie = false;
-
-        for (MethodDecl candidate : candidates) {
-            if (candidate.parameters().size() != args.size()) {
+        for (T candidate : candidates) {
+            List<MethodDecl.Parameter> params = paramsOf.apply(candidate);
+            if (params.size() != args.size()) {
                 continue;
             }
             int totalCost = 0;
             boolean ok = true;
             for (int i = 0; i < args.size(); i++) {
-                Type paramType = candidate.parameters().get(i).type();
-                int cost = TypeSystem.methodConversionCost(paramType, args.get(i));
+                int cost = TypeSystem.methodConversionCost(params.get(i).type(), args.get(i));
                 if (cost < 0) {
                     ok = false;
                     break;
@@ -77,12 +98,11 @@ public final class MethodRegistry {
                 tie = true;
             }
         }
-
         if (best == null) {
-            throw new RuntimeEvalException("No matching method: " + name);
+            throw new RuntimeEvalException("No matching method: " + contextName);
         }
         if (tie) {
-            throw new RuntimeEvalException("Ambiguous call: " + name);
+            throw new RuntimeEvalException("Ambiguous call: " + contextName);
         }
         return best;
     }
