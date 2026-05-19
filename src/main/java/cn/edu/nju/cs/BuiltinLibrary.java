@@ -15,7 +15,6 @@ final class BuiltinLibrary {
     }
 
     private final EvalContext context;
-    private ClassRegistry classRegistry;
     private CallDispatcher callDispatcher;
 
     BuiltinLibrary(EvalContext context) {
@@ -23,7 +22,6 @@ final class BuiltinLibrary {
     }
 
     void setDispatch(ClassRegistry classRegistry, CallDispatcher callDispatcher) {
-        this.classRegistry = classRegistry;
         this.callDispatcher = callDispatcher;
     }
 

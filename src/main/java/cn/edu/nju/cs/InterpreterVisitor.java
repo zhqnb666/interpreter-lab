@@ -32,10 +32,6 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
         return classRegistry;
     }
 
-    CallDispatcher callDispatcher() {
-        return callDispatcher;
-    }
-
     public int execute(MiniJavaParser.CompilationUnitContext ctx) {
         visitCompilationUnit(ctx);
         MethodDecl entry = methodRegistry.resolveEntryMain();

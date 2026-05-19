@@ -67,14 +67,23 @@ final class LValueResolver {
     }
 
     private ArrayLValue resolveArrayLValue(MiniJavaParser.ExpressionContext expr) {
-        Value arrayValue = visitor.visit(expr.expression(0)).requireNonVoid();
+        // Per JLS §15.13.1 / §15.26.1: the index sub-expression is evaluated
+        // before the null/bounds check on the array reference. Side effects in
+        // the index (and, for `=`, in the RHS) must occur even when the array
+        // is null. We defer the null check to ArrayLValue.get()/set().
+        ExprResult arrR = visitor.evalExpr(expr.expression(0));
+        Value arrayValue = arrR.valueNonVoid();
+        int index = visitor.evalExpr(expr.expression(1)).valueNonVoid().requireIndex();
         if (arrayValue.isNull()) {
-            throw new RuntimeEvalException("Null pointer");
+            Type st = arrR.staticType();
+            if (st == null || !st.isArray()) {
+                throw new RuntimeEvalException("Null pointer");
+            }
+            return new ArrayLValue(null, index, st.componentType());
         }
         if (!arrayValue.isArray()) {
             throw new RuntimeEvalException("Not an array");
         }
-        int index = visitor.visit(expr.expression(1)).requireNonVoid().requireIndex();
         MiniJavaArray arr = arrayValue.asArray();
         Type elemType = arr.type().componentType();
         return new ArrayLValue(arr, index, elemType);
@@ -107,17 +116,19 @@ final class LValueResolver {
         } else {
             ExprResult r = visitor.evalExpr(recvExpr);
             Value v = r.valueNonVoid();
-            if (v.isNull()) {
-                throw new RuntimeEvalException("Null pointer");
-            }
-            if (!v.isClassInstance()) {
-                throw new RuntimeEvalException("Field access on non-class type");
-            }
-            instance = v.asClassInstance();
             if (r.staticType() == null || !r.staticType().isClass()) {
                 throw new RuntimeEvalException("Field access on non-class type");
             }
             startClass = r.staticType().className();
+            if (v.isNull()) {
+                // Per JLS §15.26.1: for `e.f = X`, the RHS is evaluated before
+                // the null check on `e`. Defer the NPE to FieldLValue.get()/set().
+                instance = null;
+            } else if (v.isClassInstance()) {
+                instance = v.asClassInstance();
+            } else {
+                throw new RuntimeEvalException("Field access on non-class type");
+            }
         }
 
         ClassRegistry.FieldOwner owner =
@@ -170,11 +181,17 @@ final class LValueResolver {
 
         @Override
         public Value get() {
+            if (array == null) {
+                throw new RuntimeEvalException("Null pointer");
+            }
             return array.get(index);
         }
 
         @Override
         public void set(Value value) {
+            if (array == null) {
+                throw new RuntimeEvalException("Null pointer");
+            }
             array.set(index, value);
         }
     }
@@ -199,11 +216,17 @@ final class LValueResolver {
 
         @Override
         public Value get() {
+            if (instance == null) {
+                throw new RuntimeEvalException("Null pointer");
+            }
             return instance.getField(ownerClass, fieldName);
         }
 
         @Override
         public void set(Value value) {
+            if (instance == null) {
+                throw new RuntimeEvalException("Null pointer");
+            }
             instance.setField(ownerClass, fieldName, value);
         }
     }

@@ -203,9 +203,9 @@ final class ExpressionEvaluator {
             }
             String methodName = mc.identifier().getText();
             Receiver recv = evalReceiver(ctx.expression(0));
-            if (recv.instance() == null) {
-                throw new RuntimeEvalException("Null pointer");
-            }
+            // Per JLS §15.12.4: arguments are evaluated before the null-check
+            // on the receiver, so their side effects occur even when the
+            // receiver is null.
             List<ExprResult> args = new ArrayList<>();
             if (mc.arguments().expressionList() != null) {
                 for (MiniJavaParser.ExpressionContext e : mc.arguments().expressionList().expression()) {
@@ -213,6 +213,9 @@ final class ExpressionEvaluator {
                     r.valueNonVoid();
                     args.add(r);
                 }
+            }
+            if (recv.instance() == null) {
+                throw new RuntimeEvalException("Null pointer");
             }
             return callDispatcher.invokeClassMethodOn(
                     recv.instance(),
