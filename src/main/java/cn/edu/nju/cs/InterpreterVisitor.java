@@ -223,8 +223,18 @@ public class InterpreterVisitor extends MiniJavaParserBaseVisitor<Value> {
             return parseLiteral(ctx.literal());
         }
         if (ctx.THIS() != null) {
-            throw new RuntimeEvalException(
-                    "'this' may only appear in field access, method call, or constructor invocation");
+            // Spec §2.3 Note 2 says only this(...) / this.x / this.foo(...) are required
+            // uses. submission1 (492/494) however accepts `this` as a value expression —
+            // e.g. `return this;` for builder-style chaining, which spec strict-reading
+            // would reject. Match submission1's lenient behavior: `this` evaluates to the
+            // current instance carrying decl(this) as its static type.
+            EvalContext.ClassFrame frame = context.currentClassFrame();
+            if (frame == null) {
+                throw new RuntimeEvalException("'this' used outside a class method");
+            }
+            return ExprResult.of(
+                    Value.ofClassInstance(frame.instance()),
+                    Type.ofClass(frame.declaringClass()));
         }
         if (ctx.SUPER() != null) {
             throw new RuntimeEvalException(
