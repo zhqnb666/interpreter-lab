@@ -321,15 +321,14 @@ final class ExpressionEvaluator {
         ExprResult rightR = visitor.evalExpr(ctx.expression(1));
         Value right = rightR.valueNonVoid();
         if ("+=".equals(op) && targetType.equals(Type.STRING)) {
-            if (isClassSlot(rightR)) {
-                assigned = Value.ofString(left.asString() + callDispatcher.stringifyForOutput(rightR));
-                target.set(assigned);
-                return ExprResult.of(assigned, targetType);
-            }
-            if (!right.isStringConcatOperand()) {
+            // Per Lab 3 §3.3: bare null literal has no intrinsic type and only
+            // implicitly converts to array / class slots — never to a string concat
+            // operand. Reject untyped null here. Typed null (with a class or array
+            // staticType) is fine; stringifyForOutput renders it as "null".
+            if (right.isNull() && rightR.staticType() == null) {
                 throw new RuntimeEvalException("Invalid string concatenation operand");
             }
-            assigned = Value.ofString(left.asString() + right.toOutputString());
+            assigned = Value.ofString(left.asString() + callDispatcher.stringifyForOutput(rightR));
             target.set(assigned);
             return ExprResult.of(assigned, targetType);
         }
@@ -453,21 +452,21 @@ final class ExpressionEvaluator {
             return ExprResult.of(Value.ofBoolean(op.equals("==") == eq));
         }
 
-        // String concatenation: extend Lab 3's `+` to accept class objects on either side
-        // by going through the shared stringifyForOutput (which dispatches a suitable
-        // to_string when reachable; otherwise yields the real class name). Triggered only
-        // when at least one operand is a string AND any side is a class slot — primitive
-        // string concat keeps its existing semantics.
-        if ("+".equals(op) && (isClassSlot(leftR) || isClassSlot(rightR))
-                && (left.isString() || right.isString())) {
-            if (!isClassSlot(leftR) && !left.isStringConcatOperand()) {
+        // String concatenation `+`: when either operand is a string, render both via
+        // stringifyForOutput. That uniformly handles primitives, arrays (as `[..., ...]`,
+        // with class elements dispatching to_string), class objects (decl-driven to_string
+        // per spec §8.1), and typed null. Bare null literal — staticType == null — has no
+        // intrinsic type per Lab 3 §3.3 (only implicit-converts to array/class), so it's
+        // not a valid string concat operand and is rejected here.
+        if ("+".equals(op) && (left.isString() || right.isString())) {
+            if (left.isNull() && leftR.staticType() == null) {
                 throw new RuntimeEvalException("Invalid string concatenation operand");
             }
-            if (!isClassSlot(rightR) && !right.isStringConcatOperand()) {
+            if (right.isNull() && rightR.staticType() == null) {
                 throw new RuntimeEvalException("Invalid string concatenation operand");
             }
-            String ls = isClassSlot(leftR) ? callDispatcher.stringifyForOutput(leftR) : left.toOutputString();
-            String rs = isClassSlot(rightR) ? callDispatcher.stringifyForOutput(rightR) : right.toOutputString();
+            String ls = callDispatcher.stringifyForOutput(leftR);
+            String rs = callDispatcher.stringifyForOutput(rightR);
             return ExprResult.of(Value.ofString(ls + rs));
         }
 
@@ -487,15 +486,7 @@ final class ExpressionEvaluator {
                 }
                 yield ExprResult.of(Value.ofInt(left.requireIntegral() % rv));
             }
-            case "+" -> {
-                if (left.isString() || right.isString()) {
-                    if (!left.isStringConcatOperand() || !right.isStringConcatOperand()) {
-                        throw new RuntimeEvalException("Invalid string concatenation operands");
-                    }
-                    yield ExprResult.of(Value.ofString(left.toOutputString() + right.toOutputString()));
-                }
-                yield ExprResult.of(Value.ofInt(left.requireIntegral() + right.requireIntegral()));
-            }
+            case "+" -> ExprResult.of(Value.ofInt(left.requireIntegral() + right.requireIntegral()));
             case "-" -> ExprResult.of(Value.ofInt(left.requireIntegral() - right.requireIntegral()));
             case "<<" -> ExprResult.of(Value.ofInt(left.requireIntegral() << right.requireIntegral()));
             case ">>" -> ExprResult.of(Value.ofInt(left.requireIntegral() >> right.requireIntegral()));

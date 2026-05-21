@@ -25,12 +25,29 @@ final class CallDispatcher {
      * Convert an argument into its printable / concatenation form. For class-typed
      * slots dispatch to a suitable `string to_string()` reachable from the declared
      * type's chain (Phase-2 virtual dispatch on real(x)); fall back to the real class
-     * name when no such method exists. Used by both BuiltinLibrary's print/println
-     * and ExpressionEvaluator's `+` operator so the two routes stay consistent.
+     * name when no such method exists. Arrays are rendered `[e1, e2, ...]` with each
+     * element stringified the same way, using the array's component type as the
+     * declared type — so `Named[]` whose element class has `to_string` formats its
+     * elements via to_string rather than the raw class name. Used by both
+     * BuiltinLibrary's print/println and ExpressionEvaluator's `+` operator so the
+     * two routes stay consistent.
      */
     String stringifyForOutput(ExprResult arg) {
         Value v = arg.valueNonVoid();
         Type st = arg.staticType();
+        if (v.isArray()) {
+            MiniJavaArray arr = v.asArray();
+            Type elemType = arr.type().componentType();
+            StringBuilder sb = new StringBuilder("[");
+            for (int i = 0; i < arr.length(); i++) {
+                if (i > 0) {
+                    sb.append(", ");
+                }
+                sb.append(stringifyForOutput(ExprResult.of(arr.get(i), elemType)));
+            }
+            sb.append("]");
+            return sb.toString();
+        }
         boolean isClassSlot = (st != null && st.isClass()) || v.isClassInstance();
         if (!isClassSlot) {
             return v.toOutputString();

@@ -127,7 +127,11 @@ public final class TypeSystem {
             Value v = arg.value();
             if (v.isNull()) {
                 if (v.type() == null) {
-                    return 0; // untyped null fits any class slot
+                    // Lab 3 §1.3 lists `null → Array` as an implicit conversion, and Lab 3
+                    // §1.4 Note 2 caps the conversion-count at 0 or 1. Lab 4 adds class
+                    // params on the same footing — so untyped null fitting any reference
+                    // slot is a 1-cost conversion, matching the array path below.
+                    return 1;
                 }
                 if (v.type().isClass()) {
                     if (v.type().className().equals(target.className())) {
