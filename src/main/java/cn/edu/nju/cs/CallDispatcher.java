@@ -33,7 +33,15 @@ final class CallDispatcher {
      * two routes stay consistent.
      */
     String stringifyForOutput(ExprResult arg) {
-        Value v = arg.valueNonVoid();
+        Value v = arg.value();
+        // void → "null" (lenient): matches submission1's formatValue, which renders
+        // any null-valued Value (including the void sentinel returned by print/println)
+        // as the literal "null". Spec doesn't enumerate void in print's accepted types
+        // (Lab 3 §6 print accepts primitive/array/null) but doesn't forbid it either;
+        // the lenient handling lets `println(print(false))`-style chains work.
+        if (v.isVoid()) {
+            return "null";
+        }
         Type st = arg.staticType();
         if (v.isArray()) {
             MiniJavaArray arr = v.asArray();
@@ -327,7 +335,6 @@ final class CallDispatcher {
         if (ctx.expressionList() != null) {
             for (MiniJavaParser.ExpressionContext e : ctx.expressionList().expression()) {
                 ExprResult r = visitor.evalExpr(e);
-                r.valueNonVoid();
                 args.add(r);
             }
         }

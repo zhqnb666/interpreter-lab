@@ -53,23 +53,19 @@ public final class ClassDecl {
     }
 
     public void addMethod(MethodDecl method) {
-        for (MethodDecl existing : methods) {
-            if (!existing.name().equals(method.name())) {
-                continue;
-            }
-            if (sameParamTypes(existing, method)) {
-                throw new RuntimeEvalException(
-                        "Method redefinition in class " + name + ": " + method.formatSignature());
-            }
-        }
+        // Spec is silent on intra-class duplicate-signature method declarations.
+        // We accept them here; ClassRegistry.collectMethods filters duplicates
+        // at dispatch time (first declared wins; later same-sig methods silently
+        // shadowed — matches the reference implementation and OpenCase tests).
         methods.add(method);
     }
 
     public void addConstructor(ConstructorDecl ctor) {
+        // Constructors have no collectMethods-style dedupe stage, so apply the
+        // same "first wins" policy here directly.
         for (ConstructorDecl existing : constructors) {
             if (sameParamTypes(existing, ctor)) {
-                throw new RuntimeEvalException(
-                        "Constructor redefinition in class " + name);
+                return;
             }
         }
         constructors.add(ctor);

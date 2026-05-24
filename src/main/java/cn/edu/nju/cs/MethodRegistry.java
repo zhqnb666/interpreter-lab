@@ -10,13 +10,16 @@ public final class MethodRegistry {
     private final Map<String, List<MethodDecl>> methodsByName = new HashMap<>();
 
     public void register(MethodDecl method) {
+        // Dedupe top-level methods: first declared wins, but ONLY when name,
+        // parameter types AND return type all match. Same (name,params) with
+        // different return types are both kept so the call site can report
+        // ambiguity (per Lab 3 Task 2 Note 1: `int main()` + `void main()` is
+        // an ambiguous-entry error).
         List<MethodDecl> overloads = methodsByName.computeIfAbsent(method.name(), k -> new ArrayList<>());
         for (MethodDecl existing : overloads) {
-            if (!sameParamTypes(existing, method)) {
-                continue;
-            }
-            if (existing.returnType().equals(method.returnType())) {
-                throw new RuntimeEvalException("Method redefinition: " + method.formatSignature());
+            if (sameParamTypes(existing, method)
+                    && existing.returnType().equals(method.returnType())) {
+                return;
             }
         }
         overloads.add(method);

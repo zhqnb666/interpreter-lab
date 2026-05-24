@@ -104,10 +104,16 @@ public final class ClassRegistry {
 
     /**
      * Collect all methods named {@code methodName} visible from {@code startClass} for
-     * Phase 1 overload resolution. Walks from {@code startClass} up the chain and adds
-     * each method whose parameter-type signature has not already been seen from a more
-     * derived class — i.e. subclass overrides shadow the ancestor's same-signature
-     * method, but unrelated overloads remain visible.
+     * Phase 1 overload resolution. Walks from {@code startClass} up the chain.
+     *
+     * Dedupe rule (same as `MethodRegistry.register`): a method is shadowed by an
+     * earlier-added one ONLY when name, parameter types, AND return type all match.
+     * Same-(name,params) but different-return-type methods are both kept, so the call
+     * site reports ambiguity — matching Lab 3 Task 2 Note 1's intent for the entry
+     * `int main()` / `void main()` case.
+     *
+     * Across the chain, a subclass declaration with matching (params, returnType) hides
+     * the parent's, so only the most-derived occurrence is kept.
      */
     public List<MethodDecl> collectMethods(String startClass, String methodName) {
         List<MethodDecl> result = new ArrayList<>();
@@ -118,7 +124,8 @@ public final class ClassRegistry {
                 }
                 boolean shadowed = false;
                 for (MethodDecl already : result) {
-                    if (sameParamTypes(already.parameters(), m.parameters())) {
+                    if (sameParamTypes(already.parameters(), m.parameters())
+                            && already.returnType().equals(m.returnType())) {
                         shadowed = true;
                         break;
                     }
