@@ -1,0 +1,138 @@
+class Class0 {
+    string f0_0 = "TCFw~";
+
+    Class0 m0_0() {
+        this.f0_0 = ("0D*iC5" + to_string(new char[3]));
+        println();
+        {
+            int v1 = -34;
+            int v0 = -46;
+            while ((v0 < 5)) v0++;
+            assert((9 > 6));
+            v1 = 18;
+        }
+        return new Class0();
+    }
+
+    char m0_1(boolean p0, int p1) {
+        this.f0_0 = (to_string(new char[10]) + (p0 != p0));
+        println();
+        print((char) 10);
+        return 'K';
+    }
+}
+
+void method0(int[][][] p0, int p1, Class0 p2) {
+    print(new Class0());
+    p0[0][0] = new int[] {1, -2, 0, -6};
+}
+
+int main() {
+    Class0 v31 = null;
+    int v14;
+    boolean[] v2 = new boolean[] {true, false, true, false, true};
+    if (true) {
+        v2 = new boolean[6];
+        if (false) {
+            Class0 v3 = null;
+            v3 = new Class0();
+        }
+        {
+            {
+                boolean[] v5 = new boolean[10];
+                int v4;
+                v4 = length(new char[] {'t'});
+                v5 = new boolean[8];
+                v4 = length(new char[] {'p', 'a', '$'});
+            }
+            print('2');
+        }
+    } else {
+        int v7 = -30;
+        int v6;
+        v6 = -48;
+        v7 = -26;
+        if ((-5 == -10)) {
+            int v9;
+            var v8 = "UaH0";
+            print((-7 == 9));
+            v8 = ("h/P" + itoa(45));
+            if (false) {
+                v9 = atoi("-7541");
+            } else {
+                int[] v10 = new int[] {-1, -8, 0};
+                v10 = new int[] {-4, 3};
+            }
+        }
+    }
+    println(new char[9]);
+    for (int v11 = 0; v11 < 5; v11++) {
+        {
+            int v13;
+            boolean v12;
+            v12 = false;
+            v13 = length(new boolean[1]);
+        }
+        v14 = atoi("-8875");
+    }
+    if ((6 == 6)) ; else if ((9 != -3)) ; else {
+        boolean[] v16 = new boolean[7];
+        {
+            int v15;
+            println(length(new int[1]));
+            v15 >>= atoi("6115");
+        }
+        v16 = new boolean[] {true, true, true, false, false};
+    }
+    if (false) {
+        Class0 v17;
+        v17 = new Class0();
+        println();
+        print(-17);
+    } else {
+        boolean v30;
+        var v29 = "[ZQq";
+        int v25;
+        int[][][] v24;
+        if ((8 < 7)) {
+            int[] v18;
+            v18 = new int[5];
+        } else {
+            int[][][] v23 = new int[2][][];
+            if (false) {
+                Class0 v20 = null;
+                char[] v19 = new char[1];
+                v19 = new char[9];
+                v20 = new Class0();
+            } else {
+                var v22 = (4 >= -9);
+                char[] v21 = {'-', '3'};
+                v21 = new char[2];
+                v22 = false;
+            }
+            v23 = new int[][][] {{{-8, 4}, {7}, {8, -6, 4, 1}}, {{-2}, {9, -6}}, {{-4, -9}, {8}}, {{0, 7}, {3, -5, 9}, {-7, -7, 9, 8}}};
+        }
+        v24 = new int[][][] {{{5, 8, -6, -8}, {-3}, {-9, -2, -8, -5}}, {{-5}}, {{3, -9}}};
+        while ((v25 < 3)) {
+            method0(new int[6][][], length(new int[] {-2, 6, -7, -8, -1}), new Class0());
+            if ((7 < 2)) {
+                boolean v27;
+                var v26 = -4;
+                v26 ^= length(new char[] {'f', 'f'});
+                v26 <<= length(new int[9]);
+                v27 = (v26 != v26);
+            } else {
+                char v28;
+                v28 = 'O';
+                v29 = to_string(new char[] {'I', '%', 'k'});
+                v30 = (v28 > v28);
+            }
+            v25++;
+        }
+    }
+    method0(new int[][][] {{{3, -2, -4}, {8, 8}, {5}, {-3, 2, 4, 4}}, {{10, 2, 4}, {6, 3, -10, 2}, {2, 4}}, {{-8, -8, 0}, {-7}, {5, -9, 6, 7}}, {{3, -4}, {5, 5, 1}, {-5, -9, -9, 10}, {1, -5, -9, -2}}, {{6}}}, length(new char[] {'W', 'W', 'H', '8'}), new Class0());
+    v31 = new Class0();
+    println(v31.m0_0());
+    println(v31.m0_1(false, length(new int[][] {{-4, 3, -4}, {10, -5, -5, 2}, {-6, -6}, {0}, {4, 6, 1}})));
+    return 10;
+}

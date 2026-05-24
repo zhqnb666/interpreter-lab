@@ -1,0 +1,108 @@
+class Class0 {
+    char f0_0 = 'y';
+
+    char[] f0_1;
+
+    Class0(int[] p0, Class0 p1, int[][] p2) {
+    }
+
+    Class0(Class0 p0, int[][][] p1, boolean[] p2) {
+        int v1;
+        this.f0_0 = p0.f0_0;
+        this.f0_1 = new char[4];
+        v1 >>= length(new char[] {'c', 'r', 'B', 't'});
+        p2[0] = (v1 >= v1);
+    }
+
+    boolean[] m0_0(int[][][] p0, char p1, int p2) {
+        var v3 = 'r';
+        var v2 = 26;
+        this.f0_0 = 'J';
+        v2 = atoi("-452");
+        v3 = (char) p2;
+        return new boolean[] {true, false, false};
+    }
+}
+
+class Class1 extends Class0 {
+    Class0 f1_0;
+
+    Class1(boolean p0) {
+        super(null, new int[8][][], new boolean[] {true, false, true, false});
+        println();
+    }
+
+    Class1(Class1 p0, Class0 p1) {
+        this(true);
+        this.f1_0 = p0;
+        if (true) {
+            p0 = null;
+        } else if ((-10 >= -1)) {
+            p0 = null;
+        }
+    }
+
+    Class1() {
+        Class0 v9;
+        Class1 v5 = null;
+        this.f1_0 = new Class0(new int[] {-7, -3, 8, -6}, null, new int[][] {{1}, {-9, 7, 1}, {7, 1, 10}, {-7, 2, -1}});
+        for (int v4 = 0; v4 < 5; v4++) {
+            char[] v7;
+            Class1 v6 = null;
+            if ((1 > -4)) {
+                v5 = null;
+                v6 = null;
+            } else {
+                int v8;
+                v7 = new char[4];
+                v8 = length(new int[][] {{9}, {-2, -10, -7}, {1, 1}, {7, -9, 7, 9}, {8, -3, 3, -8}});
+            }
+        }
+        v9 = new Class0(new int[] {-4, -3, -7}, null, new int[4][]);
+    }
+
+    boolean[] m0_0(int[][][] p0, char p1, int p2) {
+        int[] v10;
+        this.f1_0 = new Class1();
+        v10 = new int[] {-7, -10, 7, 6, 9};
+        return new boolean[] {false, false, false};
+    }
+}
+
+int[] method0() {
+    int v0 = -15;
+    v0 = length(new char[] {'6'});
+    println(true);
+    return new int[] {-2, -6};
+}
+
+int main() {
+    Class1 v20 = null;
+    Class0 v19 = null;
+    var v16 = 'Y';
+    for (int v11 = 0; v11 < 5; v11++) {
+        int v12;
+        while ((v12 < 4)) {
+            boolean v14;
+            char v13 = '{';
+            v13 = 'u';
+            v14 = (v13 != v13);
+            v12++;
+        }
+    }
+    for (int v15 = 0; v15 < 3; v15++) {
+        {
+            Class0 v18 = null;
+            int v17 = -33;
+            v16 *= '6';
+            v17 |= length(new int[6][]);
+            v18 = new Class1(null, null);
+        }
+    }
+    println(method0());
+    v19 = new Class0(new int[7], v19, new int[5][]);
+    println(v19.m0_0(new int[][][] {{{-9, 3, -6, 10}}}, 'y', atoi("-3584")));
+    v20 = new Class1();
+    println(v20.m0_0(new int[3][][], v19.f0_0, atoi("2564")));
+    return 50;
+}

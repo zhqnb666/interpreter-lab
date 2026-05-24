@@ -1,0 +1,10 @@
+Size: 3
+Get 1: Alice
+Contains 2: true
+After remove, size: 2
+Get 2: null
+Map structure:
+HashMap {  [0]:   [1]: (17 : Charlie) -> (1 : Alice)  [2]:   [3]:   [4]:   [5]:   [6]:   [7]:   [8]:   [9]:   [10]:   [11]:   [12]:   [13]:   [14]:   [15]: }
+Process exits with 0.
+
+0

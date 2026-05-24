@@ -1,0 +1,86 @@
+class Class0 {
+    int f0_0;
+
+    Class0(boolean p0, int[] p1) {
+        this.f0_0 = p1[0];
+        print(p0);
+    }
+
+    char[] m0_0(char p0, char p1, Class0 p2) {
+        this.f0_0 = 41;
+        println(this.f0_0);
+        println();
+        return new char[10];
+    }
+
+    void m0_1(Class0 p0) {
+        this.f0_0 = 44;
+        println(this.f0_0);
+        p0.f0_0 = p0.f0_0;
+    }
+}
+
+char method0() {
+    var v2 = true;
+    int v0;
+    while ((v0 < 3)) {
+        int v1 = 21;
+        v1 = -50;
+        if ((0 == 10)) continue;
+        v0++;
+    }
+    v2 = (-7 <= -9);
+    return 'W';
+}
+
+boolean[] method1(char p0) {
+    println(new char[] {'=', 'D'});
+    print(length(new int[5][]));
+    print(new int[] {9, 8, -5, -8});
+    return new boolean[10];
+}
+
+int method2() {
+    int v3 = -5;
+    while ((v3 < 2)) v3++;
+    {
+        int[][] v4;
+        v4 = new int[4][];
+        v4[0] = new int[] {5, 0, 4};
+    }
+    return 33;
+}
+
+int main() {
+    Class0 v13;
+    char[] v12 = {'m', '?'};
+    var v7 = 22;
+    boolean[] v6;
+    int v5 = 15;
+    while ((v5 < 5)) v5++;
+    v6 = new boolean[7];
+    while ((v7 < 3)) {
+        if ((10 <= -8)) {
+            int v8;
+            println();
+            while ((v8 < 5)) v8++;
+        } else {
+            int[][][] v11 = {{{6, 2, -9, 4}, {-1, 4}, {2}}, {{-4}, {-3, -5, 9, -1}, {3, -3, -5}, {9}}, {{9, -5, -5}, {-8, 3}, {-3}, {-2}}, {{-2, -10, 5}, {8, 3, -5, 5}, {4}, {3}}, {{0, 1}, {3, -3, -5, 3}, {-7, -4}}};
+            Class0 v10 = null;
+            for (int v9 = 0; v9 < 5; v9++) {
+                v10 = new Class0((v6 != null), new int[10]);
+            }
+            print(new int[] {-2, 5, -3, -9});
+            v11 = new int[4][][];
+        }
+        v7++;
+    }
+    v12 = new char[] {'<', 'B', '9'};
+    println(method0());
+    println(method1(method0()));
+    println(method2());
+    v13 = new Class0(true, new int[] {9, 4, 3, -4, 4});
+    println(v13.m0_0(method0(), method0(), new Class0((4 > 1), new int[] {1, 2, -7, 9, 1})));
+    v13.m0_1((Class0) v13);
+    return 28;
+}

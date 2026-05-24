@@ -1,0 +1,46 @@
+class Derived extends Base {
+    // field y with initial value
+    int y = 10;
+    // explicit constructor
+    Derived() {
+    }
+    // method overridding
+    void method1() {
+        println("Derived");
+    }
+    // new method in Derived class
+    void method2(int arg) {
+        println(arg);
+    }
+}
+
+class Base {
+    // field x without initial value
+    int x;
+    // There is no explicit constructor
+    // default constructor Base(){} is implicitly generated
+    // method
+    void method1() {
+        println("Base");
+    }
+}
+
+int main(){
+    Base x1 = new Derived();
+    Base x2 = new Base();
+    Derived x3 = new Derived();
+    boolean b1 = x1 instanceof Base;     // true
+    boolean b2 = x1 instanceof Derived;  // true
+    boolean b3 = x2 instanceof Base;     // true
+    boolean b4 = x2 instanceof Derived;  // false
+    boolean b5 = x3 instanceof Base;     // true
+    boolean b6 = x3 instanceof Derived;  // true
+    println(b1);
+    println(b2);
+    println(b3);
+    println(b4);
+    println(b5);
+    println(b6);
+
+    return 0;
+}

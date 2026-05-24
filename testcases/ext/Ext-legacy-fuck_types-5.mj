@@ -1,0 +1,4 @@
+int main(){
+    char c=114514;
+    return 0;
+}

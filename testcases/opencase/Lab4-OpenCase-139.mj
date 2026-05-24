@@ -1,0 +1,148 @@
+class Class0 {
+    int[][][] f0_0 = {{{3, 5}}, {{7, -7, -6, 8}, {5, 5}}, {{-9, -3}}, {{-4}, {-8, 10, 10}}, {{7, -2}}};
+
+    int[] f0_1;
+
+    int f0_2;
+
+    Class0(string p0) {
+        this.f0_0 = new int[][][] {{{-10, 1, 8, 4}, {5, -8}, {9, 0, -2}}, {{-2, 10, 3, -1}}, {{0, 3}}, {{2, -8}, {-1}, {-3}, {4, 0, 5, -7}}};
+        this.f0_1 = new int[] {2};
+        this.f0_2 = -47;
+        for (int v8 = 0; v8 < 4; v8++) {
+            assert((4 != 7));
+            {
+                int[] v10 = new int[] {1, 8, -7, -8};
+                Class0 v9 = null;
+                v9 = null;
+                v9 = null;
+                v10 = new int[2];
+            }
+        }
+    }
+
+    Class0(boolean[] p0, int[][] p1, char[] p2) {
+        this(to_string(new char[] {'U'}));
+        this.f0_1 = new int[3];
+        this.f0_2 = 25;
+        p0[0] = (p1 == null);
+        p1[0] = new int[] {4, 8, -8};
+    }
+
+    boolean[] m0_0(string p0) {
+        this.f0_2 = 7;
+        println(this.f0_2);
+        {
+            print('m');
+        }
+        print(new Class0(to_string(new char[2])));
+        println(new int[] {7, 9, 7});
+        return new boolean[3];
+    }
+
+    void m0_1(int[][] p0, char p1, int[] p2) {
+        this.f0_0 = new int[][][] {{{-1, -4}, {-10, 6}, {-8}, {-1, -4}}};
+        print((p2 == null));
+        {
+            int[] v11;
+            print(new Class0("(~8tj"));
+            v11 = new int[] {-10, 1};
+            {
+                Class0 v15;
+                boolean[] v12 = {false, true, true};
+                if (true) {
+                    string v13 = "C=r";
+                    v12 = new boolean[] {true, true, false, true};
+                    p0 = new int[7][];
+                    v13 += false;
+                } else if ((p1 <= p1)) {
+                    p0 = new int[9][];
+                } else {
+                    string v16 = "'LTj";
+                    char[] v14 = {'3', '&', '3', '-'};
+                    v14 = new char[] {'.', 'S'};
+                    v15 = new Class0(new boolean[9], p0, v14);
+                    v16 = to_string(new char[7]);
+                }
+            }
+        }
+        {
+            boolean[] v23;
+            {
+                var v19 = -24;
+                int v18 = 16;
+                if ((p1 == p1)) {
+                    var v17 = (p2 != null);
+                    v17 = (p2 == p2);
+                    v18 = p2[0];
+                } else {
+                    Class0 v20 = null;
+                    v19 %= -819;
+                    v20 = new Class0("_NmK@g");
+                }
+            }
+            for (int v21 = 0; v21 < 3; v21++) p0 = p0;
+            for (int v22 = 0; v22 < 2; v22++) {
+                v23 = new boolean[] {false};
+                p1 = p1;
+            }
+        }
+    }
+}
+
+void method0() {
+    println(new Class0(to_string(new char[8])));
+    print(new int[] {8});
+}
+
+int method1() {
+    char[] v6;
+    char v5;
+    int v4 = 35;
+    for (int v0 = 0; v0 < 5; v0++) {
+        boolean v3 = (-2 < -9);
+        for (int v1 = 0; v1 < 3; v1++) {
+            int v2 = 27;
+            v2 >>= 49;
+        }
+        if (false) break;
+        v3 = true;
+    }
+    v4 = 13;
+    v5 = '6';
+    v6 = new char[2];
+    for (int v7 = 0; v7 < 4; v7++) {
+        v6[0] = v5;
+    }
+    return 15;
+}
+
+int main() {
+    Class0 v32 = null;
+    boolean[] v31 = new boolean[7];
+    int v24;
+    while ((v24 < 3)) {
+        if (false) {
+            Class0 v28 = null;
+            var v27 = '!';
+            int v26;
+            int v25 = -33;
+            v25 = 34;
+            while ((v26 < 2)) {
+                v27 = 'e';
+                v26++;
+            }
+            v28 = new Class0(new boolean[2], new int[4][], new char[8]);
+        }
+        for (int v29 = 0; v29 < 2; v29++) ;
+        for (int v30 = 0; v30 < 3; v30++) ;
+        v24++;
+    }
+    v31 = new boolean[] {false, false, false, true};
+    method0();
+    println(method1());
+    v32 = new Class0(itoa(-39));
+    println(v32.m0_0("Nvf!fP"));
+    v32.m0_1(new int[][] {{9, 9, 7}, {-3, 2, 7}, {3, 7, 4, -9}, {8, -5}}, 'R', new int[] {-7, -9, -10, -6, 2});
+    return v32.f0_2;
+}

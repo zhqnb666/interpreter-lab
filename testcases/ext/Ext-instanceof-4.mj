@@ -1,0 +1,9 @@
+class A{
+}
+class B{
+}
+int main(){
+    A a;
+    assert(a instanceof B);
+    return 0;
+}

@@ -1,0 +1,7 @@
+class A{
+}
+int main(){
+    int x=3;
+    assert(x instanceof A);
+    return 0;
+}

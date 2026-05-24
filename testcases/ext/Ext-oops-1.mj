@@ -1,0 +1,38 @@
+
+class A{
+    int x;
+    A(){
+        this(1);
+    }
+
+    A(int x){
+        this(1,2);
+    }
+
+    A(int x,int y){
+        x=x+y;
+        this.x=x;
+    }
+}
+
+class B extends A{
+    B(){
+        this(3);
+    }
+
+    B(int x){
+        super(x);
+    }
+
+    B(int x,int y){
+    }
+}
+
+class C extends B{
+}
+int main(){
+    println(new C().x);
+    println(new B(1,2).x);
+    println(new B(2).x);
+    return 0;
+}

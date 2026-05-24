@@ -1,0 +1,4 @@
+int main(){
+    assert(null!=3); //Fails
+    return 0;
+}

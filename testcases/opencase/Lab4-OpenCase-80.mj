@@ -1,0 +1,170 @@
+class Class0 {
+    int f0_0;
+
+    boolean f0_1;
+
+    Class0(Class1 p0, Class0 p1, Class0 p2) {
+        boolean[] v13 = {true};
+        this.f0_0 = length("%<,");
+        v13 = new boolean[2];
+    }
+
+    void m0_0(Class0 p0) {
+        this.f0_0 = length("`-eGWo");
+        println(this.f0_0);
+        if ((1 >= 1)) p0 = new Class0(null, null, p0); else {
+            p0.m0_1(method2(new int[1], new int[4]));
+        }
+        println(method2(new int[7], new int[] {-4, 0, -5}));
+        return;
+    }
+
+    void m0_1(Class0 p0) {
+        boolean[] v14 = {true};
+        this.f0_0 = -44;
+        println(this.f0_0);
+        p0.m0_1(method2(new int[] {0, -9, -5, -6, -9}, new int[7]));
+        print((9 >= -7));
+        v14 = new boolean[2];
+    }
+}
+
+class Class1 extends Class0 {
+    int[][] f1_0 = {{-1, 2}, {-2}};
+
+    char f1_1;
+
+    int[][] f1_2;
+
+    Class1(boolean p0) {
+        Class1 v17;
+        int v15;
+        this.f1_0 = new int[][] {{-4, 7, -5, -4}};
+        this.f1_2 = new int[][] {{3, 0, 1, -5}, {10, 9, 6, -2}, {2, 7, -1}};
+        print(null);
+        while ((v15 < 4)) {
+            Class0 v16;
+            print(("H+Lo+{" + "=F73"));
+            v16 = new Class0(null, null, null);
+            v17 = null;
+            v15++;
+        }
+    }
+
+    Class1() {
+        char v18 = '=';
+        this.f1_0 = new int[][] {{2}, {-5, 0, -10}, {9, 4, -1}};
+        this.f1_1 = 'u';
+        this.f1_2 = new int[][] {{-3, -4}, {-9, 4, -5, -8}, {0, -9}};
+        println(-44);
+        if ((2 > 9)) {
+            int[] v19;
+            println(new boolean[] {true, false});
+            v18 = 'M';
+            v19 = new int[] {2, 3, 6, -4, -5};
+        } else {
+            for (int v20 = 0; v20 < 3; v20++) {
+                Class0 v21 = null;
+                v21 = new Class0(null, null, null);
+            }
+            {
+                if ((-5 == -4)) ;
+            }
+        }
+    }
+
+    void m1_0(int[][] p0, boolean p1) {
+        int v22;
+        this.f1_2 = p0;
+        println(super.f0_0);
+        super.m0_1(null);
+        v22 = 2;
+    }
+}
+
+class Class2 {
+    int f2_0;
+
+    void m2_0(Class1 p0, Class1 p1, int[] p2) {
+        char[] v23;
+        this.f2_0 = p1.f0_0;
+        println(this.f2_0);
+        v23 = new char[] {'`', 'h', 'G'};
+    }
+
+    Class1 m2_1(int[] p0, Class2 p1, Class1 p2) {
+        Class2 v24;
+        this.f2_0 = p2.f0_0;
+        println(this.f2_0);
+        p2.m0_1(method2(p0, new int[7]));
+        v24 = p1;
+        return new Class1((p1 == p1));
+    }
+}
+
+int[] method0() {
+    println();
+    println('d');
+    print(new char[6]);
+    return new int[] {-10, 10};
+}
+
+int[] method0(int p0, Class1 p1) {
+    Class0 v0 = null;
+    v0 = p1;
+    p0 = (p0 % -509);
+    for (int v1 = 0; v1 < 4; v1++) {
+        char[] v3;
+        for (int v2 = 0; v2 < 4; v2++) {
+            char[] v4 = new char[4];
+            v3 = new char[] {'=', 'B'};
+            v4 = new char[] {'Z', '7', '='};
+        }
+    }
+    println(new Class0(p1, null, p1));
+    for (int v5 = 0; v5 < 5; v5++) {
+        ++p0;
+    }
+    return new int[] {-7, -9, -9};
+}
+
+Class0 method2(int[] p0, int[] p1) {
+    var v12 = 34;
+    char[] v11 = new char[] {'o', 'e', '&', '`'};
+    var v10 = 'g';
+    var v6 = false;
+    v6 = (-6 >= 9);
+    p1[0] = length(new boolean[] {false, false, false, false});
+    for (int v7 = 0; v7 < 3; v7++) {
+        for (int v8 = 0; v8 < 2; v8++) {
+            Class1 v9;
+            v9 = new Class1();
+        }
+        v10 = '7';
+        v11 = new char[10];
+    }
+    v12 = 41;
+    return null;
+}
+
+int main() {
+    Class2 v27 = null;
+    Class1 v26;
+    Class0 v25 = null;
+    print(new int[] {8, 9});
+    print(new Class1());
+    println(method0());
+    println(method0(length(new int[][] {{-3}}), new Class1()));
+    println(method2(new int[3], new int[] {2, 4, 7, 10}));
+    v25 = new Class0(new Class1(false), method2(new int[7], new int[8]), new Class0(null, v25, v25));
+    v25.m0_0(method2(new int[4], new int[] {3, 4, -3, 7}));
+    v25.m0_1(v25);
+    v26 = new Class1();
+    v26.m1_0(new int[7][], (-8 > 5));
+    v26.m0_0(method2(new int[6], new int[] {-10, 3}));
+    v26.m0_1(v25);
+    v27 = new Class2();
+    v27.m2_0(v27.m2_1(new int[9], v27, v26), v26, new int[] {1, 2, 5});
+    println(v27.m2_1(new int[] {8}, new Class2(), v26));
+    return -16;
+}

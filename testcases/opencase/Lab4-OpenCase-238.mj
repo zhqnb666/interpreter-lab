@@ -1,0 +1,103 @@
+// ERROR: undefined_field
+class Class0 {
+    int f0_0;
+
+    boolean f0_1;
+
+    Class0 f0_2 = null;
+
+    Class0() {
+        this.f0_1 = (-2 > 2);
+        this.f0_2 = null;
+    }
+
+    Class0(int[][] p0, int[][] p1, char[] p2) {
+        this();
+        this.f0_1 = (-1 == -5);
+    }
+
+    boolean[] m0_0(Class0 p0) {
+        int[][] v15;
+        this.f0_2 = p0.f0_2;
+        println(("IQ[rc" + to_string(new char[] {'x', '|', 'z', '&'})));
+        v15 = new int[][] {{3, -1, 4, 3}, {4}};
+        return new boolean[] {false, false, false, true};
+    }
+}
+
+void method0() {
+    var v10 = 29;
+    int[] v9;
+    int[] v8;
+    int[][][] v6 = {{{9, -6}, {-4, 5, 8}, {5, 3}}};
+    int[][] v3;
+    int v2 = -42;
+    int v1 = -50;
+    for (int v0 = 0; v0 < 5; v0++) {
+        v1 = new Class0().missingField4;
+    }
+    while ((v2 < 2)) {
+        if ((-1 <= 10)) continue;
+        v3 = new int[][] {{-1}, {-5, 0, -10}, {-7}, {-6, -6, 6}};
+        if (false) break;
+        v2++;
+    }
+    for (int v4 = 0; v4 < 4; v4++) {
+        char[] v5 = new char[1];
+        v5 = new char[] {'x', 'I', 'j', '>'};
+        if ((-8 < 4)) {
+            v6 = new int[][][] {{{3}, {8}, {-8, 5}}, {{3}}};
+        } else if (false) {
+            var v7 = 'Y';
+            v7 = v5[0];
+            v8 = new int[] {-8, 0, 4, 1};
+        } else {
+            v9 = new int[3];
+        }
+    }
+    while ((v10 < 2)) v10++;
+}
+
+void method0(boolean p0, int p1, int p2) {
+    char[] v11 = new char[10];
+    v11 = new char[] {'m', '>', '%'};
+    v11[0] = '*';
+    println();
+    {
+        p2--;
+        {
+            int[] v13;
+            int v12 = -22;
+            while ((v12 < 2)) v12++;
+            if ((p0 or (p0 == p0))) {
+                Class0 v14;
+                v11 = v11;
+                v13 = new int[] {0, 4};
+                v14 = new Class0();
+            } else {
+                p2 = (-4 ^ p1);
+            }
+        }
+    }
+    p2++;
+}
+
+int main() {
+    Class0 v21 = null;
+    int v20 = -11;
+    char[] v19 = new char[] {'c', ':', '5'};
+    int v17;
+    var v16 = "uQWO";
+    v16 = to_string(new char[5]);
+    v17 = 12;
+    for (int v18 = 0; v18 < 3; v18++) {
+        v16 = "S? ";
+        v19 = new char[3];
+    }
+    while ((v20 < 5)) v20++;
+    method0();
+    method0(true, length(new char[] {'J', '8', 'F', '%', '9'}), -11);
+    v21 = new Class0();
+    println(v21.m0_0(null));
+    return v21.f0_0;
+}

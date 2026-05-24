@@ -1,0 +1,120 @@
+class Class0 {
+    Class0 f0_0;
+
+    char[] f0_1 = new char[] {'w'};
+
+    void m0_0(char[] p0) {
+        boolean[] v15 = new boolean[8];
+        this.f0_0 = new Class0();
+        {
+            var v2 = -43;
+            for (int v1 = 0; v1 < 4; v1++) ;
+            v2 >>>= length("@']");
+        }
+        {
+            Class0 v9 = null;
+            var v4 = 14;
+            int v3 = 0;
+            while ((v3 < 5)) v3++;
+            v4 = -8;
+            if ((p0 != null)) {
+                var v8 = 27;
+                if (false) {
+                    int[] v6;
+                    int[][][] v5 = new int[10][][];
+                    v5 = new int[7][][];
+                    v6 = new int[2];
+                    p0 = p0;
+                } else if ((6 != -1)) {
+                    int[] v7;
+                    v7 = new int[] {0, 5, -5};
+                }
+                print(new Class0());
+                while ((v8 < 2)) {
+                    boolean v10 = false;
+                    v9 = new Class0();
+                    v10 = (-4 <= -10);
+                    v8++;
+                }
+            } else {
+                var v11 = -48;
+                v11 = -13;
+                if (true) {
+                    boolean v13;
+                    var v12 = 25;
+                    v12 = 38;
+                    v13 = (v12 <= v12);
+                } else {
+                    int[][] v14;
+                    v14 = new int[7][];
+                }
+            }
+        }
+        v15 = new boolean[1];
+    }
+
+    int m0_1(int p0, Class0 p1) {
+        var v18 = ".=&";
+        int[] v17;
+        this.f0_0 = new Class0();
+        for (int v16 = 0; v16 < 4; v16++) {
+            v17 = new int[] {-10, 9, 4, -8, 2};
+        }
+        println();
+        if (false) {
+            p0 -= length(new char[7]);
+            v18 = to_string(new char[] {'n', '0'});
+            p1.m0_0(new char[7]);
+        }
+        return p0;
+    }
+}
+
+int[] method0() {
+    int v0 = 0;
+    println(new char[9]);
+    println(length(new boolean[8]));
+    while ((v0 < 3)) v0++;
+    println(to_string(new char[] {'X', 'o', 'g'}));
+    return new int[] {-10, 2, -4};
+}
+
+int main() {
+    Class0 v31 = null;
+    char[] v29 = new char[] {':', 'M', '{'};
+    var v19 = -43;
+    while ((v19 < 2)) {
+        boolean[] v26;
+        int v20;
+        while ((v20 < 2)) {
+            int v22 = -36;
+            var v21 = '-';
+            v21 = '=';
+            v22 >>= (int) v21;
+            if ((v22 != v21)) break;
+            v20++;
+        }
+        for (int v23 = 0; v23 < 3; v23++) {
+            boolean v25;
+            var v24 = 'm';
+            v24 = '?';
+            v25 = (v24 >= v24);
+            v26 = new boolean[7];
+        }
+        v19++;
+    }
+    {
+        int v30;
+        for (int v27 = 0; v27 < 3; v27++) {
+            boolean[] v28 = new boolean[] {false, false};
+            v28 = new boolean[] {true, false, true};
+            v29 = new char[] {'`', '+', 'L', 'q'};
+            v30 = length(new char[] {'H'});
+        }
+    }
+    println(method0());
+    v31 = new Class0();
+    v31.m0_0(new char[] {'7', 't', '='});
+    println(v31.m0_1(v31.m0_1(length("hLFe`c"), v31), v31));
+    return v31.m0_1(-1, v31);
+}

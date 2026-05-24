@@ -1,0 +1,16 @@
+int main() {
+
+    int x = 126;
+    int y = -127;
+    char up;
+    char down;
+
+    up = (char)(x + 1);
+    println("up");
+    down = (char)(y - 1);
+    println("down");
+
+    up = (char)(x + 2);
+
+    return 0;
+}

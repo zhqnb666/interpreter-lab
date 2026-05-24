@@ -1,0 +1,42 @@
+class A{
+    int x=2;
+
+    int getX(){
+        return x;
+    }
+}
+
+class B extends A{
+    int x=3;
+    int y=3;
+
+    int getX(){
+//        println("=========");
+//        println(x);
+//        println(super.x);
+//        println(super.getX());
+//        println(getX());
+        return x*super.x*super.getX()*getX();
+    }
+}
+
+class C extends B{
+    int x=5;
+    int y=5;
+    int z=5;
+
+    C(){
+        println(x);
+        println(super.x);
+        println(super.getX());
+    }
+
+    int getX(){
+        return x+y+z;
+    }
+}
+
+int main(){
+    new C();
+    return 0;
+}

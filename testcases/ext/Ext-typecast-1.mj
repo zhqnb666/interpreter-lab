@@ -1,0 +1,15 @@
+class A{}
+class B extends A{}
+
+int main(){
+    A a=null;
+    B b=(B)a;
+    b=null;
+    a=b;
+    a=(B)null;
+    a=(A)null;
+    b=(B)null;
+    println("ok");
+    b=(A)null; //fails here
+    return 0;
+}

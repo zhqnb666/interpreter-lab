@@ -1,0 +1,78 @@
+class Class0 {
+    int f0_0 = 31;
+
+    void m0_0(int p0) {
+        int v8 = 8;
+        this.f0_0 = (p0 % -972);
+        println(this.f0_0);
+        println(new Class0());
+        while ((v8 < 3)) {
+            for (int v9 = 0; v9 < 2; v9++) ;
+            v8++;
+        }
+    }
+
+    char m0_1() {
+        int[] v10 = new int[8];
+        this.f0_0 = 42;
+        println(this.f0_0);
+        println(new boolean[9]);
+        v10 = new int[] {-6, 7, -8};
+        return 'z';
+    }
+}
+
+void method0(boolean p0, int p1, char p2) {
+    int[][][] v2 = new int[][][] {{{6}, {-9}, {-10, 2, 8}, {-4, 10, -1}}, {{-4}, {-8}, {2, -1, -7, 5}}, {{10, 10, -5, 3}, {0, -2, 2, 5}}, {{-7, -10}, {-7, 0, -10, 5}}};
+    int[][] v1 = {{7, 0, 6}};
+    for (int v0 = 0; v0 < 5; v0++) {
+        print(new boolean[] {true});
+        {
+            p0 = p0;
+            v1 = new int[4][];
+            p1 = p1;
+        }
+    }
+    v2 = new int[10][][];
+}
+
+void method0(int[] p0) {
+    boolean[] v7 = new boolean[8];
+    int v6 = 23;
+    {
+        if ((3 != 9)) {
+            var v5 = p0[0];
+            boolean[] v4 = new boolean[] {true, false, true, false};
+            int v3 = p0[0];
+            v3 = -34;
+            v4 = new boolean[10];
+            v5 = -25;
+        } else ;
+    }
+    v6 = -50;
+    if ((p0 == null)) {
+        v7 = new boolean[] {true, true};
+    }
+}
+
+int main() {
+    Class0 v13 = null;
+    int v11;
+    v11 = length("}(hQl");
+    println(new int[] {-2, 10, -1, -3});
+    if (true) ; else {
+        int v12 = v11;
+        while ((v12 < 4)) {
+            v11 = ((v11 >= v11) ? v11 : length(new char[] {'8', ';'}));
+            v12++;
+        }
+    }
+    ++v11;
+    --v11;
+    method0((v11 >= v11), 49, (char) v11);
+    method0(new int[7]);
+    v13 = new Class0();
+    v13.m0_0(length(new int[] {6, 3, 4, -5, -5}));
+    println(v13.m0_1());
+    return (v11 ^ v11);
+}

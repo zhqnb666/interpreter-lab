@@ -1,0 +1,90 @@
+class Class0 {
+    int f0_0;
+
+    int f0_1;
+
+    int f0_2;
+
+    void m0_0(int[] p0) {
+        var v10 = 40;
+        this.f0_1 = length(new int[3][]);
+        println(this.f0_1);
+        v10 = 28;
+        for (int v11 = 0; v11 < 5; v11++) {
+            p0[0] = -35;
+        }
+        if ((1 != -9)) {
+            print(method0(null));
+            print(method0(null));
+        }
+    }
+}
+
+char method0(Class0 p0) {
+    boolean[] v9;
+    int[] v6;
+    int v1 = 32;
+    boolean v0 = false;
+    v0 = (p0 != p0);
+    v1 = -43;
+    if (v0) {
+        var v8 = 31;
+        if ((-2 <= -3)) {
+            string v3 = "LOFmN/";
+            int v2;
+            while ((v2 < 4)) v2++;
+            p0.f0_2 = 41;
+            v3 += 39;
+        } else if (false) {
+            if ((p0 instanceof Class0)) {
+                char v4 = '}';
+                v4 = '3';
+            }
+            println(new boolean[] {false, true, false});
+        } else {
+            int v5;
+            p0.f0_2 = length(new int[8]);
+            println('+');
+            while ((v5 < 2)) {
+                int[][] v7;
+                v6 = new int[4];
+                v7 = new int[9][];
+                v5++;
+            }
+        }
+        v8 = 17;
+    } else p0 = new Class0();
+    v9 = new boolean[5];
+    return 'Z';
+}
+
+int main() {
+    Class0 v17;
+    char v13 = '_';
+    char v12;
+    v12 >>>= method0(null);
+    println((int) v12);
+    v13 ^= v12;
+    {
+        print(new int[] {-3});
+        print(length("E)Yq9"));
+    }
+    if (true) {
+        string v15 = "%G/";
+        int v14 = -12;
+        v14 = 46;
+        if ((v12 > v13)) ; else if ((v13 == v12)) {
+            v15 += method0(null);
+        }
+    } else if ((v13 < v12)) {
+        Class0 v16 = null;
+        v16 = new Class0();
+        print((v13 < v12));
+    } else if (true) {
+        println(new char[8]);
+    }
+    println(method0(new Class0()));
+    v17 = new Class0();
+    v17.m0_0(new int[7]);
+    return 42;
+}

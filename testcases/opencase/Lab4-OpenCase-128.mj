@@ -1,0 +1,137 @@
+class Class0 {
+    boolean f0_0;
+
+    int[] f0_1;
+
+    int[][] f0_2 = new int[1][];
+
+    Class0(boolean[] p0) {
+        this.f0_0 = (1 == 7);
+        this.f0_1 = new int[] {-10, 5, -6, -5};
+    }
+
+    Class0() {
+        int v12;
+        this.f0_0 = false;
+        this.f0_1 = new int[] {1, 4, 0};
+        this.f0_2 = new int[7][];
+        v12 = -24;
+        print(new char[8]);
+    }
+
+    int[] m0_0(char p0, int p1) {
+        int[][][] v13 = {{{-8, -7, -10, 4}, {-8, -1}, {6}, {1, -1, 6}}, {{-5, 4}}, {{-2, 8, 6}, {-2}}};
+        this.f0_2 = new int[][] {{-9, 1, 2}};
+        --p1;
+        v13 = new int[][][] {{{-9, 1, 5}, {-6}}, {{1, 10}, {-3, 0}, {2, 3}}, {{7}}, {{8, 0, 4, -6}, {8, 4}, {8, 5}, {-9}}, {{-4, -7, 4}, {8}}};
+        return new int[9];
+    }
+}
+
+void method0(int[][][] p0, Class0 p1, Class0 p2) {
+    p0 = p0;
+    {
+        p0 = p0;
+    }
+    {
+        if ((-6 < -9)) {
+            println(("(6dwa" + -20));
+        } else {
+            print(new char[3]);
+        }
+        if ((p1 instanceof Class0)) {
+            print(new int[] {7, -4, 2});
+        } else if (p2.f0_0) {
+            int v0;
+            v0 = -19;
+            p0[0][0][0] = length(new char[] {'(', 'V', '1'});
+            p0 = new int[][][] {{{-8, 0, -9}, {0, 6, -2, 10}, {5, 3, -3}, {4, 1}}, {{9}, {0}}, {{0, 1}, {-1}, {5, 1, -10}}, {{9, 4, 5}, {-6}, {4, -2, -10}}, {{-2, 4, -6, 9}, {1, -3, 8}, {2, 8}}};
+        } else if (p1.f0_0) {
+            int v3;
+            for (int v1 = 0; v1 < 5; v1++) {
+                var v2 = 'A';
+                v2 = ':';
+            }
+            v3 = 0;
+        }
+        if ((4 == 4)) {
+            p0[0] = new int[][] {{-4, -4}, {-3, 6, 1, 6}, {-7}, {-9, 1}};
+            p2 = p1;
+        } else if (p2.f0_0) {
+            char[] v4 = {'1'};
+            println(new int[] {7, -5, 3, -3});
+            v4 = new char[] {';'};
+            if (p2.f0_0) {
+                v4 = new char[2];
+            }
+        } else {
+            char v7;
+            p0[0][0][0] = 47;
+            if ((p1 instanceof Class0)) ; else {
+                var v6 = "SPuu";
+                int[][][] v5 = {{{-7}, {10, -10, -1}, {-8, 7}}, {{-7, 5, 2, -7}, {-9, -7}, {10, -6, 8}}, {{9, 7}, {-8, 6, 3, -4}, {-6, -10}, {6, -10}}};
+                v5 = p0;
+                v6 += (8 >= -4);
+            }
+            v7 /= -549;
+        }
+    }
+    return;
+}
+
+int[][][] method1(boolean p0) {
+    char[] v8;
+    v8 = new char[] {'x', 'H'};
+    {
+        for (int v9 = 0; v9 < 2; v9++) {
+            Class0 v11 = null;
+            char v10 = 'p';
+            v10 = '&';
+            v11 = new Class0(new boolean[6]);
+        }
+        v8[0] = 'Z';
+        v8[0] = 'B';
+    }
+    return new int[2][][];
+}
+
+int main() {
+    Class0 v24 = null;
+    int[][][] v23 = new int[8][][];
+    int[][] v15;
+    {
+        int[][] v14;
+        v14 = new int[][] {{-9, 1, 3, -4}, {7}, {-7, -3, 6}, {-2, 7, 8, 6}, {-7, 9}};
+    }
+    v15 = new int[][] {{-3, -4}, {1}, {-1, 10}};
+    {
+        int v22;
+        if (true) {
+            var v17 = -11;
+            char[] v16;
+            v16 = new char[] {'#', '9', 't', '&', '['};
+            v17 = 3;
+            if ((3 != 7)) {
+                Class0 v19;
+                boolean v18 = false;
+                v18 = (-4 < 9);
+                v19 = new Class0(new boolean[3]);
+                v19 = new Class0(new boolean[] {true, false});
+            } else if ((7 < -8)) {
+                int[][][] v21 = {{{8, 3, 3}}, {{3, -2, 5}, {1, 2, -3, -5}, {7, -9, 8}}, {{9, -9}}, {{6, -5, 4, 0}}, {{7}, {7, 6, -4}}};
+                char[] v20 = v16;
+                v20 = new char[4];
+                v21 = new int[][][] {{{-5}}};
+            }
+        } else {
+            println(new int[1]);
+        }
+        v15[0] = new int[] {-3, -9};
+        v22 &= length("Ckuz{");
+    }
+    method0(new int[1][][], new Class0(), new Class0());
+    v23 = method1(false);
+    v24 = new Class0();
+    println(v24.m0_0('h', length("%;G")));
+    return 14;
+}

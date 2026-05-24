@@ -1,0 +1,23 @@
+class A{
+    int x=1;
+    void foo(){
+        print(this.x);
+        this.shout();
+    }
+    void ask(){}
+    void shout(){print("A");}
+}
+
+class B extends A{
+    int x=2;
+    void foo(){print(this.x);this.shout();}
+    void ask(){super.foo();}
+    void shout(){print("B");}
+}
+
+int main(){
+    A x=new B();
+    x.ask();
+    println();
+    return 0;
+}

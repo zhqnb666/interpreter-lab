@@ -1,0 +1,63 @@
+class Animal{
+    int age;
+    string name;
+    string say(){
+        return "Hi:"+name;
+    }
+
+    Animal(int age, string name){
+        this.age=age;
+        this.name=name;
+    }
+}
+
+class Human extends Animal{
+    string sex="M";
+
+    Human(string name){
+        super(1, name);
+    }
+
+    Human(){
+        this("unnamed");
+    }
+
+    void communicate(){
+        println("Hello, I am a human.");
+    }
+}
+
+class CoolGuy extends Human{
+    string name;
+
+    void communicate(int x){
+        println("Hello, I am a cool guy with mysterious number: "+x+".");
+    }
+
+    //Override
+    string say(){
+        return "Yo-yo!";
+    }
+}
+
+int main(){
+    Animal a=new CoolGuy();
+    Human h=(Human) a;
+    CoolGuy c=(CoolGuy) a;
+    a.name="114514";
+    println(a.name+"?");
+    println(h.name+"?");
+    println(c.name+"?");
+    assert(a instanceof Animal);
+    assert(a instanceof Human);
+    assert(a instanceof CoolGuy);
+    assert(c.say()=="Yo-yo!");
+    c.communicate(3);
+    c.communicate();
+
+    h=new Human();
+    println(h.name+"?");
+    assert(h.age==1);
+    assert(h.sex=="M");
+    return 0;
+}

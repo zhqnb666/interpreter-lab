@@ -1,0 +1,18 @@
+class A{
+    int cnt;
+    int a=(this.cnt+=3);
+}
+
+class B extends A{
+    int b=(this.cnt+=3);
+}
+
+class C extends B{
+    int c=(this.cnt+=3);
+}
+
+int main(){
+	C x=new C();
+	println(x.cnt+" "+x.a+" "+x.b+" "+x.c);
+	return 0;
+}

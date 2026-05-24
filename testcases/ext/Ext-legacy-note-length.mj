@@ -1,0 +1,11 @@
+int main(){
+    string str = "123";
+    println(length(str)); // 3
+    int[] arr = {1,2,3};
+    println(length(arr)); // 3
+    string[] arr2= {"1","2","3"};
+    println(length(arr2)); //3
+    arr = null;
+    println(length(arr)); // null pointer error
+    return 0;
+}

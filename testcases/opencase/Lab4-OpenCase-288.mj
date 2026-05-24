@@ -1,0 +1,124 @@
+class Class0 {
+    boolean f0_0;
+
+    int f0_1;
+
+    boolean f0_2;
+
+    void m0_0() {
+        Class1 v4;
+        this.f0_1 = 37;
+        println(this.f0_1);
+        v4 = new Class1();
+        return;
+    }
+}
+
+class Class1 extends Class0 {
+    char f1_0;
+
+    char f1_1 = '&';
+
+    Class1(char[] p0) {
+        super();
+        this.f1_0 = p0[0];
+        this.f1_1 = p0[0];
+    }
+
+    Class1() {
+        var v5 = 22;
+        println('~');
+        while ((v5 < 4)) {
+            if ((-7 > 8)) {
+                char v13;
+                boolean[] v8;
+                Class0 v6 = null;
+                if ((1 > -7)) {
+                    v6 = new Class0();
+                } else {
+                    Class0 v9;
+                    Class1 v7 = null;
+                    v7 = null;
+                    v8 = new boolean[1];
+                    v9 = new Class0();
+                }
+                if ((-6 <= -3)) {
+                    boolean[] v12 = {false, false, true};
+                    var v11 = -21;
+                    var v10 = '3';
+                    v10 = '&';
+                    v11 = length(new int[5]);
+                    v12 = new boolean[4];
+                } else if ((6 > 4)) {
+                    boolean[] v15;
+                    Class0 v14 = null;
+                    v13 ^= 'U';
+                    v14 = new Class0();
+                    v15 = new boolean[] {false, false, true, true, false};
+                } else {
+                    char[] v16 = new char[8];
+                    v16 = new char[8];
+                }
+            }
+            v5++;
+        }
+    }
+
+    char m1_0(Class0 p0, Class1 p1) {
+        this.f1_1 = p1.f1_1;
+        super.m0_0();
+        if (true) {
+            int[][] v17 = {{0, -8, 0, 6}};
+            print(p0);
+            v17 = new int[][] {{-10, -7, 10, 9}};
+        } else if ((p1 == p0)) {
+            println(p1);
+        } else if ((7 == 4)) {
+            char v19;
+            Class1 v18;
+            p1.f1_0 = 'w';
+            v18 = new Class1();
+            v19 = 'V';
+        } else {
+            p0.f0_2 = (p0 instanceof Class0);
+        }
+        p0.f0_0 = (p1 != null);
+        println(new int[5]);
+        return 'w';
+    }
+}
+
+Class0 method0(Class1 p0, int p1) {
+    int[][] v3;
+    p0.m0_0();
+    for (int v0 = 0; v0 < 3; v0++) {
+        print(p0);
+        for (int v1 = 0; v1 < 4; v1++) {
+            var v2 = "2o*;";
+            v2 = (itoa(31) + (p1 <= p1));
+            v3 = new int[][] {{2, 0, -7, -8}, {-8}, {-1, 7, 0, -3}, {-7, 9, -3, -2}, {6}};
+        }
+    }
+    return p0;
+}
+
+int main() {
+    Class1 v25;
+    Class0 v24 = null;
+    boolean v23;
+    Class0 v22 = null;
+    for (int v20 = 0; v20 < 2; v20++) {
+        var v21 = -2;
+        v21 %= 999;
+    }
+    v22 = new Class1(new char[8]);
+    v23 = true;
+    println((v22 instanceof Class0));
+    println(method0((Class1) v22, length(new int[] {2, 2})));
+    v24 = new Class0();
+    v24.m0_0();
+    v25 = new Class1();
+    println(v25.m1_0(method0(v25, 3), new Class1()));
+    v25.m0_0();
+    return v24.f0_1;
+}

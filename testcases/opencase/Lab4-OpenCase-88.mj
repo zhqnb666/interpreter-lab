@@ -1,0 +1,157 @@
+class Class0 {
+    Class2 f0_0;
+
+    Class0(int[][][] p0, Class1 p1) {
+        var v3 = 47;
+        this.f0_0 = new Class2();
+        while ((v3 < 4)) v3++;
+    }
+
+    void m0_0(Class0 p0, int[][][] p1) {
+        int[] v7 = new int[] {-7, 4, -3};
+        this.f0_0 = new Class2();
+        if ((p0 instanceof Class0)) {
+            int v4;
+            v4 = 34;
+            for (int v5 = 0; v5 < 4; v5++) {
+                int[][] v6;
+                p1 = new int[7][][];
+                v6 = new int[8][];
+            }
+            println(to_string(new char[10]));
+        } else ;
+        v7 = new int[] {-7, 1, -6, 9};
+    }
+
+    Class1 m0_1() {
+        int[] v13 = new int[4];
+        char[] v12 = {'<'};
+        int v8;
+        this.f0_0 = new Class2();
+        print(to_string(new char[8]));
+        while ((v8 < 5)) {
+            if (true) {
+                boolean[] v9 = new boolean[5];
+                v9 = new boolean[1];
+                if ((v9 == v9)) break;
+                println(to_string(new char[] {'o', 'g', 'O'}));
+            } else if (true) {
+                int[][][] v10 = new int[][][] {{{4, 0}, {8, 1, 9, -2}, {-8, -5}}, {{0, -7, 8, -8}, {7}, {-6, 4, -9, -6}, {8, 2, -5}}, {{-5}, {-9, 1}}, {{7}}};
+                v10 = new int[][][] {{{2, 3}}};
+            } else {
+                int v11 = 35;
+                v11 = length(new int[10][]);
+            }
+            if ((7 != 4)) break;
+            v12 = new char[] {'+', 'k', 'v'};
+            v8++;
+        }
+        v13 = new int[] {0, 8, 10, 6, 7};
+        return new Class1(null);
+    }
+}
+
+class Class1 {
+    int[][] f1_0 = new int[][] {{4, -5, 10, -9}, {-10, 5, -7}, {-7, 7, 8}, {-9, -10, -5, -4}};
+
+    int[][] f1_1;
+
+    Class1(Class2 p0) {
+        boolean[] v14;
+        this.f1_0 = new int[][] {{10, -1, 0}, {-5}};
+        this.f1_1 = new int[4][];
+        v14 = new boolean[] {false, false, false, false, true};
+        v14[0] = (9 <= 4);
+    }
+
+    int[] m1_0(Class0 p0, char[] p1, Class2 p2) {
+        this.f1_0 = new int[][] {{-8}, {6, -3, 10, -6}, {1}, {0, -5}, {-7, 4, 3}};
+        p0.m0_0(method1('C'), new int[5][][]);
+        println((6 <= -2));
+        {
+            if (true) {
+                p1[0] = 'h';
+                p1[0] = 'U';
+            } else if (false) {
+                p0.m0_0(method1('M'), new int[][][] {{{2, 10, 8}}, {{4, 10}}, {{8}, {6}, {9, -8, 2}, {8, 1}}});
+                for (int v15 = 0; v15 < 5; v15++) {
+                    Class1 v17;
+                    int[] v16 = {-1, -9, 8};
+                    v16 = new int[10];
+                    v17 = new Class1(p2);
+                }
+                p0.m0_0(method1('e'), new int[][][] {{{2, -10, -9, 2}, {-9}, {1, 10, 3}}, {{7, -4, 9, -4}, {-3}, {-10, 2, -4}, {-1, -1, 8}}, {{-1, -5, -4, -7}, {1, -1, 4}}, {{5, 6}, {-7, -4}, {-10}}, {{-5}}});
+            }
+        }
+        return new int[] {-1};
+    }
+}
+
+class Class2 {
+    Class0 f2_0;
+
+    boolean f2_1 = false;
+
+    Class2 m2_0() {
+        boolean v23 = true;
+        this.f2_1 = (-4 >= -10);
+        print(new int[] {6});
+        for (int v18 = 0; v18 < 4; v18++) {
+            var v19 = "F=z";
+            v19 += 's';
+            if ((-5 == -8)) {
+                boolean v22 = false;
+                Class0 v21 = null;
+                Class0 v20;
+                v20 = new Class0(new int[][][] {{{1, 4}, {0, -8}, {0, 10, -7}}, {{-4, 2, -3}, {-10, -4, -4}}, {{4, 8}, {2, 6, 4}, {10, 2}}, {{6, 8, -8, 8}}, {{-6, 2}}}, null);
+                v21 = new Class0(new int[][][] {{{2, 8}, {2, 3}}, {{-2}}, {{7, -7}, {-7, -6, -7}, {7, 1, 7, 0}, {6, -2, -2, 9}}, {{5, -6, 3}, {4, -7, 2}, {-1, 2, 6, 7}}, {{-9, 1, -1, 6}}}, null);
+                v22 = (-8 < -3);
+            }
+        }
+        v23 = true;
+        return new Class2();
+    }
+}
+
+Class2 method0() {
+    int v1 = 5;
+    Class1 v0 = null;
+    v0 = new Class1(null);
+    v1 = 27;
+    return new Class2();
+}
+
+Class0 method1(char p0) {
+    string v2 = "TOA";
+    print(p0);
+    println(new boolean[2]);
+    v2 = itoa((int) p0);
+    {
+        print(new int[] {4, -10, -1, -1});
+        println(new char[] {'6', '(', 'q', 'L', '7'});
+    }
+    println(new boolean[] {false, false, false, false});
+    return null;
+}
+
+int main() {
+    Class2 v28;
+    Class1 v27;
+    Class0 v26 = null;
+    string v25 = "}k$";
+    Class1 v24 = null;
+    v24 = new Class1(null);
+    v24.f1_1 = new int[8][];
+    println(length(")H4Uq"));
+    v25 = to_string(new char[7]);
+    println(method0());
+    println(method1('u'));
+    v26 = new Class0(new int[8][][], null);
+    v26.m0_0(method1('}'), new int[5][][]);
+    println(v26.m0_1());
+    v27 = new Class1(method0());
+    println(v27.m1_0(new Class0(new int[][][] {{{9}}}, v27), new char[1], new Class2()));
+    v28 = new Class2();
+    println(v28.m2_0());
+    return 27;
+}

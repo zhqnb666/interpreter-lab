@@ -1,0 +1,74 @@
+// ERROR: arg_count_mismatch
+class Class0 {
+    int f0_0;
+
+    int[][] f0_1;
+
+    Class0(boolean[] p0) {
+        this.f0_0 = -45;
+        this.f0_1 = new int[][] {{2, 10, 3}, {8, 5}, {-9, 3}, {1}, {6}};
+    }
+
+    Class0 m0_0(Class0 p0, boolean[] p1, string p2) {
+        this.f0_0 = length(p2);
+        println(this.f0_0);
+        println('Z');
+        p1[0] = false;
+        return p0;
+    }
+
+    void m0_1(boolean p0) {
+        this.f0_0 = length(new char[1]);
+        println(this.f0_0);
+        if (false) {
+            char[] v4;
+            v4 = new char[10];
+            v4[0] = '7';
+        }
+        println('l');
+        println(p0);
+    }
+}
+
+int[][] method0(int[][] p0) {
+    int v3;
+    char v0 = 'C';
+    p0[0] = new int[3];
+    v0 /= -410;
+    if (print(-45, 41)) {
+        print((v0 >= v0));
+        println((v0 >= v0));
+    } else if ((v0 == v0)) {
+        int v2 = (int) v0;
+        Class0 v1;
+        v1 = new Class0(new boolean[] {false, true, false, true, true});
+        v2 = 38;
+        v3 = v1.f0_0;
+    } else p0 = new int[][] {{-4, -3}, {-9, -7, 8}, {7, -2}};
+    return new int[][] {{1, 10, 9, -6}, {-4, -5, 1}};
+}
+
+int main() {
+    Class0 v11 = null;
+    int[][] v10 = new int[9][];
+    int[] v6 = {5, 2, -4};
+    int v5;
+    print((0 <= 0));
+    while ((v5 < 2)) v5++;
+    v6 = new int[6];
+    if (true) {
+        int v8;
+        Class0 v7 = null;
+        v7 = new Class0(new boolean[3]);
+        assert((4 > -6));
+        while ((v8 < 4)) v8++;
+    } else {
+        int v9 = 14;
+        v9 = 24;
+    }
+    v10 = method0(new int[5][]);
+    v11 = new Class0(new boolean[2]);
+    println(v11.m0_0(v11, new boolean[] {true}, itoa(v6[0])));
+    v11.m0_1((0 != -6));
+    return v11.f0_0;
+}

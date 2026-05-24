@@ -1,0 +1,38 @@
+int main() {
+
+    for(int o = 1; o <= 3; o++) {
+        
+        for(int i = 1; i <= 10; i += 2) {
+            print(i);
+            if(i % 3 == 0) {
+                continue;
+            }
+            print(i + 1);
+        }
+        println();
+        
+
+        int l = 1;
+        while(l <= 10) {
+            print(l);
+            if(l % 7 == 0) {
+                break;
+            }
+            print(l + 1);
+            l += 2;
+        }
+        println();
+    }
+    
+    return 114514;
+}
+
+/*
+12356789
+1234567
+12356789
+1234567
+12356789
+1234567
+Process exits with the code 114514.
+*/

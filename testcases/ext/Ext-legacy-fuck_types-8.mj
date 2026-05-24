@@ -1,0 +1,7 @@
+int main(){
+    int i='a';
+    char c='a';
+    boolean x=i==c;
+    println(x);
+    return 0;
+}

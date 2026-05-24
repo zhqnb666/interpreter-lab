@@ -1,0 +1,158 @@
+// ERROR: arg_type_mismatch
+class Class0 {
+    int f0_0;
+
+    Class0(int[][][] p0, char p1) {
+        this.f0_0 = -40;
+        print(-11);
+    }
+
+    Class0() {
+        this(new int[3][][], '@');
+        this.f0_0 = -44;
+        for (int v13 = 0; v13 < 4; v13++) {
+            var v17 = 41;
+            boolean v16 = true;
+            int[][] v15 = new int[9][];
+            var v14 = 'p';
+            v14 = '!';
+            if ((v14 >= v14)) {
+                v15 = new int[][] {{-10, 8}, {7, 10, -4}, {5, -3, -7, 0}, {2, -8}, {10, -1, 7}};
+                v16 = false;
+            }
+            v17 = 36;
+        }
+        {
+            Class0 v20 = null;
+            for (int v18 = 0; v18 < 3; v18++) {
+                int[] v19 = {3, 10, -8};
+                v19 = new int[] {9, -8, -5, 7};
+            }
+            println(atoi("6228"));
+            v20 = null;
+        }
+    }
+
+    char[] m0_0() {
+        this.f0_0 = 12;
+        println(this.f0_0);
+        method0(new int[][][] {{{-9, 4}, {-8, 3, 1}}, {{4, 7}, {-3}, {-4, -1, -3}, {3, -5}}, {{-5, -7, -7}, {4, 0, -1}}, {{1, -9, 7}, {8, -6, 10, 10}, {-3, 0, 4}, {-6, -3, 0}}}, new boolean[] {true, true}, new Class0(new int[1][][], 'i'));
+        for (int v21 = 0; v21 < 2; v21++) {
+            print(new boolean[] {false, false, false});
+            print('C');
+            if (true) break;
+        }
+        print('@');
+        return new char[10];
+    }
+}
+
+void method0(int[][][] p0, boolean[] p1, Class0 p2) {
+    for (int v0 = 0; v0 < 4; v0++) {
+        p1[0] = true;
+        for (int v1 = 0; v1 < 3; v1++) {
+            char v3 = 'G';
+            int[][] v2;
+            v2 = new int[2][];
+            v3 += 'e';
+        }
+    }
+    {
+        var v4 = 5;
+        print(false);
+        while ((v4 < 3)) v4++;
+    }
+    method1(new int[][] {{1, -2, -2}, {4, 5, 7, -6}, {-10, -10, -9}}, new char[2], -44);
+}
+
+boolean[] method1() {
+    int[][] v11 = {{3, -4, -3}};
+    int v5;
+    while ((v5 < 3)) v5++;
+    for (int v6 = 0; v6 < 3; v6++) {
+        for (int v7 = 0; v7 < 5; v7++) {
+            Class0 v10;
+            var v9 = 45;
+            int[][] v8 = new int[][] {{4, 6, 10, 7}};
+            v8 = new int[3][];
+            v9 = 33;
+            v10 = new Class0(new int[][][] {{{4, 4, 10}}, {{-4, -1}, {8, 10}}, {{8}, {0, -3}, {8, 5}}, {{9}, {9, -4, 4, -3}, {8, 8, -10}}, {{-6, 0, -4, 3}, {-5}, {7, -1, -4}}}, '?');
+        }
+    }
+    println('-');
+    print(to_string(new char[3]));
+    v11 = new int[][] {{-4}};
+    return new boolean[2];
+}
+
+boolean[] method1(int[][] p0, char[] p1, char[] p2) {
+    int v12 = -34;
+    while ((v12 < 2)) v12++;
+    print(new int[] {1, 4, -1});
+    println(new char[] {'5', 'e', '@', 'J', 'm'});
+    return new boolean[] {false, false, true, false, true};
+}
+
+int main() {
+    Class0 v38;
+    var v36 = ":^z";
+    var v34 = -10;
+    {
+        var v22 = 13;
+        v22 = -30;
+        println(to_string(new char[8]));
+        for (int v23 = 0; v23 < 4; v23++) {
+            boolean v25 = true;
+            int[] v24 = new int[] {0, 0, -3, -2, -5};
+            v24 = new int[9];
+            v25 = (v24 == v24);
+        }
+    }
+    {
+        int v33;
+        int v29 = -36;
+        if ((2 >= 1)) {
+            int[] v31 = new int[6];
+            int[] v30;
+            Class0 v28 = null;
+            for (int v26 = 0; v26 < 5; v26++) {
+                int v27;
+                v27 <<= length("|o{");
+            }
+            if ((-8 <= -6)) {
+                v28 = new Class0();
+            } else if ((10 == 9)) {
+                v29 %= -827;
+            } else {
+                v30 = new int[] {-4, -10};
+                v31 = new int[] {7, 5, 6, -8, 8};
+            }
+        } else {
+            char[] v32 = new char[8];
+            v32 = new char[4];
+        }
+        while ((v33 < 3)) {
+            if (true) break;
+            v33++;
+        }
+    }
+    println(new char[] {'4', 'G', '0'});
+    while ((v34 < 4)) {
+        var v35 = -29;
+        while ((v35 < 3)) v35++;
+        v34++;
+    }
+    if ((9 < 3)) ; else if ((3 <= 6)) {
+        char[] v37;
+        {
+            v36 = ("JB1" + 26);
+        }
+        v37 = new char[] {'@'};
+    }
+    method0(new int[][][] {{{0, 0, 0, -10}, {9, 1, 0}, {-3, 5, 1}, {1, -10}}, {{4, 2, -9, -1}, {3, -6, 9, 6}}, {{-1, -6, -7}, {-8, -7, 9, 4}}, {{-7, -1, -2, -3}}}, new boolean[] {true, true}, new Class0());
+    println(method1());
+    println(method1(new int[9][], new char[8], new char[7]));
+    v38 = new Class0();
+    println(v38.m0_0());
+    return 43;
+}

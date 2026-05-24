@@ -1,0 +1,5 @@
+int main(){
+    char c=97; //Should accept
+    println(c);
+    return 0;
+}

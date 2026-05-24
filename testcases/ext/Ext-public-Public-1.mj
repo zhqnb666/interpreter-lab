@@ -1,0 +1,18 @@
+
+
+// simple class fields
+// without inheretance
+
+class A {
+    int a = 10;
+    string b = "hello";
+}
+
+int main() {
+    A a = new A();
+
+    println(a.a);
+    println(a.b);
+
+    return 0;
+}

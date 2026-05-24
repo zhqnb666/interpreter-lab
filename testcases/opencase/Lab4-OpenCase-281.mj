@@ -1,0 +1,84 @@
+class Class0 {
+    char[] f0_0;
+
+    Class0(char p0, string p1, char p2) {
+        int v4;
+        v4 = (int) p2;
+        p1 += (char) v4;
+    }
+
+    Class0(Class0 p0, boolean p1, char p2) {
+        this(p2, "%D<)", p2);
+        this.f0_0 = new char[8];
+    }
+
+    void m0_0(int[][][] p0) {
+        this.f0_0 = new char[] {'L'};
+        print(null);
+        println(length("~1+a^/"));
+        for (int v5 = 0; v5 < 2; v5++) ;
+    }
+
+    int m0_1(int p0) {
+        this.f0_0 = new char[9];
+        p0 >>>= (p0 % -818);
+        return ((p0 > p0) ? p0 : p0);
+    }
+}
+
+int method0(boolean[] p0, string p1) {
+    assert((-4 > -2));
+    if ((5 > 1)) ; else {
+        p0[0] = (-8 <= -3);
+    }
+    println(new Class0('.', p1, '7'));
+    if (p0[0]) ; else ;
+    p0[0] = (9 >= -3);
+    return 23;
+}
+
+int[][][] method1() {
+    var v2 = '|';
+    int v1 = 22;
+    if (false) {
+        int v0 = -9;
+        while ((v0 < 5)) v0++;
+    }
+    v1 /= -242;
+    v2 -= 'w';
+    return new int[][][] {{{-4, 9, -7, 7}, {-5, 2, -1, -6}, {9, -9, -2, 1}, {-2, 4, -5}}, {{-5, 3}}, {{-7, -3}, {1, -1}, {7, 1, -5, 0}, {-6, -5, 3}}, {{2, -10, -10}}};
+}
+
+int method0(int[][][] p0, int[] p1, char p2) {
+    int v3 = 26;
+    println();
+    v3 = -45;
+    p1[0] = 7;
+    return -49;
+}
+
+int main() {
+    Class0 v13 = null;
+    int[][][] v12 = new int[5][][];
+    int v8;
+    int v6 = 41;
+    v6 = 22;
+    {
+        Class0 v11 = null;
+        int[] v10 = {9, 1, 6};
+        int[] v9;
+        for (int v7 = 0; v7 < 5; v7++) {
+            v8 ^= length(new boolean[] {true, false, false});
+            v9 = new int[2];
+            v10 = new int[10];
+        }
+        v11 = new Class0(null, false, 'l');
+    }
+    println(method0(new boolean[] {false}, "EXTT"));
+    v12 = method1();
+    println(method0(v12, new int[5], 'i'));
+    v13 = new Class0('+', to_string(new char[4]), '8');
+    v13.m0_0(v12);
+    println(v13.m0_1(29));
+    return v13.m0_1(-1);
+}

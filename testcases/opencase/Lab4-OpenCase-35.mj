@@ -1,0 +1,152 @@
+// ERROR: null_arg_to_builtin
+class Class0 {
+    int[] f0_0;
+
+    Class0(Class1 p0, Class1 p1) {
+        this.f0_0 = new int[7];
+    }
+
+    Class0(int p0, Class1 p1) {
+        this(p1, p1);
+    }
+
+    void m0_0() {
+        int v8 = 31;
+        this.f0_0 = new int[2];
+        print(method1((6 <= 8), new char[] {'}', 'f'}));
+        v8 ^= length("-nuQR");
+        ++v8;
+    }
+}
+
+class Class1 {
+    char[] f1_0;
+
+    void m1_0(Class1 p0, Class1 p1) {
+        Class0 v9 = null;
+        this.f1_0 = new char[5];
+        v9 = new Class2();
+    }
+}
+
+class Class2 extends Class0 {
+    char[] f2_0;
+
+    Class1 f2_1;
+
+    Class2() {
+        this.f2_0 = new char[9];
+        this.f2_1 = new Class1();
+    }
+
+    Class2(int[] p0, Class1 p1, Class0 p2) {
+        super(p0[0], p1);
+        this.f2_0 = new char[] {'8'};
+        this.f2_1 = p1;
+    }
+
+    void m0_0() {
+        Class0 v11;
+        this.f2_1 = null;
+        for (int v10 = 0; v10 < 4; v10++) ;
+        v11 = new Class2();
+    }
+
+    boolean[] m2_1() {
+        this.f2_0 = new char[9];
+        super.m0_0();
+        for (int v12 = 0; v12 < 5; v12++) {
+            int v15;
+            print(to_string(new char[] {'!', 'c', '8', '9', 'P'}));
+            for (int v13 = 0; v13 < 4; v13++) {
+                Class2 v14 = null;
+                v14 = new Class2(new int[] {5}, null, null);
+            }
+            v15 = 18;
+        }
+        return new boolean[] {true, true};
+    }
+}
+
+int[][][] method0(int p0) {
+    print(new char[5]);
+    p0 = 42;
+    to_string(null);
+    return new int[1][][];
+}
+
+Class0 method1(boolean p0, char[] p1) {
+    var v0 = '3';
+    v0 = '/';
+    for (int v1 = 0; v1 < 4; v1++) {
+        int v2;
+        p0 = ((v0 != v0) or (v0 != v0));
+        p0 = p0;
+        v2 = -15;
+    }
+    p1[0] = 'E';
+    {
+        Class2 v6 = null;
+        Class2 v5 = null;
+        var v3 = (int) v0;
+        while ((v3 < 3)) v3++;
+        for (int v4 = 0; v4 < 3; v4++) {
+            Class0 v7;
+            v5 = new Class2(new int[] {-2, 7, 0}, null, null);
+            v6 = new Class2(new int[] {-9, 5, -2}, null, null);
+            v7 = new Class2();
+        }
+    }
+    print((p0 == p0));
+    return new Class2(new int[2], null, null);
+}
+
+int main() {
+    Class2 v29;
+    Class1 v28 = null;
+    Class0 v27 = null;
+    int[][][] v26;
+    var v19 = -44;
+    Class2 v18 = null;
+    int v17 = 35;
+    var v16 = 8;
+    v16 = -13;
+    while ((v17 < 3)) v17++;
+    v18 = new Class2(new int[] {-6}, null, null);
+    while ((v19 < 5)) {
+        v18.m0_0();
+        v18.m0_0();
+        {
+            int[][] v23;
+            if ((v18 instanceof Class0)) {
+                int[] v20 = new int[] {8, 7};
+                v20 = new int[5];
+            } else {
+                int[][][] v21 = new int[4][][];
+                v21 = new int[][][] {{{1, 0, -5}, {4, 8, -5, -10}, {-6, -7}, {-10, -4, 9}}};
+            }
+            if ((1 <= 5)) {
+                int[][][] v22;
+                v22 = new int[][][] {{{-5, -10, 9, -9}, {7, -9}, {-9, -4, -2, 9}}};
+                v23 = new int[5][];
+            } else {
+                Class0 v25 = v18;
+                Class2 v24 = v18;
+                v24 = new Class2();
+                v18 = v24;
+                v25 = v24;
+            }
+        }
+        v19++;
+    }
+    v26 = method0(length(new int[][] {{-1, -6, -3}, {0, -3}, {0, 8}, {2}}));
+    println(method1((v18 instanceof Class0), new char[] {'.', 'o', '|'}));
+    v27 = new Class0(new Class1(), null);
+    v27.m0_0();
+    v28 = new Class1();
+    v28.m1_0(v28, v28);
+    v29 = new Class2();
+    v29.m0_0();
+    println(v29.m2_1());
+    return -30;
+}

@@ -1,0 +1,109 @@
+class Class0 {
+    char[] f0_0 = new char[1];
+
+    Class0(int[][] p0, int p1, boolean p2) {
+        this.f0_0 = new char[] {'$', '7', 'o', 'L'};
+    }
+
+    Class0() {
+        this.f0_0 = new char[8];
+    }
+
+    void m0_0(int[][] p0) {
+        this.f0_0 = new char[] {':', ':', 's', 'K'};
+        print(new boolean[] {true, false, true, true, true});
+    }
+}
+
+void method0(int[][] p0) {
+    int[] v5 = {-10};
+    var v0 = -47;
+    while ((v0 < 5)) {
+        {
+            var v1 = -27;
+            while ((v1 < 2)) {
+                int v3 = -35;
+                Class0 v2;
+                v2 = new Class0(new int[1][], 10, true);
+                v3 &= length(new int[] {8});
+                v1++;
+            }
+            p0[0] = new int[] {0, 8, 10};
+        }
+        {
+            println(new int[5]);
+            p0[0] = new int[] {-9};
+        }
+        v0++;
+    }
+    {
+        boolean v4 = (-5 > -2);
+        p0[0] = new int[2];
+        v4 = (7 != -8);
+        println(v4);
+    }
+    v5 = new int[] {1, -7, -3};
+    {
+        {
+            println(("fgI" + itoa(-32)));
+            p0[0] = new int[10];
+        }
+    }
+}
+
+int[][] method1(char[] p0, int[][][] p1) {
+    Class0 v12;
+    boolean[] v10 = {true, true, false, false};
+    char v8 = '2';
+    int v7 = 15;
+    var v6 = 'C';
+    v6 ^= p0[0];
+    v7 = 0;
+    {
+        p1[0] = new int[][] {{-7}, {-9, -8, 4}, {5, -8}, {-9, -5}, {4, -1, 10}};
+        v8 = p0[0];
+    }
+    for (int v9 = 0; v9 < 2; v9++) {
+        int v13;
+        v10 = new boolean[] {true};
+        if (true) {
+            int[][] v11 = {{3, 4}, {-3, -2, -8}, {-3}, {8, 7}};
+            v11 = new int[8][];
+            v12 = new Class0();
+        }
+        v13 = -34;
+    }
+    p1[0] = new int[][] {{3}, {-4, -7, -8, 9}, {3, 8, 9, -8}};
+    return new int[1][];
+}
+
+int[][] method1(boolean p0, boolean[] p1) {
+    Class0 v16;
+    char[] v15 = {'J'};
+    int[][] v14 = new int[][] {{9, 9, 0, 0}, {3}, {-2, -3}};
+    p1 = new boolean[6];
+    v14 = new int[][] {{-8, -2, -3}, {-1}, {-8, 9, -4}, {2, -5, -2}};
+    v15 = new char[3];
+    p1[0] = p0;
+    v16 = new Class0(new int[9][], length(new boolean[] {false, true, false, true}), p0);
+    return v14;
+}
+
+int main() {
+    Class0 v22 = null;
+    int[][] v21 = {{-8, -3, -9}, {-9, 1}};
+    int[][] v20;
+    for (int v17 = 0; v17 < 5; v17++) {
+        println();
+    }
+    for (int v18 = 0; v18 < 2; v18++) {
+        int[] v19 = new int[3];
+        v19 = new int[7];
+    }
+    method0(new int[9][]);
+    v20 = method1(new char[4], new int[][][] {{{-6, -1}, {-10, 5, 5}, {0, -8, 1}}});
+    v21 = method1((-3 != 9), new boolean[8]);
+    v22 = new Class0();
+    v22.m0_0(new int[8][]);
+    return 31;
+}

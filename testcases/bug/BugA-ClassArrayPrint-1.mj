@@ -1,0 +1,34 @@
+// Bug A: formatArray does not use class name / to_string() for ObjectInstance elements
+// println(classTypeArray) should format elements as class name or to_string() result,
+// not as Java's default ObjectInstance.toString() (which gives garbage like ObjectInstance@1a2b3c)
+
+class Animal {
+    string name;
+    Animal(string n) { this.name = n; }
+}
+
+class Named extends Animal {
+    Named(string n) { super(n); }
+    string to_string() { return "Named(" + this.name + ")"; }
+}
+
+int main() {
+    // Test 1: println a class array — elements without to_string() → class name
+    Animal[] arr = new Animal[3];
+    arr[0] = new Animal("Cat");
+    arr[1] = new Animal("Dog");
+    println(arr);
+
+    // Test 2: null element in class array
+    Animal[] arr2 = new Animal[2];
+    arr2[1] = new Animal("Fish");
+    println(arr2);
+
+    // Test 3: class array with to_string() override
+    Named[] named = new Named[2];
+    named[0] = new Named("Alice");
+    named[1] = new Named("Bob");
+    println(named);
+
+    return 0;
+}

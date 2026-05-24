@@ -1,0 +1,34 @@
+class Fa{
+    int fax=13;
+}
+
+class A extends Fa{
+    int x;
+    string y;
+    boolean z;
+    char c='a';
+
+    A(){
+        this(1);
+        println(fax);
+        println(x);
+        println(y+"?");
+        println(z);
+        println(c);
+    }
+
+    A(int _){
+        println(fax);
+        println(x);
+        println(y+"?");
+        println(z);
+        println(c);
+
+        x=114514;
+    }
+}
+
+int main(){
+    A a=new A();
+    return 0;
+}

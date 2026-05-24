@@ -1,0 +1,144 @@
+class Class0 {
+    char f0_0;
+
+    int f0_1 = -18;
+
+    int[] f0_2;
+
+    Class0(char p0, int[][][] p1, int p2) {
+        var v9 = true;
+        this.f0_0 = 't';
+        this.f0_2 = new int[2];
+        {
+            for (int v8 = 0; v8 < 3; v8++) p2 = length(new boolean[] {false, true, false, false, false});
+            p1[0][0][0] = length(new boolean[6]);
+        }
+        {
+            v9 = false;
+            println(null);
+        }
+    }
+
+    void m0_0(char p0) {
+        var v21 = -42;
+        var v20 = -24;
+        var v18 = "tvGpD";
+        int v10 = -5;
+        this.f0_0 = p0;
+        v10 = -46;
+        if ((p0 > p0)) {
+            char[] v19 = new char[8];
+            if (method0('<', new char[] {'%', '4'})) {
+                print(new boolean[7]);
+                print(49);
+            } else if (method0(p0, new char[] {'J'})) {
+                var v12 = 45;
+                var v11 = (int) '4';
+                v11 = 17;
+                while ((v12 < 4)) {
+                    boolean[] v13 = {false, false, false};
+                    v13 = new boolean[10];
+                    v12++;
+                }
+            } else {
+                int v14 = -42;
+                v14 = -39;
+                for (int v15 = 0; v15 < 3; v15++) {
+                    int[][][] v17;
+                    boolean v16;
+                    v16 = method0('-', new char[] {'L', 'z'});
+                    v17 = new int[3][][];
+                }
+            }
+            v18 = to_string(new char[] {'p'});
+            v19 = new char[] {'a', 'w', 'W', '7'};
+        } else {
+            v20 ^= length(new char[] {'b', 'U', '!', 'f'});
+        }
+        while ((v21 < 4)) v21++;
+    }
+
+    void m0_1(boolean[] p0, Class0 p1, int p2) {
+        this.f0_2 = new int[] {8, 7};
+        ++p2;
+    }
+}
+
+boolean method0(char p0, char[] p1) {
+    int[][] v1 = new int[][] {{-4}, {1}};
+    Class0 v0 = null;
+    v0 = new Class0('k', new int[8][][], length(new int[] {-7}));
+    p1[0] = p0;
+    v1 = new int[5][];
+    println(6);
+    println(p0);
+    return (v0 != null);
+}
+
+char[] method1(Class0 p0, Class0 p1) {
+    var v6 = '%';
+    var v4 = 13;
+    int v3;
+    char[] v2;
+    v2 = new char[] {'D', '&', '3', '[', 'L'};
+    println(p1.f0_0);
+    p1.m0_1(new boolean[] {false, true, false, false, false}, new Class0(v2[0], new int[4][][], -30), atoi("6577"));
+    v3 = -17;
+    while ((v4 < 4)) {
+        print(new boolean[] {false});
+        for (int v5 = 0; v5 < 4; v5++) {
+            v6 /= 8;
+        }
+        print(new boolean[] {false});
+        v4++;
+    }
+    return v2;
+}
+
+void method2(int[][][] p0, boolean p1, char p2) {
+    print(new int[] {-7});
+    {
+        int[] v7;
+        v7 = new int[10];
+    }
+}
+
+int main() {
+    Class0 v33;
+    var v32 = 5;
+    int[][][] v31 = new int[7][][];
+    int v23 = 10;
+    int v22 = -13;
+    v22 = -44;
+    while ((v23 < 5)) {
+        char[] v30 = {'{', 'X', ' '};
+        int v28 = -20;
+        if (method0('Z', new char[10])) {
+            boolean[] v27;
+            for (int v24 = 0; v24 < 2; v24++) {
+                boolean v26 = (4 > -9);
+                int v25 = 34;
+                v25 = length(new int[] {-3, -8, 7, 8, -9});
+                v26 = method0('e', new char[] {'b', '@', 'q', 'q', '8'});
+            }
+            v27 = new boolean[] {true, false, true};
+        }
+        while ((v28 < 2)) {
+            int v29;
+            v29 = -45;
+            v30 = new char[] {'T', 'p', 'G'};
+            v28++;
+        }
+        v23++;
+    }
+    v31 = new int[][][] {{{3}, {-5, -1}, {-2, -8, -3}}};
+    print(true);
+    v32 = length(new int[6][]);
+    println(method0((char) -47, new char[1]));
+    println(method1(new Class0('^', v31, v32), new Class0('q', v31, v32)));
+    method2(v31, method0('V', new char[] {'4', '|', 'i', '1', 'z'}), '{');
+    v33 = new Class0('z', new int[8][][], ((v32 <= v32) ? v32 : v32));
+    v33.m0_0((char) 29);
+    v33.m0_1(new boolean[] {false, true, false, false, false}, null, length(new boolean[] {true}));
+    return v32;
+}

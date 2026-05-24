@@ -1,0 +1,31 @@
+// Bug B: asStringForConcat does not handle array-typed values — falls through to
+// asString(v) = String.valueOf(Object[]) which gives Java garbage like "[I@1a2b3c"
+// instead of the formatted "[1, 2, 3]" representation.
+
+class Box {
+    int val;
+    Box(int v) { val = v; }
+    string to_string() { return "Box(" + itoa(val) + ")"; }
+}
+
+int main() {
+    // Test 1: int array + string concat
+    int[] nums = {1, 2, 3};
+    println("nums=" + nums);
+
+    // Test 2: string + int array
+    println(nums + "!");
+
+    // Test 3: class array + string concat (also tests to_string in elements)
+    Box[] boxes = new Box[2];
+    boxes[0] = new Box(10);
+    boxes[1] = new Box(20);
+    println("boxes=" + boxes);
+
+    // Test 4: += with array
+    string s = "val=";
+    s += nums;
+    println(s);
+
+    return 0;
+}

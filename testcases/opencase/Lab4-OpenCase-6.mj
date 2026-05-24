@@ -1,0 +1,50 @@
+class Class0 {
+    int[][][] f0_0 = {{{-8, -9}, {5}, {-7, 1}, {4, 6}}};
+
+    void m0_0(boolean[] p0, Class0 p1) {
+        this.f0_0 = new int[][][] {{{-7, 8}, {-1, 5}, {6}}};
+        p1 = new Class0();
+    }
+}
+
+void method0(char[] p0, Class0 p1) {
+    int v2;
+    int v1 = -48;
+    print(new Class0());
+    for (int v0 = 0; v0 < 4; v0++) {
+        p0[0] = '!';
+    }
+    v1 = -50;
+    v2 = length(new int[] {1, -6, 8, -8});
+}
+
+boolean method1(int p0, boolean p1, Class0 p2) {
+    print((char) p0);
+    ++p0;
+    return (p0 < p0);
+}
+
+int main() {
+    Class0 v9 = null;
+    char[] v5;
+    for (int v3 = 0; v3 < 4; v3++) {
+        for (int v4 = 0; v4 < 2; v4++) {
+            v5 = new char[] {'2', '"', 'Y', '"'};
+        }
+    }
+    {
+        if (method1(-26, (-3 < 3), null)) ;
+        print((itoa(-44) + '2'));
+        for (int v6 = 0; v6 < 3; v6++) {
+            int[][] v8 = new int[5][];
+            int[] v7 = new int[] {-5, 2, -6, -1, -9};
+            v7 = new int[] {10, -8, -7};
+            v8 = new int[][] {{-9, 8}};
+        }
+    }
+    method0(new char[] {'Z', 'j', 'n', '"'}, new Class0());
+    println(method1(length(new int[] {5}), method1(27, (0 > 8), null), new Class0()));
+    v9 = new Class0();
+    v9.m0_0(new boolean[4], new Class0());
+    return -35;
+}

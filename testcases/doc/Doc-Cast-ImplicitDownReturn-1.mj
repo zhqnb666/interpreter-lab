@@ -1,0 +1,15 @@
+class Animal {
+}
+
+class Dog extends Animal {
+}
+
+Dog makeDog() {
+    Animal a = new Dog();
+    return a;
+}
+
+int main() {
+    println(makeDog());
+    return 0;
+}

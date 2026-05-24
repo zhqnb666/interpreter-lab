@@ -1,0 +1,15 @@
+int main(){
+    int x=0;
+    for(;;x++){
+        if(x==6){
+            break;
+        }
+    }
+
+    assert(x==6);
+
+    for(;x<10;x++){}
+
+    assert(x==10);
+    return 0;
+}

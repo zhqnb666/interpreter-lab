@@ -1,0 +1,16 @@
+void fun(int[][] a) {
+    println((a == null) ? "Is NULL!" : "Not NULL!");
+}
+
+int main() {
+    fun(new int[2][]);
+    fun(null);
+    fun(new int[4]);
+    return 0;
+}
+
+/*
+Not NULL!
+Is NULL!
+Process exits with the code 34.
+*/

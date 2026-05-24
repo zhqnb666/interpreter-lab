@@ -1,0 +1,62 @@
+class Class0 {
+    Class1 f0_0;
+
+    Class0(Class0 p0) {
+        this.f0_0 = null;
+    }
+
+    int m0_0(int p0, Class1 p1) {
+        this.f0_0 = p1.f0_0;
+        if ((p0 == p0)) p1 = new Class1(); else {
+            print((char) length(new char[] {'T', 'T', 'X'}));
+            p1.f1_0 = new int[7][];
+        }
+        return 24;
+    }
+}
+
+class Class1 extends Class0 {
+    int[][] f1_0;
+
+    char f1_1;
+
+    Class1 f1_2;
+
+    Class1() {
+        var v1 = 45;
+        super(null);
+        this.f1_0 = new int[6][];
+        this.f1_1 = '(';
+        while ((v1 < 5)) v1++;
+    }
+
+    int[][][] m1_0(Class1 p0) {
+        this.f1_0 = new int[3][];
+        println(new Class1());
+        return new int[][][] {{{-5, -5, -10}}, {{-4, -8}}, {{9}}};
+    }
+}
+
+int[][][] method0(char p0, Class1 p1) {
+    var v0 = 14;
+    println((p0 > p0));
+    v0 = 40;
+    return new int[][][] {{{6, 2, 8, -2}, {-7, 0, 5, -1}, {-8}}, {{-7, -6, -3}, {-7}, {1, 7, 0}, {-8, 1, -2, 3}}, {{2, -5, -4}}};
+}
+
+int main() {
+    int[][][] v6 = {{{7}}, {{-3, 7, 10, -2}, {8}}, {{-7}, {1, 9, -6, 3}}};
+    Class1 v5 = null;
+    Class0 v4 = null;
+    int[][][] v3 = {{{-1, 9}, {-3}, {-10, 2, 8}}};
+    int v2 = -2;
+    print('r');
+    v2 = -41;
+    v3 = method0('!', new Class1());
+    v4 = new Class0(v4);
+    println(v4.m0_0(length("TT#b?n"), null));
+    v5 = new Class1();
+    v6 = v5.m1_0(new Class1());
+    println(v5.m0_0(-21, new Class1()));
+    return v2;
+}

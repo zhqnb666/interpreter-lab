@@ -1,0 +1,143 @@
+// ERROR: continue_outside_loop
+class Class0 {
+    char f0_0;
+
+    Class1 f0_1;
+
+    boolean[] f0_2;
+
+    Class0 m0_0(Class0 p0, char p1, char p2) {
+        this.f0_2 = new boolean[2];
+        print(new Class1());
+        return p0;
+    }
+}
+
+class Class1 extends Class0 {
+    string f1_0;
+
+    Class1(boolean[] p0) {
+        Class0 v14 = null;
+        this.f1_0 = (to_string(new char[5]) + itoa(24));
+        v14 = new Class0();
+        if (method2('{', -20, (-8 > 2))) {
+            println(new char[] {'b', 'p', 'd', 'k'});
+            println(new boolean[] {false, true, false, false});
+        } else {
+            Class1 v16 = null;
+            int[] v15 = {-2, 0, -10};
+            println(to_string(new char[] {'H', 'q', 't', 'M', '~'}));
+            v15 = new int[3];
+            v16 = null;
+        }
+    }
+
+    Class1(string p0, boolean p1, int[] p2) {
+        this(new boolean[] {false, true, true, true});
+        this.f1_0 = (p0 + p1);
+        p2[0] = 2;
+        print(method0(null, new boolean[4]));
+    }
+
+    Class1() {
+        this(new boolean[5]);
+    }
+
+    boolean m1_0() {
+        var v17 = -7;
+        this.f1_0 = (itoa(30) + 'V');
+        v17 = 22;
+        return true;
+    }
+
+    Class0 m0_0(Class0 p0, char p1, char p2) {
+        this.f1_0 = "S/BlHj";
+        for (int v18 = 0; v18 < 4; v18++) {
+            Class1 v19 = null;
+            v19 = new Class1(new boolean[] {true, false, true, false, true});
+        }
+        return null;
+    }
+}
+
+char method0(Class1 p0, boolean[] p1) {
+    boolean v8;
+    if (p1[0]) continue;
+    {
+        p0.f0_0 = 'z';
+        {
+            println(new Class1("rzR", (p0 == p0), new int[] {10, -5, -1, -6}));
+            for (int v0 = 0; v0 < 2; v0++) {
+                int v2 = -12;
+                boolean v1 = (-9 >= -10);
+                p0 = new Class1();
+                v1 = method2('.', 35, false);
+                v2 = atoi("-4022");
+            }
+            println((itoa(30) + itoa(17)));
+        }
+        if (p0.m1_0()) {
+            int v6;
+            int[] v5 = {-1, 4};
+            char[] v4;
+            if (method2('|', -9, (p1 == p1))) {
+                int v3;
+                p0 = new Class1("/e;", method2('[', 43, (7 != -7)), new int[] {2, -7});
+                p1 = p1;
+                v3 = atoi("-3883");
+            } else {
+                v4 = new char[6];
+                v5 = new int[] {6, -9, 7, -5, 6};
+            }
+            while ((v6 < 4)) {
+                var v7 = -2;
+                v7 = length(new char[] {'z', 'v'});
+                v6++;
+            }
+            p1[0] = false;
+        } else {
+            int[] v9 = new int[] {-1, -8, 0};
+            v8 = (6 == 9);
+            v9 = new int[10];
+        }
+    }
+    return p0.f0_0;
+}
+
+int method1() {
+    int[][][] v11;
+    int[] v10 = {-5, 8};
+    if ((-3 != 0)) {
+        v10 = new int[] {7, -8, 5, 7, 0};
+    }
+    v11 = new int[2][][];
+    return 7;
+}
+
+boolean method2(char p0, int p1, boolean p2) {
+    Class0 v13 = null;
+    boolean[] v12;
+    v12 = new boolean[9];
+    assert(v12[0]);
+    v13 = new Class1();
+    println(method0(null, new boolean[1]));
+    return v12[0];
+}
+
+int main() {
+    Class1 v23 = null;
+    Class0 v22 = null;
+    var v21 = "|%,Zz";
+    Class0 v20 = null;
+    v20 = new Class1();
+    v21 = "4Tm";
+    println(method0((Class1) v20, new boolean[10]));
+    println(method1());
+    println(method2(method0(null, new boolean[] {true}), length(new boolean[] {true}), (v20 instanceof Class0)));
+    v22 = new Class0();
+    println(v22.m0_0(new Class1(new boolean[4]), method0(null, new boolean[8]), method0(null, new boolean[] {false, true, false, true})));
+    v23 = new Class1();
+    println(v23.m1_0());
+    println(v23.m0_0(v23, '3', v23.f0_0));
+    return -38;
+}

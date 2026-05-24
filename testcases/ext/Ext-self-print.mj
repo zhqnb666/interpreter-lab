@@ -1,0 +1,21 @@
+class A{
+}
+
+class B extends A{
+
+}
+
+class C{
+    void go(A a){
+        println("OK");
+    }
+}
+void go(A a){
+    println("OK");
+}
+
+int main(){
+    go(new B());
+    new C().go(new B());
+    return 0;
+}

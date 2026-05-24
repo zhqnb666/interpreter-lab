@@ -1,0 +1,234 @@
+
+class String {
+    char[] data;
+
+    String(string s) {
+        data = to_char_array(s);
+    }
+
+    void append(string s) {
+        char[] append_data = to_char_array(s);
+        
+        int old_length = length(data);
+        int append_length = length(append_data);
+
+        char[] new_data = new char[old_length + append_length];
+
+        for (int i = 0; i < old_length; i++) {
+            new_data[i] = data[i];
+        }
+        for (int i = 0; i < append_length; i++) {
+            new_data[old_length + i] = append_data[i];
+        }
+
+        data = new_data;
+    }
+
+    int length() {
+        return length(data);
+    }
+
+    char charAt(int index) {
+        return data[index];
+    }
+
+    string to_string() {
+        return to_string(data);
+    }
+
+    boolean equals(String s) {
+        if (s == null) 
+            return false;
+
+        if (this.length() != s.length()) 
+            return false;
+
+        for (int i = 0; i < length(data); i++) {
+            if (data[i] != s.charAt(i)) 
+                return false;
+        }
+        return true;
+    }
+}
+
+// Entry class for storing key-value pairs
+class Entry {
+    int key;       // The key (Pair.a)
+    String value;  // The value (Pair.b)
+    Entry next;    // Next entry in the same bucket
+
+    Entry(int key, String value) {
+        this.key = key;
+        this.value = value;
+        this.next = null;
+    }
+}
+
+
+class HashMap {
+    Entry[] buckets;
+    int size;
+    int capacity;
+
+    // Constructors
+    HashMap() {
+        // default capacity = 16
+        this(16);
+    }
+
+    HashMap(int initialCapacity) {
+        capacity = initialCapacity;
+        buckets = new Entry[capacity];
+        size = 0;
+    }
+
+    // Hash function
+    int hash(int key) {
+        return key % capacity;
+    }
+
+    // Put a key-value pair into the map
+    void put(int key, String value) {
+        if (value == null) return; // Null check for value
+
+        int index = hash(key);
+
+        // Check for existing key
+        Entry current = buckets[index];
+        while (current != null) {
+            if (current.key == key) {
+                current.value = value; // Update existing
+                return;
+            }
+            current = current.next;
+        }
+
+        // Add new entry
+        Entry newEntry = new Entry(key, value);
+        newEntry.next = buckets[index];
+        buckets[index] = newEntry;
+        size++;
+
+        // Resize if needed
+        if (size >= capacity * 4 / 3) {
+            resize();
+        }
+    }
+
+    // Get value by key
+    String get(int key) {
+        int index = hash(key);
+        Entry current = buckets[index];
+
+        while (current != null) {
+            if (current.key == key) {
+                return current.value;
+            }
+            current = current.next;
+        }
+
+        return null;
+    }
+
+    // Check if key exists
+    boolean containsKey(int key) {
+        return get(key) != null;
+    }
+
+    // Remove by key
+    void remove(int key) {
+        int index = hash(key);
+        Entry current = buckets[index];
+        Entry prev = null;
+
+        while (current != null) {
+            if (current.key == key) {
+                if (prev == null) {
+                    buckets[index] = current.next;
+                } else {
+                    prev.next = current.next;
+                }
+                size--;
+                return;
+            }
+            prev = current;
+            current = current.next;
+        }
+    }
+
+    // Current size
+    int size() {
+        return size;
+    }
+
+    // Resize the buckets array
+    void resize() {
+        int newCapacity = capacity * 2;
+        Entry[] newBuckets = new Entry[newCapacity];
+
+        for (int i = 0; i < capacity; i++) {
+            Entry current = buckets[i];
+            while (current != null) {
+                Entry next = current.next;
+                int newIndex = current.key % newCapacity;
+
+                current.next = newBuckets[newIndex];
+                newBuckets[newIndex] = current;
+
+                current = next;
+            }
+        }
+
+        buckets = newBuckets;
+        capacity = newCapacity;
+    }
+
+    // Convert to string for debugging
+    string to_string() {
+        string result = "HashMap {";
+        for (int i = 0; i < capacity; i++) {
+            result = result + "  [" + i + "]: ";
+            Entry current = buckets[i];
+            while (current != null) {
+                result = result + "(" + current.key + " : " + current.value.to_string() + ")";
+                if (current.next != null) {
+                    result = result + " -> ";
+                }
+                current = current.next;
+            }
+        }
+        result = result + "}";
+        return result;
+    }
+}
+
+int main() {
+    HashMap map = new HashMap();
+
+    // Test operations
+    map.put(1, new String("Alice"));
+    map.put(2, new String("Bob"));
+    map.put(17, new String("Charlie")); // Collision with 1
+
+    println("Size: " + map.size()); // 3
+    println("Get 1: " + map.get(1).to_string()); // Alice
+    println("Contains 2: " + map.containsKey(2)); // true
+
+    map.remove(2);
+
+    println("After remove, size: " + map.size()); // 2
+
+    var s = map.get(2);
+    // null check for null value
+    if (s == null) {
+        println("Get 2: null");
+    } else {
+        println("Get 2: " + s.to_string());
+    }
+
+    // Show structure
+    println("Map structure:");
+    println(map.to_string());
+
+    return 0;
+}

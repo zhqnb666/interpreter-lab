@@ -1,0 +1,113 @@
+
+// from String.mj
+class String {
+    char[] data;
+
+    String(string s) {
+        data = to_char_array(s);
+    }
+
+    void append(string s) {
+        char[] append_data = to_char_array(s);
+        
+        int old_length = length(data);
+        int append_length = length(append_data);
+
+        char[] new_data = new char[old_length + append_length];
+
+        for (int i = 0; i < old_length; i++) {
+            new_data[i] = data[i];
+        }
+        for (int i = 0; i < append_length; i++) {
+            new_data[old_length + i] = append_data[i];
+        }
+
+        data = new_data;
+    }
+
+    int length() {
+        return length(data);
+    }
+
+    string to_string() {
+        return to_string(data);
+    }
+}
+
+// Stack
+class Stack {
+    String[] data;
+    int top;
+
+    Stack() {
+        data = new String[10]; // initial capacity
+        top = -1;
+    }
+
+    void push(String item) {
+        // If stack is full, resize the array
+        if (top == length(data) - 1) {
+            String[] new_data = new String[length(data) * 2];
+            
+            for (int i = 0; i <= top; i++) {
+                new_data[i] = data[i];
+            }
+            
+            data = new_data;
+        }
+        
+        top++;
+        data[top] = item;
+    }
+
+    String pop() {
+        if (isEmpty()) {
+            return null;
+        }
+        
+        String item = data[top];
+        top--;
+        return item;
+    }
+
+    String peek() {
+        if (isEmpty()) {
+            return null;
+        }
+        return data[top];
+    }
+
+    boolean isEmpty() {
+        return top == -1;
+    }
+
+    int size() {
+        return top + 1;
+    }
+}
+
+int main() {
+    Stack stack = new Stack();
+    
+    stack.push(new String("First"));
+    stack.push(new String("Second"));
+    stack.push(new String("Third"));
+
+    println("Stack size: " + stack.size()); // 3
+    
+    String topItem = stack.peek();
+    println("Top item: " + topItem.to_string()); // "Third"
+    
+    println("Popping items:");
+    while (not stack.isEmpty()) {
+        String item = stack.pop();
+        println(item);
+    }
+    // Third
+    // Second
+    // First
+    
+    println("Stack is empty? " + stack.isEmpty()); // true
+    
+    return 0;
+}

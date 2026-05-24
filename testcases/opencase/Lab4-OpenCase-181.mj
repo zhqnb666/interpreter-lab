@@ -1,0 +1,117 @@
+class Class0 {
+    int f0_0;
+
+    Class0 m0_0() {
+        int[] v4 = new int[] {9, 8};
+        var v3 = 17;
+        this.f0_0 = -24;
+        println(this.f0_0);
+        v3 = -36;
+        v4 = new int[6];
+        for (int v5 = 0; v5 < 2; v5++) ;
+        return new Class0();
+    }
+
+    char[] m0_1(Class0 p0) {
+        int[][] v8;
+        boolean v7 = true;
+        boolean v6;
+        this.f0_0 = -4;
+        println(this.f0_0);
+        v6 = (p0 != null);
+        v7 = ((v6 == v6) and true);
+        v8 = new int[5][];
+        return new char[8];
+    }
+}
+
+class Class1 extends Class0 {
+    boolean f1_0;
+
+    Class1(int p0, boolean p1) {
+        super();
+        this.f1_0 = p1;
+    }
+
+    Class1() {
+        int v19;
+        boolean v18 = false;
+        this(7, (-2 > -10));
+        this.f1_0 = (-1 != -6);
+        for (int v9 = 0; v9 < 4; v9++) {
+            var v15 = -9;
+            int v10 = 0;
+            while ((v10 < 2)) v10++;
+            if (true) {
+                char v12;
+                int[][] v11;
+                v11 = new int[][] {{8, 1, -10}, {-3}};
+                v12 = ',';
+            } else {
+                boolean[] v14 = {false, false, true, true, true};
+                boolean v13;
+                v13 = (9 == 3);
+                v14 = new boolean[1];
+            }
+            while ((v15 < 3)) {
+                char v17 = 'S';
+                boolean v16 = (2 > -1);
+                v16 = (0 >= 3);
+                v17 -= 'Y';
+                v18 = ((v17 != v17) or (v17 <= v17));
+                v15++;
+            }
+        }
+        v19 = -48;
+    }
+
+    void m1_0(int p0) {
+        this.f1_0 = (p0 <= p0);
+        method2();
+    }
+}
+
+void method0(int[] p0, int p1, int p2) {
+    println(p0);
+    return;
+    println(new Class1(p0[0], true));
+}
+
+int method1(int p0, int p1, Class1 p2) {
+    boolean[] v0 = new boolean[5];
+    v0 = new boolean[] {true, false};
+    v0[0] = p2.f1_0;
+    p1++;
+    ++p0;
+    return (-24 / 705);
+}
+
+void method2() {
+    for (int v1 = 0; v1 < 3; v1++) {
+        print(null);
+        if ((2 <= -9)) continue;
+    }
+    if (false) {
+        int[][][] v2;
+        v2 = new int[5][][];
+    }
+}
+
+int main() {
+    Class1 v22 = null;
+    Class0 v21;
+    var v20 = "oe0}#";
+    print('>');
+    v20 += length(new int[][] {{10, 0, 2, -6}, {3, 2, 6}, {6}, {2, 5, -5}});
+    method0(new int[] {-9, 7, -3, 0, -2}, length(v20), atoi("-6974"));
+    println(method1(45, method1(-13, 3, null), new Class1(length(new char[6]), true)));
+    method2();
+    v21 = new Class0();
+    println(v21.m0_0());
+    println(v21.m0_1(v21));
+    v22 = new Class1();
+    v22.m1_0(length(new int[2]));
+    println(v22.m0_0());
+    println(v22.m0_1(v22));
+    return -27;
+}

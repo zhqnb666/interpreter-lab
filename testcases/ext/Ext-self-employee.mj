@@ -1,0 +1,189 @@
+// File: Employee.java
+  class Employee {
+     string name;
+     string employeeId;
+
+    // Constructor
+     Employee(string name, string employeeId) {
+        this.name = name;
+        this.employeeId = employeeId;
+        println("Employee constructor called for: " + name); // For tracking
+    }
+
+    // Abstract method for calculating salary
+      int calculateSalary(){return 0;}
+
+    // Getters
+     string getName() {
+        return name;
+    }
+
+     string getEmployeeId() {
+        return employeeId;
+    }
+
+    // Overridden to_string() method
+
+     string to_string() {
+        return "Employee [ID: " + employeeId + ", Name: " + name + "]";
+    }
+}
+
+// File: SalariedEmployee.java
+ class SalariedEmployee extends Employee {
+     int annualSalary;
+
+    // Constructor
+     SalariedEmployee(string name, string employeeId, int annualSalary) {
+        // Call to the superclass constructor
+        super(name, employeeId);
+        this.annualSalary = annualSalary;
+        println("SalariedEmployee constructor called for: " + name); // For tracking
+    }
+
+    // Implementing  method
+
+     int calculateSalary() {
+        // Calculate monthly salary
+        return annualSalary / 12;
+    }
+
+    // Overridden to_string()
+
+     string to_string() {
+        // Call superclass to_string() and add specific info
+        return super.to_string() + ", Type: Salaried, Annual Salary: " + annualSalary;
+    }
+
+    // Getter specific to SalariedEmployee
+     int getAnnualSalary() {
+        return annualSalary;
+    }
+}
+
+// File: HourlyEmployee.java
+ class HourlyEmployee extends Employee {
+     int hourlyRate;
+     int hoursWorked;
+
+    // Constructor with all details
+     HourlyEmployee(string name, string employeeId, int hourlyRate, int hoursWorked) {
+        // Call to the superclass constructor
+        super(name, employeeId);
+        this.hourlyRate = hourlyRate;
+        this.hoursWorked = hoursWorked;
+        println("HourlyEmployee detailed constructor called for: " + name); // For tracking
+    }
+
+    // Constructor using this() for chaining - defaults hoursWorked to 0
+     HourlyEmployee(string name, string employeeId, int hourlyRate) {
+        // Call to another constructor in the same class
+        this(name, employeeId, hourlyRate, 0);
+        println("HourlyEmployee simple constructor called for: " + name + ", defaulting hours."); // For tracking
+    }
+
+    // Implementing  method
+
+     int calculateSalary() {
+        // Calculate weekly salary (assuming this represents a week)
+        return hourlyRate * hoursWorked;
+    }
+
+    // Overridden to_string()
+
+     string to_string() {
+         // Call superclass to_string() and add specific info
+        return super.to_string() + ", Type: Hourly, Rate: " + hourlyRate + ", Hours: " + hoursWorked;
+    }
+
+    // Getters specific to HourlyEmployee
+     int getHourlyRate() {
+        return hourlyRate;
+    }
+
+     int getHoursWorked() {
+        return hoursWorked;
+    }
+}
+
+// File: Manager.java
+// Manager inherits from SalariedEmployee (deeper hierarchy)
+ class Manager extends SalariedEmployee {
+     int monthlyBonus;
+
+    // Constructor
+     Manager(string name, string employeeId, int annualSalary, int monthlyBonus) {
+        // Call to the superclass (SalariedEmployee) constructor
+        super(name, employeeId, annualSalary);
+        this.monthlyBonus = monthlyBonus;
+        println("Manager constructor called for: " + name); // For tracking
+    }
+
+    // Overriding calculateSalary() to add bonus
+
+     int calculateSalary() {
+        // Call the superclass's calculateSalary() (SalariedEmployee's implementation)
+        int baseMonthlySalary = super.calculateSalary();
+        return baseMonthlySalary + monthlyBonus;
+    }
+
+    // Overridden to_string()
+
+     string to_string() {
+        // Call superclass to_string() and add specific info
+        return super.to_string() + ", Type: Manager, Monthly Bonus: " + monthlyBonus;
+    }
+
+    // Getter specific to Manager
+     int getMonthlyBonus() {
+        return monthlyBonus;
+    }
+}
+
+
+// File: PayrollSystem.java
+ class PayrollSystem {
+
+    // Method processing employees polymorphically
+     int processPayroll(Employee[] employees) {
+        int totalPayroll = 0;
+        println("--- Processing Payroll ---");
+
+        for (int i=0;i<length(employees);i++) {
+            Employee emp = employees[i];
+            // Demonstrate calling overridden to_string()
+            println(emp.to_string());
+
+            // Demonstrate polymorphic method call
+            int salary = emp.calculateSalary();
+            println("Calculated Pay: " + salary);
+            totalPayroll += salary;
+            println("--------------------------");
+        }
+        return totalPayroll;
+    }
+}
+
+     int main() {
+        println("--- Creating Employees ---");
+
+        // Creating instances of different employee types
+        SalariedEmployee emp1 = new SalariedEmployee("Alice", "S001", 60000);
+        HourlyEmployee emp2 = new HourlyEmployee("Bob", "H002", 15, 40); // Using detailed constructor
+        Manager mgr1 = new Manager("Charlie", "M003", 80000, 500);
+        HourlyEmployee emp3 = new HourlyEmployee("David", "H004", 18); // Using constructor with this()
+
+        println("--- Employee Creation Complete ---");
+
+        // Creating an array of Employee references
+        Employee[] companyEmployees = {emp1, emp2, mgr1, emp3};
+
+        // Creating a PayrollSystem instance
+        PayrollSystem payroll = new PayrollSystem();
+
+        // Process the payroll using the system
+        int totalCost = payroll.processPayroll(companyEmployees);
+
+        println("Total Payroll Cost: " + totalCost);
+        return 0;
+    }

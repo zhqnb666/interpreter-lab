@@ -1,0 +1,102 @@
+class Class0 {
+    Class1 f0_0 = null;
+
+    int f0_1 = -41;
+
+    void m0_0() {
+        Class1 v2 = null;
+        int v1 = -34;
+        this.f0_1 = atoi("-8484");
+        println(this.f0_1);
+        v1 = -26;
+        v2 = new Class1();
+        return;
+    }
+
+    char m0_1() {
+        char[] v5 = {'`'};
+        this.f0_0 = new Class1();
+        for (int v3 = 0; v3 < 4; v3++) {
+            Class1 v4;
+            v4 = new Class1();
+        }
+        v5 = new char[] {'"', 'r', '7', '^', '3'};
+        return 'b';
+    }
+}
+
+class Class1 {
+    Class1 f1_0 = null;
+
+    void m1_0(int[][][] p0, boolean[] p1, string p2) {
+        this.f1_0 = new Class1();
+        for (int v6 = 0; v6 < 2; v6++) {
+            int[][] v8 = new int[5][];
+            int v7;
+            while ((v7 < 2)) v7++;
+            v8 = new int[4][];
+        }
+        if ((p1 == p1)) {
+            char[] v9;
+            v9 = new char[] {'u', 'i'};
+        } else if ((4 < 9)) {
+            int v10;
+            while ((v10 < 2)) v10++;
+        } else {
+            print(-15);
+            if ((-6 != -10)) {
+                int[] v12;
+                Class1 v11;
+                p1[0] = (7 < -9);
+                v11 = new Class1();
+                v12 = new int[10];
+            }
+        }
+    }
+}
+
+int[][][] method0(int p0, Class1 p1) {
+    {
+        println(new int[2]);
+        print(p1);
+    }
+    p0 /= 196;
+    p1.f1_0 = p1;
+    return new int[5][][];
+}
+
+int[][][] method0(char p0, int[][][] p1) {
+    var v0 = "qbl@;";
+    p1[0] = new int[][] {{5, 6, -2, 5}, {-2, 7, -2}, {6, -5}};
+    print(new int[5]);
+    v0 = itoa(11);
+    return new int[7][][];
+}
+
+int main() {
+    Class1 v21 = null;
+    Class0 v20 = null;
+    int[][][] v19 = {{{7, 3}, {-2, 4, 2, -2}, {4, -7, 2, -4}}, {{1, -1}}, {{-10, 0, 9, 4}, {-3}, {-1, 8, -2}}, {{9, -9, 2}, {-9}, {-8}}};
+    int[][][] v18 = {{{-3, -10, -1, -2}, {-2}, {6, 10, 0}}, {{-3, 0}}, {{-7, 6, -1, -2}, {-6, 8, 4, 4}, {5, 7}}, {{-6}}, {{8, 6, -4}, {8}, {0, 2, -7, 7}}};
+    int v17 = -11;
+    Class0 v14;
+    int v13 = -37;
+    v13 = -7;
+    v14 = new Class0();
+    {
+        int[][] v15 = new int[8][];
+        v15 = new int[5][];
+        for (int v16 = 0; v16 < 5; v16++) ;
+        v14.m0_0();
+    }
+    v14.f0_0 = new Class1();
+    v17 = -10;
+    v18 = method0(atoi("3751"), new Class1());
+    v19 = method0(v14.m0_1(), v18);
+    v20 = new Class0();
+    v20.m0_0();
+    println(v20.m0_1());
+    v21 = new Class1();
+    v21.m1_0(v19, new boolean[] {true}, to_string(new char[] {'7', 'G', '1'}));
+    return -46;
+}

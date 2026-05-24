@@ -1,0 +1,18 @@
+class A{
+    void f(int x){
+        println("T");
+    }
+}
+
+class B extends A{
+    void f(char c){
+        println("F");
+    }
+}
+
+int main(){
+    new B().f('a');
+    A x=new B();
+    x.f('a');
+    return 0;
+}

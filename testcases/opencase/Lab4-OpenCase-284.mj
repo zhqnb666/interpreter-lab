@@ -1,0 +1,69 @@
+// ERROR: array_type_mismatch
+class Class0 {
+    Class0 f0_0;
+
+    int[][] f0_1;
+
+    Class0(int[][][] p0, int[] p1, int p2) {
+        this.f0_1 = new int[][] {{1, 4, 6}, {-8, -5}};
+    }
+
+    Class0() {
+        this.f0_0 = null;
+        this.f0_1 = new int[][] {{4, -9, -3}, {-1, 3, -6, -5}, {-4, 8, -6}, {10, 1, 6, 9}};
+        assert(false);
+    }
+
+    boolean m0_0(Class0 p0, int p1) {
+        boolean[] v3 = {true, true, false, false, true};
+        char[] v2 = new char[] {'t'};
+        this.f0_1 = new int[][] {{8, -5, -5, -3}, {-1}, {-4, 10, -6, 9}, {-5, -9, -5, -9}, {4, -6}};
+        v2 = new char[6];
+        print((length(new boolean[8]) + p1));
+        v3 = new boolean[] {false};
+        return false;
+    }
+}
+
+Class0 method0(boolean[] p0) {
+    int[] v1 = {1, 6, 7, -5};
+    Class0 v0 = null;
+    p0[0] = false;
+    println("123");
+    v0 = new Class0();
+    v0.f0_0 = v0;
+    v1 = new int[] {-1, 8};
+    return v0;
+}
+
+int main() {
+    Class0 v8;
+    int v7 = 29;
+    int v4 = -42;
+    v4 = length(new boolean[8]);
+    {
+        println();
+        {
+            println();
+            ++v4;
+        }
+        v4 = length(new char[] {'c', 'F', 'F', 'x', '#'});
+    }
+    if ((v4 == v4)) {
+        Class0 v5 = null;
+        v5 = new Class0(new int[][][] {{{-10, -3}, {2, -1, 10}, {10, 1}, {-7, -2, -6}}, {{-9, 6, 0}, {-1, 7}, {0, -7, 5}, {0}}, {{9, -7, -3}, {5}, {-6, 3, -3}, {9}}, {{2, 10}, {0}, {4, -10, 8, 6}, {-1, -2, -6, -4}}, {{-2, 1}, {5, -2, -8}, {3}, {-7, -4, 9}}}, new int[] {-4}, 45);
+        v4 = (v4 / 228);
+    } else {
+        print(new Class0());
+        {
+            var v6 = '^';
+            v6 = (char) atoi("-9987");
+            println('@');
+        }
+    }
+    v7 = (v4 * v4);
+    println(method0(new boolean[10]));
+    v8 = new Class0();
+    println(v8.m0_0(null, v7));
+    return v4;
+}

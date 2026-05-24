@@ -1,0 +1,54 @@
+// Define the Book class
+ class Book {
+    // Private instance variables
+     string title;
+     string author;
+     int price;
+
+    // Default constructor
+     Book() {
+        this("Unknown","Unknown");
+    }
+
+    // Parameterized constructor (title, author)
+     Book(string title, string author) {
+        this(title,author,0);
+    }
+
+    // Parameterized constructor (title, author, price)
+     Book(string title, string author, int price) {
+        // Initialize title with the provided parameter
+        this.title = title;
+        // Initialize author with the provided parameter
+        this.author = author;
+        // Initialize price with the provided parameter
+        this.price = price;
+    }
+
+}
+
+// Main method to test the Book class
+     int main() {
+        // Create a new Book object using the default constructor
+        Book book1 = new Book();
+        // Print the values of the instance variables for book1
+        println("Book1 Title: " + book1.title);
+        println("Book1 Author: " + book1.author);
+        println("Book1 Price: " + book1.price);
+
+        // Create a new Book object using the parameterized constructor (title, author)
+        Book book2 = new Book("Amatka", "Karin Tidbeck");
+        // Print the values of the instance variables for book2
+        println("Book2 Title: " + book2.title);
+        println("Book2 Author: " + book2.author);
+        println("Book2 Price: " + book2.price);
+
+        // Create a new Book object using the parameterized constructor (title, author, price)
+        Book book3 = new Book("Altered Carbon", "Richard K. Morgan", 19);
+        // Print the values of the instance variables for book3
+        println("Book3 Title: " + book3.title);
+        println("Book3 Author: " + book3.author);
+        println("Book3 Price: " + book3.price);
+
+        return 0;
+    }

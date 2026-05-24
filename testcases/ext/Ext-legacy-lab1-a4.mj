@@ -1,0 +1,7 @@
+int main(){
+    string a=true?"OK":"null";
+    string b=false?"null":"WOW false!";
+    println(a);
+    println(b);
+    return 0;
+}

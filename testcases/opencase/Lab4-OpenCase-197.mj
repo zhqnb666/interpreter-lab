@@ -1,0 +1,160 @@
+class Class0 {
+    int f0_0;
+
+    int f0_1;
+
+    int f0_2;
+
+    Class0(Class0 p0) {
+        this.f0_1 = 33;
+    }
+
+    Class0() {
+        this.f0_0 = length(new int[][] {{-5, 9}, {0, -4}, {3, -2}});
+        this.f0_1 = atoi("241");
+        this.f0_2 = length(new int[][] {{7, 8, 5}, {1, 7, 4, -5}, {1, -4, 7, 0}, {5}});
+        {
+            int[] v18 = {1, 3};
+            print("KvZq2");
+            v18 = new int[4];
+        }
+        assert(true);
+    }
+
+    Class0 m0_0(int[][][] p0, int p1) {
+        int v19 = -47;
+        this.f0_1 = (p1 - p1);
+        println(this.f0_1);
+        while ((v19 < 4)) v19++;
+        return new Class0();
+    }
+}
+
+class Class1 {
+    char f1_0 = ')';
+
+    Class1 f1_1;
+
+    Class0 f1_2;
+
+    char m1_0(int[] p0) {
+        boolean v21;
+        Class1 v20 = null;
+        this.f1_1 = new Class1();
+        if (true) {
+            p0 = p0;
+            v20 = new Class1();
+            p0[0] = length(new int[] {6, 9});
+        } else if ((3 < 5)) p0 = new int[1]; else ;
+        v21 = (-5 == -3);
+        if (false) {
+            method2(method1(null, null), new int[8][]);
+        } else if (true) ;
+        return 'I';
+    }
+
+    int[][] m1_1(int p0, Class1 p1, int p2) {
+        this.f1_1 = p1.f1_1;
+        p1.f1_0 = '`';
+        return new int[][] {{2}, {-6}};
+    }
+}
+
+void method0(char[] p0, int p1) {
+    return;
+    p0[0] = '_';
+    print(new Class0(null));
+    if ((p0 != null)) {
+        {
+            p0[0] = 'V';
+            println(new Class0());
+            p1 = atoi("667");
+        }
+        if ((p1 <= p1)) {
+            for (int v0 = 0; v0 < 2; v0++) {
+                int[] v1;
+                v1 = new int[] {-5, -6, -6};
+            }
+            for (int v2 = 0; v2 < 3; v2++) {
+                boolean[] v3 = new boolean[] {false, false};
+                v3 = new boolean[10];
+            }
+        } else if (true) {
+            char[] v8 = new char[9];
+            int[][][] v4;
+            if ((p1 == p1)) ; else if ((p1 >= p1)) {
+                p0 = p0;
+            } else {
+                Class0 v6 = null;
+                char[] v5;
+                v4 = new int[][][] {{{-2, 7}, {-9}, {-5}}};
+                v5 = p0;
+                v6 = new Class0();
+            }
+            for (int v7 = 0; v7 < 3; v7++) {
+                Class0 v9;
+                v8 = p0;
+                v9 = new Class0();
+            }
+            for (int v10 = 0; v10 < 5; v10++) {
+                int[][][] v12;
+                Class0 v11 = null;
+                v11 = new Class0();
+                v12 = new int[][][] {{{-8, 6, 5}, {-8, -1, -9, -6}, {5, 1, -5, 7}, {9, -2}}};
+            }
+        }
+    }
+}
+
+Class1 method1(Class0 p0, Class0 p1) {
+    var v15 = 49;
+    int[] v14 = new int[1];
+    var v13 = 17;
+    v13 = length(new int[4]);
+    v14 = new int[] {10, 3, -4, 6};
+    ++v13;
+    while ((v15 < 5)) {
+        v14[0] = length(new boolean[9]);
+        v15++;
+    }
+    v14[0] = 9;
+    return new Class1();
+}
+
+void method2(Class1 p0, int[][] p1) {
+    int v17 = 24;
+    for (int v16 = 0; v16 < 2; v16++) {
+        println(p0.f1_0);
+    }
+    while ((v17 < 4)) {
+        if ((p0 != null)) break;
+        p1[0] = new int[] {6, -10, -10, -4};
+        v17++;
+    }
+}
+
+int main() {
+    int[][] v27;
+    Class1 v26 = null;
+    Class0 v25 = null;
+    int v24 = -45;
+    int v22;
+    while ((v22 < 3)) {
+        int v23;
+        print(new boolean[9]);
+        v23 = -31;
+        v22++;
+    }
+    v24 = length(new int[][] {{10, -2}, {7, -8}, {8}, {-8, -10}});
+    println(new boolean[3]);
+    println();
+    method0(new char[3], length("i6@Vq"));
+    println(method1(new Class0(null), new Class0()));
+    method2(method1(null, null), new int[3][]);
+    v25 = new Class0();
+    println(v25.m0_0(new int[][][] {{{0, -3, 3}, {-8}}, {{2, -5}, {7}, {10}}, {{2, 8, -8}}, {{8}, {2}}, {{6, -4, 3}, {10}}}, length(new char[1])));
+    v26 = new Class1();
+    println(v26.m1_0(new int[5]));
+    v27 = v26.m1_1(atoi("-5411"), new Class1(), (atoi("-1829") << -10));
+    return v24;
+}

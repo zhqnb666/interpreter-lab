@@ -1,0 +1,212 @@
+
+class String {
+    char[] data;
+
+    String(string s) {
+        data = to_char_array(s);
+    }
+
+    void append(string s) {
+        char[] append_data = to_char_array(s);
+
+        int old_length = length(data);
+        int append_length = length(append_data);
+
+        char[] new_data = new char[old_length + append_length];
+
+        for (int i = 0; i < old_length; i++) {
+            new_data[i] = data[i];
+        }
+        for (int i = 0; i < append_length; i++) {
+            new_data[old_length + i] = append_data[i];
+        }
+
+        data = new_data;
+    }
+
+    int length() {
+        return length(data);
+    }
+
+    char charAt(int index) {
+        return data[index];
+    }
+
+    string to_string() {
+        return to_string(data);
+    }
+
+    boolean equals(String s) {
+        if (s == null)
+            return false;
+
+        if (this.length() != s.length())
+            return false;
+
+        for (int i = 0; i < length(data); i++) {
+            if (data[i] != s.charAt(i))
+                return false;
+        }
+        return true;
+    }
+}
+
+int main() {
+    println("Starting String class tests...");
+
+    // Test 1: Constructor, length(), and charAt() basic functionality
+    println("Test 1: Constructor, length(), charAt()");
+    String s1_empty = new String("");
+    assert(s1_empty.length() == 0);
+    // charAt() on empty string is undefined by problem, usually an error, skip for now or assume length check prevents it.
+
+    String s1_hello = new String("hello");
+    assert(s1_hello.length() == 5);
+    assert(s1_hello.charAt(0) == 'h');
+    assert(s1_hello.charAt(1) == 'e');
+    assert(s1_hello.charAt(2) == 'l');
+    assert(s1_hello.charAt(3) == 'l');
+    assert(s1_hello.charAt(4) == 'o');
+
+    String s1_complex = new String("a b c 123 !@#");
+    assert(s1_complex.length() == 13);
+    assert(s1_complex.charAt(1) == ' ');
+    assert(s1_complex.charAt(6) == '1');
+    assert(s1_complex.charAt(10) == '!');
+    println("Test 1 passed.");
+
+    // Test 2: equals(String s)
+    println("Test 2: equals(String s)");
+    String eq1 = new String("test");
+    String eq2 = new String("test");
+    String eq3 = new String("Test"); // Different case
+    String eq4 = new String("testing"); // Different length
+    String eq5 = new String(""); // Empty string
+    String eq6 = new String(""); // Another empty string
+    String eq7_null = null; // Assuming null assignment is possible as in Java
+
+    assert(eq1.equals(eq2) == true); // Identical content
+    assert(eq2.equals(eq1) == true); // Commutativity
+    assert(eq1.equals(eq1) == true); // Reflexivity
+
+    assert(eq1.equals(eq3) == false); // Different case
+    assert(eq1.equals(eq4) == false); // Different length (s1 shorter)
+    assert(eq4.equals(eq1) == false); // Different length (s1 longer)
+
+    assert(eq5.equals(eq6) == true); // Two empty strings
+    assert(eq1.equals(eq5) == false); // Non-empty vs empty
+    assert(eq5.equals(eq1) == false); // Empty vs non-empty
+
+    // Test .equals(null)
+    assert(eq1.equals(eq7_null) == false);
+    assert(eq5.equals(eq7_null) == false); // Empty string .equals(null)
+    println("Test 2 passed.");
+
+    // Test 3: to_string()
+    // We test to_string() by creating a new String from its output and comparing using the 'equals' method.
+    println("Test 3: to_string()");
+    String ts1 = new String("");
+    String ts1_from_to_string = new String(ts1.to_string());
+    assert(ts1.equals(ts1_from_to_string) == true);
+
+    String ts2 = new String("hello world");
+    String ts2_from_to_string = new String(ts2.to_string());
+    assert(ts2.equals(ts2_from_to_string) == true);
+
+    String ts3 = new String("  spaces & chars !@#$%^&*()_+ ");
+    String ts3_from_to_string = new String(ts3.to_string());
+    assert(ts3.equals(ts3_from_to_string) == true);
+    println("Test 3 passed.");
+
+    // Test 4: append(string s)
+    println("Test 4: append(string s)");
+    String app1 = new String("start");
+    app1.append("end");
+    String app1_expected = new String("startend");
+    assert(app1.equals(app1_expected) == true);
+    assert(app1.length() == 8);
+    assert(app1.charAt(7) == 'd');
+
+    String app2 = new String("initial");
+    app2.append(""); // Append empty string
+    String app2_expected = new String("initial");
+    assert(app2.equals(app2_expected) == true);
+    assert(app2.length() == 7);
+
+    String app3 = new String(""); // Append to empty string
+    app3.append("appended_to_empty");
+    String app3_expected = new String("appended_to_empty");
+    assert(app3.equals(app3_expected) == true);
+    assert(app3.length() == 17);
+    assert(app3.charAt(0) == 'a');
+
+    String app4 = new String("one");
+    app4.append("two");
+    app4.append("three");
+    String app4_expected = new String("onetwothree");
+    assert(app4.equals(app4_expected) == true);
+    assert(app4.length() == 11);
+    assert(app4.charAt(3) == 't'); // 't' of "two"
+    assert(app4.charAt(6) == 't'); // 't' of "three"
+
+    // Test append result's to_string
+    String app5 = new String("base_");
+    app5.append("appended");
+    String app5_from_to_string = new String(app5.to_string());
+    String app5_expected = new String("base_appended");
+    assert(app5_from_to_string.equals(app5_expected) == true);
+    assert(app5.equals(app5_from_to_string) == true); // Original object also equals the one from its to_string
+    println("Test 4 passed.");
+
+    // Test 5: Interactions and more complex scenarios
+    println("Test 5: Interactions and complex scenarios");
+    String s5_base = new String("abc");
+    s5_base.append("def"); // "abcdef"
+    assert(s5_base.length() == 6);
+    assert(s5_base.charAt(3) == 'd');
+
+    String s5_copy = new String(s5_base.to_string()); // s5_copy is "abcdef"
+    assert(s5_base.equals(s5_copy) == true);
+
+    s5_base.append("ghi"); // "abcdefghi"
+    assert(s5_base.length() == 9);
+    assert(s5_base.charAt(8) == 'i');
+    assert(s5_base.equals(s5_copy) == false); // s5_base changed, s5_copy is still "abcdef"
+
+    String s5_another = new String("abcdefghi");
+    assert(s5_base.equals(s5_another) == true);
+
+    // Test empty string appending non-empty then empty
+    String s5_empty_ops = new String("");
+    s5_empty_ops.append("first");
+    String s5_eo_expected1 = new String("first");
+    assert(s5_empty_ops.equals(s5_eo_expected1) == true);
+    s5_empty_ops.append("");
+    assert(s5_empty_ops.equals(s5_eo_expected1) == true); // Still "first"
+    assert(s5_empty_ops.length() == 5);
+
+    println("Test 5 passed.");
+
+    println("All String class tests completed successfully.");
+
+    // The problem also asks for the output of each program and the return value of main.
+    // This script is a test script, not a program to analyze.
+    // However, if this *were* the program, the output would be the println statements and assertions passing silently.
+    // If an assertion failed, the behavior is undefined by the prompt (e.g., crash or print error).
+    // Assuming assertions pass, the output is:
+    // Starting String class tests...
+    // Test 1: Constructor, length(), charAt()
+    // Test 1 passed.
+    // Test 2: equals(String s)
+    // Test 2 passed.
+    // Test 3: to_string()
+    // Test 3 passed.
+    // Test 4: append(string s)
+    // Test 4 passed.
+    // Test 5: Interactions and complex scenarios
+    // Test 5 passed.
+    // All String class tests completed successfully.
+    // Process exits with the code 0.
+
+    return 0;
+}

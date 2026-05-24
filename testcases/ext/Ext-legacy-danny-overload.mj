@@ -1,0 +1,38 @@
+int min(int a, int b) {
+    return (a < b) ? a : b;
+}
+void print(string s, int l) {
+    char[] cs = to_char_array(s);
+    for(int i = 0; i < min(length(s), l); i++) {
+        print(cs[i]);
+    }
+}
+void println(string s, int l) {
+    print(s, l);
+    println();
+}
+void fun(int a, int b) {
+    println("int int");
+}
+void fun(int a, char b) {
+    println("int char");
+}
+int main() {
+    println("abcdefg");
+    println("abcdefg", true ? 5 : assert(false));
+    fun(100, 200);
+    fun(100, 'a');
+    fun('a', 'b');
+    fun('a', 100);
+    return 0;
+}
+
+/*
+abcdefg
+abcde
+int int
+int char
+int char
+int int
+Process exits with the code 0.
+*/

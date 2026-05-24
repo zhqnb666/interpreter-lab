@@ -1,0 +1,10 @@
+class A{}
+class B extends A{}
+
+int main(){
+    A a=new B();
+    B b=(B)a;
+
+    assert(a==b);
+    return 0;
+}

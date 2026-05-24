@@ -1,0 +1,45 @@
+// ERROR: type_mismatch
+class Class0 {
+    char[] f0_0;
+
+    int f0_1;
+
+    Class0 f0_2;
+
+    void m0_0(boolean p0, boolean[] p1) {
+        int[][][] v0 = new int[][][] {{{2}}, {{-3, -1, -9}, {-4}}, {{0, 10, 2, 5}}};
+        this.f0_1 = -3;
+        println(this.f0_1);
+        p1[0] = (-10 <= 5);
+        println((itoa(-1) + '2'));
+        v0 = new int[][][] {{{5, 9}, {-4, -5, 1}, {-10, -7, -10}}, {{-2}, {-7}, {6}}};
+    }
+}
+
+Class0 method0(char p0, int[][] p1, int p2) {
+    p1[0][0] = true;
+    println();
+    print(to_string(new char[] {'_'}));
+    return new Class0();
+}
+
+int main() {
+    Class0 v5;
+    char[] v4 = new char[4];
+    int v2 = 29;
+    int[] v1 = {-2, 4, -6};
+    println(37);
+    v1 = new int[] {7, 9, -3, -1, -8};
+    v2 = 46;
+    if ((-8 < -7)) {
+        var v3 = v1[0];
+        v3 = -27;
+        v4 = new char[10];
+    } else {
+        if ((-2 < 10)) ;
+    }
+    println(method0('v', new int[][] {{-10}}, v1[0]));
+    v5 = new Class0();
+    v5.m0_0((v1 == v1), new boolean[] {false, false});
+    return v5.f0_1;
+}

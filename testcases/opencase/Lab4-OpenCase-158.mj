@@ -1,0 +1,122 @@
+// ERROR: no_default_constructor
+class Class0 {
+    int[][] f0_0 = new int[7][];
+
+    int[][][] f0_1;
+
+    int f0_2;
+
+    void m0_0() {
+        this.f0_0 = new int[10][];
+        println((0 >= -5));
+    }
+}
+
+class Class1 extends Class0 {
+    int[][] f1_0;
+
+    Class1(char p0) {
+        this.f1_0 = new int[2][];
+    }
+
+    void m0_0() {
+        this.f1_0 = new int[][] {{-5, -7, -9, 8}, {-8, 2}, {4, -4, 7, -5}, {5, 2, -9, -6}};
+        super.m0_0();
+        println(new char[7]);
+        print(new int[4]);
+        method0('Z', new Class0());
+    }
+
+    void m0_0() {
+        Class0 v3 = null;
+        this.f1_0 = new int[10][];
+        super.m0_0();
+        v3 = new Class1('/');
+    }
+}
+
+void method0(char p0, Class0 p1) {
+    int[] v1 = new int[] {-7, 7, -9, -10};
+    int v0;
+    while ((v0 < 3)) {
+        println('~');
+        v0++;
+    }
+    v1 = new int[] {6, -9};
+    v1[0] = 7;
+    if ((p0 == p0)) ;
+}
+
+void method1() {
+    Class1 v2;
+    print(new boolean[5]);
+    print(length(new boolean[10]));
+    v2 = new Class1('j');
+    v2.m0_0();
+    {
+        v2.m0_0();
+    }
+}
+
+int main() {
+    Class1 v23 = null;
+    Class0 v22;
+    boolean[] v21 = {false, false, false};
+    var v20 = 41;
+    var v17 = 34;
+    int v11;
+    if ((5 == 7)) {
+        var v14 = "|9(+i";
+        boolean[] v12 = new boolean[] {false, true, true, true, false};
+        int[][][] v8 = new int[][][] {{{7, -4, 2, 2}}, {{7, -5}, {1}}};
+        int[] v4 = new int[8];
+        v4 = new int[3];
+        if ((8 > 9)) {
+            var v16 = ')';
+            int v6 = 43;
+            println((-3 > -7));
+            for (int v5 = 0; v5 < 2; v5++) {
+                int[] v7;
+                v6 += v4[0];
+                v7 = new int[] {-3, -4, -6};
+                v8 = new int[7][][];
+            }
+            if (true) {
+                Class0 v10 = null;
+                Class1 v9 = null;
+                v9 = new Class1('D');
+                v4 = v4;
+                v10 = v9;
+            } else if ((-5 > 3)) {
+                var v13 = v4[0];
+                v11 = 10;
+                v12 = new boolean[2];
+                v13 = length(new int[2]);
+            } else if ((-5 == -3)) {
+                int v15;
+                v14 += length(new int[2][]);
+                v15 = length("#M|*8");
+                v16 = (char) 36;
+            }
+        }
+    }
+    println((-5 < 1));
+    while ((v17 < 3)) {
+        boolean[] v19;
+        var v18 = 23;
+        while ((v18 < 5)) {
+            v19 = new boolean[8];
+            v18++;
+        }
+        v20 = length(new char[] {'A'});
+        if ((1 == 7)) ;
+        v17++;
+    }
+    v21 = new boolean[7];
+    method0('A', new Class1('0'));
+    method1();
+    v22 = new Class0();
+    v22.m0_0();
+    v23 = new Class1();
+    return v23.f0_2;
+}

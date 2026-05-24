@@ -1,0 +1,7 @@
+int main(){
+string str = "123";
+char[] cArr = to_char_array(str); // [1, 2, 3]
+println(str);
+println(cArr);
+return 0;
+}

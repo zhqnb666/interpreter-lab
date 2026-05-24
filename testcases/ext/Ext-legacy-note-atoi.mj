@@ -1,0 +1,8 @@
+int main(){
+string s = "10";
+int x = atoi(s); // 10
+string t = itoa(x); // 10
+println(x);
+assert(s==t);
+return 0;
+}

@@ -1,0 +1,34 @@
+class A1{}
+class A2 extends A1{}
+class B1 extends A2{}
+class B2 extends B1{}
+class C1 extends A2{}
+class C2 extends C1{}
+
+int main(){
+    A1 a1=new A1();
+    A1 a2=new A2();
+    A2 b1=new B1();
+    A1 b2=new B2();
+    A2 c1=new C1();
+    A1 c2=new C2();
+
+    assert(a2 instanceof A1);
+    assert(a1 instanceof A1);
+    assert(b1 instanceof A1);
+    assert(not(b1 instanceof C1));
+    assert(not(b1 instanceof C2));
+    assert(not(b2 instanceof C1));
+    assert(not(b2 instanceof C2));
+    assert(b2 instanceof B2);
+    assert(b2 instanceof B1);
+    assert(b2 instanceof A2);
+
+    assert(c1 instanceof A1);
+    assert(not(c1 instanceof B1));
+    assert(not(c1 instanceof B2));
+    assert(not(c2 instanceof B1));
+    assert(not(c2 instanceof B2));
+
+    return 0;
+}

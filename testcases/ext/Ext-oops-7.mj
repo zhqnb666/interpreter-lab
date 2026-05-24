@@ -1,0 +1,21 @@
+class Fa{
+    int fa=-2;
+}
+class X extends Fa{
+    int d=this.fa+3;
+    int a=this.x+3;
+    int z=this.x+3;
+    int x=3;
+    int y=this.x+3;
+    int c=this.b+=3;
+    int b=0;
+    int w=this.k+=3;
+    int k;
+}
+
+int main(){
+    var x=new X();
+    //println(d+" "+x+" "+y+" "+z+" "+a+" "+c+" "+b+" "+w+" "+k);
+    println(x.d+" "+x.x+" "+x.y+" "+x.z+" "+x.a+" "+x.c+" "+x.b+" "+x.w+" "+x.k);
+    return 0;
+}

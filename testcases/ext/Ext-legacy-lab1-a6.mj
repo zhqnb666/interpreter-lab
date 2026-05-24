@@ -1,0 +1,4 @@
+int main(){  {      int b = 1;      string a = "lab1"; println(a);
+println(b);
+  }  char d = 'r';  boolean c = true;println(c);
+  println(d);return 0;}

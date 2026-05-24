@@ -1,0 +1,21 @@
+class Logger {
+    void print(string s) {
+        this.prefix = "class:";
+        this.message = s;
+    }
+
+    string prefix;
+    string message;
+
+    void run() {
+        print("local");
+    }
+}
+
+int main() {
+    Logger l = new Logger();
+    l.run();
+    println(l.prefix + l.message);
+    print("builtin");
+    return 0;
+}

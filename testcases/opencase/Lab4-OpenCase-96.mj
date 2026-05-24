@@ -1,0 +1,108 @@
+class Class0 {
+    int[] f0_0;
+
+    int m0_0(int[][] p0) {
+        this.f0_0 = new int[7];
+        print(new int[3]);
+        return length("3)Ddv");
+    }
+}
+
+boolean[] method0() {
+    var v4 = 28;
+    var v1 = 39;
+    {
+        int[][] v0 = new int[][] {{0, -8}, {-4, 5}, {-4}, {-1}};
+        v0 = new int[9][];
+    }
+    print(new char[4]);
+    while ((v1 < 3)) {
+        print(new char[] {'|', ')', 'w', 'W'});
+        {
+            int v3 = -31;
+            int v2 = 17;
+            print(itoa(38));
+            while ((v2 < 3)) v2++;
+            v3 = 23;
+        }
+        if ((-8 <= 0)) break;
+        v1++;
+    }
+    while ((v4 < 3)) {
+        var v5 = -38;
+        v5 >>>= length(new boolean[] {true, true, true, false, true});
+        v4++;
+    }
+    assert(false);
+    return new boolean[7];
+}
+
+int main() {
+    Class0 v29;
+    int[][][] v28;
+    Class0 v26 = null;
+    Class0 v21 = null;
+    var v16 = false;
+    Class0 v13 = null;
+    if ((8 != 8)) {
+        Class0 v14 = null;
+        Class0 v9;
+        if (true) {
+            int v8;
+            Class0 v7 = null;
+            int v6 = -37;
+            v6 = -25;
+            v7 = new Class0();
+            v8 = -43;
+        } else {
+            println(new Class0());
+            v9 = new Class0();
+        }
+        {
+            var v11 = 45;
+            var v10 = -36;
+            while ((v10 < 3)) {
+                Class0 v12 = null;
+                v11 /= 831;
+                v12 = new Class0();
+                v13 = v12;
+                v10++;
+            }
+            v14 = new Class0();
+        }
+        {
+            int v15 = 31;
+            v15 = 11;
+            v16 = (-8 > -6);
+            for (int v17 = 0; v17 < 4; v17++) {
+                int v18;
+                v18 ^= length(new char[] {'r', '*', 'n', '2'});
+            }
+        }
+    } else if (true) ; else {
+        var v19 = -8;
+        v19 = -14;
+        for (int v20 = 0; v20 < 2; v20++) {
+            v21 = new Class0();
+        }
+    }
+    {
+        var v24 = -41;
+        int v23;
+        Class0 v22;
+        v22 = new Class0();
+        v23 = -11;
+        while ((v24 < 4)) v24++;
+    }
+    for (int v25 = 0; v25 < 5; v25++) {
+        int v27;
+        println(length(new int[][] {{10, -5, 6, 0}, {7}, {6}}));
+        v26 = new Class0();
+        v27 = 42;
+    }
+    v28 = new int[10][][];
+    println(method0());
+    v29 = new Class0();
+    println(v29.m0_0(new int[1][]));
+    return v29.m0_0(new int[][] {{8, -2, 4, 1}, {5, -6, -2}, {3}});
+}

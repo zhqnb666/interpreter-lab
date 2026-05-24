@@ -1,0 +1,7 @@
+int main(){
+    char a='a';
+    char b='a';
+    char c=a+b; //Type Error Here
+    println(c);
+    return 0;
+}

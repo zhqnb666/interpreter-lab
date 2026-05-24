@@ -1,0 +1,134 @@
+class Class0 {
+    Class1 f0_0 = null;
+
+    void m0_0() {
+        int v6;
+        this.f0_0 = new Class2();
+        v6 = length(new int[6]);
+    }
+
+    int[] m0_1(Class1 p0) {
+        this.f0_0 = p0;
+        p0.f1_0 = new int[8][];
+        p0.m1_1(method1(new int[7], null), new Class1(), new int[1]);
+        return new int[4];
+    }
+}
+
+class Class1 {
+    int[][] f1_0 = {{-10, -5, 2}, {-8, -3, -9}, {-7, 7, 0}, {-2, -8, 6, -10}};
+
+    void m1_0(boolean p0, Class0 p1, boolean[] p2) {
+        this.f1_0 = new int[5][];
+        {
+            Class1 v10;
+            if (true) {
+                var v8 = -18;
+                Class1 v7 = null;
+                v7 = new Class1();
+                while ((v8 < 2)) {
+                    var v11 = "g3pF3";
+                    int[] v9;
+                    v9 = new int[] {-10, 4, -6, -9, -5};
+                    v10 = v7;
+                    v11 = itoa(-44);
+                    v8++;
+                }
+                {
+                    boolean[] v12 = p2;
+                    v12 = p2;
+                }
+            } else if ((p0 or (p0 != p0))) ; else {
+                var v14 = 48;
+                var v13 = 15;
+                v13 = -45;
+                v14 = -13;
+                print(atoi("-9182"));
+            }
+        }
+        print(itoa(-42));
+    }
+
+    void m1_1(Class0 p0, Class1 p1, int[] p2) {
+        this.f1_0 = new int[1][];
+        assert((-2 <= -9));
+    }
+}
+
+class Class2 extends Class1 {
+    int f2_0;
+
+    Class2() {
+        int v15;
+        v15 = -7;
+    }
+
+    void m2_0(char p0, boolean p1) {
+        Class0 v16;
+        this.f2_0 = (int) p0;
+        println(this.f2_0);
+        if ((p1 and (p0 <= p0))) {
+            print(method1(new int[] {10, 4, -1}, null));
+        }
+        {
+            v16 = new Class0();
+        }
+    }
+
+    Class0 m2_1(Class0 p0, int[][][] p1) {
+        this.f2_0 = 8;
+        println(this.f2_0);
+        super.m1_0((-1 <= -3), p0, new boolean[10]);
+        {
+            p0.m0_0();
+        }
+        p1[0][0][0] = 16;
+        p0.f0_0 = new Class2();
+        return p0;
+    }
+}
+
+void method0() {
+    println(new boolean[4]);
+    {
+        int v3;
+        Class0 v1 = null;
+        for (int v0 = 0; v0 < 4; v0++) {
+            Class2 v2 = null;
+            v1 = new Class0();
+            v2 = new Class2();
+        }
+        while ((v3 < 3)) v3++;
+    }
+}
+
+Class0 method1(int[] p0, Class0 p1) {
+    Class1 v5 = null;
+    var v4 = '%';
+    if ((-1 <= 8)) p1 = new Class0();
+    v4 = ']';
+    v5 = new Class1();
+    return p1;
+}
+
+int main() {
+    Class2 v20 = null;
+    Class1 v19;
+    Class0 v18;
+    for (int v17 = 0; v17 < 2; v17++) ;
+    println(new Class2());
+    method0();
+    println(method1(new int[] {9}, null));
+    v18 = new Class0();
+    v18.m0_0();
+    println(v18.m0_1(new Class2()));
+    v19 = new Class1();
+    v19.m1_0((3 < -8), method1(new int[5], v18), new boolean[] {false, true, false});
+    v19.m1_1(new Class0(), new Class2(), new int[3]);
+    v20 = new Class2();
+    v20.m2_0('f', (v20 instanceof Class1));
+    println(v20.m2_1(new Class0(), new int[8][][]));
+    v20.m1_0((v20 == v19), method1(new int[] {-10, -10, 4, 4, 1}, v18), new boolean[4]);
+    v20.m1_1(method1(new int[] {4, 9}, v18), v20, new int[] {8});
+    return v20.f2_0;
+}

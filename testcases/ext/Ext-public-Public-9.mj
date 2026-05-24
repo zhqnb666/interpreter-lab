@@ -1,0 +1,27 @@
+
+
+// method override
+
+class A {
+    string getName() { return "A"; }
+}
+
+class B extends A {
+    string getName() { return "B"; }
+}
+
+class C extends B {
+    string getName() { return "C"; }
+}
+
+int main() {
+    A a = new A();
+    A b = new B();
+    A c = new C();
+    
+    println(a.getName()); // A
+    println(b.getName()); // B
+    println(c.getName()); // C
+
+    return 0;
+}

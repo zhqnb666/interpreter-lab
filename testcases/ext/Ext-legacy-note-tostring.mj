@@ -1,0 +1,9 @@
+int main(){
+    char[] cArr = {'1', '2' ,'3'};
+    string str = to_string(cArr); // 123
+    println(cArr);
+    println(str);
+    char[] cArr1 = null;
+    string str1 = to_string(cArr1); // null pointer error
+    return 0;
+}

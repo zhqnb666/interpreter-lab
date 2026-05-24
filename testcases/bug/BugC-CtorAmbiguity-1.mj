@@ -1,0 +1,25 @@
+// Bug C: resolveConstructor uses depth-based conversion counting (conversions += depth)
+// instead of flat counting (conversions++ = 1) as specified.
+// Spec: "(Animal)puppy has conversion-count 1 (not a typo)" — all subtype conversions cost 1.
+//
+// With flat counting:
+//   new Foo(new Puppy()): Foo(Dog) costs 1, Foo(Animal) costs 1 → AMBIGUOUS → RE
+//
+// Our code (depth counting):
+//   new Foo(new Puppy()): Foo(Dog) costs 1 (Puppy→Dog), Foo(Animal) costs 2 (Puppy→Dog→Animal)
+//   → selects Foo(Dog) silently (WRONG: should be ambiguous)
+
+class Animal {}
+class Dog extends Animal {}
+class Puppy extends Dog {}
+
+class Foo {
+    Foo(Animal a) { println("Animal"); }
+    Foo(Dog d)    { println("Dog"); }
+}
+
+int main() {
+    // Both constructors accept Puppy via subtype conversion (cost=1 each) → AMBIGUOUS
+    new Foo(new Puppy());
+    return 0;
+}

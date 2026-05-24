@@ -1,0 +1,43 @@
+// ERROR: null_array
+class Class0 {
+    char[] f0_0 = new char[3];
+
+    void m0_0() {
+        this.f0_0 = new char[10];
+        for (int v4 = 0; v4 < 2; v4++) {
+            char v5 = 'g';
+            v5 = 'm';
+        }
+        println(itoa(2));
+        print((to_string(new char[] {'Q', '5', 'B', '$', 'v'}) + "0SK"));
+    }
+}
+
+Class0 method0(char[] p0, int[] p1, char p2) {
+    boolean[] v0 = new boolean[] {true, true};
+    p0 = null;
+    v0 = new boolean[] {true, false, true, false};
+    for (int v1 = 0; v1 < 3; v1++) {
+        println(new Class0());
+    }
+    p1 = new int[] {8, 1, -2, 10, 7};
+    for (int v2 = 0; v2 < 4; v2++) {
+        string v3 = "]'i^";
+        v3 += (p2 < p2);
+    }
+    return null;
+}
+
+int main() {
+    Class0 v8;
+    boolean[] v7 = new boolean[1];
+    boolean[] v6;
+    v6 = new boolean[] {false, false};
+    if ((v6 != null)) {
+        v7 = new boolean[3];
+    }
+    println(method0(new char[] {'8', ' ', 'r', 'W'}, new int[2], '/'));
+    v8 = new Class0();
+    v8.m0_0();
+    return 22;
+}

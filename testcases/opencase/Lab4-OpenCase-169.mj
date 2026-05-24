@@ -1,0 +1,59 @@
+class Class0 {
+    Class0 f0_0;
+
+    boolean f0_1;
+
+    void m0_0(int[][] p0, char p1) {
+        var v5 = 36;
+        int v4 = -21;
+        this.f0_1 = false;
+        v4 = -8;
+        v5 = -28;
+    }
+}
+
+char method0(Class0 p0) {
+    if (p0.f0_1) {
+        print(p0);
+    } else {
+        int v0;
+        v0 = 41;
+    }
+    if (p0.f0_1) {
+        var v1 = 2;
+        while ((v1 < 5)) {
+            int v2;
+            v2 = -34;
+            p0.f0_0 = new Class0();
+            if (p0.f0_1) {
+                boolean[] v3 = new boolean[5];
+                v3 = new boolean[4];
+            } else p0 = new Class0();
+            v1++;
+        }
+    }
+    return '0';
+}
+
+int main() {
+    Class0 v8 = null;
+    for (int v6 = 0; v6 < 5; v6++) ;
+    print((itoa(-39) + method0(null)));
+    for (int v7 = 0; v7 < 3; v7++) {
+        println((-6 <= 7));
+    }
+    {
+        print(atoi("-7719"));
+        {
+            print(itoa(30));
+            println(new Class0());
+            print(length(new boolean[3]));
+        }
+        print(new int[6]);
+    }
+    print(new Class0());
+    println(method0(new Class0()));
+    v8 = new Class0();
+    v8.m0_0(new int[][] {{-1, -5, -3}, {5, -6}, {6, 9, -5}, {-6, 7}}, method0(v8));
+    return -4;
+}

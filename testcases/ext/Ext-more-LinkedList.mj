@@ -1,0 +1,191 @@
+class Node {
+    int value;
+    Node next;
+
+    Node(int value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node head;
+    Node tail;
+    int size;
+
+    // Constructor: initialize an empty list
+    LinkedList() {
+        head = null;
+        tail = null;
+        size = 0;
+    }
+
+    // Add a new node with given value at the end of the list
+    void append(int value) {
+        Node newNode = new Node(value);
+        
+        if (head == null) {
+            // If list is empty, set both head and tail to new node
+            head = newNode;
+            tail = newNode;
+        } else {
+            // Otherwise, append to tail and update tail pointer
+            tail.next = newNode;
+            tail = newNode;
+        }
+        size = size + 1;
+    }
+
+    // Add a new node with given value at the beginning of the list
+    void prepend(int value) {
+        Node newNode = new Node(value);
+        
+        if (head == null) {
+            // If list is empty, set both head and tail to new node
+            head = newNode;
+            tail = newNode;
+        } else {
+            // Otherwise, prepend to head and update head pointer
+            newNode.next = head;
+            head = newNode;
+        }
+        size = size + 1;
+    }
+
+    // Insert a new node with given value at specified index (0-based)
+    void insert(int index, int value) {
+        if (index < 0 or index > size) {
+            return; // Invalid index, do nothing
+        }
+
+        if (index == 0) {
+            prepend(value);
+        } else if (index == size) {
+            append(value);
+        } else {
+            // Find the node before the insertion point
+            Node current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+            
+            // Insert new node
+            Node newNode = new Node(value);
+            newNode.next = current.next;
+            current.next = newNode;
+            size = size + 1;
+        }
+    }
+
+    // Remove node at specified index (0-based)
+    void remove(int index) {
+        if (index < 0 or index >= size) {
+            return; // Invalid index, do nothing
+        }
+
+        if (index == 0) {
+            // Remove head node
+            head = head.next;
+            if (head == null) {
+                tail = null; // List became empty
+            }
+        } else {
+            // Find the node before the one to remove
+            Node current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+            
+            // Remove the node
+            current.next = current.next.next;
+            
+            // If we removed the tail, update tail pointer
+            if (current.next == null) {
+                tail = current;
+            }
+        }
+        size = size - 1;
+    }
+
+    // Get value at specified index (0-based)
+    int get(int index) {
+        if (index < 0 or index >= size) {
+            return -1; // Or throw an error
+        }
+
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.value;
+    }
+
+    // Check if list contains a value
+    boolean contains(int value) {
+        Node current = head;
+        while (current != null) {
+            if (current.value == value) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    // Get the size of the list
+    int size() {
+        return size;
+    }
+
+    // Convert the list to string representation (e.g., "1 -> 2 -> 3")
+    string to_string() {
+        if (head == null) {
+            return "Empty list";
+        }
+
+        string result = "";
+        Node current = head;
+        while (current != null) {
+            result = result + current.value;
+            if (current.next != null) {
+                result = result + " -> ";
+            }
+            current = current.next;
+        }
+        return result;
+    }
+}
+
+int main() {
+    LinkedList list = new LinkedList();
+
+    // Test append
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    println("After append: " + list.to_string()); // 1 -> 2 -> 3
+
+    // Test prepend
+    list.prepend(0);
+    println("After prepend: " + list.to_string()); // 0 -> 1 -> 2 -> 3
+
+    // Test insert
+    list.insert(2, 99);
+    println("After insert: " + list.to_string()); // 0 -> 1 -> 99 -> 2 -> 3
+
+    // Test get
+    println("Element at index 2: " + list.get(2)); // 99
+
+    // Test contains
+    println("Contains 99: " + list.contains(99)); // true
+    println("Contains 100: " + list.contains(100)); // false
+
+    // Test remove
+    list.remove(2);
+    println("After remove: " + list.to_string()); // 0 -> 1 -> 2 -> 3
+
+    // Test size
+    println("Final size: " + list.size()); // 4
+
+    return 0;
+}

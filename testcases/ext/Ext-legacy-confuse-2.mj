@@ -1,0 +1,9 @@
+int main(){
+    int[] arr={1,2,3};
+    int[] copy=arr;
+    arr[0]=114514;
+    arr[1]=998244;
+    println(arr);
+    println(copy);
+    return 0;
+}

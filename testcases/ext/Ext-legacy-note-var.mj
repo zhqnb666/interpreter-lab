@@ -1,0 +1,15 @@
+int main(){
+    var x1 = 1; // int, DECIMAL_LITERAL is preferentially inferred as the int type.
+    println(x1);
+    var x2 = 'a'; // char, CHAR_LITERAL is preferentially inferred as the char type.
+    println(x2);
+    var x3 = "123"; // string
+    println(x3);
+    var x4 = true; // boolean
+    println(x4);
+    var x5 = new int[] {1,2,3}; // int[]
+    println(x5);
+    var x6 = null; // illegal, can not infer type for variable initialized to 'null'
+    println(x6);
+    return 0;
+}

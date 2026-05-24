@@ -1,0 +1,21 @@
+void foo(int[][] c) {
+    println(c);
+    c[0][0] = 114514;
+}
+
+void fun(int[][] b) {
+    foo(b);
+}
+
+int main() {
+    int[][] a = new int[][] {{1, 2}, {3, 4}};
+    fun(a);
+    fun(a);
+    return 0;
+}
+
+/*
+[[1, 2], [3, 4]]
+[[114514, 2], [3, 4]]
+Process exits with the code 0.
+*/

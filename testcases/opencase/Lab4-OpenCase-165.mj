@@ -1,0 +1,195 @@
+class Class0 {
+    char[] f0_0;
+
+    Class0(char p0) {
+        Class0 v7 = null;
+        this.f0_0 = new char[1];
+        v7 = null;
+    }
+
+    void m0_0(char[] p0, boolean[] p1, char p2) {
+        var v10 = false;
+        this.f0_0 = new char[] {'a', 'p'};
+        print(new Class0(' '));
+        if (false) {
+            int v8 = -42;
+            print(p2);
+            while ((v8 < 3)) v8++;
+        } else if ((p2 == p2)) {
+            int[][] v9 = new int[][] {{-2}, {1, -3, 6, -1}, {10}, {-4, -2, -6}, {-10}};
+            v9 = new int[1][];
+            v9[0] = new int[] {5, 1, 3, 10, 9};
+        } else {
+            var v11 = (int) p2;
+            v10 = (p2 >= p2);
+            while ((v11 < 4)) v11++;
+        }
+    }
+
+    int[] m0_1() {
+        int v13;
+        int v12;
+        this.f0_0 = new char[] {'+'};
+        v12 = -4;
+        v13 = -5;
+        return new int[] {-8};
+    }
+}
+
+int[][][] method0(int p0, int p1, boolean[] p2) {
+    Class0 v1 = null;
+    var v0 = 'R';
+    v0 = 'Z';
+    p2[0] = true;
+    p2[0] = false;
+    v1 = new Class0(v0);
+    v1.m0_0(new char[] {'[', 'u'}, new boolean[] {true, true}, v0);
+    return new int[][][] {{{-6, -5}}, {{-10, 8, -4}}, {{9, 7, 8, -6}, {9, -9}, {8, 5, -2}}};
+}
+
+int[][] method1(int[][][] p0, int[] p1, int[][][] p2) {
+    p2[0] = new int[7][];
+    print(new boolean[10]);
+    return new int[7][];
+}
+
+int[][][] method2(Class0 p0) {
+    int v6 = 27;
+    boolean v5 = false;
+    p0.f0_0 = new char[10];
+    if ((-7 < 10)) {
+        char[] v3 = new char[] {'V', 'W', ']', '@'};
+        char v2 = 'M';
+        v2 = 'V';
+        v3 = new char[1];
+    } else {
+        int v4;
+        print(new boolean[] {false});
+        v4 = -10;
+    }
+    if ((p0 != p0)) {
+        println((5 < 1));
+        v5 = (10 > -2);
+    } else ;
+    p0.m0_0(new char[1], new boolean[] {true}, 'P');
+    while ((v6 < 3)) {
+        if (true) continue;
+        print(new boolean[3]);
+        {
+            println(new boolean[4]);
+        }
+        v6++;
+    }
+    return new int[][][] {{{5, -6, 2, -1}, {8, -6}}, {{5}}, {{-9, 2}, {8, 3, 8}}, {{-6, -1}}, {{-6, 10, 5}, {1, 10}, {8, 7}, {1, 6, 1}}};
+}
+
+int main() {
+    Class0 v47 = null;
+    int[][][] v46 = new int[][][] {{{-10, 7, -1}, {9, 7, -3}, {-10}}, {{-3}, {1, 4}, {0, -10, -8, -6}}, {{3, -2, 1, -2}, {-8, 1, -6}, {3, 8, -3}}, {{-1, -5}, {0, 1, 2, 9}, {-10, -2}}, {{1, -5, 1, 8}, {2, 3, 0}}};
+    int[][] v45 = {{-8, 3, 8}, {9, 10}, {10, 5, 2, 7}};
+    int[][][] v44;
+    int[][][] v15;
+    {
+        {
+            var v18 = 28;
+            println();
+            for (int v14 = 0; v14 < 5; v14++) {
+                char v17 = ')';
+                string v16 = "*_=sL";
+                v15 = new int[][][] {{{5, -7, 2, -9}, {4, 1}, {-1, -9, 9}, {5, -3}}, {{1}}, {{-8}, {9, -6, 2, 9}}};
+                v16 += length(new boolean[] {true, false, false, false});
+                v17 -= 'T';
+            }
+            while ((v18 < 2)) {
+                boolean v21;
+                int v20;
+                int[][][] v19 = new int[10][][];
+                v19 = new int[][][] {{{5, 4}}, {{2}, {-5}, {3, 8}, {3, -1, 10, 8}}, {{8, 7}, {-2}, {4, 4, 4}}, {{-2, 9, -3, -6}, {4, -10}, {-5, 0, 10}, {-4}}, {{9, 4}}};
+                v20 = length(new char[5]);
+                v21 = false;
+                v18++;
+            }
+        }
+    }
+    println(new boolean[] {false, true, false});
+    if ((3 > 6)) {
+        if ((2 <= -5)) {
+            int[][][] v22 = {{{0, 6, -5, 4}, {-2, -10, 2, -10}}, {{6}, {4, -10, 3, -10}}, {{5, -6, -1, -5}, {7, -8}, {0, 9, 10, 3}}, {{-5, 6, 7}, {1, -10, 0, 4}, {-10, -3, 8, 10}, {8, 8}}};
+            v22 = new int[][][] {{{0, 6, -8}}, {{-9, 6, -9, 5}, {5}, {5, -4, 2, 1}, {-10, 0}}};
+        }
+    } else {
+        Class0 v38 = null;
+        if ((-9 == -8)) {
+            int v29 = 33;
+            int v27 = -31;
+            int[][] v26;
+            char[] v24;
+            if (true) {
+                int v23 = -20;
+                v23 %= -366;
+                v24 = new char[] {'Q', '<'};
+            } else if ((-8 < 3)) {
+                Class0 v25;
+                v25 = new Class0(':');
+            } else {
+                v26 = new int[][] {{4, -1}, {3, -7, 3, 0}, {-9, 1}, {-6, -10, 0}};
+            }
+            while ((v27 < 3)) {
+                var v28 = 50;
+                v28 = length(new int[][] {{-6, -4, 1, 2}, {5, 4, -8}, {2, 1, -7, 8}, {9, 10}, {-2}});
+                v27++;
+            }
+            v29 = 8;
+        } else {
+            {
+                Class0 v30 = null;
+                v30 = new Class0('a');
+            }
+            {
+                int[][] v32 = new int[9][];
+                var v31 = 'H';
+                v31 = '|';
+                v32 = new int[3][];
+            }
+            if (false) {
+                char[] v34 = new char[] {'a', ',', '<', '3', 'X'};
+                boolean[] v33 = new boolean[9];
+                v33 = new boolean[10];
+                v34 = new char[] {'S'};
+            } else if (true) {
+                Class0 v36 = null;
+                int[][][] v35 = {{{-9, 4}, {-5, -9}, {6, -1, -9}}, {{-2}, {1}}};
+                v35 = new int[3][][];
+                v36 = new Class0('%');
+            } else {
+                Class0 v37 = null;
+                v37 = new Class0('3');
+            }
+        }
+        v38 = new Class0('d');
+        if ((8 >= -4)) {
+            print(atoi("4556"));
+        } else {
+            int[][][] v43 = new int[][][] {{{3, 2, -8, 0}, {-10}, {0, 3}}, {{7}, {8, 3, 7, -6}, {4, -2, 3}, {9, -2, -3}}, {{1, 1, 3, -4}}};
+            for (int v39 = 0; v39 < 4; v39++) {
+                Class0 v41 = null;
+                int[][][] v40;
+                v40 = new int[1][][];
+                v41 = v38;
+            }
+            {
+                int v42;
+                v38 = new Class0('}');
+                v42 %= 714;
+            }
+            v43 = new int[][][] {{{4, -5, 1}, {-8}, {10}, {7, -7}}, {{-10, 10, 1}}, {{-1, 6}, {4, -7, 5}}, {{4, 3, -5, 1}, {-6}}, {{-7, 8, -1, -2}, {-9, 4, 7}, {3, -3, -5}, {6}}};
+        }
+    }
+    v44 = method0(6, length(new int[] {4, -8, -1}), new boolean[] {false, false, true});
+    v45 = method1(v44, new int[4], v44);
+    v46 = method2(new Class0('f'));
+    v47 = new Class0('R');
+    v47.m0_0(new char[1], new boolean[6], 'm');
+    println(v47.m0_1());
+    return 17;
+}

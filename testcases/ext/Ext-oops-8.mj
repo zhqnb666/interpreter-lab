@@ -1,0 +1,15 @@
+class A{
+    int x=13;
+    A(int x){
+        println(x);
+        println(this.x);
+        this.x=x;
+        println(x);
+        println(this.x);
+    }
+}
+
+int main(){
+    new A(3);
+    return 0;
+}

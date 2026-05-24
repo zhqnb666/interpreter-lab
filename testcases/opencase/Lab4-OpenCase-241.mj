@@ -1,0 +1,149 @@
+// ERROR: incompatible_op
+class Class0 {
+    int f0_0;
+
+    Class0 f0_1;
+
+    int[][] f0_2 = new int[][] {{9, -9, 4}, {-8, 9}, {-8, -2, 2}, {6, 5, -9}};
+
+    char[] m0_0(int p0, int p1) {
+        this.f0_2 = new int[4][];
+        print(new char[] {'D', 'x', '~', '>', 'h'});
+        {
+            var v14 = 42;
+            println((".fO" + 's'));
+            while ((v14 < 5)) v14++;
+            if ((p1 > p0)) {
+                var v17 = p0;
+                int[][][] v16 = new int[10][][];
+                for (int v15 = 0; v15 < 5; v15++) ;
+                v16 = new int[][][] {{{-10, 5, -10}, {-2, -7, 9}, {-4, 3}, {4, 7, -5, 2}}, {{5}, {-10, 2, -9}, {-7, -5, 8, -1}}, {{1, -5, 10}, {-6}}, {{-6, 8, 0, 5}, {0, 3, 0, 1}}, {{-3, -10, 6, 4}, {3, 7, -1, -2}}};
+                while ((v17 < 2)) {
+                    Class0 v19 = null;
+                    int v18;
+                    v18 = p0;
+                    v19 = new Class0();
+                    v17++;
+                }
+            }
+        }
+        print('7');
+        return new char[10];
+    }
+
+    void m0_1(int[][] p0) {
+        this.f0_2 = new int[][] {{7, 6}, {9, 8, 1}};
+        p0[0][0] = 32;
+        p0[0] = new int[7];
+    }
+}
+
+boolean[] method0(int[] p0) {
+    int v0 = -27;
+    println((3 + (9 <= -6)));
+    v0 = 0;
+    if (true) ; else {
+        int[][] v2 = {{-3, -7}};
+        {
+            int v1 = -25;
+            while ((v1 < 5)) v1++;
+            v2 = new int[][] {{2, 2, 5}};
+        }
+    }
+    p0[0] = -29;
+    return new boolean[2];
+}
+
+boolean[] method0(int p0, int[][][] p1, int[][][] p2) {
+    char[] v3;
+    print(method2(p0, new int[] {0, -7, -2, 8, 1}, new int[9]));
+    --p0;
+    v3 = new char[] {'d', '4', 'N', 'r', '7'};
+    return new boolean[] {true};
+}
+
+Class0 method2(int p0, int[] p1, int[] p2) {
+    char[] v5;
+    Class0 v4;
+    v4 = new Class0();
+    v5 = new char[] {':', '!'};
+    if ((p0 != p0)) {
+        if (false) {
+            var v7 = p1[0];
+            int v6 = p0;
+            while ((v6 < 3)) v6++;
+            p2[0] = -29;
+            while ((v7 < 4)) {
+                p0 = 12;
+                v7++;
+            }
+        } else if ((v4 instanceof Class0)) {
+            int v8 = p1[0];
+            while ((v8 < 5)) v8++;
+            v4 = new Class0();
+        }
+        if (true) p0 = length("B1x|");
+        for (int v9 = 0; v9 < 2; v9++) {
+            boolean[] v10;
+            v4 = new Class0();
+            v10 = new boolean[6];
+        }
+    } else {
+        int v11;
+        while ((v11 < 2)) {
+            int v13;
+            --p0;
+            {
+                int v12;
+                v12 = length(v5);
+                v4 = new Class0();
+            }
+            while ((v13 < 2)) {
+                p0 = atoi("514");
+                p0 = length(new boolean[7]);
+                p0 >>>= p2[0];
+                v13++;
+            }
+            v11++;
+        }
+        p1[0] = length(new int[5][]);
+    }
+    v4.f0_0 = p0;
+    return new Class0();
+}
+
+int main() {
+    Class0 v30;
+    boolean[] v29 = {false};
+    int v23;
+    for (int v20 = 0; v20 < 2; v20++) {
+        int v21 = 3;
+        v21 = 28;
+    }
+    {
+        Class0 v22 = null;
+        {
+            assert((-10 == 8));
+        }
+        v22 = new Class0();
+    }
+    v23 = 31;
+    for (int v24 = 0; v24 < 5; v24++) {
+        int v28;
+        Class0 v26 = null;
+        for (int v25 = 0; v25 < 5; v25++) {
+            int[][][] v27;
+            v26 = new Class0();
+            v27 = new int[10][][];
+        }
+        v28 = -41;
+        v29 = new boolean[] {false};
+    }
+    println(method0(new int[5]));
+    println(method0(length(new char[] {'y', 'W'}), new int[][][] {{{6}, {1}}, {{3, -1, 5, -10}}, {{6}, {-2, -8}, {10, -5, -4, -10}}}, new int[][][] {{{-8}, {9}, {-5, -1, 4}, {-9}}, {{3}}}));
+    println(method2(length(new char[] {'I'}), new int[10], new int[6]));
+    v30 = new Class0();
+    println(v30.m0_0(atoi("-2598"), length(new boolean[] {true, true, true})));
+    v30.m0_1(new int[3][]);
+    return v30.f0_0;
+}

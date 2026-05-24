@@ -1,0 +1,11 @@
+int main(){
+    int[] arr={1,2,3};
+    int x=arr[0];
+    arr[0]=114514;
+    println(x);
+    println(arr);
+    x=998244353;
+    println(x);
+    println(arr);
+    return 0;
+}

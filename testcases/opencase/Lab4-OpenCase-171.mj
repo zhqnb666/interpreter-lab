@@ -1,0 +1,101 @@
+class Class0 {
+    char[] f0_0;
+
+    int f0_1 = 10;
+
+    int[][][] m0_0(char p0) {
+        int v13;
+        this.f0_0 = new char[3];
+        v13 = 47;
+        return new int[8][][];
+    }
+}
+
+Class0 method0(Class0 p0, int p1) {
+    char[] v10 = {'F', 'n', 'z'};
+    char[] v9;
+    print(new int[] {-5, 7, 7, -6, -9});
+    {
+        char v0;
+        v0 = 'f';
+        if ((p1 >= p1)) {
+            var v1 = 'B';
+            v1 = v0;
+            ++p1;
+        } else if (true) {
+            int[] v2;
+            v2 = new int[3];
+        } else if ((p0 instanceof Class0)) {
+            Class0 v4;
+            println(atoi("-2739"));
+            for (int v3 = 0; v3 < 5; v3++) {
+                v4 = new Class0();
+                p0 = new Class0();
+            }
+        }
+    }
+    --p1;
+    if ((p1 <= p1)) ; else if ((p0 instanceof Class0)) ; else {
+        if ((p0 == p0)) {
+            int[][][] v5;
+            v5 = new int[2][][];
+            p1 = p1;
+            for (int v6 = 0; v6 < 2; v6++) {
+                char[] v8;
+                boolean[] v7;
+                v7 = new boolean[] {false, false, false, true, false};
+                v8 = new char[] {'$'};
+            }
+        } else {
+            p0.f0_0 = new char[] {'M', 'I', 'l'};
+            {
+                p0 = new Class0();
+            }
+        }
+        v9 = new char[9];
+    }
+    v10 = new char[6];
+    return (Class0) p0;
+}
+
+void method1(Class0 p0, int[][][] p1) {
+    int v12 = -4;
+    string v11 = "*1l";
+    p1[0][0] = new int[] {8, -3, -8, -3};
+    v11 = "&$$";
+    v12 = 32;
+}
+
+int main() {
+    int[][][] v21;
+    Class0 v20 = null;
+    int v19 = 29;
+    var v18 = -10;
+    for (int v14 = 0; v14 < 3; v14++) {
+        println(new char[6]);
+        {
+            string v17 = "!Yy'Xb";
+            int[][] v16 = {{-8, 5}, {3, -2}, {-3, -8, -2}, {9, 2, 4}};
+            int[][][] v15 = new int[][][] {{{6, -4}, {10, -6, 10}, {10}}, {{2, -10}, {-3, 9}, {2, -4, 1}, {5}}, {{-7, -10, -5, 5}, {-10, -4}, {10, 1}}, {{10, 5}}};
+            v15 = new int[][][] {{{-2, 6}, {5, 6, 2, -9}, {-4, 10}, {-2}}, {{-4, -7}, {5, 2, 6, -5}}, {{10, 1, -1, 6}}};
+            v16 = new int[][] {{4}, {-2, 7, 7}, {-7, 5}, {-8, 0, 0, 7}, {9, 0, 3, 6}};
+            v17 = (itoa(-19) + to_string(new char[1]));
+        }
+    }
+    v18 = 19;
+    if ((v18 >= v18)) {
+        print(22);
+        ++v18;
+    }
+    while ((v19 < 5)) {
+        if ((v18 <= v18)) ;
+        println();
+        v19++;
+    }
+    v18 = v18;
+    println(method0(method0(null, -37), length(new int[] {-6})));
+    method1(new Class0(), new int[][][] {{{-9, -1, -8}, {-3, 10}, {-4, 3, -5, -7}}, {{-7}}});
+    v20 = new Class0();
+    v21 = v20.m0_0('6');
+    return -47;
+}

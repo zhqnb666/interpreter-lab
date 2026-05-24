@@ -1,0 +1,66 @@
+class Class0 {
+    int[][] f0_0 = {{6, 3, -10}, {-1, 7, -5, 2}, {-2, 2, -1}};
+
+    int[] f0_1 = new int[] {5, 6, -4, 4};
+
+    int[][][] f0_2;
+
+    boolean[] m0_0(char p0, char[] p1, int[][][] p2) {
+        this.f0_0 = new int[7][];
+        {
+            p2[0][0][0] = length(new char[] {'@', '>', 'S'});
+            if ((p1 != null)) {
+                print(new int[10]);
+            } else {
+                int v7 = 4;
+                v7 = -40;
+                method0(new int[4], new int[8]);
+            }
+        }
+        println(new char[7]);
+        return new boolean[8];
+    }
+}
+
+void method0(int[] p0, int[] p1) {
+    int v1;
+    char[] v0 = new char[3];
+    v0 = new char[3];
+    v1 = -11;
+    for (int v2 = 0; v2 < 2; v2++) {
+        print(p0);
+    }
+}
+
+void method1(char[] p0, int p1, Class0 p2) {
+    int[][][] v6;
+    p1 -= 15;
+    if ((p1 != p1)) ; else if ((p1 >= p1)) {
+        int[][][] v3 = new int[2][][];
+        v3 = new int[][][] {{{-2, 5}, {6, 1, 1, 8}, {0, 7, -2, -4}}};
+        for (int v4 = 0; v4 < 5; v4++) {
+            p0 = new char[] {'5', 'J', 'I', 'L', '$'};
+        }
+        p1--;
+    } else if ((p1 < p1)) p1 = length(":Q0);");
+    if ((p1 != p1)) {
+        for (int v5 = 0; v5 < 3; v5++) ;
+        v6 = new int[7][][];
+        println((p2 == p2));
+    }
+    --p1;
+    println(to_string(p0));
+}
+
+int main() {
+    Class0 v10;
+    int v9 = 20;
+    int[][] v8;
+    v8 = new int[][] {{10, -2}, {3}};
+    v9 = 11;
+    method0(new int[8], new int[] {-8, 6, -4, 1});
+    method1(new char[8], length(v8), new Class0());
+    v10 = new Class0();
+    println(v10.m0_0('r', new char[1], new int[][][] {{{-4}, {-4, 0}}}));
+    return 42;
+}

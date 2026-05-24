@@ -1,0 +1,243 @@
+// ERROR: main_wrong_signature
+class Class0 {
+    char[] f0_0;
+
+    int[] m0_0() {
+        int v3 = -48;
+        int[][] v2 = new int[1][];
+        this.f0_0 = new char[] {';', '*'};
+        v2 = new int[1][];
+        print(new Class0());
+        while ((v3 < 4)) v3++;
+        return new int[] {3, -1, 1, 7};
+    }
+
+    int[][][] m0_1(Class0 p0) {
+        Class1 v4 = null;
+        this.f0_0 = new char[] {'H', 'o'};
+        v4 = new Class1();
+        return new int[10][][];
+    }
+}
+
+class Class1 {
+    Class0 f1_0 = null;
+
+    boolean[] f1_1 = {true, false, false};
+
+    int[][] f1_2;
+
+    void m1_0(int[] p0, Class0 p1) {
+        int v5 = -7;
+        this.f1_2 = new int[6][];
+        v5 = -8;
+        return;
+    }
+
+    int m1_1(Class1 p0, Class1 p1, char[] p2) {
+        Class2 v6;
+        this.f1_1 = new boolean[] {true, true, false, true, false};
+        {
+            p0.m1_0(new int[6], new Class0());
+            println(new int[] {-9, 1});
+            print(new Class2());
+        }
+        print(new char[1]);
+        v6 = new Class2();
+        return v6.f2_0;
+    }
+}
+
+class Class2 extends Class0 {
+    int f2_0 = -22;
+
+    boolean f2_1 = false;
+
+    Class2(Class1 p0, boolean p1) {
+        super();
+    }
+
+    Class2() {
+        char v8;
+        this(null, (4 < 8));
+        this.f2_0 = length(new int[2]);
+        this.f2_1 = (-9 != -9);
+        if (true) {
+            if ((-2 > 9)) {
+                int v7;
+                print(null);
+                v7 = -17;
+                v8 <<= 'K';
+            } else if ((-4 < -1)) {
+                int v9;
+                v9 = 15;
+            } else {
+                for (int v10 = 0; v10 < 3; v10++) {
+                    int[] v11 = new int[6];
+                    v11 = new int[3];
+                }
+            }
+            for (int v12 = 0; v12 < 3; v12++) {
+                int[] v15 = new int[] {6, -10, 6, -9, 5};
+                boolean[] v14;
+                Class2 v13 = null;
+                v13 = null;
+                v14 = new boolean[] {true, false, false};
+                v15 = new int[] {5};
+            }
+        } else if ((8 < -10)) {
+            println(null);
+            println('d');
+        } else {
+            println(new Class1());
+        }
+    }
+
+    Class0 m2_0(int p0) {
+        Class1 v16 = null;
+        this.f2_0 = -48;
+        println(this.f2_0);
+        v16 = new Class1();
+        v16.f1_2 = new int[6][];
+        --p0;
+        return new Class0();
+    }
+}
+
+int[][][] method0(int p0, int[][] p1) {
+    boolean[] v1 = {true, false, false, true, false};
+    char[] v0;
+    v0 = new char[] {'.'};
+    v1 = new boolean[] {true, true, true, false};
+    println(atoi("1315"));
+    p1[0] = new int[9];
+    return new int[8][][];
+}
+
+char main(boolean p0) {
+    Class2 v49;
+    int[][] v41 = new int[4][];
+    int[][] v23;
+    int[] v17;
+    assert(((-10 > -1) and false));
+    if ((p0 == p0)) {
+        v17 = new int[] {-8, -8, -2, -8};
+    } else if ((3 > -8)) {
+        boolean v22;
+        int v18 = -7;
+        p0 = p0;
+        while ((v18 < 4)) v18++;
+        {
+            for (int v19 = 0; v19 < 4; v19++) {
+                Class0 v21 = null;
+                Class2 v20 = null;
+                v20 = new Class2();
+                v20 = new Class2(null, (4 < 6));
+                v21 = v20;
+            }
+            v22 = (9 < 0);
+            v23 = new int[2][];
+        }
+    } else if (false) {
+        char[] v26 = {'O', '~'};
+        print(-48);
+        for (int v24 = 0; v24 < 5; v24++) {
+            int[] v27 = new int[] {3, -7, 10};
+            int[] v25;
+            v25 = new int[4];
+            v26 = new char[] {'v', '"', '^'};
+            v27 = v25;
+        }
+    } else if (((1 <= 5) or p0)) {
+        char v29;
+        int v28 = 6;
+        v28 = -3;
+        println('P');
+        if (p0) {
+            Class1 v32 = null;
+            if ((p0 == p0)) ;
+            v29 = '}';
+            {
+                var v31 = p0;
+                int v30;
+                v30 = 8;
+                v31 = (v30 != v30);
+                v32 = new Class1();
+            }
+        } else ;
+    } else if (p0) ; else {
+        int[] v38 = new int[4];
+        println(new boolean[2]);
+        if ((p0 != p0)) {
+            if (true) {
+                int v34 = -22;
+                boolean v33 = p0;
+                v33 = true;
+                v34 >>>= -35;
+            }
+            println(null);
+        } else {
+            char[] v40 = {'M', '{', 'Y', 'g'};
+            print(new int[] {6, 1, -2, 4, -4});
+            if (p0) {
+                string v36 = "Xj8kK6";
+                int[][][] v35;
+                v35 = new int[8][][];
+                v35 = v35;
+                v36 = ("-Lx" + itoa(-20));
+            } else {
+                Class2 v37 = null;
+                v37 = new Class2(null, (0 < 6));
+            }
+            if ((p0 or true)) {
+                v38 = new int[] {7, 10, -2, -4, 6};
+            } else if ((p0 != p0)) {
+                var v39 = -10;
+                p0 = p0;
+                v39 += 9;
+                v40 = new char[6];
+            } else ;
+        }
+    }
+    print(new int[9]);
+    if (p0) {
+        print(new int[3]);
+        v41 = new int[9][];
+    } else if (p0) {
+        int v46;
+        int v43;
+        int v42;
+        v42 = 12;
+        while ((v43 < 2)) {
+            var v44 = 22;
+            print(null);
+            while ((v44 < 4)) {
+                int[][] v45 = {{-7, -2, -7}, {-9, 8}, {5}, {6, -1}};
+                v45 = new int[7][];
+                v44++;
+            }
+            v43++;
+        }
+        v46 = 19;
+    } else if (true) {
+        int[] v47;
+        v47 = new int[5];
+    } else if ((5 <= -4)) {
+        var v48 = "3AI4L";
+        v48 += false;
+        println('L');
+    } else {
+        v49 = new Class2();
+        for (int v50 = 0; v50 < 2; v50++) {
+            var v51 = "W3G'";
+            v51 = itoa(-25);
+        }
+        for (int v52 = 0; v52 < 5; v52++) {
+            char[] v54 = new char[] {'t', '.', '~', 's'};
+            int[][] v53;
+            v53 = new int[6][];
+            v54 = new char[3];
+        }
+    }
+    return '0';
+}

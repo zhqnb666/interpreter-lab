@@ -1,0 +1,79 @@
+class Class0 {
+    char[] f0_0 = new char[] {',', '@', '#', '3'};
+
+    char f0_1;
+
+    boolean m0_0(int[][] p0, int p1, int p2) {
+        boolean v7;
+        this.f0_0 = new char[] {'J', '='};
+        if ((p2 < p1)) {
+            {
+                {
+                    var v6 = (p2 < p2);
+                    boolean v5 = (p2 > p2);
+                    v5 = (p1 >= p2);
+                    v6 = (p2 >= p1);
+                }
+                p0[0][0] = -17;
+            }
+            println(new int[10]);
+        }
+        v7 = true;
+        p1--;
+        return ((p0 == null) or v7);
+    }
+
+    int[][][] m0_1(boolean[] p0, string p1, boolean[] p2) {
+        this.f0_0 = new char[5];
+        {
+            {
+                p2[0] = true;
+            }
+            p0[0] = p2[0];
+        }
+        return new int[4][][];
+    }
+}
+
+void method0(char[] p0, char[] p1) {
+    var v1 = -23;
+    char[] v0 = {'S', 't', '='};
+    v0 = p0;
+    while ((v1 < 3)) {
+        boolean[] v2 = {true, true, false};
+        v2 = new boolean[4];
+        println(p1);
+        for (int v3 = 0; v3 < 2; v3++) {
+            int v4;
+            v4 = length(" {1:Zo");
+        }
+        v1++;
+    }
+    return;
+    p0[0] = 'Q';
+}
+
+int main() {
+    int[][][] v13 = new int[2][][];
+    Class0 v12 = null;
+    var v11 = -20;
+    for (int v8 = 0; v8 < 3; v8++) {
+        Class0 v9;
+        println(new char[] {'$', '=', '$', '4'});
+        if (false) {
+            int[][][] v10 = new int[4][][];
+            v9 = new Class0();
+            v10 = new int[5][][];
+        }
+    }
+    while ((v11 < 4)) {
+        println(new char[] {'K', 'a'});
+        if (false) continue;
+        v11++;
+    }
+    method0(new char[4], new char[] {'r', '1', '='});
+    v12 = new Class0();
+    println(v12.m0_0(new int[3][], atoi("4256"), atoi("1762")));
+    v13 = v12.m0_1(new boolean[6], to_string(new char[] {'e', 'K', 'y', 'z', 'Z'}), new boolean[] {true});
+    return -49;
+}

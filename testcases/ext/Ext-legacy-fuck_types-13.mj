@@ -1,0 +1,7 @@
+int main(){
+    assert(null!=new int[]{3});
+    assert(null==null);
+    assert(null!=new int[1][1][4][5][1][4][][][][][][][][][][][][][]);
+    assert(null!=new int[1][1][4][5][1][4]);
+    return 0;
+}

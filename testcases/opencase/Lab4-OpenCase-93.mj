@@ -1,0 +1,38 @@
+// ERROR: main_wrong_signature
+class Class0 {
+    boolean f0_0;
+
+    char[] f0_1 = new char[] {'R'};
+
+    int[][][] f0_2 = new int[6][][];
+
+    int[][] m0_0() {
+        int v0;
+        this.f0_0 = true;
+        println(new int[] {-7});
+        v0 = -16;
+        println(new boolean[6]);
+        return new int[][] {{0}, {2, 9, 3}};
+    }
+}
+
+char method0(string p0, int[][][] p1, int[][] p2) {
+    {
+        println(new Class0());
+    }
+    println(true);
+    return 'C';
+}
+
+char main(boolean p0) {
+    var v2 = -5;
+    int v1 = 24;
+    v1 = -44;
+    if (((v1 == v1) or (v1 >= v1))) {
+        v1--;
+    }
+    v1--;
+    v2 = length("-rE}");
+    println();
+    return 'C';
+}

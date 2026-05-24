@@ -1,0 +1,3 @@
+int main(){    int s = 1;    {        int s = 100;        int t = s;   println(s);
+ println(t);}println(s);
+ return 0;}

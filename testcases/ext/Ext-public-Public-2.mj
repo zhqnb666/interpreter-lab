@@ -1,0 +1,29 @@
+
+
+// simple class methods
+// without inheretance
+
+class A {
+    int a;
+    string b;
+
+    void setA(int a) {
+        this.a = a;
+    }
+
+    void setB(string s) {
+        b = s;
+    }
+}
+
+int main() {
+    A a = new A();
+
+    a.setA(10);
+    a.setB("hello");
+
+    println(a.a);
+    println(a.b);
+
+    return 0;
+}

@@ -1,0 +1,84 @@
+class Class0 {
+    boolean[] f0_0;
+
+    char f0_1 = 'g';
+
+    int f0_2;
+
+    Class0(int p0, Class0 p1, boolean p2) {
+        this.f0_0 = new boolean[] {true, false, false, false, true};
+        this.f0_1 = p1.m0_1(new char[1], -35);
+        p1.f0_1 = (char) 35;
+    }
+
+    void m0_0(char[] p0) {
+        this.f0_0 = new boolean[5];
+        print(p0);
+        return;
+    }
+
+    char m0_1(char[] p0, int p1) {
+        int v4 = -29;
+        this.f0_1 = p0[0];
+        while ((v4 < 2)) {
+            if ((p0 == null)) break;
+            v4++;
+        }
+        return '0';
+    }
+}
+
+Class0 method0(boolean p0, int[][][] p1, int[] p2) {
+    char[] v1 = new char[] {'r'};
+    println((10 < -9));
+    print(new int[] {7});
+    if (((p2 == null) and (3 <= -10))) {
+        int v0;
+        while ((v0 < 3)) v0++;
+    }
+    v1 = new char[] {'H', 'T', 'p', 'k'};
+    p1[0][0] = new int[] {-10, -1};
+    return null;
+}
+
+Class0 method0(char[] p0) {
+    var v3 = -12;
+    string v2 = ".C-P}";
+    v2 = to_string(new char[10]);
+    if ((p0 == p0)) ;
+    p0[0] = '+';
+    if ((8 > -5)) ; else {
+        print(true);
+    }
+    v3 = 32;
+    return new Class0(49, null, (8 > 9));
+}
+
+int main() {
+    Class0 v10;
+    var v8 = true;
+    {
+        boolean[] v9 = new boolean[10];
+        int v5;
+        while ((v5 < 2)) {
+            int v7 = 41;
+            {
+                var v6 = (-1 <= -4);
+                v6 = (3 <= 5);
+            }
+            v7 = -2;
+            v5++;
+        }
+        {
+            v8 = (8 <= 7);
+        }
+        v9 = new boolean[4];
+    }
+    println(new int[] {-2});
+    println(method0(true, new int[][][] {{{10, 4, 7, -1}, {8, -8}, {-10, -7}, {5, -3}}, {{0, 3, -7, 2}, {2, 8}, {-6}}, {{4, 10, 10}, {2, -7, 4}, {-2, -10, -2}}, {{1, -1}}}, new int[3]));
+    println(method0(new char[] {'!'}));
+    v10 = new Class0(length("S)h"), v10, (-7 == -5));
+    v10.m0_0(new char[] {'q', 'O', '8'});
+    println(v10.m0_1(new char[3], length(new boolean[] {false})));
+    return v10.f0_2;
+}

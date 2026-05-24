@@ -1,0 +1,109 @@
+// ERROR: incompatible_op
+class Class0 {
+    boolean f0_0;
+
+    int m0_0(char[] p0, char p1) {
+        var v9 = "F$@O";
+        this.f0_0 = (p1 < p1);
+        v9 += false;
+        {
+            print((p1 == p1));
+            p0[0] = '^';
+        }
+        return -48;
+    }
+}
+
+int[] method0() {
+    boolean v8 = false;
+    var v7 = 'c';
+    if ((10 + (-3 <= -8))) ;
+    for (int v0 = 0; v0 < 3; v0++) {
+        boolean[] v4 = {false, false, false, true};
+        Class0 v1 = null;
+        v1 = new Class0();
+        v1.f0_0 = (v1 != v1);
+        if ((10 != 6)) {
+            char[] v3;
+            int[] v2;
+            v2 = new int[] {9};
+            v3 = new char[9];
+            v4 = new boolean[] {false, false, true, true, false};
+        } else {
+            int[][][] v6;
+            int v5;
+            v5 = v1.m0_0(new char[] {'[', 'f', 'H', 'w', '&'}, 'k');
+            v6 = new int[][][] {{{10, 5, -2, -1}, {3, 9, -9}, {-6}, {-3, -3}}, {{9, 10, -10, -9}, {7, 0}}, {{3, 7, -5}, {5, 9}}, {{2, 8}, {-2, -3, 6, -9}, {5, -2}, {-5}}};
+        }
+    }
+    v7 = ')';
+    v8 = (v7 > v7);
+    print(null);
+    return new int[4];
+}
+
+int main() {
+    Class0 v25;
+    int v16;
+    boolean v10 = true;
+    v10 = false;
+    if (v10) {
+        Class0 v11;
+        println(new Class0());
+        v11 = new Class0();
+        if (v10) {
+            int[][][] v15 = {{{-2, -4, 2}}};
+            int[][][] v14 = new int[1][][];
+            boolean[] v13 = {false, true, true, false, true};
+            int v12 = -42;
+            while ((v12 < 3)) {
+                v13 = new boolean[] {true, false, true};
+                v14 = new int[][][] {{{1, -5, -7}}};
+                v11 = new Class0();
+                v12++;
+            }
+            v15 = new int[4][][];
+        }
+    }
+    v16 = length(new int[9][]);
+    for (int v17 = 0; v17 < 2; v17++) {
+        if ((v10 and false)) {
+            var v18 = -25;
+            v18 = v16;
+        } else if ((true and (v16 <= v16))) {
+            v10 = (v16 >= v16);
+        } else if (false) {
+            int v20;
+            char[] v19 = new char[8];
+            v16 ^= length(new char[5]);
+            v19 = new char[2];
+            v20 -= length(new boolean[] {true, true, true});
+        }
+        v16 = atoi("6122");
+    }
+    if ((v10 and (v16 <= v16))) {
+        int v21 = 7;
+        while ((v21 < 4)) {
+            v10 = false;
+            v21++;
+        }
+        println(new char[6]);
+        --v16;
+    } else if (true) {
+        int v22 = v16;
+        while ((v22 < 2)) {
+            boolean[] v24 = new boolean[] {false};
+            int[][] v23 = new int[][] {{2, -6, -1}, {-4}, {-5, -6, -2, -4}, {-4, 3}, {-9}};
+            v23 = new int[7][];
+            v24 = new boolean[7];
+            v10 = v10;
+            v22++;
+        }
+    } else {
+        v16--;
+    }
+    println(method0());
+    v25 = new Class0();
+    println(v25.m0_0(new char[3], '@'));
+    return v16;
+}

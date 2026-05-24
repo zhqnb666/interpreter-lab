@@ -1,0 +1,7 @@
+int main(){
+    int a= 10 + 10 *2;
+    int b=(10+10)*2;
+    println(a);
+    println(b);
+    return 0;
+}

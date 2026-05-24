@@ -1,0 +1,23 @@
+int main(){
+    int[][][] x=new int[1][2][3];
+    println(x);
+    x=new int[1][2][];
+    println(x);
+    x=new int[1][][];
+    println(x);
+    x=new int[' '][][];
+    println(x);
+    x=new int[11][45][14];
+    println(x);
+    x=new int[11][45][];
+    println(x);
+    x=new int[11][][];
+    println(x);
+    x=new int[][][]{{{1,2,3},{4,5,6}},{{7,8,9},{10,11,12}}};
+   println(x);
+   x=new int[][][]{{{1,2,3},{4,5,6}},{{7,8,9},{10,11,12}},{{13,14,15},{16,17,18}}};
+   println(x);
+   x=new int[][][]{{{1},{22}},{{3},{4,55,66,77}}};
+    println(x);
+    return 0;
+}

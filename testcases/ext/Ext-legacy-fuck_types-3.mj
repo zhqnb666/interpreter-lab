@@ -1,0 +1,6 @@
+int main(){
+    int[] x={2,3,4};
+    char[] y=null;
+    x=(int[])y;
+    return 0;
+}

@@ -1,0 +1,62 @@
+class BaseClass {
+    int baseValue;
+    string baseMsg;
+
+    BaseClass(int value) {
+        this.baseValue = value;
+        this.baseMsg = "Base with int";
+        println("BaseClass(int) called with value: " + value);
+    }
+
+    BaseClass(string msg) {
+        this.baseMsg = "Base with string: " + msg;
+        this.baseValue = length(msg);
+        println("BaseClass(string) called with msg: " + msg);
+    }
+
+    // A no-arg constructor is important for implicit super() calls
+    BaseClass() {
+         this.baseMsg = "Base default";
+         this.baseValue = -1;
+         println("BaseClass() called");
+    }
+}
+
+class DerivedClass extends BaseClass {
+    int derivedValue;
+
+    DerivedClass(int baseVal, int derivedVal) {
+        super(baseVal); // Explicit call to BaseClass(int) - Must be first
+        this.derivedValue = derivedVal;
+        println("DerivedClass(int, int) called with derived value: " + derivedVal);
+    }
+
+    DerivedClass(string baseMsg, int derivedVal) {
+        super(baseMsg); // Explicit call to BaseClass(string) - Must be first
+        this.derivedValue = derivedVal;
+        println("DerivedClass(string, int) called with derived value: " + derivedVal);
+    }
+
+    // This constructor implicitly calls super() because it doesn't call this() or super()
+    DerivedClass() {
+        this.derivedValue = 99;
+        println("DerivedClass() called");
+    }
+}
+
+int main(){
+        DerivedClass d1 = new DerivedClass(10, 20);
+        println("d1: baseValue=" + d1.baseValue + ", baseMsg=" + d1.baseMsg + ", derivedValue=" + d1.derivedValue);
+
+        println("---");
+
+        DerivedClass d2 = new DerivedClass("Derived Message", 30);
+         println("d2: baseValue=" + d2.baseValue + ", baseMsg=" + d2.baseMsg + ", derivedValue=" + d2.derivedValue);
+
+        println("---");
+
+        DerivedClass d3 = new DerivedClass(); // Calls BaseClass() implicitly
+        println("d3: baseValue=" + d3.baseValue + ", baseMsg=" + d3.baseMsg + ", derivedValue=" + d3.derivedValue);
+
+       return 0;
+}

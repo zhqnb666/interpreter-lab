@@ -1,0 +1,214 @@
+// ERROR: arg_type_mismatch
+class Class0 {
+    boolean f0_0;
+
+    int f0_1;
+
+    string f0_2;
+
+    void m0_0(char p0) {
+        int[] v11;
+        this.f0_2 = ("wZP}" + "aDT");
+        v11 = new int[8];
+    }
+}
+
+class Class1 {
+    Class2 f1_0;
+
+    char f1_1;
+
+    Class0 m1_0(Class1 p0, boolean p1, Class0 p2) {
+        int v12;
+        this.f1_1 = 'X';
+        while ((v12 < 5)) {
+            print(to_string(new char[8]));
+            p2 = new Class0();
+            if ((p1 == p1)) continue;
+            v12++;
+        }
+        return (Class0) p2;
+    }
+}
+
+class Class2 extends Class1 {
+    Class2 f2_0;
+
+    int f2_1 = 21;
+
+    Class2() {
+        int v33;
+        super();
+        this.f2_0 = null;
+        this.f2_1 = -23;
+        if ((-3 >= -9)) {
+            int v21;
+            Class1 v19;
+            {
+                Class1 v13 = null;
+                if (true) ; else if ((8 > -3)) {
+                    Class1 v14 = null;
+                    v13 = new Class1();
+                    v14 = new Class1();
+                    v14 = new Class1();
+                } else ;
+                for (int v15 = 0; v15 < 5; v15++) {
+                    int[] v16 = {8, 9, 2};
+                    v16 = new int[3];
+                }
+                method0(new Class1());
+            }
+            for (int v17 = 0; v17 < 2; v17++) {
+                var v20 = "N1dKy+";
+                int v18 = 26;
+                v18 = length(new int[3]);
+                v19 = new Class1();
+                v20 = ("E%f$?6" + length(new char[] {'#', '"'}));
+            }
+            v21 = -19;
+        } else if (false) {
+            int v23 = 40;
+            int v22 = -14;
+            while ((v22 < 2)) v22++;
+            while ((v23 < 2)) {
+                int[] v27 = {-3, 1, -10, -3};
+                boolean[] v24;
+                {
+                    Class2 v26 = null;
+                    Class2 v25 = null;
+                    v24 = new boolean[] {false, true, true, false};
+                    v25 = null;
+                    v26 = v25;
+                }
+                v27 = new int[2];
+                v23++;
+            }
+            if (false) {
+                println('1');
+                for (int v28 = 0; v28 < 3; v28++) {
+                    int[] v29 = new int[] {10, -7, -4, 5, 10};
+                    v29 = new int[] {8};
+                }
+            }
+        } else {
+            var v31 = -14;
+            int[] v30 = new int[] {-2, 8, 10, -4, 10};
+            print(new int[] {-4});
+            v30 = new int[8];
+            while ((v31 < 3)) {
+                Class1 v32;
+                v32 = new Class1();
+                v31++;
+            }
+        }
+        v33 = -22;
+    }
+
+    Class2 m2_0() {
+        this.f2_0 = new Class2();
+        if (false) ; else if (false) {
+            print(new Class2());
+        }
+        return new Class2();
+    }
+}
+
+void method0(Class1 p0) {
+    int v6 = 37;
+    string v0 = "Fhh:";
+    println(print(false));
+    v0 += length(v0);
+    for (int v1 = 0; v1 < 2; v1++) {
+        int v4 = 5;
+        int v3 = -8;
+        p0.f1_1 = '[';
+        if ((p0 instanceof Class1)) {
+            var v2 = (p0 != null);
+            v2 = false;
+            v3 = method1(new char[] {'I', 'n'}, null);
+        }
+        v4 = 15;
+    }
+    for (int v5 = 0; v5 < 2; v5++) {
+        int[][] v8 = new int[][] {{-9, -6}, {4, -2, 8, 9}, {-2, -8, -7}};
+        if ((p0 != p0)) {
+            Class2 v7 = null;
+            v6 = -22;
+            v7 = new Class2();
+            v8 = new int[][] {{0}, {-9, -3}};
+        } else {
+            Class1 v9;
+            v9 = new Class2();
+        }
+        p0.f1_1 = 'n';
+    }
+}
+
+int method1(char[] p0, Class2 p1) {
+    if ((p1 == p1)) {
+        int v10 = -17;
+        v10 = 21;
+    }
+    print(new boolean[] {true, true});
+    p1.f2_1 = p1.f2_1;
+    print(null);
+    return p1.f2_1;
+}
+
+int main() {
+    Class2 v47;
+    Class1 v46;
+    Class0 v45;
+    boolean[] v44;
+    boolean v39 = true;
+    boolean v36;
+    if ((-7 != 8)) {
+        int v34 = -42;
+        while ((v34 < 2)) v34++;
+        {
+            int[] v42 = {-3};
+            var v35 = 34;
+            while ((v35 < 2)) {
+                Class1 v37 = null;
+                v36 = (-10 != 5);
+                v37 = new Class2();
+                v35++;
+            }
+            if (true) {
+                char v40 = ' ';
+                var v38 = "y&V";
+                v38 = itoa(-5);
+                v39 = true;
+                v40 = 'l';
+            } else {
+                Class2 v41 = null;
+                v41 = new Class2();
+                v42 = new int[5];
+            }
+        }
+        println(new Class0());
+    }
+    {
+        print(new int[7]);
+        if ((-2 > 0)) {
+            println();
+            print((10 > -8));
+        } else {
+            int v43;
+            v43 = -38;
+            println(null);
+        }
+    }
+    v44 = new boolean[] {true, false};
+    v44[0] = (6 >= 4);
+    method0(new Class1());
+    println(method1(new char[6], new Class2()));
+    v45 = new Class0();
+    v45.m0_0('S');
+    v46 = new Class1();
+    println(v46.m1_0(new Class1(), (v44 != v44), new Class0()));
+    v47 = new Class2();
+    println(v47.m2_0());
+    println(v47.m1_0(new Class2(), v44[0], null));
+    return v47.f2_1;
+}

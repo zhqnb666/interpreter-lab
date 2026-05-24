@@ -1,0 +1,24 @@
+
+
+// type casting
+
+class A {
+    
+}
+
+class B extends A {
+    
+}
+
+int main() {
+    A x1 = new B();
+    A x2 = new A();
+
+    var x3 = (B) x1; // ok
+    println("ok");
+
+    var x4 = (B) x2; // error: cannot cast A to B
+    println("ok");
+
+    return 0;
+}

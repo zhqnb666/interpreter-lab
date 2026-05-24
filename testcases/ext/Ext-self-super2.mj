@@ -1,0 +1,24 @@
+class A{
+    void x(){
+        y();
+    }
+
+    void y(){
+        println("Hi");
+    }
+}
+
+class B extends A{
+    void x(){
+        super.x();
+    }
+
+    void y(){
+        println("!");
+    }
+}
+
+int main(){
+    new B().x();
+    return 0;
+}

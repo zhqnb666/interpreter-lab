@@ -1,0 +1,37 @@
+class Fa{
+    int t=3;
+    int q=(this.t+=3);
+    int fa=-2;
+}
+class X extends Fa{
+    X(){
+        this(1);
+        println(t+" "+q);
+    }
+
+    X(int x){
+        println(t+" "+q);
+    }
+}
+
+class Fa2{
+    int q=(this.t+=3);
+    int t=3;
+    int fa=-2;
+}
+class X2 extends Fa2{
+    X2(){
+        this(1);
+        println(t+" "+q);
+    }
+
+    X2(int x){
+        println(t+" "+q);
+    }
+}
+
+int main(){
+    new X();
+    new X2();
+    return 0;
+}

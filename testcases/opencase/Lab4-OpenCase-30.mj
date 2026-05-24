@@ -1,0 +1,70 @@
+class Class0 {
+    Class0 f0_0 = null;
+
+    string f0_1;
+
+    Class0(char p0, boolean p1) {
+        this.f0_0 = null;
+        p0 = p0;
+    }
+
+    void m0_0(boolean[] p0) {
+        var v1 = 47;
+        this.f0_0 = new Class0('#', p0[0]);
+        p0 = new boolean[] {true, true, false};
+        v1 = length(new char[] {'v', '2'});
+    }
+}
+
+class Class1 extends Class0 {
+    int f1_0;
+
+    int f1_1;
+
+    boolean[] f1_2;
+
+    Class1() {
+        Class0 v3;
+        int v2;
+        super('R', false);
+        this.f1_0 = 30;
+        v2 = -49;
+        v3 = new Class0('c', (-3 != 5));
+    }
+
+    void m0_0(boolean[] p0) {
+        this.f1_1 = 45;
+        println(this.f1_1);
+        p0[0] = (10 != 0);
+        print('t');
+        return;
+    }
+}
+
+void method0(int p0, Class1 p1) {
+    var v0 = -45;
+    print(p1);
+    {
+        p1.m0_0(new boolean[] {true, false, true, true});
+        v0 += length(new int[][] {{0}});
+    }
+    return;
+    p1.m0_0(new boolean[6]);
+    println(to_string(new char[3]));
+}
+
+int main() {
+    Class1 v7;
+    Class0 v6 = null;
+    var v5 = -24;
+    Class1 v4 = null;
+    print(new Class1());
+    v4 = new Class1();
+    v5 = length(new char[] {'Y', '0', '7', '5'});
+    method0(((v5 < v5) ? 21 : v5), new Class1());
+    v6 = new Class0('E', (v5 != v5));
+    v6.m0_0(new boolean[] {true, false, false});
+    v7 = new Class1();
+    v7.m0_0(new boolean[] {true, false, false, false, true});
+    return 0;
+}

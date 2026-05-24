@@ -1,0 +1,11 @@
+After append: 1 -> 2 -> 3
+After prepend: 0 -> 1 -> 2 -> 3
+After insert: 0 -> 1 -> 99 -> 2 -> 3
+Element at index 2: 99
+Contains 99: true
+Contains 100: false
+After remove: 0 -> 1 -> 2 -> 3
+Final size: 4
+Process exits with 0.
+
+0

@@ -1,0 +1,26 @@
+
+
+// instanceof
+
+class A {
+    int val = 10;
+}
+class B extends A {
+    int val = super.val + 5;
+}
+
+int main() {
+    A a = new A();
+    A b = new B();
+
+    boolean condA = a instanceof B;
+    boolean condB = b instanceof B;
+
+    println(condA); // false
+    println(condB); // true
+    
+    println(a.val); // 10
+    println(b.val); // 10
+
+    return 0;
+}

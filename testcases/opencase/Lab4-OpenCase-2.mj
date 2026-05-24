@@ -1,0 +1,157 @@
+// ERROR: main_has_params
+class Class0 {
+    boolean f0_0;
+
+    char[] f0_1;
+
+    Class1 f0_2;
+
+    Class0(Class1 p0) {
+        this.f0_0 = (5 < 10);
+        this.f0_1 = new char[] {'M'};
+        this.f0_2 = p0;
+    }
+
+    Class0(int[][][] p0, Class0 p1, char[] p2) {
+        var v13 = 27;
+        this.f0_0 = (p2 == null);
+        this.f0_1 = new char[] {'/', 'N', 'o', 'G'};
+        while ((v13 < 3)) v13++;
+        {
+            p1.m0_0();
+            print(to_string(p2));
+            if ((p2 != null)) {
+                p1.m0_0();
+                p2 = p2;
+                p1.m0_0();
+            } else ;
+        }
+    }
+
+    void m0_0() {
+        boolean v14;
+        this.f0_2 = new Class1();
+        v14 = (-7 >= -7);
+    }
+
+    Class1 m0_1() {
+        int v16 = 2;
+        var v15 = 43;
+        this.f0_2 = new Class1();
+        v15 = -38;
+        print(false);
+        v16 = 1;
+        return null;
+    }
+}
+
+class Class1 {
+    int f1_0 = 48;
+
+    void m1_0(char p0) {
+        this.f1_0 = (int) p0;
+        println(this.f1_0);
+        if (true) {
+            print((int) p0);
+            {
+                char[] v17;
+                print(new Class1());
+                v17 = new char[6];
+                println(new char[] {':', 'j', 'C', 'B'});
+            }
+        }
+        for (int v18 = 0; v18 < 5; v18++) {
+            println(("(V^]Y" + method0((int) 'W')));
+            print(p0);
+        }
+        return;
+    }
+
+    char[] m1_1(int[][][] p0, boolean p1) {
+        this.f1_0 = -23;
+        println(this.f1_0);
+        p0[0][0][0] = atoi("8820");
+        return new char[9];
+    }
+}
+
+class Class2 extends Class0 {
+    Class2 f2_0 = null;
+
+    Class2() {
+        int v19;
+        super(null);
+        v19 = length(new int[][] {{-2}});
+    }
+
+    boolean m2_0() {
+        this.f2_0 = null;
+        super.m0_0();
+        print(new int[1]);
+        println(new int[5]);
+        return false;
+    }
+}
+
+char method0(int p0) {
+    Class1 v1;
+    var v0 = 46;
+    v0 <<= (-26 ^ length(new int[] {4, 10}));
+    v1 = new Class1();
+    return 's';
+}
+
+void method1(int p0) {
+    boolean v11;
+    Class2 v8;
+    char v7;
+    {
+        for (int v2 = 0; v2 < 2; v2++) {
+            char[] v4 = new char[2];
+            var v3 = true;
+            v3 = (p0 == p0);
+            v4 = new char[7];
+        }
+        for (int v5 = 0; v5 < 5; v5++) {
+            char v6 = ',';
+            v6 = method0(-42);
+        }
+        println((p0 < p0));
+    }
+    v7 = method0(13);
+    v8 = new Class2();
+    println(null);
+    if ((v8 instanceof Class2)) {
+        int[] v9 = new int[] {5, -4, -8};
+        v9 = new int[] {-2, 10};
+        if (v8.f0_0) {
+            int v10 = 1;
+            while ((v10 < 5)) {
+                Class0 v12;
+                v11 = true;
+                v9 = v9;
+                v12 = v8;
+                v10++;
+            }
+        } else {
+            p0--;
+        }
+    } else {
+        {
+            v8.f2_0 = v8;
+            if (true) p0 = p0;
+        }
+    }
+}
+
+int main(boolean p0) {
+    {
+        var v21 = 2;
+        var v20 = 'z';
+        println((-8 > 8));
+        v20 = method0(-44);
+        while ((v21 < 4)) v21++;
+    }
+    method1(length(new int[] {1, 4}));
+    return -31;
+}

@@ -1,0 +1,14 @@
+BaseClass(int) called with value: 10
+DerivedClass(int, int) called with derived value: 20
+d1: baseValue=10, baseMsg=Base with int, derivedValue=20
+---
+BaseClass(string) called with msg: Derived Message
+DerivedClass(string, int) called with derived value: 30
+d2: baseValue=15, baseMsg=Base with string: Derived Message, derivedValue=30
+---
+BaseClass() called
+DerivedClass() called
+d3: baseValue=-1, baseMsg=Base default, derivedValue=99
+Process exits with 0.
+
+0

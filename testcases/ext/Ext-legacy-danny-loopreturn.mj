@@ -1,0 +1,113 @@
+int get_length(int x) {
+    int ans = 0;
+    while(x > 0) {
+        ans += 1;
+        x /= 10;
+    } 
+    return ans;
+}
+
+char[] check(string s) {
+    for(int T = 0; T < 10; T++) {
+        int a = atoi(s);
+        int aa = a * a;
+        int length = get_length(aa);
+        char[] res = new char[get_length(aa) + 1];
+        for(int i = length - 1; i >= 0; i -= 1)  {
+            res[i] = (char)('0' + aa % 10);
+            aa /= 10;
+        }
+        res[length(res) - 1] = 'a';
+        if(T == 8) {
+            return res;
+        }
+    }
+    assert(false);
+    return new char[] {48, 48, 48, 97};
+}
+
+int main() {
+
+    int i = 0;
+    while(i < 10) {
+        int j = 0;
+        while(j < 10) {
+            if(((i + j) & 1) == 1) {
+                j ++;
+                continue;
+            }
+            if(i==0 and j==0){
+                j-=-1;
+                continue;
+            }
+            print("" + i + j + ": ");
+            char[] res = check(itoa(atoi("" + i + j)));
+            for(int id = 0; id < length(res) + 10; id++) {
+                if(res[id] == 97) {
+                    break;
+                } else {
+                    print(res[id]);
+                }
+            }
+            println();
+            j -= -1;
+        }
+        i -= -1;
+    }
+
+    return 0;
+}
+
+/*
+00: 
+02: 4
+04: 16
+06: 36
+08: 64
+11: 121
+13: 169
+15: 225
+17: 289
+19: 361
+20: 400
+22: 484
+24: 576
+26: 676
+28: 784
+31: 961
+33: 1089
+35: 1225
+37: 1369
+39: 1521
+40: 1600
+42: 1764
+44: 1936
+46: 2116
+48: 2304
+51: 2601
+53: 2809
+55: 3025
+57: 3249
+59: 3481
+60: 3600
+62: 3844
+64: 4096
+66: 4356
+68: 4624
+71: 5041
+73: 5329
+75: 5625
+77: 5929
+79: 6241
+80: 6400
+82: 6724
+84: 7056
+86: 7396
+88: 7744
+91: 8281
+93: 8649
+95: 9025
+97: 9409
+99: 9801
+Process exits with the code 0.
+*/

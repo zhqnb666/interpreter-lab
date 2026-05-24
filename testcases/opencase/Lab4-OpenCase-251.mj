@@ -1,0 +1,91 @@
+// ERROR: incompatible_op
+class Class0 {
+    char[] f0_0 = {';', 'b'};
+
+    char[] f0_1 = {'O', 'T', '?', 't'};
+
+    char f0_2;
+
+    Class0(char p0, string p1) {
+        this.f0_0 = new char[] {'q', 'U', 'O', 'U', 'a'};
+        this.f0_1 = new char[] {'#', 'j', 'g'};
+        this.f0_2 = p0;
+    }
+
+    void m0_0() {
+        Class0 v6;
+        int[] v5;
+        this.f0_2 = 'z';
+        v5 = new int[4];
+        v6 = new Class0('C', ">ty");
+        print(new char[] {'j', '8', '@', 's'});
+    }
+
+    int[][] m0_1() {
+        int v7;
+        this.f0_1 = new char[] {'%', 'n', '5', 'n', '('};
+        if ((-1 > -10)) ; else {
+            print(itoa(-2));
+        }
+        v7 = -48;
+        return new int[1][];
+    }
+}
+
+char[] method0(Class0 p0, Class0 p1, string p2) {
+    Class0 v0 = null;
+    if ((10 + (2 < 8))) {
+        print('$');
+        v0 = p0;
+    } else if ((4 >= 2)) {
+        int[] v1 = {-2};
+        v1 = new int[8];
+        p0.m0_0();
+        v1[0] = 0;
+    } else if (false) {
+        var v3 = 48;
+        int v2;
+        v2 = -23;
+        p1.m0_0();
+        v3 = 25;
+    } else {
+        {
+            int v4 = -35;
+            while ((v4 < 5)) v4++;
+        }
+    }
+    p0.m0_0();
+    p0.m0_0();
+    p0.m0_0();
+    return new char[1];
+}
+
+int main() {
+    int[][] v14;
+    Class0 v13;
+    int v10;
+    var v8 = 2;
+    print((0 > 1));
+    while ((v8 < 4)) {
+        Class0 v9 = null;
+        v9 = new Class0('6', itoa(2));
+        v8++;
+    }
+    while ((v10 < 3)) {
+        print('_');
+        if ((-10 < 8)) {
+            int v11;
+            v11 >>>= atoi("1119");
+            ++v11;
+        } else {
+            int v12 = 30;
+            v12 = -42;
+        }
+        v10++;
+    }
+    println(method0(new Class0('K', "#TV"), new Class0('N', to_string(new char[] {')', '~', 'R'})), itoa(-46)));
+    v13 = new Class0(v13.f0_2, to_string(new char[] {'l', '|', '1', 'y', '}'}));
+    v13.m0_0();
+    v14 = v13.m0_1();
+    return 34;
+}

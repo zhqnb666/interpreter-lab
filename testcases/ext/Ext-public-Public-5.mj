@@ -1,0 +1,27 @@
+
+// simple inheretance
+// field access
+
+class A {
+    int a;
+}
+
+class B extends A {
+    string b;
+}
+
+int main() {    
+    B x1 = new B();
+    x1.a = 10;
+    x1.b = "hello";
+    println(x1.a);
+    println(x1.b);
+
+    A x2 = new B();
+    x2.a = 20;
+    // x2.b = "world";
+    println(x2.a);
+    // println(x2.b);
+
+    return 0;
+}

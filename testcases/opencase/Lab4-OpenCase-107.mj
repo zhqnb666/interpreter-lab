@@ -1,0 +1,91 @@
+class Class0 {
+    boolean f0_0;
+
+    Class0(int[][][] p0, boolean[] p1) {
+        var v10 = true;
+        p1[0] = (-9 < -10);
+        for (int v9 = 0; v9 < 4; v9++) {
+            println(true);
+            v10 = (p1 != null);
+            print(new char[] {'i', 'T'});
+        }
+    }
+
+    int m0_0(int[][] p0, int p1, int[][] p2) {
+        int[] v11;
+        this.f0_0 = (p1 == p1);
+        v11 = new int[5];
+        assert((p0 == null));
+        p1--;
+        return p1;
+    }
+
+    void m0_1(int p0) {
+        int v12 = -32;
+        this.f0_0 = (p0 < p0);
+        v12 = p0;
+    }
+}
+
+void method0(int[][][] p0) {
+    int[][] v6 = {{-4, 3}};
+    var v5 = '#';
+    int v3;
+    var v0 = -15;
+    while ((v0 < 5)) {
+        if (false) {
+            int[][][] v1 = p0;
+            v1 = new int[6][][];
+        }
+        {
+            int v2;
+            v2 = 38;
+        }
+        if ((-8 > -5)) break;
+        v0++;
+    }
+    while ((v3 < 4)) v3++;
+    for (int v4 = 0; v4 < 2; v4++) {
+        v5 = ')';
+        method1(p0, atoi("-3201"), (-7 > -6));
+    }
+    p0[0][0] = new int[] {-3, 3, 10, 10};
+    v6 = new int[][] {{4}, {2}, {-6, 8, 4, 1}};
+}
+
+void method1(int[][][] p0, int p1, boolean p2) {
+    int v7;
+    while ((v7 < 5)) {
+        Class0 v8 = null;
+        v8 = new Class0(new int[4][][], new boolean[] {true, false, true, false, true});
+        p0[0][0][0] = (true ? 14 : atoi("-6488"));
+        p1--;
+        v7++;
+    }
+    p1++;
+}
+
+int main() {
+    Class0 v18 = null;
+    Class0 v17 = null;
+    boolean[] v16 = new boolean[] {false, false, false};
+    boolean[] v14 = {false};
+    int[][] v13 = new int[4][];
+    v13 = new int[][] {{2}, {2, 2, 2, 1}, {9, -1}, {1, 9, 2}};
+    v14 = new boolean[] {true, true, true, false};
+    if ((3 <= -10)) ; else {
+        {
+            v13[0] = new int[] {-2, 4, 6, 5};
+        }
+        for (int v15 = 0; v15 < 2; v15++) {
+            v16 = v14;
+        }
+    }
+    v17 = new Class0(new int[][][] {{{-2, 1, 8}, {8, -10}}, {{-4}, {4, 8}}}, v14);
+    method0(new int[4][][]);
+    method1(new int[][][] {{{9, -2, -8, 6}, {1, 8, -1}, {-8, 2, -6, -7}}, {{0}, {-2}}}, -22, (v17 instanceof Class0));
+    v18 = new Class0(new int[7][][], v14);
+    println(v18.m0_0(v13, length("zmPBY"), v13));
+    v18.m0_1(length(v13));
+    return v17.m0_0(new int[5][], -10, v13);
+}

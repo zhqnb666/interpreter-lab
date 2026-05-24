@@ -1,0 +1,30 @@
+class A{
+    int ax;
+    A(int x){
+        ax=x;
+        setX(x+6);
+    }
+    void setX(int x){
+        ax=x;
+    }
+}
+
+class B extends A{
+    int bx=10;
+    int cx;
+    B(int x){
+        super(x-2);
+    }
+    void setX(int x){
+        bx=x;
+        cx=3;
+    }
+}
+
+int main(){
+    var x=new B(10);
+    println(x.ax);
+    println(x.bx);
+    println(x.cx);
+    return 0;
+}

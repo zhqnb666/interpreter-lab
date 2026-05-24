@@ -1,0 +1,219 @@
+class Class0 {
+    int[] f0_0 = {7, -1};
+
+    char m0_0(char[] p0, Class0 p1) {
+        this.f0_0 = new int[1];
+        for (int v29 = 0; v29 < 3; v29++) {
+            boolean[] v34 = new boolean[3];
+            int v33 = -28;
+            p1.f0_0 = new int[] {7};
+            if ((p1 instanceof Class0)) {
+                int v31;
+                int[][] v30;
+                v30 = new int[][] {{-7}};
+                v31 = length(v30);
+            } else {
+                Class0 v32;
+                v32 = new Class1();
+                v33 = length(p0);
+                v34 = new boolean[] {true, false, true};
+            }
+            println(')');
+        }
+        return p1.m0_1(p0);
+    }
+
+    char m0_1(char[] p0) {
+        int v37 = 31;
+        this.f0_0 = new int[] {10, 2, 7, -9, -1};
+        if ((-7 != -10)) {
+            if (false) {
+                int v35;
+                v35 = atoi("7635");
+                if ((v35 >= v35)) {
+                    char v36;
+                    v35 = v35;
+                    v36 *= p0[0];
+                } else p0 = p0;
+            }
+        }
+        while ((v37 < 5)) {
+            assert((p0 == null));
+            if ((p0 != p0)) {
+                print(("~;B&Op" + 'c'));
+                p0[0] = '#';
+            }
+            v37++;
+        }
+        return 'S';
+    }
+}
+
+class Class1 extends Class0 {
+    int f1_0 = 4;
+
+    int[][] f1_1 = new int[7][];
+
+    boolean f1_2;
+
+    Class1() {
+        var v45 = 15;
+        boolean v38 = true;
+        this.f1_0 = length(new int[8][]);
+        this.f1_1 = new int[4][];
+        this.f1_2 = false;
+        if ((0 > 1)) {
+            v38 = (-5 == -7);
+        } else if ((-1 > 5)) {
+            if ((6 != -7)) {
+                int[][] v39 = new int[][] {{7}};
+                if (true) {
+                    char v41;
+                    var v40 = "r'3@LA";
+                    v39 = new int[][] {{6, -8}, {-7}, {8, -2, 5}, {6, -2, 8}};
+                    v40 = itoa(27);
+                    v41 = 'o';
+                }
+            } else if ((8 == 1)) ; else {
+                {
+                    Class0 v44 = null;
+                    int v43 = 38;
+                    char v42;
+                    v42 = '/';
+                    v43 = length(new int[][] {{6, 10, 2}, {4, 9}, {-8, 4, -2, -5}, {-4, -9}, {-8, 4, 4, 7}});
+                    v44 = new Class0();
+                }
+                print(length("^+,`YA"));
+            }
+            v45 *= atoi("9151");
+        }
+    }
+
+    int[] m1_0(char[] p0, int[][][] p1) {
+        this.f1_0 = 17;
+        println(this.f1_0);
+        println();
+        return new int[] {-4, 4, 6};
+    }
+}
+
+void method0() {
+    int v14;
+    int v13;
+    for (int v0 = 0; v0 < 5; v0++) {
+        print(new Class1());
+        for (int v1 = 0; v1 < 5; v1++) {
+            Class1 v3;
+            boolean[] v2 = new boolean[6];
+            v2 = new boolean[] {true};
+            v3 = new Class1();
+        }
+    }
+    {
+        print((4 > -7));
+        print(0);
+        if ((-5 <= 4)) {
+            boolean v8;
+            Class0 v7 = null;
+            for (int v4 = 0; v4 < 4; v4++) {
+                int[] v6;
+                var v5 = -33;
+                v5 = -14;
+                v6 = new int[2];
+                v7 = new Class0();
+            }
+            if (false) {
+                Class0 v9 = null;
+                v8 = (-9 == -1);
+                v9 = new Class0();
+                v9 = new Class1();
+            } else if (true) ; else {
+                var v10 = "`INA)";
+                v10 = ("/feKn/" + (-9 <= -2));
+            }
+            {
+                char v12 = '"';
+                var v11 = 37;
+                v11 = length(new boolean[6]);
+                v12 = '.';
+            }
+        }
+    }
+    while ((v13 < 3)) {
+        if ((4 <= -6)) continue;
+        v13++;
+    }
+    return;
+    v14 = -42;
+}
+
+void method1() {
+    var v28 = -46;
+    int v25;
+    var v23 = -43;
+    for (int v15 = 0; v15 < 5; v15++) {
+        char v16;
+        method0();
+        v16 |= 'q';
+        for (int v17 = 0; v17 < 5; v17++) {
+            char[] v18;
+            v18 = new char[9];
+        }
+    }
+    {
+        int v20;
+        boolean[] v19;
+        v19 = new boolean[5];
+        while ((v20 < 2)) {
+            print(new char[6]);
+            if (true) {
+                char[] v22;
+                string v21 = "%.N";
+                v21 = itoa(-29);
+                v22 = new char[6];
+            } else {
+                var v24 = "Fc:'e]";
+                v23 = length(new boolean[3]);
+                v24 = to_string(new char[] {'a', '1', '|'});
+            }
+            v20++;
+        }
+        println('/');
+    }
+    while ((v25 < 5)) {
+        int[][][] v27 = new int[][][] {{{6, -9, -4, -6}, {-1, -10}}, {{10, 1, 8}}};
+        int v26;
+        v26 = 31;
+        v27 = new int[][][] {{{-10}, {-7, -1}}};
+        v28 = length(new int[10]);
+        v25++;
+    }
+}
+
+int main() {
+    Class1 v51 = null;
+    Class0 v50;
+    for (int v46 = 0; v46 < 2; v46++) {
+        int[][][] v48 = {{{-6}, {5, -7, -6, 9}, {-6, 10, 1, -1}}};
+        char[] v47 = {'t', 'q', 'w', 'H'};
+        {
+            v47 = new char[] {'F', '>', '0', 'D', ' '};
+        }
+        v48 = new int[9][][];
+    }
+    {
+        var v49 = -9;
+        v49 = -39;
+        println((itoa(18) + 6));
+    }
+    method0();
+    method1();
+    v50 = new Class0();
+    println(v50.m0_0(new char[] {'a', '^', 'l', 'D', 'y'}, v50));
+    println(v50.m0_1(new char[] {'2', ')', '~', 'E'}));
+    v51 = new Class1();
+    println(v51.m1_0(new char[] {'T', ')', '}'}, new int[9][][]));
+    println(v51.m0_0(new char[] {'X', '6'}, new Class0()));
+    println(v51.m0_1(new char[] {'W', 'X', 'O', '*', '7'}));
+    return v51.f1_0;
+}

@@ -1,0 +1,29 @@
+
+
+// explicit this(...) constructor
+
+class A {
+    int a;
+    string b;
+
+    A() {
+        this(10, "hello");
+    }
+
+    A(int a, string b) {
+        this.a = a;
+        this.b = b;
+    }
+}
+int main() {
+    A a1 = new A();
+
+    println(a1.a);
+    println(a1.b);
+
+    A a2 = new A(20, "world");
+    println(a2.a);
+    println(a2.b);
+
+    return 0;
+}

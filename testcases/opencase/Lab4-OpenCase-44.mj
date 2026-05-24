@@ -1,0 +1,79 @@
+class Class0 {
+    int f0_0 = 49;
+
+    int[] f0_1 = {-3, 2, -8, 8, -9};
+
+    char[] m0_0() {
+        int v8;
+        int v6;
+        this.f0_1 = new int[9];
+        v6 = -48;
+        for (int v7 = 0; v7 < 4; v7++) {
+            {
+                v8 = length(new char[] {'%', 'A'});
+            }
+        }
+        println(itoa(-13));
+        return new char[] {')', '<', 'E'};
+    }
+
+    void m0_1(int p0, int p1, boolean p2) {
+        var v9 = 'Y';
+        this.f0_0 = length(new boolean[] {false, false, false, true});
+        println(this.f0_0);
+        v9 /= 349;
+        for (int v10 = 0; v10 < 2; v10++) {
+            boolean[] v12;
+            {
+                char[] v11;
+                v11 = new char[] {' ', ';'};
+                v12 = new boolean[10];
+            }
+        }
+        for (int v13 = 0; v13 < 3; v13++) {
+            if (true) break;
+            print(new int[] {8, -9, 6, 6});
+        }
+    }
+}
+
+void method0(int p0) {
+    Class0 v1 = null;
+    var v0 = 15;
+    while ((v0 < 4)) v0++;
+    p0--;
+    v1 = new Class0();
+}
+
+int[] method1() {
+    println('!');
+    for (int v2 = 0; v2 < 3; v2++) {
+        boolean[] v5 = {false, true, false, true, true};
+        Class0 v3;
+        print(new Class0());
+        v3 = new Class0();
+        {
+            var v4 = (-9 >= 4);
+            v4 = true;
+            v5 = new boolean[] {true, false, false, true};
+        }
+    }
+    return new int[] {-8};
+}
+
+int main() {
+    Class0 v17 = null;
+    boolean v16 = true;
+    var v15 = 18;
+    boolean[] v14;
+    print(new boolean[] {false});
+    v14 = new boolean[] {false};
+    v15 = 45;
+    v16 = (1 == 6);
+    method0(length(new char[] {'f', 'A', '8', 'N', 'q'}));
+    println(method1());
+    v17 = new Class0();
+    println(v17.m0_0());
+    v17.m0_1(atoi("-5709"), atoi("4149"), (1 >= 10));
+    return v17.f0_0;
+}

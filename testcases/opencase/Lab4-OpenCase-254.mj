@@ -1,0 +1,130 @@
+// ERROR: constructor_arg_type_mismatch
+class Class0 {
+    boolean f0_0;
+
+    int[][][] f0_1 = new int[][][] {{{-5, -1, 8}}, {{-2}, {3}, {2, 9, 5}, {0, 10}}, {{9, 9, 7, -5}, {0, 5, -10, -1}, {6, -6, 0, -10}}, {{10}, {-8, 1}, {2, -10}, {6, 7, 9, -1}}};
+
+    char[] f0_2;
+
+    int m0_0() {
+        this.f0_2 = new char[3];
+        println(new char[9]);
+        return 36;
+    }
+
+    void m0_1(char[] p0, string p1) {
+        int v16 = 1;
+        this.f0_2 = p0;
+        if ((p0 == p0)) {
+            int[][] v17;
+            v16 %= -11;
+            v17 = new int[][] {{3, 9, 7}, {-1}};
+            p0[0] = method0();
+        } else p1 += p0[0];
+        return;
+    }
+}
+
+char method0(int p0) {
+    int v0 = 0;
+    {
+        print(new Class0(true));
+    }
+    while ((v0 < 5)) {
+        {
+            println(new Class0());
+            if ((p0 == p0)) {
+                boolean[] v2;
+                int[] v1;
+                v1 = new int[4];
+                v2 = new boolean[4];
+                p0 = p0;
+            } else {
+                int[] v5 = new int[4];
+                Class0 v4;
+                string v3 = "jsuY/1";
+                v3 = ("1|?" + '?');
+                v4 = new Class0();
+                v5 = new int[4];
+            }
+        }
+        v0++;
+    }
+    println(new Class0());
+    for (int v6 = 0; v6 < 3; v6++) {
+        Class0 v12 = null;
+        char[] v10 = {'a'};
+        var v9 = p0;
+        if ((p0 <= p0)) {
+            Class0 v8;
+            Class0 v7 = null;
+            v7 = new Class0();
+            v8 = new Class0();
+        }
+        while ((v9 < 3)) {
+            v10 = new char[] {'D', 'T', 'H', 'e'};
+            v9++;
+        }
+        if ((p0 < p0)) {
+            char v11 = 'F';
+            v11 = (char) p0;
+        } else {
+            v12 = new Class0();
+            p0 = length("3aSOU");
+            p0 = length(new boolean[3]);
+        }
+    }
+    return (char) p0;
+}
+
+char method0() {
+    Class0 v15 = null;
+    char v14 = 'q';
+    int v13;
+    v13 = length("`d%*=");
+    v14 |= (char) -47;
+    v13++;
+    if (false) {
+        v15 = new Class0();
+    }
+    return (char) (int) 'k';
+}
+
+int main() {
+    Class0 v26 = null;
+    var v19 = -16;
+    char[] v18 = new char[] {'a', 'A', 'e', 'd'};
+    v18 = new char[4];
+    if ((v18 != v18)) ;
+    v19 = atoi("3632");
+    if (true) {
+        int[] v21 = {-3, 8, 8, 0, -10};
+        for (int v20 = 0; v20 < 3; v20++) {
+            int[][] v22;
+            v21 = new int[] {1, 9};
+            v19 = (-23 >>> atoi("-5144"));
+            v22 = new int[7][];
+        }
+    } else if ((v19 >= v19)) {
+        {
+            char[] v25 = new char[] {'a', '#'};
+            boolean[] v23 = new boolean[] {true};
+            {
+                v18 = new char[5];
+            }
+            v23 = new boolean[3];
+            {
+                Class0 v24;
+                v18 = new char[] {'^', ';', 'T'};
+                v24 = new Class0();
+                v25 = v18;
+            }
+        }
+    } else if (false) ;
+    println(method0(length(v18)));
+    println(method0());
+    v26 = new Class0();
+    println(v26.m0_0());
+    v26.m0_1(v18, to_string(v18));
+    return v26.m0_0();
+}

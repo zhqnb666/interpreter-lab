@@ -1,0 +1,25 @@
+class Base {
+    string to_string() {
+        return "base";
+    }
+}
+
+class Derived extends Base {
+    string to_string() {
+        return "derived";
+    }
+}
+
+class Plain {
+}
+
+int main() {
+    Base b = new Derived();
+    Plain p = new Plain();
+    string s = "x:";
+    s += b;
+    s += ",";
+    s += p;
+    println(s);
+    return 0;
+}

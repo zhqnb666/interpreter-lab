@@ -1,0 +1,6 @@
+[Animal, Animal, null]
+[null, Animal]
+[Named(Alice), Named(Bob)]
+Process exits with 0.
+
+0

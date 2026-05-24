@@ -1,0 +1,68 @@
+class Class0 {
+    int[][][] f0_0 = new int[4][][];
+
+    void m0_0(int[][][] p0) {
+        this.f0_0 = p0;
+        p0[0] = new int[7][];
+    }
+}
+
+int method0() {
+    int[][] v2;
+    char v1;
+    int v0;
+    v0 = 0;
+    v1 = 'p';
+    print(new boolean[] {false, true, false, true});
+    v2 = new int[][] {{-6, -8, -7}, {2}};
+    v1 = v1;
+    return 26;
+}
+
+void method1(char[] p0) {
+    boolean v9;
+    int[][][] v7;
+    return;
+    for (int v3 = 0; v3 < 3; v3++) {
+        Class0 v5 = null;
+        boolean[] v4 = new boolean[8];
+        v4 = new boolean[] {false, true, false, true, true};
+        if (v4[0]) {
+            int[][] v6 = new int[3][];
+            v5 = new Class0();
+            v6 = new int[][] {{0, 4, 6}, {7}};
+        } else {
+            int[][] v8 = new int[][] {{-4}, {-8, 9}, {9}};
+            v7 = new int[2][][];
+            p0 = p0;
+            v8 = new int[][] {{-9}, {4, 3}, {-4}, {-7, 5, -7, 5}};
+        }
+    }
+    p0[0] = '9';
+    v9 = (4 >= 8);
+    println(new char[] {'V', '0'});
+}
+
+int main() {
+    Class0 v16;
+    int v15;
+    for (int v10 = 0; v10 < 5; v10++) {
+        {
+            int[][] v12;
+            char[] v11 = new char[] {';', '2'};
+            v11 = new char[] {'!', ']', '`', 'M'};
+            v12 = new int[4][];
+        }
+        for (int v13 = 0; v13 < 5; v13++) {
+            boolean v14;
+            v14 = (-6 <= -7);
+        }
+    }
+    if ((-10 < -8)) ;
+    v15 = -23;
+    println(method0());
+    method1(new char[] {']', 'h', 'y'});
+    v16 = new Class0();
+    v16.m0_0(new int[][][] {{{-7, 7}, {10, 4}, {2}, {5, -2}}, {{-1}, {4, 10, 3}, {-4, 6, 0, -6}, {8}}, {{-7, 0, 7}}});
+    return -23;
+}

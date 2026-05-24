@@ -1,0 +1,8 @@
+int main(){
+    boolean a=5>=5;
+    println(a);
+    println(5<=5);
+    int x=0;
+    println( x!=0 ? ++x : --x);
+    return 0;
+}

@@ -1,0 +1,149 @@
+// ERROR: invalid_atoi_arg
+class Class0 {
+    Class0 f0_0;
+
+    int[][] f0_1;
+
+    char f0_2;
+
+    Class0(int p0, int p1) {
+        int v20 = 8;
+        this.f0_1 = new int[5][];
+        this.f0_2 = '/';
+        while ((v20 < 2)) v20++;
+    }
+
+    void m0_0(Class0 p0) {
+        this.f0_2 = p0.f0_2;
+        p0.m0_0(new Class0(-31, length("k<2p")));
+        {
+            p0.f0_0 = new Class0(17, length(new char[2]));
+            p0.m0_0(method1());
+        }
+        p0.f0_0 = new Class0(atoi("5182"), length(new boolean[] {false, true, true, false, true}));
+        return;
+    }
+
+    Class0 m0_1(Class0 p0, boolean[] p1) {
+        this.f0_0 = new Class0(23, -18);
+        {
+            var v24 = -18;
+            if ((-5 <= 9)) {
+                for (int v21 = 0; v21 < 3; v21++) {
+                    var v23 = 19;
+                    int[][] v22 = new int[10][];
+                    v22 = new int[][] {{6, 1, 8}, {-8, -5, -4, -7}, {-9, 8, -10, 3}, {8, -7, 3}, {6, 3}};
+                    v23 = length(new boolean[5]);
+                }
+                p1[0] = false;
+                println((-3 > 10));
+            } else {
+                v24 /= -934;
+                p0.m0_0(new Class0(length("=a&"), length(new boolean[] {false, true, false})));
+            }
+        }
+        p0.m0_0(method1());
+        return p0;
+    }
+}
+
+int[][][] method0(Class0 p0) {
+    int v6 = 6;
+    p0.m0_0(atoi("GEB>"));
+    p0.m0_0(method1());
+    if (true) {
+        char[] v2 = new char[5];
+        int v0 = 40;
+        while ((v0 < 5)) {
+            int v1 = 0;
+            v1 = -38;
+            println(new char[8]);
+            print((p0 == null));
+            v0++;
+        }
+        v2 = new char[] {'p', '%', '9'};
+    } else if ((-3 > -1)) {
+        p0.m0_0(method1());
+        {
+            char[] v3;
+            v3 = new char[1];
+        }
+        p0.f0_0 = p0;
+    } else {
+        var v5 = 2;
+        int v4;
+        while ((v4 < 3)) {
+            p0.f0_1 = new int[2][];
+            v4++;
+        }
+        p0.m0_0(method1());
+        v5 = 12;
+    }
+    print(new char[1]);
+    v6 = 8;
+    return new int[2][][];
+}
+
+Class0 method1() {
+    int v11;
+    Class0 v10;
+    char[] v9 = new char[] {'>', 'i'};
+    for (int v7 = 0; v7 < 2; v7++) {
+        int[] v8;
+        v8 = new int[] {7};
+        v9 = new char[3];
+    }
+    v10 = new Class0(-30, length("upxPU"));
+    while ((v11 < 5)) v11++;
+    return new Class0(-24, -50);
+}
+
+void method2() {
+    {
+        if (false) {
+            char v13 = 'd';
+            char[] v12;
+            v12 = new char[] {'q', 'B', '*'};
+            v13 = 'e';
+        } else {
+            var v18 = -43;
+            if ((5 < -8)) {
+                char v15;
+                char[] v14 = {'4', ']', 'd'};
+                v14 = new char[10];
+                v15 = v14[0];
+            } else {
+                Class0 v17;
+                int[][] v16 = new int[7][];
+                v16 = new int[][] {{2, 5, 1, 2}, {10, -1, 4}, {1, 9, 3}, {3, -5, 9, -4}};
+                v17 = new Class0(-10, -6);
+            }
+            println(to_string(new char[] {'t'}));
+            while ((v18 < 4)) {
+                int v19;
+                v19 *= length(new int[][] {{4, 1, 9}, {-1}, {4}, {6}, {4}});
+                v18++;
+            }
+        }
+        println((itoa(-7) + true));
+        println();
+    }
+    println();
+}
+
+int main() {
+    Class0 v28 = null;
+    int[][][] v27;
+    Class0 v26 = null;
+    int v25 = 33;
+    v25 = -5;
+    v26 = new Class0(-14, -38);
+    v26.f0_0 = new Class0(13, 21);
+    v27 = method0(method1());
+    println(method1());
+    method2();
+    v28 = new Class0(length(new int[5]), -29);
+    v28.m0_0(new Class0(length("975B"), length(new int[][] {{-5}, {7, 5}, {8, -6, 9}})));
+    println(v28.m0_1(v28, new boolean[7]));
+    return 4;
+}

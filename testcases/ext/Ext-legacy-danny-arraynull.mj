@@ -1,0 +1,78 @@
+int main() {
+    
+    int[][] x = new int[][] {{10, 20}, {30, 40}};
+    int[] y = x[0];
+    y[1] = 60;
+    x[0][0] = 50;
+
+    println(x);
+    println(y);
+
+    println("---------------------");
+
+    int[] m = {4, 5};
+    int[] n = m;
+
+    println(n);
+    println(m);
+    println(n == m? "n == m" : "n != m");
+
+    m = new int[] {6, 7};
+
+    println(n);
+    println(m);
+    println(n == m? "n == m" : "n != m");
+
+    println("---------------------");
+
+    int[][] a = new int[][] {null, {0, 1}};
+    int[] b = a[0];
+    a[1] = b;
+    
+    println(a);
+    println(b);
+
+    a[0] = new int[] {2, 3};
+
+    println(a);
+    println(b);
+
+    a[1] = new int[] {4, 5};
+
+    println(a);
+    println(b);
+
+    println("---------------------");
+
+    int[][] u = new int[][] {{1, 2}, {3, 4}};
+    int[] v = u[0];
+    u[1] = v;
+
+    u[0][0] = 100;
+
+    println(u);
+
+    return 0;
+}
+
+/*
+[[50, 60], [30, 40]]
+[50, 60]
+---------------------
+[4, 5]
+[4, 5]
+n == m
+[4, 5]
+[6, 7]
+n != m
+---------------------
+[null, null]
+null
+[[2, 3], null]
+null
+[[2, 3], [4, 5]]
+null
+---------------------
+[[100, 2], [100, 2]]
+Process exits with the code 0.
+*/

@@ -1,0 +1,13 @@
+class X{}
+int main(){
+    var x=new X();
+    var y=x;
+
+    assert(x==y);
+    assert(x!=new X());
+    assert(x!=null);
+    assert(y!=null);
+
+    x==1; //type error
+    return 0;
+}

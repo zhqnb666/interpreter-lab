@@ -1,0 +1,29 @@
+--- Creating Employees ---
+Employee constructor called for: Alice
+SalariedEmployee constructor called for: Alice
+Employee constructor called for: Bob
+HourlyEmployee detailed constructor called for: Bob
+Employee constructor called for: Charlie
+SalariedEmployee constructor called for: Charlie
+Manager constructor called for: Charlie
+Employee constructor called for: David
+HourlyEmployee detailed constructor called for: David
+HourlyEmployee simple constructor called for: David, defaulting hours.
+--- Employee Creation Complete ---
+--- Processing Payroll ---
+Employee [ID: S001, Name: Alice], Type: Salaried, Annual Salary: 60000
+Calculated Pay: 5000
+--------------------------
+Employee [ID: H002, Name: Bob], Type: Hourly, Rate: 15, Hours: 40
+Calculated Pay: 600
+--------------------------
+Employee [ID: M003, Name: Charlie], Type: Salaried, Annual Salary: 80000, Type: Manager, Monthly Bonus: 500
+Calculated Pay: 7166
+--------------------------
+Employee [ID: H004, Name: David], Type: Hourly, Rate: 18, Hours: 0
+Calculated Pay: 0
+--------------------------
+Total Payroll Cost: 12766
+Process exits with 0.
+
+0

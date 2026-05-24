@@ -1,0 +1,28 @@
+class A{
+
+}
+
+class B{
+    string to_string(){
+        return "hello";
+    }
+}
+
+class C extends B{
+}
+
+int main(){
+    A a=new A();
+    B b=new B();
+    C c=new C();
+    C npt;
+    println(a);
+    println(b);
+    println(c);
+    println(npt);
+    print(a);
+    print(b);
+    print(c);
+    print(npt);
+    return 0;
+}

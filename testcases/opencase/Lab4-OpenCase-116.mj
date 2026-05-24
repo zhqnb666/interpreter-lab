@@ -1,0 +1,104 @@
+// ERROR: main_has_params
+class Class0 {
+    Class0 f0_0;
+
+    char f0_1 = ' ';
+
+    void m0_0(boolean p0, int[][] p1) {
+        int v5;
+        int v4;
+        this.f0_1 = '3';
+        while ((v4 < 3)) {
+            v5 /= -223;
+            {
+                int v6;
+                print(("+>4=k" + 'Z'));
+                while ((v6 < 2)) v6++;
+                p1[0] = new int[] {-5, -9, 4, -10};
+            }
+            if ((p0 == p0)) break;
+            v4++;
+        }
+        {
+            int v7;
+            print(method0('q', '1'));
+            while ((v7 < 3)) {
+                int v9 = 34;
+                int[] v8 = {-8};
+                v8 = new int[] {8, -7, 10};
+                while ((v9 < 4)) {
+                    char v10 = 'X';
+                    v10 = 'm';
+                    v9++;
+                }
+                println(v8);
+                v7++;
+            }
+        }
+    }
+
+    void m0_1(int p0, int p1, int[] p2) {
+        this.f0_0 = new Class0();
+        println(length(new int[][] {{-7}, {-7, 6, -2, -2}, {2}}));
+    }
+}
+
+int method0(char p0, char p1) {
+    int v1 = 13;
+    for (int v0 = 0; v0 < 5; v0++) {
+        if ((p1 > p0)) break;
+    }
+    v1 = 47;
+    return (int) 'K';
+}
+
+int[][] method1(Class0 p0, boolean[] p1, Class0 p2) {
+    int v3;
+    Class0 v2 = null;
+    p1[0] = (p2 instanceof Class0);
+    p0.m0_0((-1 <= 10), new int[][] {{-4}, {10}, {-10, 10, 4, 10}, {-1, 0}});
+    v2 = new Class0();
+    while ((v3 < 2)) {
+        p0.f0_1 = '<';
+        v2.f0_0 = new Class0();
+        v3++;
+    }
+    return new int[][] {{6}, {-6, 0, 6}, {4, 8, -2}};
+}
+
+int main(int p0) {
+    int[][] v20;
+    Class0 v19;
+    if ((p0 >= p0)) {
+        print((char) length("']M,"));
+    } else if ((p0 > p0)) {
+        var v11 = p0;
+        while ((v11 < 2)) {
+            var v13 = true;
+            if ((p0 <= p0)) {
+                boolean[] v12 = {true, false};
+                v12 = new boolean[7];
+                p0 &= -37;
+                v13 = (p0 > p0);
+            } else if ((p0 < p0)) {
+                var v16 = (p0 > p0);
+                int[] v15;
+                char v14;
+                v14 += '(';
+                v15 = new int[4];
+                v16 = (v14 < v14);
+            }
+            for (int v17 = 0; v17 < 5; v17++) {
+                int[] v18 = new int[10];
+                v18 = new int[5];
+            }
+            v11++;
+        }
+        println(length(new char[10]));
+        v19 = new Class0();
+    }
+    v20 = new int[9][];
+    v20[0][0] = p0;
+    v20[0][0] = (-46 | p0);
+    return p0;
+}

@@ -1,0 +1,180 @@
+// ERROR: undefined_method
+class Class0 {
+    char f0_0 = '1';
+
+    int f0_1;
+
+    int[] f0_2 = new int[] {-3};
+
+    Class1 m0_0(char p0, Class0 p1) {
+        var v14 = 8;
+        this.f0_1 = atoi("-4410");
+        println(this.f0_1);
+        v14 = 39;
+        return new Class1(null);
+    }
+
+    char[] m0_1() {
+        this.f0_1 = 44;
+        println(this.f0_1);
+        for (int v15 = 0; v15 < 5; v15++) {
+            boolean[] v19;
+            boolean v17 = (4 <= 9);
+            {
+                Class1 v18;
+                int[][] v16 = {{3}};
+                v16 = new int[6][];
+                v17 = false;
+                v18 = new Class1(length(new char[5]), new boolean[] {false, false});
+            }
+            v19 = new boolean[] {true};
+        }
+        return new char[] {'@', 'H', '`', 'x', '$'};
+    }
+}
+
+class Class1 {
+    int[][] f1_0;
+
+    Class2 f1_1;
+
+    char[] f1_2;
+
+    Class1(Class1 p0) {
+        this.f1_1 = p0.f1_1;
+        this.f1_2 = new char[] {'*', 'D', ' ', 'P', 'U'};
+        {
+            {
+                int v20 = 15;
+                while ((v20 < 5)) {
+                    int[][][] v22 = new int[2][][];
+                    boolean v21;
+                    v21 = (p0 instanceof Class1);
+                    v22 = new int[4][][];
+                    v20++;
+                }
+            }
+        }
+    }
+
+    Class1(int p0, boolean[] p1) {
+        Class1 v23;
+        this.f1_0 = new int[1][];
+        this.f1_1 = new Class2();
+        this.f1_2 = new char[8];
+        v23 = null;
+    }
+
+    void m1_0() {
+        var v24 = "Lv;";
+        this.f1_0 = new int[9][];
+        v24 += (-8 == -4);
+        print(new int[] {4, 10, 1});
+        for (int v25 = 0; v25 < 4; v25++) {
+            Class1 v26 = null;
+            v26 = new Class1(32, new boolean[6]);
+        }
+    }
+}
+
+class Class2 {
+    char[] f2_0;
+
+    Class2 f2_1;
+
+    char[] m2_0(Class2 p0) {
+        Class0 v27;
+        this.f2_0 = new char[1];
+        v27 = new Class0();
+        v27 = new Class0();
+        return new char[7];
+    }
+
+    boolean[] m2_1(Class1 p0, Class1 p1, char[] p2) {
+        this.f2_0 = new char[] {'v', '4', 'T'};
+        print(new char[4]);
+        return new boolean[] {false, false, false, true};
+    }
+}
+
+void method0(Class0 p0) {
+    int v0 = -20;
+    while ((v0 < 4)) {
+        int[][][] v1 = {{{5, 2, 8}}, {{1, 3}}, {{8, 4, 5}, {9, 2, 8}}};
+        v1 = new int[2][][];
+        {
+            int v4 = 19;
+            if (false) {
+                Class0 v3 = p0;
+                Class0 v2 = null;
+                v2 = new Class0();
+                v3 = new Class0();
+            }
+            while ((v4 < 5)) v4++;
+        }
+        if ((-5 >= -10)) break;
+        v0++;
+    }
+    print((p0 instanceof Class0));
+    for (int v5 = 0; v5 < 5; v5++) {
+        if ((p0 == p0)) break;
+        if ((p0 == null)) break;
+        for (int v6 = 0; v6 < 3; v6++) {
+            char[] v7 = new char[] {'-', 'K', 'Y', '$'};
+            v7 = new char[] {'L', 'y', '`', 'C'};
+        }
+    }
+    nonexistent86();
+    return;
+}
+
+int method1() {
+    boolean v13;
+    Class1 v12 = null;
+    if (false) {
+        Class0 v9;
+        var v8 = 10;
+        v8 = atoi("-5318");
+        v9 = new Class0();
+    } else {
+        int v11 = -41;
+        var v10 = ",LH@Q";
+        if (true) {
+            print(null);
+            print(new Class2());
+            v10 += (-9 > 4);
+        }
+        v11 = -22;
+        print(null);
+    }
+    v12 = new Class1(null);
+    v13 = (v12 instanceof Class1);
+    return -27;
+}
+
+int main() {
+    Class2 v33 = null;
+    Class1 v32;
+    Class0 v31 = null;
+    var v28 = 7;
+    v28 = -18;
+    {
+        for (int v29 = 0; v29 < 4; v29++) {
+            Class2 v30;
+            v30 = new Class2();
+            v30 = new Class2();
+        }
+    }
+    println(new Class0());
+    method0(new Class0());
+    println(method1());
+    v31 = new Class0();
+    println(v31.m0_0('@', new Class0()));
+    println(v31.m0_1());
+    v32 = new Class1(v32);
+    v32.m1_0();
+    v33 = new Class2();
+    println(v33.m2_0(new Class2()));
+    println(v33.m2_1((Class1) v32, new Class1(v32), new char[8]));
+    return -34;
+}

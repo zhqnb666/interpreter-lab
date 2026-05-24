@@ -1,0 +1,23 @@
+void f(){
+    println("Out");
+}
+
+void f(int a){
+    println("Out:"+a);
+}
+
+class A{
+    A(){
+        f();
+        f(1);
+    }
+
+    void f(){
+        println("In");
+    }
+}
+
+int main(){
+    new A();
+    return 0;
+}

@@ -1,0 +1,22 @@
+int main(){
+    int a=114514;
+    int b=~a;
+
+    {
+        int a=+114;
+        int b=-114;
+        int c=-a;
+        int d=+c;
+        ++a;
+
+        println(a);
+        println(b);
+        println(c);
+        println(d);
+    }
+    ++a;
+
+    println(a);
+    println(b);
+    return 0;
+}

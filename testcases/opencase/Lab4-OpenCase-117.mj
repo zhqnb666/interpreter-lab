@@ -1,0 +1,74 @@
+// ERROR: break_outside_loop
+class Class0 {
+    Class0 f0_0;
+
+    char[] m0_0() {
+        char[] v10 = {'a', 'k', '3', ':', 'Y'};
+        this.f0_0 = new Class0();
+        print((6 > 0));
+        v10 = new char[8];
+        return v10;
+    }
+
+    void m0_1() {
+        this.f0_0 = new Class0();
+        println(length(new int[6]));
+    }
+}
+
+void method0(int[] p0) {
+    Class0 v7 = null;
+    int v0;
+    if ((6 == -6)) break;
+    v0 = 13;
+    if ((-1 >= -9)) {
+        var v1 = ';';
+        v1 = 'S';
+    } else {
+        int v5 = 20;
+        boolean v2;
+        v2 = false;
+        for (int v3 = 0; v3 < 3; v3++) {
+            Class0 v6 = null;
+            int v4;
+            v4 = length(new char[] {'b', '?', 'r', 't', 'x'});
+            v5 *= v4;
+            v6 = new Class0();
+        }
+    }
+    v7 = new Class0();
+}
+
+void method1(Class0 p0, Class0 p1, boolean p2) {
+    int v9 = 24;
+    int v8;
+    v8 = 49;
+    v9 = -7;
+}
+
+int main() {
+    Class0 v18;
+    Class0 v17;
+    int v16;
+    var v15 = 44;
+    var v11 = 20;
+    while ((v11 < 4)) {
+        for (int v12 = 0; v12 < 5; v12++) {
+            char v14 = '1';
+            Class0 v13;
+            v13 = new Class0();
+            v14 *= 'd';
+        }
+        print('M');
+        v11++;
+    }
+    v15 = 10;
+    v16 = -23;
+    v17 = new Class0();
+    method0(new int[9]);
+    method1(v17.f0_0, new Class0(), (-7 == -1));
+    v18 = new Class0();
+    println(v18.m0_0());
+    v18.m0_1();
+    return 47;
+}

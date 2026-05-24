@@ -1,0 +1,85 @@
+// ERROR: invalid_overloading
+class Class0 {
+    Class0 f0_0;
+
+    int[][][] f0_1 = {{{5, 9}, {3}, {7, -10, -6, -8}, {7}}, {{0, -4, 6, 1}, {-10, 10}, {-3, 8}, {-6, -9, -9, -10}}};
+
+    char f0_2;
+
+    Class0(int[][] p0, int[][][] p1) {
+        this.f0_1 = p1;
+    }
+
+    void m0_0(int p0, Class0 p1, int p2) {
+        this.f0_1 = new int[][][] {{{-10, 9, 1}, {-5, 0, 9}}, {{8, 3}, {-10, 10, 0, 9}}, {{-6, -10}, {-9}, {6}, {-9}}};
+        p1.f0_2 = (char) length(new int[] {9, -6, -10, -8, -6});
+    }
+}
+
+void method0() {
+    int v0;
+    while ((v0 < 5)) v0++;
+    println('v');
+}
+
+int method0() {
+    int[][][] v1 = new int[][][] {{{-3, 10, -9, 1}, {7, -9}, {2, -6, -2, -9}, {0, 7}}};
+    print(new int[] {6});
+    v1 = new int[10][][];
+    print(length("[&&8"));
+    for (int v2 = 0; v2 < 4; v2++) {
+        int v5;
+        int v4;
+        int v3 = 43;
+        v3 = 21;
+        v4 = 13;
+        v5 = 35;
+    }
+    return 27;
+}
+
+int main() {
+    Class0 v18;
+    Class0 v13 = null;
+    int v8;
+    boolean[] v6;
+    v6 = new boolean[] {true, true};
+    for (int v7 = 0; v7 < 3; v7++) {
+        var v10 = 47;
+        {
+            int v9 = 6;
+            v8 &= 0;
+            v9 |= length("cHYY?");
+            v9 = atoi("2890");
+        }
+        v10 = -17;
+    }
+    if ((4 < 6)) {
+        print(itoa(5));
+    } else {
+        int v11;
+        println(new char[] {'K', '8', '.', 'U'});
+        while ((v11 < 2)) {
+            var v14 = -9;
+            for (int v12 = 0; v12 < 3; v12++) {
+                v13 = new Class0(new int[][] {{-6, -4}, {9}}, new int[1][][]);
+            }
+            println(new char[10]);
+            while ((v14 < 2)) {
+                int[][][] v17;
+                int[] v16 = new int[] {-1, 1, 7, -7};
+                char[] v15;
+                v15 = new char[] {'>', '0'};
+                v16 = new int[] {-2, -2, 5, -9, 6};
+                v17 = new int[][][] {{{8, -6, -5, -4}, {7, 0, 0}, {-10, 2, 9}}, {{2, -6, 6, -3}, {6, -1}, {2, 4}}, {{8}}, {{5}, {-9, 0, 9}}, {{-6, 1, -4, -8}, {-7, 5}, {3, -3, 2, 6}}};
+                v14++;
+            }
+            v11++;
+        }
+    }
+    method0();
+    println(method0());
+    v18 = new Class0(new int[][] {{0}}, new int[][][] {{{2, -1, -4, 0}, {-1, -8, 10}, {6, 0}, {-7, -5, 0, -7}}, {{7, 1, 6}, {-3, 2}, {-4, -6, -10}, {-9, 6}}, {{-6, -5, 6}}, {{1, -2}, {9, 9, 9}, {2}}, {{10}, {10}, {-6, -4, 7, 8}, {-3, -1, -10}}});
+    v18.m0_0(length("([no"), v18, length(new int[][] {{2, -4}, {-8}}));
+    return -27;
+}

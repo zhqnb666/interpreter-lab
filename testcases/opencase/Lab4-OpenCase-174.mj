@@ -1,0 +1,121 @@
+// ERROR: main_missing
+class Class0 {
+    boolean[] f0_0;
+
+    void m0_0(Class2 p0, char[] p1, int p2) {
+        Class1 v8 = null;
+        this.f0_0 = new boolean[7];
+        for (int v2 = 0; v2 < 3; v2++) {
+            var v5 = (p2 <= p2);
+            if (false) {
+                p2 <<= length(new boolean[] {true});
+            } else if ((p2 <= p2)) {
+                Class1 v3 = null;
+                v3 = new Class1();
+                v3 = new Class1();
+            } else {
+                Class1 v4 = null;
+                v4 = new Class1();
+                p2 = length("3SE1zj");
+            }
+            v5 = (p1 == null);
+        }
+        for (int v6 = 0; v6 < 2; v6++) {
+            Class1 v9 = null;
+            var v7 = p2;
+            p1[0] = 'K';
+            p2 = p2;
+            while ((v7 < 4)) {
+                v8 = new Class1();
+                v9 = new Class1();
+                v7++;
+            }
+        }
+    }
+
+    boolean m0_1(Class0 p0, boolean[] p1, int p2) {
+        this.f0_0 = new boolean[2];
+        p0.m0_0(new Class2(), new char[] {'9'}, (p1[0] ? p2 : length(p1)));
+        return (p0 instanceof Class0);
+    }
+}
+
+class Class1 {
+    boolean f1_0;
+
+    Class0 f1_1;
+
+    boolean[] f1_2;
+
+    int[][] m1_0(int[][] p0, int[][] p1, int p2) {
+        this.f1_2 = new boolean[] {true, true, true};
+        if ((p1 != null)) {
+            Class0 v10 = null;
+            v10 = new Class0();
+            v10.f0_0 = new boolean[2];
+        } else {
+            int v11;
+            while ((v11 < 5)) {
+                if ((p2 < p2)) continue;
+                print(new char[] {','});
+                v11++;
+            }
+        }
+        return p0;
+    }
+}
+
+class Class2 {
+    string f2_0;
+
+    Class1 f2_1;
+
+    Class2 f2_2 = null;
+
+    int m2_0(char p0, Class0 p1, Class1 p2) {
+        int[][][] v18;
+        var v12 = 31;
+        this.f2_1 = (Class1) p2;
+        v12 = 20;
+        if (false) {
+            int[] v13;
+            v13 = new int[] {-8, 4, -9};
+            p1.m0_0(new Class2(), new char[] {'g', 'Q', '>', 'g', 'X'}, length(new char[8]));
+            for (int v14 = 0; v14 < 5; v14++) {
+                Class0 v16;
+                char v15;
+                v15 /= -742;
+                v16 = new Class0();
+                p2 = new Class1();
+            }
+        } else if ((p0 >= p0)) {
+            char[] v17 = new char[] {'R', '+', '?', '~'};
+            v17 = new char[6];
+        } else if ((p0 < p0)) {
+            {
+                p1.m0_0(new Class2(), new char[5], (int) 'X');
+                print(new boolean[] {true, true});
+                print((p0 > p0));
+            }
+        } else {
+            assert((p0 != p0));
+            p1.m0_0(new Class2(), new char[] {'E'}, length(new char[] {' ', '<', '/', '='}));
+        }
+        v18 = new int[10][][];
+        return method0(p2, p2, p0);
+    }
+
+    void m2_1(int[][][] p0, Class2 p1) {
+        this.f2_1 = new Class1();
+        print(-13);
+        assert(false);
+    }
+}
+
+int method0(Class1 p0, Class1 p1, char p2) {
+    char v1;
+    char[] v0 = {'0'};
+    v0 = new char[] {'d'};
+    v1 += v0[0];
+    return 1;
+}

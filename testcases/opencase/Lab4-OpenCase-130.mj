@@ -1,0 +1,125 @@
+class Class0 {
+    string f0_0 = "3|}|v";
+
+    boolean[] f0_1 = new boolean[] {false, false};
+
+    void m0_0() {
+        var v21 = 32;
+        int v18 = 15;
+        this.f0_1 = new boolean[5];
+        v18 = -43;
+        for (int v19 = 0; v19 < 3; v19++) {
+            char v20 = 'R';
+            v20 >>>= '~';
+            if (true) break;
+        }
+        while ((v21 < 3)) {
+            if ((v18 < v18)) {
+                boolean[] v22;
+                v22 = new boolean[] {false};
+            }
+            v21++;
+        }
+        return;
+    }
+}
+
+void method0() {
+    Class0 v5 = null;
+    for (int v0 = 0; v0 < 2; v0++) {
+        var v4 = -28;
+        boolean[] v3 = {true};
+        for (int v1 = 0; v1 < 3; v1++) {
+            boolean v2;
+            v2 = (6 >= -6);
+            v3 = new boolean[] {true, false};
+            v4 = length(new boolean[] {true, true, true, true, false});
+        }
+        print(new boolean[6]);
+    }
+    v5 = new Class0();
+    {
+        v5 = new Class0();
+    }
+    return;
+    println();
+}
+
+Class0 method1(boolean[] p0, int p1, char p2) {
+    int v7 = -17;
+    char[] v6;
+    v6 = new char[5];
+    while ((v7 < 2)) {
+        var v8 = p1;
+        if ((p1 > p2)) break;
+        while ((v8 < 2)) v8++;
+        v7++;
+    }
+    {
+        p2 = 'V';
+    }
+    return new Class0();
+}
+
+Class0 method2(int p0) {
+    string v16 = "nS`[f";
+    int v14 = -23;
+    boolean[] v9;
+    println(length("gKNm"));
+    println(new char[] {'!', 'I', ' '});
+    v9 = new boolean[] {false, false};
+    if ((v9 == null)) {
+        p0--;
+    } else {
+        int[] v12 = {-3, 5, 6, 6, -7};
+        for (int v10 = 0; v10 < 4; v10++) {
+            boolean v11 = v9[0];
+            v11 = v9[0];
+            v11 = ((v9 == v9) or v11);
+            v12 = new int[1];
+        }
+        if ((v9 == null)) {
+            var v13 = -27;
+            v9[0] = true;
+            p0--;
+            while ((v13 < 5)) v13++;
+        } else if ((p0 > p0)) {
+            println();
+        } else v9 = new boolean[] {false, false};
+    }
+    while ((v14 < 4)) {
+        Class0 v15 = null;
+        {
+            int[] v17;
+            if (v9[0]) {
+                v15 = new Class0();
+            } else {
+                v16 = "&I^{Gb";
+            }
+            v17 = new int[] {4, 10};
+        }
+        v9[0] = (p0 <= p0);
+        v9[0] = false;
+        v14++;
+    }
+    return new Class0();
+}
+
+int main() {
+    Class0 v26 = null;
+    char v25 = '_';
+    int[][][] v23 = {{{8, 6, 8}, {2}, {8, 9, 9, 4}}, {{8}, {-10, -6, -4}, {5, 3, -3, -10}}, {{10, 0, 4, 8}, {-6, 4, -7, 6}}, {{-8, 1}}, {{-4, 8, 0}, {6, -7}}};
+    println();
+    v23 = new int[][][] {{{-9, 7, -1}}, {{-1, -3, -8, 9}, {9, 4}}, {{-10, -5, -8}, {1, -7}}, {{9}, {8, 5, -8}, {1, -8, 9, 0}, {5, 4, 3, 8}}};
+    v23[0] = new int[][] {{6, -9, 0, -2}, {-7, -9}, {9, -8, 4, -8}, {-4, 10, -3}};
+    for (int v24 = 0; v24 < 2; v24++) {
+        v23[0][0][0] = length(new int[9][]);
+    }
+    v25 = 'b';
+    method0();
+    println(method1(new boolean[] {false, false, false, true, false}, atoi("-5296"), v25));
+    println(method2((int) v25));
+    v26 = new Class0();
+    v26.m0_0();
+    return -34;
+}

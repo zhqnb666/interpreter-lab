@@ -1,0 +1,44 @@
+class A{
+    string name;
+    A(){
+        println("Super");
+        name="114514";
+    }
+
+    A(int x){
+        println("Not me!");
+    }
+}
+
+class B extends A{
+    string name="222";
+
+    void printName(){
+        println(super.name);
+    }
+}
+
+class C extends A{
+    C(){
+        this(1);
+        println("C1");
+    }
+
+    C(int x){
+        this(1,"2");
+        println("C2");
+    }
+
+    C(int x, string y){
+        println(y+name);
+    }
+}
+
+int main(){
+    B b=new B();
+    println(b.name);
+    b.printName();
+
+    C c=new C();
+    return 0;
+}

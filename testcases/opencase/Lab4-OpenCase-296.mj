@@ -1,0 +1,116 @@
+class Class0 {
+    Class1 f0_0;
+
+    Class1 f0_1 = null;
+
+    Class1 f0_2 = null;
+
+    char m0_0(int[] p0) {
+        char[] v15;
+        this.f0_2 = new Class1();
+        for (int v13 = 0; v13 < 3; v13++) {
+            int v14;
+            if ((4 < -5)) continue;
+            while ((v14 < 3)) v14++;
+            v15 = new char[] {'W'};
+        }
+        return 'c';
+    }
+}
+
+class Class1 {
+    Class1 f1_0 = null;
+
+    char[] f1_1 = {'N'};
+
+    int m1_0(Class0 p0) {
+        this.f1_1 = new char[1];
+        println();
+        for (int v16 = 0; v16 < 2; v16++) {
+            Class1 v17;
+            println(new boolean[5]);
+            println(new int[1]);
+            v17 = new Class1();
+        }
+        return -8;
+    }
+}
+
+int[][][] method0(int p0, boolean[] p1, Class0 p2) {
+    Class1 v3 = null;
+    int[][][] v1 = new int[6][][];
+    int[] v0 = new int[1];
+    v0 = new int[2];
+    v1 = new int[1][][];
+    for (int v2 = 0; v2 < 4; v2++) {
+        p1 = p1;
+        v3 = new Class1();
+    }
+    if ((p2 instanceof Class0)) {
+        println(p2.m0_0(v0));
+        p2.f0_0 = new Class1();
+    } else p0 = length(v0);
+    return v1;
+}
+
+void method1(Class1 p0, Class0 p1, string p2) {
+    println(new boolean[2]);
+    return;
+    if ((p0 == p0)) ; else {
+        int[] v10 = {8, -8, -1, 7, 2};
+        if (true) {
+            for (int v4 = 0; v4 < 4; v4++) ;
+            for (int v5 = 0; v5 < 5; v5++) {
+                char v7 = 'T';
+                boolean[] v6 = new boolean[] {true, true, true, true, true};
+                p2 += '2';
+                v6 = new boolean[] {false};
+                v7 = 'G';
+            }
+            print(new int[9]);
+        } else {
+            println(new int[1]);
+            for (int v8 = 0; v8 < 2; v8++) {
+                int v9 = 1;
+                v9 = atoi(p2);
+                p0 = new Class1();
+                p0 = new Class1();
+            }
+            print(itoa(45));
+        }
+        v10 = new int[] {-5};
+    }
+    {
+        char[] v12;
+        println(46);
+        if (true) {
+            int v11 = -46;
+            v11 = 46;
+            print(p1);
+        } else {
+            p0 = new Class1();
+            v12 = new char[] {'t', '-', 'k', '~'};
+        }
+        p1.f0_2 = p0;
+    }
+}
+
+int main() {
+    Class1 v23;
+    Class0 v22;
+    int[][][] v21 = new int[9][][];
+    char[] v20 = new char[] {'~', '6', ' '};
+    var v19 = 44;
+    int[][] v18;
+    v18 = new int[7][];
+    v19 = -43;
+    v20 = new char[] {'<'};
+    print(new int[3]);
+    v21 = method0(((v19 < v19) ? 32 : v19), new boolean[5], null);
+    method1(new Class1(), new Class0(), to_string(new char[5]));
+    v22 = new Class0();
+    println(v22.m0_0(new int[4]));
+    v23 = new Class1();
+    println(v23.m1_0(new Class0()));
+    return v19;
+}

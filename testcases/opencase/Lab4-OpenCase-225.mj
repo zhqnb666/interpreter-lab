@@ -1,0 +1,67 @@
+class Class0 {
+    char[] f0_0;
+
+    void m0_0() {
+        this.f0_0 = new char[3];
+        println();
+    }
+}
+
+void method0() {
+    int v0;
+    println('0');
+    return;
+    while ((v0 < 5)) {
+        int v1;
+        while ((v1 < 2)) {
+            int v3;
+            if ((-2 >= -7)) {
+                Class0 v2 = null;
+                v2 = new Class0();
+            }
+            while ((v3 < 3)) v3++;
+            println(new int[] {4});
+            v1++;
+        }
+        v0++;
+    }
+}
+
+int main() {
+    Class0 v12;
+    int v11;
+    if (true) {
+        Class0 v9 = null;
+        Class0 v5;
+        int[][][] v4 = new int[][][] {{{9, -8}, {8}, {1, -4}, {-4, 0, -2}}, {{10}, {2}, {3}}, {{-3, 4, 4}, {-6, 6}}, {{3, -1}, {0, 1, 10, -4}, {1, -6, -8}, {2, -5}}};
+        print(length(new int[][] {{3, 7, -6}}));
+        v4 = new int[1][][];
+        if ((-5 == -6)) {
+            boolean v8;
+            char[] v6 = new char[] {'K'};
+            v4 = new int[10][][];
+            print(null);
+            if (false) {
+                var v7 = 'U';
+                v5 = new Class0();
+                v6 = new char[] {'['};
+                v7 += '$';
+            } else {
+                v8 = (-10 >= -3);
+            }
+        } else if (true) {
+            print(new boolean[7]);
+            v4[0][0] = new int[9];
+            if (false) {
+                int v10 = -9;
+                v9 = new Class0();
+                v10 &= 2;
+            } else ;
+        }
+    }
+    v11 = -27;
+    method0();
+    v12 = new Class0();
+    v12.m0_0();
+    return 7;
+}

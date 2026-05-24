@@ -1,0 +1,12 @@
+prefix:        ./Lab4-OpenCase
+count:         300
+seed:          2465779636
+mode:          classes
+depth:         3
+stmts:         0 (0 = random 3-6)
+no_output:     False
+var_shadowing: False
+error_rate:    30%
+error_cats:    (all)
+enabled (23): ArrayTypes, BasicArithmeticAssign, BasicBinaryArithmetic, BasicLogicalOperation, BasicRelational, BasicString, BasicTernaryArithmetic, BasicUnaryArithmetic, BreakStatement, ClassCasting, ClassDeclaration, ContinueStatement, FieldAccess, ForLoop, IfStatement, Instanceof, MethodCall, MethodDeclaration, NestedBlock, ShortCircuitEvaluation, TypeCasting, VarInference, WhileLoop
+disabled (0): 

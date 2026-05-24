@@ -1,0 +1,144 @@
+class Class0 {
+    int[][][] f0_0;
+
+    int[] f0_1;
+
+    void m0_0(string p0, int[][][] p1, Class1 p2) {
+        var v4 = 6;
+        this.f0_1 = new int[] {-4, 5, 2};
+        p1 = p1;
+        while ((v4 < 5)) {
+            for (int v5 = 0; v5 < 4; v5++) {
+                char[] v6 = {'*', '6', '-', '.', 'v'};
+                v6 = new char[] {']', 'e', 'C'};
+                p2 = new Class1(17, new char[1], p0);
+            }
+            v4++;
+        }
+        p1[0] = new int[6][];
+    }
+
+    void m0_1(char[] p0, int[] p1) {
+        int v7 = -33;
+        this.f0_1 = new int[] {7, -8};
+        while ((v7 < 2)) {
+            int v9;
+            p0 = new char[7];
+            for (int v8 = 0; v8 < 3; v8++) p0 = new char[3];
+            v9 = 1;
+            v7++;
+        }
+    }
+}
+
+class Class1 extends Class0 {
+    boolean[] f1_0 = {false, false};
+
+    int[][][] f1_1 = {{{-9, 2}, {0, 5, -4, -4}, {8, -7}, {-6, -10, 8}}};
+
+    Class0 f1_2;
+
+    Class1() {
+        boolean[] v13 = new boolean[] {true, true, true};
+        int v12;
+        super();
+        this.f1_0 = new boolean[7];
+        this.f1_1 = new int[][][] {{{3, 0, 8, 8}, {-8, 1}}, {{-5, -2}, {10, 7}, {-1, 4, 2, -4}, {1}}};
+        this.f1_2 = new Class0();
+        if ((6 <= -3)) {
+            string v11 = "+::";
+            char[] v10;
+            v10 = new char[7];
+            v11 += length(new int[][] {{2, -5, -5}, {-3, -7, 10}});
+            if ((-9 < -7)) {
+                v12 = -38;
+                v13 = new boolean[] {false, false};
+            } else ;
+        }
+    }
+
+    Class1(int p0, char[] p1, string p2) {
+        boolean[] v17 = new boolean[4];
+        int v14;
+        super();
+        this.f1_1 = new int[][][] {{{-5, -4, -7, -5}, {-6, 6, -9}}};
+        this.f1_2 = new Class0();
+        while ((v14 < 2)) {
+            var v19 = p1[0];
+            int v15 = p0;
+            while ((v15 < 4)) v15++;
+            print(p1);
+            if ((p0 < p0)) {
+                if ((p1 == p1)) continue;
+            } else if ((p0 > p0)) {
+                for (int v16 = 0; v16 < 2; v16++) p0 = ((p0 == p0) ? 0 : p0);
+                v17 = new boolean[5];
+                {
+                    p0 >>>= length(new int[6]);
+                }
+            } else {
+                int[][][] v21;
+                var v18 = "=8G^";
+                p1[0] = (char) -9;
+                {
+                    Class1 v20 = null;
+                    v18 += (char) 44;
+                    v19 = '?';
+                    v20 = null;
+                }
+                v21 = new int[10][][];
+            }
+            v14++;
+        }
+    }
+
+    void m0_0(string p0, int[][][] p1, Class1 p2) {
+        int v22;
+        this.f1_1 = new int[][][] {{{4, -7, -6}, {-10}, {1}}, {{1, -5, 2, 1}, {-1, 1}}, {{-3}, {-3}, {7, 2, 4}}, {{-4, 10, 1, 7}, {-2, 6, -8}, {-9, -8, 10, 0}, {-4, -7, -8}}, {{-8, -9, 4}, {-5, 3, 5}, {1, 10, -9}}};
+        v22 = length(new int[9]);
+        return;
+    }
+
+    void m0_1(char[] p0, int[] p1) {
+        int[][] v23 = {{-8, -9, -10, -3}, {3, -9}, {-5, -2, -4}, {10}, {-5, -2, -8}};
+        this.f1_0 = new boolean[6];
+        print(itoa(-11));
+        print(false);
+        v23 = new int[][] {{2}, {-9, -7}};
+        return;
+    }
+}
+
+void method0() {
+    var v2 = 6;
+    Class1 v1 = null;
+    int v0 = 37;
+    while ((v0 < 4)) {
+        print(new Class0());
+        v0++;
+    }
+    v1 = new Class1();
+    return;
+    v2 = -37;
+    if ((5 != 10)) {
+        var v3 = 'q';
+        v3 = '-';
+    }
+    println();
+}
+
+int main() {
+    Class1 v26 = null;
+    Class0 v25 = null;
+    int v24;
+    v24 >>= length(new int[][] {{2}, {-4, -8}, {-8, 7}, {-2, 0, 2, -9}});
+    print(new Class1(v24, new char[1], to_string(new char[] {'z', '7', 'c'})));
+    method0();
+    v25 = new Class0();
+    v25.m0_0(to_string(new char[7]), new int[10][][], null);
+    v25.m0_1(new char[10], new int[] {-6, -9, -10, 4});
+    v26 = new Class1();
+    v26.m0_0(itoa(-50), new int[][][] {{{-4, 9}}, {{-8}}, {{7}, {-4, 7, -3, 5}, {-10}}}, new Class1(v24, new char[] {'3', 'W', '/'}, itoa(v24)));
+    v26.m0_1(new char[] {'A', 'P', 'm', '~'}, new int[9]);
+    return 43;
+}

@@ -1,0 +1,121 @@
+class Class0 {
+    int[][] f0_0;
+
+    int f0_1 = -23;
+
+    void m0_0() {
+        int v22;
+        boolean[] v15 = {true, true};
+        int[] v14;
+        this.f0_0 = new int[][] {{-5, 0, -5, 5}, {-3}, {9, -5, -1, -7}, {-8, -10}, {-6, 8, 7, -2}};
+        if ((9 != -3)) {
+            var v11 = -29;
+            while ((v11 < 5)) {
+                for (int v12 = 0; v12 < 2; v12++) {
+                    char v13;
+                    v13 = '$';
+                    v14 = new int[] {-7, 9, 5, -10};
+                    v15 = new boolean[5];
+                }
+                assert(false);
+                if ((-10 < 2)) break;
+                v11++;
+            }
+            println(new boolean[] {true, true, false, true});
+        } else if ((-9 == -10)) {
+            for (int v16 = 0; v16 < 5; v16++) {
+                boolean[] v19 = {false, false, true};
+                int v18 = -40;
+                int[][][] v17 = new int[6][][];
+                v17 = new int[4][][];
+                v18 = length(new int[] {3, 9, -8});
+                v19 = new boolean[] {false, true};
+            }
+        } else {
+            char v21 = '5';
+            int v20 = 36;
+            while ((v20 < 5)) {
+                print('4');
+                println(new boolean[6]);
+                v20++;
+            }
+            v21 = 'd';
+            v22 <<= atoi("-7972");
+        }
+        return;
+    }
+
+    void m0_1(int[] p0) {
+        this.f0_0 = new int[5][];
+        println(new Class0());
+    }
+}
+
+int method0() {
+    int v9;
+    int v1;
+    int v0 = 48;
+    v0 &= length(new int[] {-7, -9, 8});
+    print(new char[3]);
+    while ((v1 < 5)) {
+        var v8 = '~';
+        int v7 = v0;
+        var v2 = v0;
+        while ((v2 < 4)) {
+            char v6 = 'g';
+            int v5 = v0;
+            if ((v0 > v0)) {
+                Class0 v4 = null;
+                int[][] v3 = {{10, 7}};
+                v3 = new int[][] {{1}, {-9, -2, 0}};
+                v4 = new Class0();
+            } else ;
+            while ((v5 < 3)) v5++;
+            v6 = (char) v0;
+            v2++;
+        }
+        while ((v7 < 2)) v7++;
+        v8 = 'O';
+        v1++;
+    }
+    while ((v9 < 5)) v9++;
+    {
+        Class0 v10 = null;
+        v10 = new Class0();
+        println(itoa(v0));
+        println(new Class0());
+    }
+    return -22;
+}
+
+int main() {
+    Class0 v33 = null;
+    int[][] v32;
+    int v31 = 10;
+    var v30 = "haRh$";
+    int[][] v25 = new int[][] {{-4}, {6, 4, 3}, {-6, 6, -1, 2}, {4, -10}, {-4, -10, 1, 5}};
+    for (int v23 = 0; v23 < 2; v23++) {
+        Class0 v26;
+        for (int v24 = 0; v24 < 4; v24++) {
+            v25 = new int[9][];
+        }
+        if (false) {
+            int[] v27;
+            v26 = new Class0();
+            v27 = new int[6];
+        }
+        for (int v28 = 0; v28 < 3; v28++) {
+            var v29 = 34;
+            v29 = length(new boolean[] {false, true, true, false, false});
+        }
+    }
+    print(new char[] {'m', 'd', 'p'});
+    v30 = to_string(new char[5]);
+    v31 = -11;
+    v32 = new int[7][];
+    println(method0());
+    v33 = new Class0();
+    v33.m0_0();
+    v33.m0_1(new int[] {-5});
+    return v33.f0_1;
+}

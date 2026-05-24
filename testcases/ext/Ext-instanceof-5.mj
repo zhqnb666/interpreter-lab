@@ -1,0 +1,10 @@
+class A{
+}
+int main(){
+    A a;
+    A b=new A();
+    assert(not(a instanceof A)); //according to java null is not instanceof A
+    assert(b instanceof A);
+    assert(not(null instanceof A));
+    return 0;
+}

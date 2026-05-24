@@ -1,0 +1,10 @@
+// Try to invoke illegal type for variableInitializer
+
+int main() {
+    char[][][] strings = {to_char_array("STRING"), to_char_array("string")};
+    return 0;
+}
+
+/*
+Process exits with the code 34.
+*/

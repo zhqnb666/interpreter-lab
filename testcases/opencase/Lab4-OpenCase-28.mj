@@ -1,0 +1,129 @@
+class Class0 {
+    int[][] f0_0 = {{-8}, {-2, -4, 6}, {2}, {-7, -9, -2}, {-2}};
+
+    boolean f0_1;
+
+    boolean[] f0_2;
+
+    Class0(Class0 p0) {
+        this.f0_0 = new int[2][];
+    }
+
+    Class0() {
+        this.f0_0 = new int[][] {{9, 1}, {-2}, {9, 3, 2}, {-8, 1}};
+    }
+
+    void m0_0() {
+        char[] v22;
+        this.f0_0 = new int[6][];
+        v22 = new char[] {'q', 'S', '+'};
+        v22[0] = method0();
+    }
+}
+
+char method0() {
+    int v21 = -34;
+    Class0 v20 = null;
+    var v16 = false;
+    if ((10 > -4)) {
+        var v0 = -24;
+        v0 %= 342;
+        {
+            println(new int[4]);
+        }
+    } else if (true) {
+        boolean[] v5;
+        var v1 = -26;
+        while ((v1 < 5)) {
+            if ((-5 > -1)) {
+                Class0 v3 = null;
+                int[][] v2;
+                v2 = new int[2][];
+                v3 = new Class0();
+            } else if ((-2 < 7)) {
+                int[][] v4 = new int[][] {{3}, {-4}, {4, -8}, {10, -2}, {7, 9, 7}};
+                v4 = new int[][] {{6, 4}};
+                v5 = new boolean[] {false};
+            }
+            v1++;
+        }
+        if ((-6 == 8)) {
+            boolean v11 = (4 > -10);
+            int[][] v8 = new int[][] {{-3, -3, -9, 3}, {9, -4}, {-10}, {1, -10, -8, 2}, {-8}};
+            for (int v6 = 0; v6 < 3; v6++) ;
+            {
+                Class0 v7 = null;
+                v7 = new Class0(null);
+                v8 = new int[][] {{0, -8, 8}, {10, 10, 9}};
+            }
+            if ((8 <= -7)) {
+                var v10 = 'l';
+                int v9;
+                v9 = length(new char[1]);
+                v10 = '$';
+            } else {
+                boolean[] v12 = new boolean[] {false, true, true, true};
+                v11 = (-6 <= 1);
+                v12 = new boolean[] {true, false, false, true, true};
+            }
+        }
+    }
+    {
+        var v17 = 24;
+        Class0 v15 = null;
+        for (int v13 = 0; v13 < 5; v13++) {
+            char[] v14 = {'^', ' ', 'b'};
+            v14 = new char[] {'.'};
+            v15 = new Class0();
+        }
+        v16 = false;
+        while ((v17 < 5)) {
+            {
+                Class0 v19;
+                Class0 v18;
+                v18 = new Class0();
+                v19 = v18;
+            }
+            v17++;
+        }
+    }
+    println(new boolean[3]);
+    v20 = new Class0();
+    v21 = -29;
+    return '8';
+}
+
+int main() {
+    Class0 v31 = null;
+    boolean v30 = true;
+    boolean[] v29 = new boolean[] {false, true};
+    int v23;
+    v23 = 8;
+    if ((-4 <= -8)) {
+        char[] v24 = new char[] {'V', 'G'};
+        v24 = new char[4];
+    } else {
+        if ((9 > 10)) {
+            int[][][] v25 = new int[][][] {{{-6, 4}, {9, -2}, {1, -5, -6, -6}, {0, -9, -9}}, {{7, 7}}, {{3, -5}, {-10, -2, 8}, {9, -8}}, {{-4, 2, 3}, {0, -6, 2}, {7, 8}}};
+            v25 = new int[10][][];
+            print(new boolean[7]);
+        } else {
+            Class0 v28 = null;
+            var v26 = -47;
+            while ((v26 < 5)) {
+                int[] v27;
+                v27 = new int[6];
+                v26++;
+            }
+            print(new Class0());
+            v28 = new Class0(null);
+        }
+        v29 = new boolean[3];
+        println(itoa(19));
+    }
+    v30 = (7 < 1);
+    println(method0());
+    v31 = new Class0();
+    v31.m0_0();
+    return -27;
+}

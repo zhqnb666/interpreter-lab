@@ -1,0 +1,5 @@
+int main(){
+    assert('a'==97);
+    assert(65=='A');
+    return 0;
+}

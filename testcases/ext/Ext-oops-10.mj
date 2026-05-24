@@ -1,0 +1,54 @@
+class A{
+    string t;
+    A(){
+        this(1);
+        t+="a1";
+    }
+
+    A(int x){
+        this("asd");
+        t+="a2";
+    }
+
+    A(string x){
+        t+="a3";
+    }
+}
+
+class B extends A{
+    B(){
+        this(1);
+        t+="b1";
+    }
+
+    B(int x){
+        this("asd");
+        t+="b2";
+    }
+
+    B(string x){
+        t+="b3";
+    }
+}
+
+class C extends B{
+    C(){
+        this(1);
+        t+="c1";
+    }
+
+    C(int x){
+        this("asd");
+        t+="c2";
+    }
+
+    C(string x){
+        super(3);
+        t+="c3";
+    }
+}
+
+int main(){
+    println(new C().t);
+    return 0;
+}

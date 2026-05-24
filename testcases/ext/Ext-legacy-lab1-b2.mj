@@ -1,0 +1,17 @@
+int main(){
+    char x='a';
+    char y='z';
+    int z2=x*y;
+    int what='a'*'z';
+    string s="asd";
+    string sm="as";
+    string t=sm+"d";
+    boolean equal=s==t;
+
+    println(x);
+    println(y);
+    println(z2);
+    println(what);
+    println(equal);
+    return 0;
+}

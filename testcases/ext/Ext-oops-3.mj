@@ -1,0 +1,27 @@
+class ParentWithoutDefault {
+    int value;
+    // Only a parameterized constructor exists
+    ParentWithoutDefault(int x) {
+        this.value = x;
+        println("ParentWithoutDefault(int) called with: " + x);
+    }
+    // No ParentWithoutDefault() {} constructor here
+}
+
+class ChildNeedingSuper extends ParentWithoutDefault {
+    string name;
+
+    // This constructor MUST explicitly call super(int)
+    ChildNeedingSuper(int parentVal, string childName) {
+        super(parentVal); // Correct: Calls the only available super constructor
+        this.name = childName;
+        println("ChildNeedingSuper constructor called.");
+    }
+}
+
+int main(){
+    ChildNeedingSuper c = new ChildNeedingSuper(50, "Test Child");
+    println("c: value=" + c.value + ", name=" + c.name);
+
+    return 0;
+}

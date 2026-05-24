@@ -1,0 +1,23 @@
+int main(){
+    int a=2;
+    int b=3;
+    int c;
+    c-=b+=a;
+    string s;
+    boolean f;
+    s="asd";
+    s+="efg";
+    s+=f;
+    s+='A';
+    s+=114;
+    string fff=a+"sd";
+    string ts=true+" of false";
+
+    println(a);
+    println(b);
+    println(c);
+    println(s);
+    println(fff);
+    println(ts);
+    return 0;
+}

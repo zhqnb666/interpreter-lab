@@ -1,0 +1,114 @@
+class Class0 {
+    char[] f0_0;
+
+    boolean f0_1;
+
+    Class0(int[] p0) {
+        this.f0_0 = new char[] {'|', '9', 'i', 'C', 'm'};
+        this.f0_1 = (2 > -9);
+        print(new char[3]);
+    }
+
+    Class0(Class1 p0, int p1) {
+        this.f0_0 = new char[2];
+        this.f0_1 = p0.f0_1;
+    }
+
+    boolean[] m0_0(Class0 p0, char[] p1) {
+        var v8 = ">?SG|=";
+        this.f0_1 = (2 >= 7);
+        v8 = to_string(new char[2]);
+        p0.f0_1 = true;
+        return new boolean[] {false};
+    }
+
+    Class0 m0_1(Class0 p0, int[][][] p1, boolean p2) {
+        boolean[] v9;
+        this.f0_0 = new char[] {'|', '['};
+        v9 = new boolean[8];
+        v9[0] = (p0 instanceof Class0);
+        return p0;
+    }
+}
+
+class Class1 extends Class0 {
+    Class0 f1_0;
+
+    Class0 f1_1;
+
+    Class1() {
+        super(new int[] {7, 8});
+        this.f1_1 = new Class0(new int[] {2, -1});
+    }
+
+    int[][][] m1_0(int[] p0) {
+        int v10;
+        this.f1_1 = new Class0(new int[] {8, -10, 4, -8});
+        p0[0] = 19;
+        v10 = -2;
+        println(null);
+        return new int[][][] {{{-2}, {-4, 9, -4, 5}, {-8, 0, 0, 2}}, {{6, -1, 0}, {2, 8}, {-6}, {3}}, {{-10, -4, -3, -3}, {-6, -10, -1, 9}}, {{-5, 9}, {-2}, {5, -2}, {9, -1, 8, 1}}};
+    }
+}
+
+Class0 method0() {
+    var v3 = -2;
+    boolean[] v0;
+    if (true) {
+        v0 = new boolean[] {false, false, true, false, false};
+    } else {
+        Class0 v2;
+        Class1 v1 = null;
+        v1 = new Class1();
+        v2 = new Class0(v1, length(new boolean[4]));
+        print(length("#$$];_"));
+    }
+    v3 = -29;
+    return new Class0(null, 5);
+}
+
+char[] method1() {
+    var v5 = false;
+    int[][][] v4;
+    v4 = new int[][][] {{{10}, {2, 5, 6, -1}}, {{-1, -1, 4, 3}}, {{-9, 0}, {-9, -3, 4, 0}, {-8}, {-3, 8, 0, 9}}};
+    v5 = (1 < 0);
+    if ((v5 == v5)) {
+        int v6 = -14;
+        v6 = -32;
+        for (int v7 = 0; v7 < 5; v7++) ;
+        println(new int[7]);
+    }
+    return new char[] {'8', 'q'};
+}
+
+void method2(int p0, int p1, Class1 p2) {
+    p1 -= atoi("9416");
+    --p1;
+    return;
+}
+
+int main() {
+    int[][][] v15 = new int[][][] {{{-6}}};
+    Class1 v14;
+    Class0 v13 = null;
+    int v12 = 20;
+    Class0 v11 = null;
+    v11 = new Class1();
+    {
+        v12 ^= 1;
+    }
+    println((9 < 7));
+    println((Class0) v11);
+    print((-9 == 1));
+    println(method0());
+    println(method1());
+    method2(length("*wE&j&"), length(new int[9][]), new Class1());
+    v13 = new Class0(new int[4]);
+    println(v13.m0_0(new Class1(), new char[] {'0', 'f', 'I', 'a'}));
+    println(v13.m0_1(method0(), new int[6][][], false));
+    v14 = new Class1();
+    v15 = v14.m1_0(new int[1]);
+    println(v14.m0_0(method0(), new char[1]));
+    println(v14.m0_1(method0(), new int[][][] {{{5, -5, -6, 3}, {-3, -7, 4, 10}}, {{10, 8, -1, -10}, {9, 1}, {2, 3, 5, 2}, {5}}, {{8, 10}, {8, 6, 1}, {8}}}, false));
+    return 18;
+}

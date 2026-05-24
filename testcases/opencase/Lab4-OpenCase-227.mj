@@ -1,0 +1,168 @@
+class Class0 {
+    int f0_0;
+
+    char[] f0_1;
+
+    Class0(int p0, char[] p1, char p2) {
+        int v15 = -18;
+        this.f0_0 = (method0(p0) ? p0 : length("Y@fbO2"));
+        this.f0_1 = new char[] {'-', '1', 'U'};
+        while ((v15 < 3)) {
+            for (int v16 = 0; v16 < 3; v16++) ;
+            v15++;
+        }
+        print(itoa(p0));
+    }
+
+    int m0_0(int p0) {
+        char[] v17 = new char[2];
+        this.f0_1 = new char[3];
+        v17 = new char[5];
+        return length(new int[7][]);
+    }
+
+    void m0_1(Class0 p0, int[] p1, char[] p2) {
+        var v20 = true;
+        char[] v19 = {'z'};
+        int v18;
+        this.f0_1 = new char[10];
+        while ((v18 < 2)) {
+            println(length("W2kW&"));
+            print(itoa(p1[0]));
+            p0.f0_1 = p2;
+            v18++;
+        }
+        v19 = p2;
+        v20 = method0(21);
+    }
+}
+
+boolean method0(int p0) {
+    int[][] v10 = new int[1][];
+    char v1 = 'u';
+    char[] v0 = new char[4];
+    v0 = new char[6];
+    v1 = (char) length(v0);
+    println(length(new char[] {'G', '>', 'D', '>'}));
+    if ((v1 <= v1)) {
+        var v11 = (v1 != v1);
+        print('x');
+        if ((v0 != null)) {
+            Class0 v9 = null;
+            if (false) {
+                boolean[] v2 = new boolean[] {false, true, false, false};
+                v2 = new boolean[8];
+                p0 /= -432;
+                v0 = v0;
+            } else if ((v1 <= p0)) {
+                var v3 = p0;
+                v3 = ((int) 'R' >>> length("yn<"));
+                v0 = v0;
+                v1 = v1;
+            } else {
+                int[][] v5;
+                boolean[] v4;
+                v4 = new boolean[6];
+                v5 = new int[][] {{9, 1}, {-4, -5, 7}, {1, 3, -5}, {-8}, {10}};
+                v1 = v1;
+            }
+            if ((v0 != v0)) {
+                boolean[] v8 = new boolean[] {false, true, true, false, true};
+                var v7 = "lMmI";
+                int[][][] v6 = new int[9][][];
+                v6 = new int[][][] {{{6, -9, 2, -6}, {10, 6}, {6}}, {{7, -4, -10}, {3}}, {{-7, 4, 9, 8}}, {{0, 5}, {1, 9, -1, -2}, {-10, -1, -6, 2}}};
+                v7 += length(new boolean[8]);
+                v8 = new boolean[9];
+            } else if ((v1 > v1)) {
+                v0 = new char[8];
+            } else if ((p0 > p0)) {
+                p0 = length(new int[][] {{4}, {9, 6, 9}, {-3, -9}, {-5}, {5, 5, -10}});
+            } else if ((v0 != v0)) {
+                v9 = new Class0((int) v0[0], new char[4], v1);
+                v10 = new int[4][];
+                v0 = new char[5];
+            }
+            v11 = (p0 == v1);
+        } else {
+            --p0;
+            v0[0] = v1;
+        }
+    } else {
+        var v12 = p0;
+        while ((v12 < 5)) {
+            if ((p0 < v1)) break;
+            if ((p0 < v1)) break;
+            v12++;
+        }
+    }
+    for (int v13 = 0; v13 < 4; v13++) {
+        int v14 = -25;
+        while ((v14 < 4)) v14++;
+        print(']');
+    }
+    return (v1 >= p0);
+}
+
+void method1(int[][] p0, int[] p1) {
+    print(length(new char[] {'=', '3', '0', '!'}));
+    method2(p1[0], '7');
+}
+
+void method2(int p0, char p1) {
+    println('o');
+    return;
+    println();
+}
+
+int main() {
+    Class0 v36;
+    int[] v33 = new int[8];
+    boolean[] v22 = new boolean[] {false, true, false, false};
+    print(new int[7]);
+    print('I');
+    for (int v21 = 0; v21 < 5; v21++) {
+        Class0 v35;
+        char[] v32 = new char[2];
+        boolean[] v30 = {false, true, true};
+        v22 = new boolean[10];
+        print(new Class0(length(new char[] {'Z', 's', '3'}), new char[5], 'a'));
+        if (method0(12)) {
+            int v24;
+            int[] v23 = {9, 4, 0, 5, -2};
+            v23 = new int[5];
+            v24 = length(new boolean[4]);
+        } else if (method0(-37)) {
+            Class0 v25 = null;
+            v25 = new Class0(30, new char[9], '[');
+        } else if (method0(-8)) {
+            int[] v26 = new int[] {10, -5, -9, -6, -10};
+            v26 = new int[7];
+        } else if ((1 >= -10)) {
+            int[] v29 = new int[1];
+            char[] v28 = new char[] {'w', 'x'};
+            boolean v27 = (-5 <= -2);
+            v27 = (7 > -10);
+            v28 = new char[] {'~', '$', 'I', 'H', 'T'};
+            v29 = new int[] {8, 7};
+        } else if ((6 == 2)) {
+            var v31 = true;
+            v30 = new boolean[] {true, true};
+            v31 = method0(-38);
+            v32 = new char[1];
+        } else if ((5 < 6)) {
+            var v34 = -10;
+            v33 = new int[1];
+            v34 <<= atoi("-133");
+            v35 = new Class0(v34, new char[] {'d'}, 'J');
+        }
+    }
+    println(length(new boolean[] {false, false, true, true, true}));
+    print(new int[9]);
+    println(method0(length(new char[3])));
+    method1(new int[][] {{-8}}, new int[] {-3, -8, 0, -10, -9});
+    method2(length("MPsdp"), ':');
+    v36 = new Class0(v36.f0_0, new char[] {'I', ' '}, '0');
+    println(v36.m0_0(v36.f0_0));
+    v36.m0_1(v36, new int[] {1, -7, 7, -2, -3}, new char[8]);
+    return 15;
+}

@@ -1,0 +1,97 @@
+class Class0 {
+    int f0_0 = -18;
+
+    int f0_1;
+
+    boolean[] f0_2 = new boolean[9];
+
+    Class0(Class0 p0, int[][] p1) {
+        this.f0_0 = 42;
+        this.f0_1 = length(new boolean[2]);
+        this.f0_2 = new boolean[] {false, false, false, false, true};
+    }
+
+    Class0(int p0) {
+        this.f0_0 = (true ? length(new boolean[] {false, false}) : p0);
+        this.f0_1 = 40;
+    }
+
+    void m0_0(int[] p0) {
+        int v5;
+        this.f0_1 = atoi("-1632");
+        println(this.f0_1);
+        while ((v5 < 5)) {
+            method0(itoa(-34), new boolean[] {false, false, true, false});
+            print(new char[] {'D', '@', 'V', 'C', 'h'});
+            if (false) break;
+            v5++;
+        }
+    }
+}
+
+void method0(string p0) {
+    var v1 = false;
+    {
+        Class0 v0 = null;
+        v0 = new Class0(null, new int[][] {{2, 3}, {-8, 8, -9, -10}});
+        v1 = (v0 == v0);
+    }
+    print(new int[] {-10, -8, 3, 1});
+    return;
+    method2(new Class0(null, new int[7][]), new Class0(null, new int[][] {{-7, -7, -8}}), new int[6][][]);
+}
+
+void method0(string p0, boolean[] p1) {
+    int[][] v3 = new int[][] {{2, -4, 6}, {-6, -6, -5, 2}, {10, 6, -4}};
+    int v2;
+    v2 = 33;
+    p1[0] = true;
+    v3 = new int[][] {{-3, 4, 10}, {-2, -8, 2, -8}, {-10, -7, -7, 6}};
+    v3 = v3;
+}
+
+void method2(Class0 p0, Class0 p1, int[][][] p2) {
+    int v4;
+    return;
+    if ((0 <= 4)) {
+        p0.f0_1 = length(new int[9]);
+    }
+    v4 = -10;
+    p0.m0_0(new int[8]);
+}
+
+int main() {
+    Class0 v12 = null;
+    var v6 = true;
+    print('?');
+    assert((-7 > 7));
+    if ((6 != -10)) {
+        boolean[] v9 = {false, false};
+        print(new int[] {-8, -10, -6, 7});
+        v6 = (7 >= -10);
+        {
+            int v8 = -10;
+            var v7 = 9;
+            v7 = 48;
+            while ((v8 < 2)) {
+                Class0 v10 = null;
+                v9 = new boolean[1];
+                v10 = new Class0(null, new int[1][]);
+                v8++;
+            }
+        }
+    } else {
+        char[] v11 = {'V', 'd', '*', 'P'};
+        {
+            v11 = new char[] {' ', '$', '>', 'P'};
+        }
+    }
+    method2(new Class0(null, new int[5][]), new Class0(5), new int[][][] {{{8}, {-5}}, {{-7, 10, 8, 9}, {1, -10, -6}, {9, 4, -2, 9}, {-1, -2, 5}}, {{6, 0, -10, 1}}, {{8, -4}, {2, -2, 2}, {-2}, {9, 2, -5, -4}}});
+    println(new char[6]);
+    method0("'tEF~");
+    method0(itoa(-32), new boolean[8]);
+    method2(new Class0(length(new char[] {'W', '=', '^', '`', 'Z'})), new Class0(null, new int[][] {{-1, 9, -2, -7}, {-8, -4, -5}, {5, 6, 8}, {6, 0, -7, 4}}), new int[8][][]);
+    v12 = new Class0(length(new char[] {'Z', 'T'}));
+    v12.m0_0(new int[] {1, 8, 3});
+    return v12.f0_0;
+}

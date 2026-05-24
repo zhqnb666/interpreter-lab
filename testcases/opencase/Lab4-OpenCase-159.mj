@@ -1,0 +1,115 @@
+class Class0 {
+    int f0_0;
+
+    Class0 f0_1;
+
+    int[][][] f0_2;
+
+    Class0(int[] p0, Class0 p1) {
+        this.f0_0 = p1.f0_0;
+        this.f0_2 = new int[][][] {{{-7}}, {{2, 7}, {-9, 2}, {9, 9, 7, -1}}, {{8, -3, 8, -9}, {-2}, {-9, 3}, {5, 4}}, {{-7, -9}, {9, -10}, {0}, {7, -4, -2}}};
+        print(length(new char[6]));
+        if (true) {
+            print((p0 == null));
+            p1 = null;
+        } else {
+            int v8;
+            v8 = 33;
+        }
+    }
+
+    Class0() {
+        var v9 = '8';
+        this.f0_0 = 11;
+        this.f0_1 = null;
+        this.f0_2 = new int[6][][];
+        v9 = '^';
+        if (false) {
+            int v10;
+            v10 = 28;
+        }
+    }
+
+    void m0_0(Class0 p0) {
+        this.f0_1 = p0;
+        p0.m0_0(p0);
+        print(new Class0());
+        p0.f0_1 = p0;
+        return;
+    }
+
+    char[] m0_1() {
+        Class0 v14 = null;
+        this.f0_0 = -30;
+        println(this.f0_0);
+        if ((5 == -10)) {
+            {
+                if (true) ;
+            }
+            if ((6 != 5)) {
+                var v11 = "EnLN>Z";
+                println(("agr4H" + 36));
+                v11 += '=';
+            }
+            println(itoa(14));
+        } else if ((-4 != 10)) {
+            var v12 = "0)^";
+            v12 = itoa(9);
+            for (int v13 = 0; v13 < 5; v13++) {
+                Class0 v15 = null;
+                v14 = new Class0(new int[9], null);
+                v15 = new Class0(new int[8], null);
+            }
+        }
+        return new char[] {'~'};
+    }
+}
+
+void method0(int[][][] p0, boolean[] p1) {
+    int[] v4 = new int[] {4, 4, -9};
+    int v0 = -20;
+    v0 = length(new int[2][]);
+    p0[0][0][0] = (p1[0] ? v0 : -10);
+    {
+        int v1;
+        while ((v1 < 3)) {
+            println(new int[3]);
+            for (int v2 = 0; v2 < 3; v2++) {
+                int[][][] v3 = {{{-5, -7, -2, -8}, {-10, -1, -1}}, {{8, 9}}, {{-9, 7}}, {{9}}};
+                v3 = p0;
+            }
+            print(null);
+            v1++;
+        }
+    }
+    p1[0] = true;
+    v4 = new int[] {-9, -5};
+}
+
+int method1(int p0, boolean[] p1, int[][] p2) {
+    int[][] v7;
+    int v6 = 39;
+    Class0 v5 = null;
+    v5 = new Class0();
+    p1[0] = true;
+    v6 = atoi("1713");
+    v7 = p2;
+    return p0;
+}
+
+int main() {
+    Class0 v18 = null;
+    int v16 = -20;
+    while ((v16 < 2)) {
+        var v17 = -14;
+        v17 >>= length("P@9");
+        v16++;
+    }
+    print('[');
+    method0(new int[9][][], new boolean[] {true, false, true, true});
+    println(method1(length("AidG"), new boolean[7], new int[3][]));
+    v18 = new Class0();
+    v18.m0_0(new Class0());
+    println(v18.m0_1());
+    return v18.f0_0;
+}

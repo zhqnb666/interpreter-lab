@@ -1,0 +1,124 @@
+// ERROR: type_mismatch
+class Class0 {
+    Class1 f0_0 = null;
+
+    char[] f0_1;
+
+    int[][] f0_2;
+
+    char m0_0(boolean[] p0, int[][] p1) {
+        var v8 = -20;
+        var v6 = 2;
+        this.f0_0 = new Class1();
+        while ((v6 < 3)) {
+            char[] v7;
+            p1[0][0] = 37;
+            v7 = new char[6];
+            p1 = p1;
+            v6++;
+        }
+        while ((v8 < 4)) {
+            int v10 = -49;
+            int v9 = -6;
+            v9 = 49;
+            v10 = 42;
+            v8++;
+        }
+        return 'X';
+    }
+}
+
+class Class1 extends Class0 {
+    char f1_0 = 'c';
+
+    Class1(char p0) {
+        super();
+        this.f1_0 = 'M';
+        for (int v11 = 0; v11 < 4; v11++) {
+            int v12;
+            while ((v12 < 2)) v12++;
+            print(new char[4]);
+            for (int v13 = 0; v13 < 5; v13++) {
+                char[] v14 = new char[] {'%', 'C', 'b', 'p', '^'};
+                v14 = new char[] {'!', 'D'};
+            }
+        }
+    }
+
+    Class1() {
+        int v15;
+        this('Y');
+        this.f1_0 = 'j';
+        v15 = length("r *");
+    }
+
+    void m1_0() {
+        this.f1_0 = '@';
+        {
+            int v16 = 19;
+            println(new Class0());
+            v16 = 0;
+            print((method0(new char[] {'_', 'b', '^'}, -24, 'C') + length(new int[] {8, 7, -8, 7})));
+        }
+    }
+}
+
+string method0(char[] p0, int p1, char p2) {
+    p1++;
+    for (int v0 = 0; v0 < 5; v0++) {
+        int[][] v1 = new int[8][];
+        print((int) p2);
+        v1 = new int[][] {{8, -5, -3}, {5, -4, -9, -10}, {-10, -4}, {3, 7, 6}, {-7, 6, 3, -3}};
+        print((char) p1);
+    }
+    return "Y5z`5N";
+}
+
+int[][][] method1(int[][] p0, char[] p1, char p2) {
+    int[][] v5 = {{10, 8, 7, 8}, {-8, 4, -4}, {-4, 6, -2}, {-4, 5}, {8}};
+    int v3;
+    int v2 = 43;
+    p1[0] = p2;
+    v2 /= -397;
+    while ((v3 < 3)) {
+        int v4;
+        while ((v4 < 3)) {
+            p2 = p1[0];
+            v4++;
+        }
+        --v2;
+        v3++;
+    }
+    v2--;
+    v5 = new int[3][];
+    return new int[][][] {{{1}, {-5, 10}}, {{8}}, {{5, 8, -3}, {2, 0}, {3, -3}, {-2, -6, 5, -1}}, {{-8, 4, -10}}, {{-7}, {-7, 9, -1}}};
+}
+
+boolean method2() {
+    println('U');
+    print('`');
+    return (-1 == 9);
+}
+
+int main() {
+    Class1 v20 = null;
+    Class0 v19 = null;
+    int[][][] v18;
+    {
+        if (method2()) {
+            int v17;
+            v17 = -47;
+        }
+        println();
+    }
+    print(new Class1('|'));
+    println(method0(new char[] {'z', 'Z', 'o', 'A'}, length(new int[][] {{1, -8, -7, -6}, {8, 10}, {-7, 2}, {3}}), 'c'));
+    v18 = method1(new int[3][], new char[] {'q', 'V', 'n'}, '>');
+    println(method2());
+    v19 = new Class0();
+    println(v19.m0_0(new boolean[] {false, true, true, false, false}, new int[][] {{-10, 6, 2, -4}}));
+    v20 = new Class1();
+    v20.m1_0();
+    println(v20.m0_0(new boolean[9], new int[][] {{-8, 1, -2, 0}, {7, -8}, {4, 9, -4}, {-4, -3}, {-9, 6, -1}}));
+    return 38;
+}

@@ -1,0 +1,41 @@
+class SuperWithMethod {
+    string baseField = "Initialized base"; // Initialized by declaration
+
+    SuperWithMethod() {
+        println("Super: Constructor Start");
+        // Calling a method that is overridden in the subclass.
+        // At this point, the *subclass* part of the object is not fully initialized yet.
+        printState();
+        println("Super: Constructor End");
+    }
+
+    void printState() {
+        // This version is called if printState is NOT overridden in subclass
+        println("Super: baseField = " + baseField);
+    }
+}
+
+class SubWithMethodOverride extends SuperWithMethod {
+    string subField = "Initialized sub"; // Initialized by declaration
+
+    SubWithMethodOverride() {
+        // Implicit super() call happens first, executing SuperWithMethod() constructor.
+        println("Sub: Constructor Start");
+        printState(); // Calls the subclass version
+        println("Sub: Constructor End");
+    }
+
+    void printState() {
+        // When called from the *superclass* constructor, subField's state
+        // depends on *when* it's initialized in the subclass.
+        println("Sub: baseField = " + baseField + ", subField = " + subField+".");
+    }
+}
+
+    int main() {
+        println("--- Creating Sub object ---");
+        new SubWithMethodOverride();
+        println("--- Sub object created ---");
+
+        return 0;
+    }

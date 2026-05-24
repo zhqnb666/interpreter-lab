@@ -34,18 +34,23 @@ class InterpreterRegressionTest {
 
     static Stream<Arguments> testcaseProvider() throws IOException {
         List<Arguments> cases = new ArrayList<>();
-        try (Stream<Path> files = Files.list(TESTCASE_DIR)) {
+        try (Stream<Path> files = Files.walk(TESTCASE_DIR)) {
             files.filter(p -> p.toString().endsWith(".mj"))
-                    .sorted(Comparator.comparing(p -> p.getFileName().toString()))
+                    .sorted(Comparator.comparing(Path::toString))
                     .forEach(mj -> {
+                        // Test name = parent-dir/basename, e.g. official/BM-1
                         String base = mj.getFileName().toString().replaceFirst("\\.mj$", "");
-                        Path out = TESTCASE_DIR.resolve(base + ".output");
+                        Path parent = mj.getParent();
+                        String name = parent != null && !parent.equals(TESTCASE_DIR)
+                                ? parent.getFileName() + "/" + base
+                                : base;
+                        Path out = mj.resolveSibling(base + ".output");
                         if (!Files.exists(out)) {
-                            throw new RuntimeEvalException("Missing .output for testcase: " + base);
+                            throw new RuntimeEvalException("Missing .output for testcase: " + name);
                         }
                         try {
                             OutputExpectation exp = parseExpectation(out);
-                            cases.add(Arguments.of(base, mj, exp.stdout, exp.exitCode));
+                            cases.add(Arguments.of(name, mj, exp.stdout, exp.exitCode));
                         } catch (IOException e) {
                             throw new RuntimeEvalException("Failed to parse testcase output: " + out, e);
                         }

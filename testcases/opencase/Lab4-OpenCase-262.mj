@@ -1,0 +1,113 @@
+class Class0 {
+    char[] f0_0;
+
+    Class0(int[][][] p0) {
+        Class0 v3;
+        this.f0_0 = new char[] {'"', 'G', '+'};
+        print(new boolean[8]);
+        v3 = null;
+    }
+
+    Class0() {
+        this.f0_0 = new char[] {'^'};
+        for (int v4 = 0; v4 < 2; v4++) {
+            print(new char[7]);
+            if ((4 <= 7)) break;
+        }
+        for (int v5 = 0; v5 < 4; v5++) {
+            print((to_string(new char[] {'&', 'e'}) + false));
+        }
+    }
+
+    boolean m0_0(int p0, Class0 p1, char p2) {
+        this.f0_0 = new char[] {'o', 'a', 'E', '.'};
+        assert(true);
+        p1.f0_0 = new char[] {'+', '&'};
+        print(new char[9]);
+        return (p0 <= p0);
+    }
+
+    void m0_1() {
+        this.f0_0 = new char[] {'i'};
+        {
+            int v6;
+            println('Y');
+            while ((v6 < 2)) v6++;
+        }
+        if ((2 < -9)) {
+            print(new boolean[] {false, true, true, true, true});
+        } else ;
+    }
+}
+
+class Class1 {
+    Class0 f1_0;
+
+    int[] f1_1 = new int[8];
+
+    Class1(Class0 p0) {
+        this.f1_1 = new int[] {-5, -10, -2, -4};
+        println(new boolean[] {false, false});
+    }
+
+    Class1(Class0 p0, int p1) {
+        this.f1_0 = new Class0(new int[4][][]);
+        for (int v7 = 0; v7 < 2; v7++) {
+            print(new int[8]);
+            p0.f0_0 = new char[] {'}', 'z', '<', 'x'};
+        }
+    }
+
+    Class1 m1_0(Class0 p0, boolean[] p1, int[] p2) {
+        int[][] v8;
+        this.f1_1 = p2;
+        p0.m0_1();
+        v8 = new int[][] {{6, 4, 10}, {4, -9, 7}, {0, -7, -10}, {0, 6, -5}};
+        return new Class1(p0);
+    }
+
+    void m1_1(int p0, char[] p1, Class0 p2) {
+        int v9 = 11;
+        this.f1_0 = new Class0();
+        while ((v9 < 3)) {
+            p0++;
+            v9++;
+        }
+    }
+}
+
+boolean[] method0(boolean[] p0, boolean[] p1, Class0 p2) {
+    Class1 v2 = null;
+    var v1 = -24;
+    int v0;
+    p2.m0_1();
+    v0 = 9;
+    while ((v1 < 3)) v1++;
+    v2 = new Class1(p2);
+    return p1;
+}
+
+int main() {
+    Class1 v16 = null;
+    Class0 v15 = null;
+    string v14 = "@~7(7/";
+    int v13 = -46;
+    for (int v10 = 0; v10 < 3; v10++) {
+        Class1 v12;
+        for (int v11 = 0; v11 < 3; v11++) {
+            v12 = new Class1(null, length(new char[] {'M'}));
+        }
+        if ((0 <= 0)) continue;
+        assert((10 <= -10));
+    }
+    v13 = 27;
+    v14 += -19;
+    println(method0(new boolean[10], new boolean[] {false, false, false, false}, new Class0(new int[][][] {{{1, 8}, {7, 4, 1}, {7}, {-7, 10}}, {{-2, 1, 4}, {-1, -2}}, {{1, 0, 3}, {7, 3, 1}, {-9, -6, 6, -9}}, {{-3, -9}, {2, -5}, {0, 1}, {-2, 4, 1}}})));
+    v15 = new Class0();
+    println(v15.m0_0(length("]^*Xj"), (Class0) v15, '}'));
+    v15.m0_1();
+    v16 = new Class1(new Class0());
+    println(v16.m1_0(v15, new boolean[6], new int[1]));
+    v16.m1_1(15, new char[] {'O', '}', '}'}, null);
+    return -10;
+}

@@ -1,0 +1,21 @@
+class A{
+}
+
+class B extends A{
+}
+
+class C{
+    C(B b){
+        println("F");
+    }
+    C(A a){
+        println("T");
+    }
+}
+
+int main(){
+    A a=new B();
+    new C(a);
+    new C(new B());
+    return 0;
+}

@@ -1,0 +1,126 @@
+class Class0 {
+    Class0 f0_0;
+
+    int[] f0_1;
+
+    boolean f0_2 = true;
+
+    void m0_0() {
+        int v12;
+        var v11 = 50;
+        char[] v10;
+        this.f0_0 = new Class0();
+        v10 = new char[] {'c', 'r', 'T'};
+        v11 = 21;
+        v12 = -21;
+    }
+}
+
+char method0() {
+    var v7 = 27;
+    {
+        Class0 v6;
+        {
+            int[] v0;
+            if ((-5 == 8)) {
+                char[] v1;
+                v0 = new int[4];
+                v1 = new char[] {'Y', 'p', 'O', '+', '?'};
+            } else {
+                int v4;
+                boolean v3 = true;
+                boolean[] v2 = new boolean[4];
+                v2 = new boolean[5];
+                v3 = (v2 != null);
+                v4 = length(new char[] {'g', '/', 'r', '3'});
+            }
+            println();
+            {
+                int[] v5 = {6, -1};
+                v5 = new int[4];
+                v5 = v5;
+            }
+        }
+        println(itoa(19));
+        v6 = new Class0();
+    }
+    while ((v7 < 3)) {
+        int[][] v8;
+        if (true) break;
+        v8 = new int[8][];
+        v7++;
+    }
+    return 'R';
+}
+
+int[] method1(int[][][] p0, int p1) {
+    Class0 v9;
+    assert((p1 != p1));
+    v9 = new Class0();
+    return new int[10];
+}
+
+int main() {
+    Class0 v33;
+    int[][][] v32;
+    Class0 v28;
+    char[] v27 = {':', '0', '7'};
+    Class0 v26 = null;
+    var v18 = "oz_g)@";
+    print(itoa(29));
+    for (int v13 = 0; v13 < 2; v13++) {
+        boolean[] v16 = {false, true, false};
+        if (true) break;
+        println();
+        if ((-4 > -1)) {
+            int[][] v14 = {{0}};
+            v14 = new int[5][];
+        } else if ((3 < -8)) {
+            int[][] v15 = {{-2, 4, 5}, {5, 9, -1}, {-4, -7, -3, 1}};
+            v15 = new int[][] {{-4, 9, 4}, {-7, 8, -6, -8}, {0, -9}, {3, -4, 2, 4}};
+            v16 = new boolean[] {false, true};
+        } else {
+            var v19 = "ReR";
+            boolean v17;
+            v17 = (-5 <= 1);
+            v18 += v17;
+            v19 = to_string(new char[7]);
+        }
+    }
+    for (int v20 = 0; v20 < 4; v20++) {
+        if (true) {
+            int v22 = 20;
+            boolean v21;
+            v21 = true;
+            v22 = length("n1Jg?{");
+            v21 = true;
+        } else {
+            int[][] v25 = new int[][] {{1, 1}, {2, -1, -5}};
+            char v24;
+            var v23 = (4 != -10);
+            v23 = (-10 > 2);
+            v24 = method0();
+            v25 = new int[][] {{-4, 4, -8}, {1}, {10, 8, -3, 2}, {3, 5}};
+        }
+        if ((-1 <= -9)) {
+            v26 = new Class0();
+            v27 = new char[] {'{', 'Q', 'r', '+'};
+            v28 = new Class0();
+        } else {
+            char v30;
+            boolean v29;
+            v29 = (1 != 1);
+            v30 = method0();
+        }
+    }
+    {
+        int v31 = -23;
+        v31 = 27;
+        v32 = new int[4][][];
+    }
+    println(method0());
+    println(method1(new int[1][][], atoi("7799")));
+    v33 = new Class0();
+    v33.m0_0();
+    return 21;
+}

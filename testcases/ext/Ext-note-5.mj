@@ -1,0 +1,23 @@
+class A{
+    int x;
+}
+
+class B{
+}
+int main(){
+    A a1=new A();
+    A a2=new A();
+    A a3;
+    B b=new B();
+    a1.x=3;
+    a2.x=3;
+
+    assert(a3==a3);
+    assert(a1!=a3);
+    assert(a1!=a2);
+    assert(a1.x==a2.x);
+    assert(null==a3);
+    assert(a3==null);
+    assert(a1==b); //type error
+    return 0;
+}

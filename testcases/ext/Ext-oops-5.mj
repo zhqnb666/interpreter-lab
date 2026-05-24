@@ -1,0 +1,32 @@
+class Fa{
+    int fa=-2;
+}
+class X extends Fa{
+    int d=this.fa+3;
+    int a=this.x+3;
+    int z=this.x+3;
+    int x=3;
+    int y=this.x+3;
+    int c=this.b+=3;
+    int b=0;
+    int w=this.k+=3;
+    int k;
+    X(){
+        this(1);
+        println(d+" "+x+" "+y+" "+z+" "+a+" "+c+" "+b+" "+w+" "+k);
+    }
+
+    X(int _){
+        this(1,2);
+        println(d+" "+x+" "+y+" "+z+" "+a+" "+c+" "+b+" "+w+" "+k);
+    }
+
+    X(int _,int __){
+        println(d+" "+x+" "+y+" "+z+" "+a+" "+c+" "+b+" "+w+" "+k);
+    }
+}
+
+int main(){
+    new X();
+    return 0;
+}

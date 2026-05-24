@@ -1,0 +1,13 @@
+int main(){
+    int x='a';
+    char c=65;
+    println(x);
+    println(c);
+    x-=' ';
+    c+=32;
+    println(x);
+    println(c);
+    c+=256;
+    println(c);
+    return 0;
+}

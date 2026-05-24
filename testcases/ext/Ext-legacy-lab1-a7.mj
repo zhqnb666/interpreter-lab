@@ -1,0 +1,8 @@
+int main(){
+int result = 10;boolean a = false;boolean b = true;boolean sce = a and (b or (result++ == 10));
+println(result);
+println(a);
+println(b);
+println(sce);
+return 0;
+}

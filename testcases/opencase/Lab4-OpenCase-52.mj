@@ -1,0 +1,75 @@
+class Class0 {
+    char[] f0_0;
+
+    Class0 m0_0(boolean[] p0, char p1) {
+        int v4 = 39;
+        Class0 v3;
+        this.f0_0 = new char[] {'Y', 'w', 'l', '0', 'q'};
+        v3 = new Class0();
+        v4 = length(new int[1][]);
+        return v3;
+    }
+}
+
+class Class1 {
+    int[] f1_0;
+
+    Class1(int[] p0, Class1 p1, boolean p2) {
+        p1.f1_0 = new int[] {-3};
+        p0[0] = length("d-(K");
+    }
+
+    int[][] m1_0(Class1 p0, Class1 p1) {
+        char[] v5;
+        this.f1_0 = new int[] {2, -1, 5, -8, -9};
+        v5 = new char[4];
+        for (int v6 = 0; v6 < 2; v6++) {
+            char v8 = v5[0];
+            var v7 = -23;
+            v7 = -49;
+            v8 = 'T';
+        }
+        return new int[6][];
+    }
+}
+
+int method0(int[][] p0, Class1 p1, int p2) {
+    Class1 v0 = null;
+    v0 = new Class1(new int[5], p1, false);
+    p1.f1_0 = new int[8];
+    p0[0][0] = atoi("6539");
+    println(to_string(new char[] {'g', 'Y'}));
+    print(new int[4]);
+    return 38;
+}
+
+boolean[] method1(Class1 p0, Class0 p1) {
+    int v1;
+    while ((v1 < 3)) {
+        println(p0);
+        if ((p0 instanceof Class1)) {
+            Class1 v2;
+            if ((-7 <= 1)) continue;
+            v2 = new Class1(new int[] {4, 2, 6, 6, 6}, p0, (-8 != -3));
+        }
+        v1++;
+    }
+    print(new boolean[] {true, true, false, false, false});
+    return new boolean[] {true, true, false};
+}
+
+int main() {
+    int[][] v12 = new int[9][];
+    Class1 v11 = null;
+    Class0 v10 = null;
+    Class0 v9 = null;
+    println(new Class1(new int[8], null, (-1 > 4)));
+    v9 = new Class0();
+    println(method0(new int[5][], new Class1(new int[] {4, 10, -10, -3}, null, true), length(new int[5][])));
+    println(method1(new Class1(new int[] {1, -1, -6, 0}, null, (-6 > -9)), new Class0()));
+    v10 = new Class0();
+    println(v10.m0_0(new boolean[] {true, true, true, true, true}, 'T'));
+    v11 = new Class1(new int[] {6, -1}, new Class1(new int[3], v11, (10 >= 8)), (-6 < -10));
+    v12 = v11.m1_0(null, v11);
+    return 36;
+}

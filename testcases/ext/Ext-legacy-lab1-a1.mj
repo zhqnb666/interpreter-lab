@@ -1,0 +1,11 @@
+int main(){
+    int a=1;
+    string c="public cases";
+    char d='a';
+    boolean b=true;
+    println(a);
+    println(b);
+    println(c);
+    println(d);
+    return 0;
+}

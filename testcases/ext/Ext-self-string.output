@@ -1,0 +1,15 @@
+Starting String class tests...
+Test 1: Constructor, length(), charAt()
+Test 1 passed.
+Test 2: equals(String s)
+Test 2 passed.
+Test 3: to_string()
+Test 3 passed.
+Test 4: append(string s)
+Test 4 passed.
+Test 5: Interactions and complex scenarios
+Test 5 passed.
+All String class tests completed successfully.
+Process exits with 0.
+
+0

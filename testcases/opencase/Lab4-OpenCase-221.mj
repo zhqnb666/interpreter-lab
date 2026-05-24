@@ -1,0 +1,112 @@
+class Class0 {
+    int f0_0;
+
+    char f0_1 = 't';
+
+    boolean f0_2 = true;
+
+    Class0() {
+        Class0 v8 = null;
+        var v7 = -12;
+        this.f0_1 = 'f';
+        this.f0_2 = true;
+        if (false) {
+            Class0 v5;
+            {
+                Class0 v4 = null;
+                char[] v3 = new char[] {'K'};
+                v3 = new char[] {'S', 'n', 'H', '"'};
+                v4 = null;
+            }
+            v5 = null;
+        }
+        {
+            var v10 = -46;
+            for (int v6 = 0; v6 < 3; v6++) {
+                var v9 = 43;
+                v7 &= atoi("7502");
+                v8 = null;
+                v9 = length(new boolean[9]);
+            }
+            v10 = 11;
+        }
+    }
+
+    Class0(boolean p0, Class0 p1) {
+        int[] v13;
+        int v11;
+        this.f0_0 = p1.f0_0;
+        this.f0_1 = p1.f0_1;
+        this.f0_2 = (-7 >= 8);
+        while ((v11 < 2)) {
+            if ((p0 or (10 <= 10))) {
+                p1 = null;
+                for (int v12 = 0; v12 < 4; v12++) p0 = (p0 != p0);
+            }
+            v11++;
+        }
+        v13 = new int[5];
+    }
+
+    int[][] m0_0(int p0, boolean[] p1) {
+        this.f0_2 = (p1 != null);
+        {
+            assert((p0 < p0));
+            p0 = p0;
+            p1[0] = false;
+        }
+        if ((p1 == null)) {
+            boolean v14;
+            v14 = (p1 != null);
+        } else if ((p1 != null)) p0 = length(new char[3]); else if (p1[0]) {
+            char v15 = '3';
+            p1[0] = (p0 < p0);
+            v15 = 'y';
+        }
+        return new int[][] {{9, 3}};
+    }
+}
+
+void method0(int p0, int p1, int p2) {
+    int v1;
+    boolean[] v0 = {true, false};
+    v0 = new boolean[] {true, false};
+    print(length("E08"));
+    while ((v1 < 5)) {
+        for (int v2 = 0; v2 < 4; v2++) ;
+        print('W');
+        v1++;
+    }
+    println(atoi("-5361"));
+    v0[0] = (p1 < p0);
+}
+
+int main() {
+    int[][] v23 = new int[7][];
+    Class0 v22 = null;
+    char[] v18;
+    int v17 = 1;
+    boolean[] v16 = new boolean[] {false};
+    v16 = new boolean[4];
+    while ((v17 < 5)) {
+        Class0 v21 = null;
+        {
+            var v19 = "sQ+ M";
+            {
+                v18 = new char[] {'U', '@', 'o', 'B', 'E'};
+            }
+            if (false) break;
+            if ((3 >= 6)) {
+                int[] v20;
+                v19 = "_CWAtO";
+                v20 = new int[10];
+                v21 = new Class0((4 < 8), null);
+            }
+        }
+        v17++;
+    }
+    method0(32, length(">Id"), length(new int[] {0, -3, -1, -4, 8}));
+    v22 = new Class0();
+    v23 = v22.m0_0(length(new char[] {'`', '@'}), v16);
+    return 20;
+}

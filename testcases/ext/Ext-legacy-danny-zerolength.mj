@@ -1,0 +1,13 @@
+int main() {
+
+    int[] a;
+    assert(a == null);
+
+    int[] b = {};
+    assert(b != null);
+    assert(length(b) == 0);
+
+    println(b[0]);
+
+    return 0;
+}

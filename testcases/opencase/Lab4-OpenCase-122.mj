@@ -1,0 +1,101 @@
+class Class0 {
+    int[][] f0_0;
+
+    Class1 f0_1 = null;
+
+    Class0 m0_0(char[] p0) {
+        this.f0_0 = new int[8][];
+        p0 = p0;
+        return new Class0();
+    }
+}
+
+class Class1 {
+    Class0 f1_0 = null;
+
+    Class1(int[] p0) {
+        Class2 v1 = null;
+        var v0 = -33;
+        v0 = 19;
+        v1 = new Class2(new boolean[] {true}, p0[0], "S+s4f9");
+    }
+
+    Class2 m1_0(char[] p0, boolean[] p1) {
+        int[][] v5;
+        int v4;
+        int v2;
+        this.f1_0 = new Class0();
+        while ((v2 < 5)) {
+            for (int v3 = 0; v3 < 2; v3++) {
+                v4 >>>= length("G'oM");
+                p0 = new char[9];
+            }
+            v2++;
+        }
+        v5 = new int[8][];
+        return new Class2(new boolean[] {false, true, true}, length(p0), "IjXD>t");
+    }
+}
+
+class Class2 {
+    int f2_0;
+
+    char f2_1;
+
+    Class2(boolean[] p0, int p1, string p2) {
+        this.f2_1 = 'Z';
+        p0[0] = (p1 < p1);
+    }
+
+    int[][][] m2_0(boolean p0, int[][] p1) {
+        this.f2_0 = 10;
+        println(this.f2_0);
+        p1[0][0] = length(new int[6]);
+        return new int[][][] {{{0, -6, 2, -2}, {-4, -8}}, {{-5}, {7, -10, 9}, {-1, -6}, {3, 8}}, {{-1, -4, -3}, {-3, 1, 0, -2}}, {{7, 7}, {-1}}};
+    }
+
+    int[][] m2_1(Class1 p0, boolean[] p1, char p2) {
+        int v7;
+        int v6 = 27;
+        this.f2_0 = (int) 'q';
+        println(this.f2_0);
+        v6 = 33;
+        while ((v7 < 5)) v7++;
+        {
+            int v8 = -21;
+            v8 = length(new int[2]);
+            v8++;
+        }
+        return new int[][] {{-3}, {-3, 2, 1}};
+    }
+}
+
+void method0() {
+    println((-6 >= -7));
+    println(new Class2(new boolean[] {false, false, true, true}, -4, "MBH|d"));
+    print(new boolean[] {true, false, false});
+}
+
+int main() {
+    int[][] v15 = new int[][] {{-5, -9, -8, 8}, {-2}, {1, 6, 7, -5}};
+    int[][][] v14 = new int[9][][];
+    Class2 v13;
+    Class1 v12 = null;
+    Class0 v11;
+    int v10 = 40;
+    boolean[] v9 = new boolean[7];
+    print(new boolean[9]);
+    v9 = new boolean[2];
+    v10 ^= length(new boolean[] {true});
+    assert(true);
+    print('b');
+    method0();
+    v11 = new Class0();
+    println(v11.m0_0(new char[] {'q', 'B', '<', '1'}));
+    v12 = new Class1(new int[] {-4, 0, 7, -8});
+    println(v12.m1_0(new char[7], v9));
+    v13 = new Class2(v9, length(new char[10]), ("ZUf" + v10));
+    v14 = v13.m2_0((v10 == v10), new int[1][]);
+    v15 = v13.m2_1(v12, new boolean[4], v13.f2_1);
+    return 34;
+}

@@ -1,0 +1,92 @@
+// ERROR: invalid_instanceof
+class Class0 {
+    int f0_0 = 45;
+
+    void m0_0(int[] p0) {
+        int v6 = 16;
+        this.f0_0 = p0[0];
+        println(this.f0_0);
+        p0[0] = 5;
+        {
+            {
+                var v2 = -33;
+                while ((v2 < 4)) {
+                    Class0 v3 = null;
+                    v3 = new Class0();
+                    v3 = new Class0();
+                    v2++;
+                }
+                for (int v4 = 0; v4 < 5; v4++) {
+                    Class0 v5 = null;
+                    v5 = new Class0();
+                }
+            }
+        }
+        while ((v6 < 5)) {
+            var v9 = (-6 == 0);
+            Class0 v7;
+            {
+                int[][] v8;
+                v7 = new Class0();
+                v8 = new int[1][];
+            }
+            v9 = (p0 != p0);
+            if (false) {
+                p0[0] = atoi("3910");
+                if (((v9 != v9) or v9)) break;
+                println(itoa(-10));
+            } else p0 = new int[] {1};
+            v6++;
+        }
+        return;
+    }
+
+    void m0_1(char p0, char p1, int[][][] p2) {
+        int v14 = -43;
+        this.f0_0 = length(new boolean[] {false, true});
+        println(this.f0_0);
+        for (int v10 = 0; v10 < 5; v10++) ;
+        for (int v11 = 0; v11 < 3; v11++) {
+            int[][] v13;
+            {
+                var v12 = "^_7.i`";
+                v12 += '4';
+                p0 |= p1;
+            }
+            v13 = new int[][] {{-10, 4, 8, 1}};
+            p2[0] = new int[][] {{-5}, {-9, 9, 3}, {5, 4, 1, -8}, {10, 6, -6, -3}};
+        }
+        v14 |= -38;
+        return;
+    }
+}
+
+int[][][] method0(int p0, boolean[] p1, Class0 p2) {
+    int v0;
+    assert((new A() instanceof B));
+    if (false) {
+        println((Class0) p2);
+        println((p0 < p0));
+    }
+    if ((p2 == p2)) p0 = length(new boolean[1]);
+    while ((v0 < 2)) {
+        for (int v1 = 0; v1 < 3; v1++) p1 = p1;
+        p1[0] = (p2 == p2);
+        v0++;
+    }
+    return new int[][][] {{{7, 0, -3}, {0, 0, 1}, {5, -2, 8, 2}}, {{1}}};
+}
+
+int main() {
+    Class0 v18 = null;
+    int[][][] v17 = new int[4][][];
+    int v16 = -23;
+    var v15 = false;
+    v15 = true;
+    v16 >>= length(new int[8][]);
+    v17 = method0((length(new boolean[] {false, true, false}) >>> v16), new boolean[] {true}, new Class0());
+    v18 = new Class0();
+    v18.m0_0(new int[1]);
+    v18.m0_1((char) v16, '-', v17);
+    return ((v18 == v18) ? v16 : v16);
+}

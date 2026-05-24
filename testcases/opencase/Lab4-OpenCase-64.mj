@@ -1,0 +1,135 @@
+// ERROR: wrong_return_type
+class Class0 {
+    Class0 f0_0;
+
+    Class0 f0_1 = null;
+
+    int f0_2;
+
+    Class0(boolean p0, int p1) {
+        this.f0_1 = null;
+        --p1;
+    }
+
+    void m0_0(boolean p0, int[][] p1, string p2) {
+        this.f0_2 = atoi("3220");
+        println(this.f0_2);
+        if (((p1 == p1) and p0)) ; else {
+            p1[0][0] = 0;
+            p1[0][0] = length(new char[1]);
+        }
+    }
+
+    boolean[] m0_1(int p0, int[][] p1) {
+        this.f0_2 = ((p1 == null) ? p0 : length(new int[] {2, 6}));
+        println(this.f0_2);
+        print((to_string(new char[3]) + "H)."));
+        {
+            println(new boolean[] {true, false, true});
+        }
+        println((char) length(new char[1]));
+        return new boolean[] {false, true, false, true, false};
+    }
+}
+
+Class0 method0(int p0) {
+    {
+        for (int v0 = 0; v0 < 2; v0++) {
+            int v2;
+            Class0 v1 = null;
+            v1 = new Class0((p0 <= p0), 35);
+            v2 = atoi("7402");
+        }
+        ++p0;
+    }
+    print(new int[1]);
+    return ((p0 <= p0) ? -21 : 1);
+}
+
+Class0 method1(Class0 p0, char p1) {
+    int v3 = 41;
+    println((p1 >= p1));
+    {
+        p0.m0_0(false, new int[][] {{4, 2, -2, -4}, {6}, {9, 4}, {8, 10, -1}}, itoa(p1));
+        p0.m0_0((p1 == p1), new int[2][], (itoa(25) + length("^e6O4")));
+    }
+    while ((v3 < 5)) {
+        var v9 = (int) p1;
+        Class0 v6 = null;
+        Class0 v4 = p0;
+        v4 = new Class0((p1 <= p1), (int) p1);
+        {
+            Class0 v8 = p0;
+            if ((p1 >= p1)) {
+                int[][] v7;
+                char[] v5 = new char[2];
+                v5 = new char[] {'O', '7', 'o', 'w'};
+                v6 = new Class0((p0 == null), length(new boolean[] {false, true, false}));
+                v7 = new int[1][];
+            }
+            v8 = v4;
+            v8.f0_2 = length(new boolean[10]);
+        }
+        v9 = atoi("2875");
+        v3++;
+    }
+    p0.f0_0 = p0;
+    if ((p0 == p0)) ;
+    return p0.f0_0;
+}
+
+int main() {
+    Class0 v25 = null;
+    var v24 = -38;
+    boolean[] v19;
+    int[][] v15 = {{-2, -2, 4, -9}, {-7, 8}, {2, -5, 2, -2}, {2}, {4, -5}};
+    for (int v10 = 0; v10 < 5; v10++) {
+        var v11 = -14;
+        v11 = 46;
+        for (int v12 = 0; v12 < 4; v12++) {
+            int v14;
+            int[][][] v13;
+            v13 = new int[1][][];
+            v14 = atoi("142");
+        }
+    }
+    if (false) {
+        println((-10 <= -6));
+        assert((-10 > -1));
+    } else {
+        boolean v16 = (4 == -4);
+        v15 = new int[5][];
+        println(method1(null, 'N'));
+        v16 = (-1 <= 4);
+    }
+    {
+        if ((0 != 10)) {
+            int v20;
+            int[][][] v17 = {{{4, 8}, {-2}}};
+            v17 = new int[][][] {{{-8, 8, 7, 3}, {9, 2, -4}}, {{-8, -2, 7, 2}, {10, -9, 9, -10}, {-5}, {-7, -6, 5}}, {{0}, {1}, {-1}, {-7}}};
+            for (int v18 = 0; v18 < 5; v18++) {
+                v19 = new boolean[9];
+            }
+            v20 = 36;
+        } else {
+            if (true) {
+                var v21 = 'v';
+                v21 *= ')';
+            }
+            for (int v22 = 0; v22 < 5; v22++) {
+                Class0 v23 = null;
+                v23 = new Class0(false, -2);
+            }
+        }
+        {
+            println(new char[] {'"', '~'});
+        }
+    }
+    v24 -= length(new char[7]);
+    println(method0(((v24 >= v24) ? v24 : 13)));
+    println(method1(null, 'd'));
+    v25 = new Class0((v24 <= v24), length(new boolean[1]));
+    v25.m0_0((v25 instanceof Class0), new int[][] {{5, -9, -6}, {-5, 6}}, itoa(3));
+    println(v25.m0_1(length(new int[5][]), new int[][] {{0, -7}, {-4}, {5}}));
+    return (45 - -33);
+}

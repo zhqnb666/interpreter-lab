@@ -1,0 +1,95 @@
+class Class0 {
+    string f0_0;
+
+    Class0() {
+        this.f0_0 = ("gz>s" + true);
+    }
+
+    Class0(char p0, string p1, char[] p2) {
+        var v4 = " yL";
+        this();
+        this.f0_0 = to_string(new char[] {'2', '3', '9'});
+        println((p1 + (int) p2[0]));
+        if ((p2 != p2)) {
+            println();
+            print(new char[6]);
+        } else {
+            v4 = (itoa((int) p2[0]) + p2[0]);
+            if (true) {
+                var v5 = -29;
+                while ((v5 < 2)) v5++;
+                print(p2);
+            } else if ((p0 >= p0)) {
+                int[][] v6 = {{-7, 2}, {9, 0, 5}};
+                v6 = new int[1][];
+            }
+        }
+    }
+
+    void m0_0(boolean[] p0, boolean[] p1, char p2) {
+        this.f0_0 = "`iADm";
+        println((p2 >= p2));
+        return;
+    }
+
+    boolean m0_1(string p0) {
+        int v8;
+        Class0 v7;
+        this.f0_0 = p0;
+        v7 = new Class0('6', p0, new char[9]);
+        while ((v8 < 5)) {
+            print(new int[8]);
+            if ((-10 < 10)) {
+                v7.m0_0(new boolean[9], new boolean[10], 'k');
+                print(v7);
+            } else {
+                v7.m0_0(new boolean[] {false, true, true, false}, new boolean[] {false, true, false, true, true}, '*');
+            }
+            if ((v7 instanceof Class0)) {
+                int v9;
+                v9 = -48;
+                v7 = new Class0();
+            } else if (false) ; else {
+                v7.m0_0(new boolean[1], new boolean[2], 'X');
+                v7.f0_0 = to_string(new char[] {'{', 'I', '+', '4'});
+                {
+                    int[][][] v10 = new int[2][][];
+                    v10 = new int[][][] {{{9}, {-1}}, {{1, 1, -9}, {6, -6, 4}, {5, 2}, {10}}, {{-9}, {-10, -10, 2}}, {{0}}, {{5, -4}, {8, -10, 9}, {0, -5}}};
+                }
+            }
+            v8++;
+        }
+        return (v7 != v7);
+    }
+}
+
+int method0() {
+    var v3 = 'f';
+    Class0 v1 = null;
+    if ((-5 <= 1)) {
+        int v0 = -31;
+        v0 = -50;
+        v1 = new Class0(';', to_string(new char[9]), new char[3]);
+    } else {
+        int v2 = -45;
+        while ((v2 < 5)) {
+            if ((9 <= 5)) continue;
+            v2++;
+        }
+    }
+    v3 &= 'o';
+    return (int) v3;
+}
+
+int main() {
+    Class0 v13;
+    int[][][] v12;
+    int v11;
+    v11 = -44;
+    v12 = new int[7][][];
+    println(method0());
+    v13 = new Class0();
+    v13.m0_0(new boolean[9], new boolean[] {true, false}, 'F');
+    println(v13.m0_1(v13.f0_0));
+    return 6;
+}

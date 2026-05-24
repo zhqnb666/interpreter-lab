@@ -1,0 +1,143 @@
+class Class0 {
+    int[] f0_0;
+
+    Class0(boolean p0, int[][][] p1, Class0 p2) {
+        this.f0_0 = new int[] {-6, -8, 0, -9};
+        p2.f0_0 = new int[2];
+    }
+
+    Class0() {
+        int v8;
+        this((-2 > 2), new int[][][] {{{0}, {-9, -7}}, {{-4, -8, 1, 7}, {-6, -8, 0}, {5, -7, 6}}, {{-1, 5}, {2, -4, -7}, {-3, -8, -9}}}, null);
+        this.f0_0 = new int[1];
+        v8 = 10;
+        print(null);
+    }
+
+    Class1 m0_0(Class0 p0, int[] p1, boolean p2) {
+        Class1 v10;
+        var v9 = -38;
+        this.f0_0 = p1;
+        v9 = 14;
+        v10 = new Class1('/', new int[9][]);
+        p1[0] = length(new char[8]);
+        return (Class1) v10;
+    }
+
+    int[][] m0_1(int p0) {
+        this.f0_0 = new int[] {3, 1, -3, -1};
+        print((char) atoi("3821"));
+        return new int[][] {{-2}, {3}, {-2, 3}, {6, -2, -4, 6}};
+    }
+}
+
+class Class1 {
+    string f1_0 = "2yrqI:";
+
+    char f1_1;
+
+    Class1(char p0, int[][] p1) {
+        this.f1_0 = to_string(new char[7]);
+        this.f1_1 = 'e';
+        for (int v11 = 0; v11 < 5; v11++) {
+            Class0 v12 = null;
+            v12 = new Class0(true, new int[6][][], null);
+            if (true) break;
+            p1 = new int[9][];
+        }
+    }
+
+    void m1_0(int p0, int p1) {
+        int v20;
+        int[][] v19;
+        int v13 = -14;
+        this.f1_1 = (char) p1;
+        while ((v13 < 3)) {
+            int[][][] v15;
+            int v14;
+            while ((v14 < 4)) v14++;
+            v15 = new int[][][] {{{1, 1, 10, 7}, {2, -10, -9, 4}, {-2, -10, 3, 2}, {8, -1, -4, 6}}};
+            v15[0] = new int[][] {{1, 1, 6, -2}, {-9, -3, -5, 3}, {3, -3, -8, -9}, {0, -5}};
+            v13++;
+        }
+        for (int v16 = 0; v16 < 3; v16++) {
+            Class0 v18 = null;
+            {
+                int[] v17 = new int[3];
+                v17 = new int[10];
+                v18 = new Class0((p1 <= p0), new int[1][][], null);
+                v19 = new int[10][];
+            }
+            println((p0 >= p1));
+        }
+        while ((v20 < 2)) {
+            p1--;
+            v20++;
+        }
+    }
+}
+
+Class1 method0(boolean[] p0, int p1) {
+    if ((p1 <= p1)) {
+        p1--;
+        assert((p1 < p1));
+        p0[0] = (p1 > p1);
+    } else if ((p1 != p1)) ; else {
+        int v1;
+        char[] v0 = new char[7];
+        v0 = new char[] {'L', ':', ' '};
+        while ((v1 < 3)) {
+            var v2 = v0[0];
+            v2 = (char) p1;
+            println(new Class1('K', new int[][] {{-2}, {-5, 2}, {-2}}));
+            v1++;
+        }
+    }
+    assert((p0 == null));
+    ++p1;
+    return new Class1('?', new int[7][]);
+}
+
+Class1 method1() {
+    Class1 v7;
+    for (int v3 = 0; v3 < 3; v3++) {
+        int[] v4;
+        v4 = new int[8];
+    }
+    println(("M'&" + -37));
+    for (int v5 = 0; v5 < 4; v5++) {
+        int v6 = 26;
+        print('A');
+        v6 /= -353;
+        v7 = new Class1('R', new int[8][]);
+    }
+    print(new boolean[] {false});
+    return new Class1('J', new int[][] {{8, -1, -4}, {5}, {-1}});
+}
+
+int main() {
+    Class1 v28 = null;
+    int[][] v27;
+    Class0 v26 = null;
+    Class0 v25;
+    var v21 = -7;
+    while ((v21 < 2)) {
+        print(new Class0());
+        v21++;
+    }
+    for (int v22 = 0; v22 < 4; v22++) {
+        int[][][] v24 = new int[][][] {{{-6, -4}, {0, 7}}, {{5}}, {{-1, -8, -10, -9}, {5, 0, -10, -7}}, {{6}, {-3}, {-7, 2, 3, -4}}};
+        var v23 = -23;
+        while ((v23 < 2)) v23++;
+        v24 = new int[6][][];
+    }
+    v25 = new Class0((0 <= -7), new int[][][] {{{-8}, {-8, 2, -10}}, {{-4, 4, -8, -1}, {6, -2}}, {{-10}, {-6, 1, -5}, {5, -2, -9}}}, null);
+    println(method0(new boolean[] {true, false, true}, atoi("-4612")));
+    println(method1());
+    v26 = new Class0();
+    println(v26.m0_0(new Class0(), new int[] {-7}, (v25 == null)));
+    v27 = v26.m0_1(atoi("-5064"));
+    v28 = new Class1('<', new int[][] {{-5, 2, 4, 10}});
+    v28.m1_0(atoi("1861"), 34);
+    return -44;
+}

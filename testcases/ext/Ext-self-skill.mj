@@ -1,0 +1,57 @@
+class Skill{
+    string name;
+    Skill(string name){
+        this.name=name;
+    }
+    void effect(){
+
+    }
+}
+
+class FireBall extends Skill{
+    FireBall(){
+        super("Fireball");
+    }
+
+    void effect(){
+        println("Fireball!");
+    }
+}
+
+class IceSpike extends Skill{
+    IceSpike(){
+        super("IceSpike");
+    }
+
+    void effect(){
+        println("IceSpike!");
+    }
+}
+
+class DragonDance extends Skill{
+    DragonDance(){
+        super("DragonDance");
+    }
+
+    void effect(){
+        println("DragonDance!");
+    }
+}
+
+void select(Skill[] sk, int id){
+    println("You used "+sk[id-1].name+"!");
+    sk[id-1].effect();
+}
+
+int main(){
+    Skill[] sk=new Skill[]{new DragonDance(),new DragonDance(), new FireBall(),new IceSpike()};
+
+    select(sk,1);
+    select(sk,1);
+    select(sk,3);
+    select(sk,4);
+    select(sk,2);
+    select(sk,4);
+    select(sk,3);
+    return 0;
+}

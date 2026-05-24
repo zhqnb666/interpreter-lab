@@ -1,0 +1,102 @@
+// ERROR: arg_type_mismatch
+class Class0 {
+    Class0 f0_0;
+
+    boolean[] f0_1 = new boolean[] {false, true, false};
+
+    int[] f0_2 = new int[] {5, -1, -1, 0, -8};
+
+    void m0_0(char[] p0) {
+        this.f0_2 = new int[] {8, -2};
+        println(new char[] {'8', '*', 'R'});
+    }
+
+    Class1 m0_1(char p0, int[][] p1, int[] p2) {
+        this.f0_0 = new Class0();
+        println(new boolean[2]);
+        p1[0] = p2;
+        return null;
+    }
+}
+
+class Class1 {
+    boolean f1_0;
+
+    Class0 f1_1 = null;
+
+    int[][][] m1_0(boolean[] p0, int[] p1, int p2) {
+        this.f1_0 = (p2 < p2);
+        ++p2;
+        return new int[][][] {{{4}, {5, 8, 3, 6}}, {{9, 1, 5, -8}, {7, -6}, {-5, 0}, {-6, 9}}, {{-10, -3}, {-3, 8, -9}, {1, 6, 5}, {-7, -6, -5}}};
+    }
+}
+
+int[] method0() {
+    boolean[] v0 = new boolean[10];
+    v0 = new boolean[10];
+    print((v0 != v0));
+    v0[0] = print((-1 <= 6));
+    for (int v1 = 0; v1 < 4; v1++) {
+        var v2 = 38;
+        while ((v2 < 4)) v2++;
+    }
+    if ((5 < -7)) {
+        int v3;
+        v3 = length(new int[6]);
+    }
+    return new int[7];
+}
+
+char[] method1(int p0) {
+    int v4 = -50;
+    p0--;
+    while ((v4 < 5)) v4++;
+    return new char[9];
+}
+
+void method2() {
+    int v8;
+    {
+        int v7;
+        for (int v5 = 0; v5 < 5; v5++) {
+            int[][][] v6;
+            v6 = new int[8][][];
+            v7 >>= length(new int[1][]);
+        }
+    }
+    println(length(new boolean[7]));
+    while ((v8 < 5)) {
+        int[][][] v10;
+        int v9;
+        v9 = -11;
+        v10 = new int[][][] {{{9, 5}, {-10, 10, -9, -4}}, {{-8, 1, -10}, {2, 4}, {9, 8, 7}}, {{-4, -6}, {-8, -4, -2, -6}, {-1, -7, -9}}, {{-2, 8, 10, -3}}};
+        v8++;
+    }
+}
+
+int main() {
+    int[][][] v16;
+    Class1 v15 = null;
+    Class0 v14;
+    var v12 = -50;
+    int v11 = 14;
+    while ((v11 < 5)) {
+        println(new int[6]);
+        v11++;
+    }
+    while ((v12 < 4)) {
+        int[] v13 = {5, -8, -6, 9, -6};
+        v13 = new int[] {-1};
+        println('$');
+        v12++;
+    }
+    println(method0());
+    println(method1(length(new boolean[5])));
+    method2();
+    v14 = new Class0();
+    v14.m0_0(new char[7]);
+    println(v14.m0_1('.', new int[][] {{-9, -8, -5, -9}, {0}, {-7, 0, -7, 2}, {-5, -10}, {2, -10, -7}}, new int[] {10, 10, 3, -6, -3}));
+    v15 = new Class1();
+    v16 = v15.m1_0(new boolean[] {true, false, false, true}, new int[6], length(new int[][] {{3, -10, 4, 2}, {-7, -6, -9}}));
+    return -11;
+}

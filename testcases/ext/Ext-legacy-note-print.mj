@@ -1,0 +1,18 @@
+int main(){
+    print(1); // output : 1
+    print('a'); // output : a
+    print("Hello"); // output : Hello
+    print(null); // output : null
+
+    int[] arr1 = {1,2,3};
+    print(arr1); // output : [1, 2, 3]
+    int[][] arr2 = {{1,2},{3,4}};
+    print(arr2); // output : [[1, 2], [3, 4]]
+    int[] arr3 = null;
+    print(arr3); // output : null
+    char[] arr4 = {'1', '2', '3'};
+    print(arr4); // output : [1, 2, 3]
+    string[] arr5 = {"1", "2", "3"};
+    print(arr5); // output : [1, 2, 3]
+    return 0;
+}

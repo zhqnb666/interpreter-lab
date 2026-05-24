@@ -1,0 +1,76 @@
+class Node{
+    int val;
+    Node left;
+    Node right;
+    Node(int val){
+        this.val=val;
+    }
+
+    string to_string(){
+        var l=left==null?"":left.to_string();
+        var r=right==null?"":right.to_string();
+
+        return "("+l+")"+val+"("+r+")";
+    }
+}
+
+void add(Node root, string s){
+    var a=to_char_array(s);
+    var curr=root;
+    for(int i=0;i<length(s);i++){
+        var c=a[i];
+        if(c=='0'){
+            if(curr.left==null){
+                curr.left=new Node(0);
+            }
+           curr=curr.left;
+        }else{
+            if(curr.right==null){
+                curr.right=new Node(0);
+            }
+            curr=curr.right;
+        }
+    }
+
+    curr.val++;
+}
+
+int query(Node root, string s){
+    var a=to_char_array(s);
+    var curr=root;
+    for(int i=0;i<length(s);i++){
+        var c=a[i];
+        if(c=='0'){
+            if(curr.left==null){
+                return 0;
+            }
+            curr=curr.left;
+        }else{
+            if(curr.right==null){
+                return 0;
+            }
+            curr=curr.right;
+        }
+    }
+
+    return curr.val;
+}
+
+int main(){
+    Node root=new Node(0);
+    add(root,"0");
+    add(root,"01");
+    add(root,"001");
+    add(root,"000");
+    add(root,"101");
+    add(root,"111");
+    add(root,"110");
+    add(root,"0");
+
+    assert(query(root,"0")==2);
+    assert(query(root,"001")==1);
+    assert(query(root,"010")==0);
+
+    println(root);
+    return 0;
+}

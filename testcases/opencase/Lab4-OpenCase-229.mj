@@ -1,0 +1,93 @@
+class Class0 {
+    boolean f0_0;
+
+    boolean[] f0_1;
+
+    int[] m0_0(boolean[] p0) {
+        this.f0_1 = p0;
+        println(5);
+        if ((-7 != -1)) {
+            var v10 = -46;
+            v10 >>= -18;
+        }
+        {
+            int v11;
+            while ((v11 < 5)) v11++;
+        }
+        return new int[5];
+    }
+
+    Class0 m0_1(Class0 p0) {
+        this.f0_0 = false;
+        {
+            var v12 = "8FRg";
+            if ((p0 != null)) p0 = new Class0(); else if ((p0 != null)) {
+                v12 = (":{dp:" + '?');
+            }
+        }
+        return new Class0();
+    }
+}
+
+int method0(char p0) {
+    Class0 v5;
+    int v4 = -50;
+    for (int v0 = 0; v0 < 3; v0++) {
+        var v2 = (int) '9';
+        char[] v1;
+        v1 = new char[8];
+        if ((v1 != null)) continue;
+        v2 = 26;
+    }
+    if ((p0 == p0)) {
+        print(new int[] {3, -10, 5, -8});
+    } else {
+        int v3;
+        while ((v3 < 4)) v3++;
+        print(true);
+    }
+    while ((v4 < 2)) {
+        print(p0);
+        v5 = new Class0();
+        v4++;
+    }
+    return (int) p0;
+}
+
+int method0(char p0, Class0 p1, int[][][] p2) {
+    int v6;
+    v6 = -30;
+    p2[0][0] = new int[3];
+    if (false) {
+        boolean[] v7;
+        v7 = new boolean[5];
+    } else if ((p1 instanceof Class0)) {
+        {
+            p1.f0_0 = p1.f0_0;
+        }
+    }
+    return 37;
+}
+
+void method2(Class0 p0) {
+    char[] v9 = {'2', '(', 'y', 'r'};
+    int[][][] v8 = new int[][][] {{{7, -8, 5}}, {{-10, -2, 7, 10}, {8, -5}, {-3, -10}}, {{6, -1, -4}, {-5}, {8, 7}}, {{10, 4, 9, -2}}, {{-9, 8, 6, -3}}};
+    v8 = new int[10][][];
+    println('.');
+    v9 = new char[] {'o', '(', '('};
+}
+
+int main() {
+    Class0 v14 = null;
+    char v13;
+    print(length(new char[4]));
+    print(length(new char[4]));
+    v13 &= 'u';
+    println(method0(v13));
+    println(method0(v13, new Class0(), new int[10][][]));
+    method2(new Class0());
+    v14 = new Class0();
+    println(v14.m0_0(new boolean[3]));
+    println(v14.m0_1(new Class0()));
+    return (int) v13;
+}

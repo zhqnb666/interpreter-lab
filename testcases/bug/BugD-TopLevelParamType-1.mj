@@ -1,0 +1,29 @@
+// Bug D: callMethod (top-level methods) does not upcast class-type parameters to
+// their declared type. Instead it does arg.copy() preserving the actual runtime type.
+// executeClassMethod and bindCtorParams both correctly do new Value(paramType, arg.getValue()).
+//
+// Impact: inside a top-level method, a parameter declared as "Animal" but passed a "Dog"
+// instance will have its type recorded as "Dog". When that parameter is later passed to
+// another overloaded function, the wrong overload is selected.
+//
+// Expected: process(new Dog()) → param has decl type "Animal"
+//           → check(param): arg type "Animal", check(A) exact match → prints "got A"
+//
+// Our code (bug): param gets type "Dog"
+//           → check(param): arg type "Dog", check(B) exact match (cost 0) → prints "got B"
+
+class A {}
+class B extends A {}
+
+void check(A a) { println("got A"); }
+void check(B b) { println("got B"); }
+
+void process(A param) {
+    // param should have declared type "A" — check(A) should be selected
+    check(param);
+}
+
+int main() {
+    process(new B());
+    return 0;
+}

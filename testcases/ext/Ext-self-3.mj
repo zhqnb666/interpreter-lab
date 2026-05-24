@@ -1,0 +1,13 @@
+class A{
+    int x=0;
+    void foo(){}
+}
+
+int main(){
+    A v;
+    // assume type A has a field x and a method foo()
+    var x2 = v.foo(); // null pointer error
+    var x1 = v.x;     // null pointer error
+
+    return 0;
+}

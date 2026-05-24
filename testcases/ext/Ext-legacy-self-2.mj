@@ -1,0 +1,13 @@
+int main(){
+    string[][] s={{"11"},{"yaju","45"},{"senpai","14","yamanomori"},null};
+    println(s);
+    string[][] t=new string[3][];
+    t[0]=new string[3];
+    println(t);
+    t[0][0]="11";
+    t[0][1]="hi";
+    t[0][2]="good";
+    println(t);
+    t[1][0]="yaju"; //nurupo
+    return 0;
+}

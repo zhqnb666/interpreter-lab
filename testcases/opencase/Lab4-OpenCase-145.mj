@@ -1,0 +1,66 @@
+class Class0 {
+    char[] f0_0 = new char[5];
+
+    int[][][] m0_0(boolean p0, Class0 p1) {
+        int v4;
+        this.f0_0 = new char[4];
+        while ((v4 < 5)) v4++;
+        return new int[][][] {{{5, -6}}, {{4}, {1, -7, 10, -5}, {9}, {-8, -9, -5, 9}}, {{-2}, {-5, -9}, {-8, 0, -5}}, {{5}}};
+    }
+
+    int[] m0_1(int[][] p0, int[] p1, Class0 p2) {
+        Class0 v5 = null;
+        this.f0_0 = new char[] {'1'};
+        v5 = new Class0();
+        return p1;
+    }
+}
+
+Class0 method0(int[][][] p0, int p1) {
+    println();
+    println((p1 < p1));
+    if (true) {
+        print((p1 & length(new char[] {'E', 'n'})));
+        p0[0] = new int[][] {{2, -10, -4}, {9}};
+    }
+    return null;
+}
+
+void method1(char p0) {
+    var v1 = -1;
+    int v0;
+    print(itoa((int) p0));
+    v0 = -40;
+    v1 = -48;
+}
+
+Class0 method0(int[] p0, int[][] p1, int[][][] p2) {
+    int v3 = -1;
+    if (true) {
+        int v2 = p0[0];
+        v2 = length(new boolean[2]);
+    }
+    v3 = -42;
+    return new Class0();
+}
+
+int main() {
+    int[][][] v11 = new int[][][] {{{-4}, {1, 4, -2}, {-5, 0}, {1, 6, 2, -10}}, {{0, 9, -5}}};
+    Class0 v10;
+    int v9 = 20;
+    char[] v8;
+    int v7 = 4;
+    Class0 v6;
+    v6 = new Class0();
+    while ((v7 < 4)) v7++;
+    v8 = new char[3];
+    v9 = 5;
+    println(new int[8]);
+    println(method0(new int[][][] {{{1, 4, 4}, {2, 8}, {9, 2, 9}}, {{-8}}, {{0, 7, 10}}, {{-6, 2, -8, -5}, {6, 5}}}, length("H]S")));
+    method1(v8[0]);
+    println(method0(new int[] {9}, new int[7][], new int[3][][]));
+    v10 = new Class0();
+    v11 = v10.m0_0((7 == -7), method0(new int[][][] {{{-7}}, {{-2, -2, -5, 3}}, {{0}, {-2, -7}, {4}, {-8, -2, 9, 6}}, {{8, -2, -10, -8}, {3, 1, 2}, {-4, -6}}, {{-7, -7, -6, 0}}}, -21));
+    println(v10.m0_1(new int[][] {{-4, -10}, {8, -9, 6, 3}, {10, -9}}, new int[2], method0(new int[9], new int[6][], new int[4][][])));
+    return -38;
+}

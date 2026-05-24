@@ -1,0 +1,6 @@
+ParentWithoutDefault(int) called with: 50
+ChildNeedingSuper constructor called.
+c: value=50, name=Test Child
+Process exits with 0.
+
+0
