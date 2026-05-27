@@ -109,33 +109,44 @@ public final class ClassRegistry {
      * Dedupe rule (same as `MethodRegistry.register`): a method is shadowed by an
      * earlier-added one ONLY when name, parameter types, AND return type all match.
      * Same-(name,params) but different-return-type methods are both kept, so the call
-     * site reports ambiguity — matching Lab 3 Task 2 Note 1's intent for the entry
-     * `int main()` / `void main()` case.
+     * site reports ambiguity (Lab 3 §1.4 Note 1).
      *
-     * Across the chain, a subclass declaration with matching (params, returnType) hides
-     * the parent's, so only the most-derived occurrence is kept.
+     * Within a single class, duplicate-signature methods are all kept without
+     * deduplication — the call site will report ambiguity when they are invoked.
+     *
+     * Across the chain, a subclass with the same parameter types shadows the
+     * parent's method(s) regardless of return type, so only the most-derived
+     * occurrence(s) are kept. Unrelated overloads remain visible in parallel.
      */
     public List<MethodDecl> collectMethods(String startClass, String methodName) {
         List<MethodDecl> result = new ArrayList<>();
+        // Sigs that a strictly more-derived class has already contributed.
+        // Shadowing is keyed by parameter-type list only (not return type).
+        Set<List<Type>> shadowedByDerived = new HashSet<>();
         for (String cls : chain(startClass)) {
+            List<List<Type>> thisClassSigs = new ArrayList<>();
             for (MethodDecl m : classes.get(cls).methods()) {
                 if (!m.name().equals(methodName)) {
                     continue;
                 }
-                boolean shadowed = false;
-                for (MethodDecl already : result) {
-                    if (sameParamTypes(already.parameters(), m.parameters())
-                            && already.returnType().equals(m.returnType())) {
-                        shadowed = true;
-                        break;
-                    }
+                List<Type> sig = canonicalSig(m);
+                if (shadowedByDerived.contains(sig)) {
+                    continue; // hidden by a more-derived class
                 }
-                if (!shadowed) {
-                    result.add(m);
-                }
+                result.add(m);
+                thisClassSigs.add(sig);
             }
+            shadowedByDerived.addAll(thisClassSigs);
         }
         return result;
+    }
+
+    private static List<Type> canonicalSig(MethodDecl m) {
+        List<Type> sig = new ArrayList<>();
+        for (MethodDecl.Parameter p : m.parameters()) {
+            sig.add(p.type());
+        }
+        return sig;
     }
 
     /**

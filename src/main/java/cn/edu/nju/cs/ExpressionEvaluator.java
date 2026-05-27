@@ -210,6 +210,7 @@ final class ExpressionEvaluator {
             if (mc.arguments().expressionList() != null) {
                 for (MiniJavaParser.ExpressionContext e : mc.arguments().expressionList().expression()) {
                     ExprResult r = visitor.evalExpr(e);
+                    r.valueNonVoid();
                     args.add(r);
                 }
             }
@@ -240,6 +241,7 @@ final class ExpressionEvaluator {
         if (ctx.arguments().expressionList() != null) {
             for (MiniJavaParser.ExpressionContext expr : ctx.arguments().expressionList().expression()) {
                 ExprResult r = visitor.evalExpr(expr);
+                r.valueNonVoid();
                 args.add(r);
             }
         }

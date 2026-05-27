@@ -10,19 +10,10 @@ public final class MethodRegistry {
     private final Map<String, List<MethodDecl>> methodsByName = new HashMap<>();
 
     public void register(MethodDecl method) {
-        // Dedupe top-level methods: first declared wins, but ONLY when name,
-        // parameter types AND return type all match. Same (name,params) with
-        // different return types are both kept so the call site can report
-        // ambiguity (per Lab 3 Task 2 Note 1: `int main()` + `void main()` is
-        // an ambiguous-entry error).
-        List<MethodDecl> overloads = methodsByName.computeIfAbsent(method.name(), k -> new ArrayList<>());
-        for (MethodDecl existing : overloads) {
-            if (sameParamTypes(existing, method)
-                    && existing.returnType().equals(method.returnType())) {
-                return;
-            }
-        }
-        overloads.add(method);
+        // Allow all declarations; same-(name,params) top-level methods are all kept.
+        // Ambiguity is deferred to the call site (Lab 3 §1.4 Note 1 — tied
+        // conversion-count → "Ambiguous call").
+        methodsByName.computeIfAbsent(method.name(), k -> new ArrayList<>()).add(method);
     }
 
     public MethodDecl resolveEntryMain() {
@@ -108,17 +99,5 @@ public final class MethodRegistry {
             throw new RuntimeEvalException("Ambiguous call: " + contextName);
         }
         return best;
-    }
-
-    private boolean sameParamTypes(MethodDecl a, MethodDecl b) {
-        if (a.parameters().size() != b.parameters().size()) {
-            return false;
-        }
-        for (int i = 0; i < a.parameters().size(); i++) {
-            if (!a.parameters().get(i).type().equals(b.parameters().get(i).type())) {
-                return false;
-            }
-        }
-        return true;
     }
 }

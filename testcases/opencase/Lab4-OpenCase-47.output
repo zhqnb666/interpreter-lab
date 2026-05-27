@@ -5,9 +5,6 @@ Class1[z, I, :]
 Class1
 [0, 0, 0, 0, 0, 0, 0, 0]
 [z, I, :]
-[0, 0, 0, 0, 0, 0, 0, 0][0]
-[z, I, :]
-null
-Process exits with 78.
+Process exits with 34.
 
-78
+34

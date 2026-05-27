@@ -33,15 +33,7 @@ final class CallDispatcher {
      * two routes stay consistent.
      */
     String stringifyForOutput(ExprResult arg) {
-        Value v = arg.value();
-        // void → "null" (lenient): matches submission1's formatValue, which renders
-        // any null-valued Value (including the void sentinel returned by print/println)
-        // as the literal "null". Spec doesn't enumerate void in print's accepted types
-        // (Lab 3 §6 print accepts primitive/array/null) but doesn't forbid it either;
-        // the lenient handling lets `println(print(false))`-style chains work.
-        if (v.isVoid()) {
-            return "null";
-        }
+        Value v = arg.valueNonVoid();
         Type st = arg.staticType();
         if (v.isArray()) {
             MiniJavaArray arr = v.asArray();
@@ -69,13 +61,41 @@ final class CallDispatcher {
         if (!hasSuitableToString(startClass)) {
             return v.asClassInstance().realClassName();
         }
-        ExprResult r = invokeClassMethodOn(
-                v.asClassInstance(), startClass, false, "to_string", List.of());
+        // Per Lab 4 §8.1 Note: a "suitable" to_string returns string. We bypass the
+        // generic invokeClassMethodOn path because the class chain may also declare
+        // a same-(name, params) to_string with a different return type — Phase 1
+        // overload resolution would see both as cost-0 candidates and report
+        // "Ambiguous call", but §8.1 specifically selects the string-returning one.
+        // Dispatch via real(x) per spec: walk from real(x) up the chain and call
+        // the first `string to_string()` we find.
+        ClassInstance instance = v.asClassInstance();
+        ClassRegistry.MethodDispatch dispatch =
+                findSuitableToString(instance.realClassName());
+        if (dispatch == null) {
+            // hasSuitableToString said yes on decl's chain but real(x)'s chain
+            // doesn't reach it — shouldn't happen since real(x) extends decl.
+            return instance.realClassName();
+        }
+        ExprResult r = runUserMethod(
+                dispatch.method(), List.of(), instance, dispatch.declaringClass());
         Value out = r.value();
         if (!out.isString()) {
             throw new RuntimeEvalException("to_string() must return string");
         }
         return out.asString();
+    }
+
+    private ClassRegistry.MethodDispatch findSuitableToString(String startClass) {
+        for (String cls : classRegistry.chain(startClass)) {
+            for (MethodDecl m : classRegistry.get(cls).methods()) {
+                if (m.name().equals("to_string")
+                        && m.parameters().isEmpty()
+                        && m.returnType().equals(Type.STRING)) {
+                    return new ClassRegistry.MethodDispatch(cls, m);
+                }
+            }
+        }
+        return null;
     }
 
     private boolean hasSuitableToString(String startClass) {
@@ -335,6 +355,7 @@ final class CallDispatcher {
         if (ctx.expressionList() != null) {
             for (MiniJavaParser.ExpressionContext e : ctx.expressionList().expression()) {
                 ExprResult r = visitor.evalExpr(e);
+                r.valueNonVoid();
                 args.add(r);
             }
         }
